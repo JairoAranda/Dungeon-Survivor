@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeEnemyMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     [Header("Enemy Scriptable Object")]
     [Tooltip("Scriptable Object of the enemy.")]
@@ -30,4 +30,5 @@ public class MeleeEnemyMovement : MonoBehaviour
             transform.Translate(directionToPlayer * currentSpeed * Time.deltaTime);
         }
     }
+
 }

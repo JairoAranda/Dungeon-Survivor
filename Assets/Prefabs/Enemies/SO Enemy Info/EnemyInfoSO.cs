@@ -16,4 +16,7 @@ public class EnemyInfoSO : ScriptableObject
     [Tooltip("Attack range in units.")]
     public float attackRange;
     public int damage;
+    [Range(0.1f, 5f)]
+    [Tooltip("Only Ranged.")]
+    public float cooldown = 1;
 }

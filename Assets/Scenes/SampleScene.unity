@@ -224,7 +224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1410187892}
   - component: {fileID: 1410187891}
-  - component: {fileID: 1410187890}
+  - component: {fileID: 1410187893}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -232,20 +232,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1410187890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1410187889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4feae1fc348d55f46a97521e6f45c633, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyInfo: {fileID: 11400000, guid: 4cbb123b08fad6a4db615522baabfda9, type: 2}
-  currentSpeed: 0
 --- !u!212 &1410187891
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -313,6 +299,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1410187893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410187889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4feae1fc348d55f46a97521e6f45c633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyInfo: {fileID: 11400000, guid: 6221a6552eb856149a920e6df144df2d, type: 2}
+  currentSpeed: 0
 --- !u!1 &1452371834
 GameObject:
   m_ObjectHideFlags: 0
