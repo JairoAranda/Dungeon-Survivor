@@ -122,6 +122,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &480977733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 480977735}
+  - component: {fileID: 480977734}
+  m_Layer: 0
+  m_Name: ----------OBJECT POOL-----------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &480977734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480977733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb693b142aee3a74c90cfb3e0bcb73bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPoolSize: 13
+  bullet: {fileID: 1029232009479910354, guid: 6a9dddd78a07a2e41bc0b1f369ccb30f, type: 3}
+--- !u!4 &480977735
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480977733}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +315,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1410187892}
   - component: {fileID: 1410187891}
+  - component: {fileID: 1410187895}
+  - component: {fileID: 1410187894}
   - component: {fileID: 1410187893}
   m_Layer: 0
   m_Name: Circle
@@ -353,11 +401,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1410187889}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9bdb5fce5d4f1742b9141d20bc5110c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1410187894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410187889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4feae1fc348d55f46a97521e6f45c633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyInfo: {fileID: 11400000, guid: 6221a6552eb856149a920e6df144df2d, type: 2}
   currentSpeed: 0
+--- !u!114 &1410187895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410187889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc707ba29b41a9b40a20cdfc7f710a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyInfoSO: {fileID: 11400000, guid: 4cbb123b08fad6a4db615522baabfda9, type: 2}
 --- !u!1 &1452371834
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +443,7 @@ GameObject:
   - component: {fileID: 1452371837}
   - component: {fileID: 1452371836}
   - component: {fileID: 1452371835}
+  - component: {fileID: 1452371840}
   m_Layer: 0
   m_Name: Square
   m_TagString: Player
@@ -499,6 +572,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1452371840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452371834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b1c0e3dd3e077479219e2a20e8db7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -506,3 +592,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1452371839}
   - {fileID: 1410187892}
+  - {fileID: 480977735}
