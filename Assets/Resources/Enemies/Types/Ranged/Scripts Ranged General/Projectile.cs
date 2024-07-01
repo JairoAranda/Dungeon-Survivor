@@ -6,23 +6,36 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [HideInInspector]
-    public float speed;
+    public float speed, dmg;
+
     private void OnEnable()
     {
-        Debug.Log(Direction());
-
         GetComponent<Rigidbody2D>().AddForce(Direction() * speed, ForceMode2D.Force);
     }
     private void OnBecameInvisible()
     {
-        gameObject.transform.position = new Vector3(0, 0);
-        gameObject.SetActive(false);
+        EndProjectile();
     }
 
     private Vector2 Direction()
     {
-        Vector2 direction = (PlayerInfo.instance.player.transform.position - transform.position).normalized;
+        Vector2 direction = (PlayerStats.instance.player.transform.position - transform.position).normalized;
 
         return direction;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            PlayerStats.instance.Hit(dmg);
+            EndProjectile();
+        }
+    }
+
+    void EndProjectile()
+    {
+        gameObject.transform.position = new Vector3(0, 0);
+        gameObject.SetActive(false);
     }
 }

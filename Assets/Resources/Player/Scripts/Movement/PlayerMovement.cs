@@ -4,12 +4,11 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(InputHandler))]
+[RequireComponent(typeof(SOFinderPlayer))]
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement Settings")]
-    [Range(0.1f, 15)]
-    [SerializeField] private float speed = 5f;
-
+    private SOPlayerInfo sOPlayerInfo;
+    private float m_speed;
     private Rigidbody2D rb;
     private InputHandler inputHandler;
 
@@ -17,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         inputHandler = GetComponent<InputHandler>();
+        sOPlayerInfo = GetComponent<SOFinderPlayer>().sOPlayerInfo;
+
+        m_speed = sOPlayerInfo.speed;
     }
 
     private void Update()
@@ -27,6 +29,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer(Vector2 movement)
     {
-        rb.velocity = movement * speed;
+        rb.velocity = movement * m_speed;
     }
 }

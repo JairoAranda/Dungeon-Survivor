@@ -33,7 +33,7 @@ public class ProjectilePool : MonoBehaviour
             bullets[i] = Instantiate(bullet, new Vector2(0, 0f), Quaternion.identity);
         }
     }
-    public void ShootBullet(Vector2 shootPosition, float m_speed)
+    public void ShootBullet(Vector2 shootPosition, float m_speed, float m_dmg)
     {
         shootNumber++;
 
@@ -43,6 +43,7 @@ public class ProjectilePool : MonoBehaviour
         }
 
         bullets[shootNumber].GetComponent<Projectile>().speed = m_speed;
+        bullets[shootNumber].GetComponent<Projectile>().dmg = m_dmg;
         bullets[shootNumber].transform.position = shootPosition;
         bullets[shootNumber].SetActive(true);
     }

@@ -2,29 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(EnemyMovement))]
+[RequireComponent(typeof(DistanceToPlayer))]
+[RequireComponent(typeof(SOFinderEnemy))]
 public class EnemyShoot : MonoBehaviour
 {
-    private EnemyMovement m_EnemyMovement;
-    private EnemyInfoSO m_EnemyInfoSO;
+    private DistanceToPlayer distanceToPlayer;
+    private EnemyInfoSO enemyInfoSO;
 
     private float shootInterval;
     private float shootTimer;
     void Start()
     {
-        m_EnemyMovement = GetComponent<EnemyMovement>();
-        m_EnemyInfoSO = GetComponent<SOFinderEnemy>().enemyInfoSO;
+        distanceToPlayer = GetComponent<DistanceToPlayer>();
+        enemyInfoSO = GetComponent<SOFinderEnemy>().enemyInfoSO;
 
-        shootInterval = m_EnemyInfoSO.cooldown;
+        shootInterval = enemyInfoSO.cooldown;
     }
 
     void Update()
     {
         shootTimer += Time.deltaTime;
 
-        if (m_EnemyMovement.NearPlayer() && shootTimer >= shootInterval)
+        if (distanceToPlayer.NearPlayer() && shootTimer >= shootInterval)
         {
-            ProjectilePool.instance.ShootBullet(gameObject.transform.position, m_EnemyInfoSO.projectileSpeed);
+            ProjectilePool.instance.ShootBullet(gameObject.transform.position, enemyInfoSO.projectileSpeed, enemyInfoSO.damage);
             shootTimer = 0;
         }
     }
