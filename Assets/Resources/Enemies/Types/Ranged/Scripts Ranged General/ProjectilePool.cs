@@ -7,6 +7,8 @@ public class ProjectilePool : MonoBehaviour
 {
     public static ProjectilePool instance;
 
+    [Header("Object Pool Data")]
+    [Range(1, 50)]
     [SerializeField] int bulletPoolSize = 13;
     [SerializeField] GameObject bullet;
 
@@ -33,7 +35,7 @@ public class ProjectilePool : MonoBehaviour
             bullets[i] = Instantiate(bullet, new Vector2(0, 0f), Quaternion.identity);
         }
     }
-    public void ShootBullet(Vector2 shootPosition, float m_speed, float m_dmg)
+    public void ShootBullet(Vector2 shootPosition, float m_speed, float m_dmg, Transform m_target, string m_tag)
     {
         shootNumber++;
 
@@ -44,6 +46,8 @@ public class ProjectilePool : MonoBehaviour
 
         bullets[shootNumber].GetComponent<Projectile>().speed = m_speed;
         bullets[shootNumber].GetComponent<Projectile>().dmg = m_dmg;
+        bullets[shootNumber].GetComponent<Projectile>().target = m_target;
+        bullets[shootNumber].GetComponent<Projectile>().hitTag = m_tag;
         bullets[shootNumber].transform.position = shootPosition;
         bullets[shootNumber].SetActive(true);
     }

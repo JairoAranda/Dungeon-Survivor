@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(SOFinderEnemy))]
 public class EnemyShoot : MonoBehaviour
 {
+    [SerializeField] string playerTag = "Player";
+
     private DistanceToPlayer distanceToPlayer;
     private EnemyInfoSO enemyInfoSO;
 
@@ -25,7 +27,7 @@ public class EnemyShoot : MonoBehaviour
 
         if (distanceToPlayer.NearPlayer() && shootTimer >= shootInterval)
         {
-            ProjectilePool.instance.ShootBullet(gameObject.transform.position, enemyInfoSO.projectileSpeed, enemyInfoSO.damage);
+            ProjectilePool.instance.ShootBullet(gameObject.transform.position, enemyInfoSO.projectileSpeed, enemyInfoSO.damage, PlayerStats.instance.player.transform, playerTag);
             shootTimer = 0;
         }
     }

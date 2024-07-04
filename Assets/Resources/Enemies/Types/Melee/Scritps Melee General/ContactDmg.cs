@@ -12,11 +12,12 @@ public class ContactDmg : MonoBehaviour
         enemyInfoSO = GetComponent<SOFinderEnemy>().enemyInfoSO;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             PlayerStats.instance.Hit(enemyInfoSO.damage);
         }
     }
+
 }

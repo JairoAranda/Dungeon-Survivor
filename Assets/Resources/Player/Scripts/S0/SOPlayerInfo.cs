@@ -17,7 +17,12 @@ public class SOPlayerInfo : ScriptableObject
     public int damage = 1;
     [Range(0.1f, 5f)]
     public float cooldown = 1;
+
+    [Header("Range Stats")]
     [Range(250f, 750f)]
     [Tooltip("Only Ranged.")]
-    public float projectileSpeed = 100;
+    public float projectileSpeed = 250;
+    [Range(0, 50)]
+    [Tooltip("Only Ranged.")]
+    public float range = 2;
 }

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   health: 10
-  iFrames: 5
+  iFrames: 2
   damage: 1
   cooldown: 1
   projectileSpeed: 250
+  range: 10

@@ -7,6 +7,10 @@ public class Projectile : MonoBehaviour
 {
     [HideInInspector]
     public float speed, dmg;
+    [HideInInspector]
+    public Transform target;
+    [HideInInspector]
+    public string hitTag;
 
     private void OnEnable()
     {
@@ -19,16 +23,25 @@ public class Projectile : MonoBehaviour
 
     private Vector2 Direction()
     {
-        Vector2 direction = (PlayerStats.instance.player.transform.position - transform.position).normalized;
+        Vector2 direction = (target.position - transform.position).normalized;
 
         return direction;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == hitTag)
         {
-            PlayerStats.instance.Hit(dmg);
+            if (hitTag == "Enemy")
+            {
+                Debug.Log("Dañar enemigo");
+            }
+            
+            else if (hitTag == "Player")
+            {
+                PlayerStats.instance.Hit(dmg);
+
+            }
             EndProjectile();
         }
     }
