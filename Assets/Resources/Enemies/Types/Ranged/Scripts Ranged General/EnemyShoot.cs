@@ -9,7 +9,7 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] string playerTag = "Player";
 
     private DistanceToPlayer distanceToPlayer;
-    private EnemyInfoSO enemyInfoSO;
+    private SOEnemyInfo enemyInfoSO;
 
     private float shootInterval;
     private float shootTimer;

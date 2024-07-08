@@ -3,23 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SOFinderEnemy))]
-public class ContactDmg : MonoBehaviour
+public class EnemyStats : MonoBehaviour
 {
     private SOEnemyInfo enemyInfoSO;
+
+    private float life;
 
     void Start()
     {
         enemyInfoSO = GetComponent<SOFinderEnemy>().enemyInfoSO;
+
+        life = enemyInfoSO.health;
     }
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void GetHit(float dmg)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            PlayerStats.instance.Hit(enemyInfoSO.damage);
-        }
+        life -= dmg;
 
+        if (life <= 0 )
+        {
+            Death();
+        }
     }
 
+    void Death()
+    {
+        gameObject.SetActive(false);
+    }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewEnemy", menuName = "Stats/Enemy")]
-public class EnemyInfoSO : ScriptableObject
+public class SOEnemyInfo : ScriptableObject
 {
     [Header("General Information")]
     public int id;
@@ -13,9 +13,9 @@ public class EnemyInfoSO : ScriptableObject
     public int health = 10;
 
     [Header("Combat")]
-    [Tooltip("Attack range in units.")]
-    [Range(0.5f, 10f)]
-    public float attackRange = 0.5f;
+    [Tooltip("Attack range in units (0 if melee)")]
+    [Range(0f, 10f)]
+    public float attackRange = 0f;
     [Range(0.1f, 10f)]
     public int damage = 1;
 

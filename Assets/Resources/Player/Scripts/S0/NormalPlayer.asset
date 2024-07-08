@@ -18,4 +18,4 @@ MonoBehaviour:
   damage: 1
   cooldown: 1
   projectileSpeed: 250
-  range: 10
+  range: 6

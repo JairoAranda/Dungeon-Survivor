@@ -34,7 +34,7 @@ public class Projectile : MonoBehaviour
         {
             if (hitTag == "Enemy")
             {
-                Debug.Log("Dañar enemigo");
+                other.GetComponent<EnemyStats>().GetHit(dmg);
             }
             
             else if (hitTag == "Player")

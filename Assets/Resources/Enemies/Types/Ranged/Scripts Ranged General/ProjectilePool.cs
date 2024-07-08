@@ -33,6 +33,7 @@ public class ProjectilePool : MonoBehaviour
         for (int i = 0; i < bulletPoolSize; i++)
         {
             bullets[i] = Instantiate(bullet, new Vector2(0, 0f), Quaternion.identity);
+            bullets[i].transform.SetSiblingIndex(gameObject.transform.GetSiblingIndex() + 1);
         }
     }
     public void ShootBullet(Vector2 shootPosition, float m_speed, float m_dmg, Transform m_target, string m_tag)

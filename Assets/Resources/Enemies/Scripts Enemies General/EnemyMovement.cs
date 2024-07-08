@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour
     [HideInInspector]
     public float currentSpeed;
 
-    private EnemyInfoSO enemyInfo;
+    private SOEnemyInfo enemyInfo;
     private Transform player;
     private DistanceToPlayer distanceToPlayer;
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(SOFinderPlayer))]
 public class PlayerStats : MonoBehaviour
@@ -43,8 +44,8 @@ public class PlayerStats : MonoBehaviour
 
         if (life <= 0)
         {
-            Debug.Log("Death");
             EventTriggerDeath();
+            SceneManager.LoadScene(0);
         }
         else
         {

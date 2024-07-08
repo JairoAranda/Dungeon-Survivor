@@ -6,7 +6,7 @@ public class DistanceToPlayer : MonoBehaviour
 {
     private Transform player;
 
-    private EnemyInfoSO enemyInfo;
+    private SOEnemyInfo enemyInfo;
 
     private void Start()
     {
