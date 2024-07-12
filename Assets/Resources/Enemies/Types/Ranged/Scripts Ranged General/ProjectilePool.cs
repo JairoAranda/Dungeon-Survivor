@@ -32,11 +32,11 @@ public class ProjectilePool : MonoBehaviour
 
         for (int i = 0; i < bulletPoolSize; i++)
         {
-            bullets[i] = Instantiate(bullet, new Vector2(0, 0f), Quaternion.identity);
+            bullets[i] = Instantiate(bullet, Vector2.zero, Quaternion.identity);
             bullets[i].transform.SetSiblingIndex(gameObject.transform.GetSiblingIndex() + 1);
         }
     }
-    public void ShootBullet(Vector2 shootPosition, float m_speed, float m_dmg, Transform m_target, string m_tag)
+    public void ShootBullet(Vector2 shootPosition, float m_speed, float m_dmg, Vector3 m_target, string m_tag, bool m_lifeTime, float m_timeToDie)
     {
         shootNumber++;
 
@@ -45,12 +45,19 @@ public class ProjectilePool : MonoBehaviour
             shootNumber = 0;
         }
 
-        bullets[shootNumber].GetComponent<Projectile>().speed = m_speed;
-        bullets[shootNumber].GetComponent<Projectile>().dmg = m_dmg;
-        bullets[shootNumber].GetComponent<Projectile>().target = m_target;
-        bullets[shootNumber].GetComponent<Projectile>().hitTag = m_tag;
-        bullets[shootNumber].transform.position = shootPosition;
-        bullets[shootNumber].SetActive(true);
+        GameObject bulletToShoot = bullets[shootNumber];
+        Projectile projectileComponent = bulletToShoot.GetComponent<Projectile>();
+
+        projectileComponent.speed = m_speed;
+        projectileComponent.dmg = m_dmg;
+        projectileComponent.target = m_target;
+        projectileComponent.hitTag = m_tag;
+        projectileComponent.lifeTime = m_lifeTime;
+        projectileComponent.timeToDie = m_timeToDie;
+
+
+        bulletToShoot.transform.position = shootPosition;
+        bulletToShoot.SetActive(true);
     }
 
 }

@@ -6,15 +6,25 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [HideInInspector]
-    public float speed, dmg;
+    public float speed, dmg, timeToDie;
     [HideInInspector]
-    public Transform target;
+    public Vector3 target;
     [HideInInspector]
     public string hitTag;
+    [HideInInspector]
+    public bool lifeTime;
 
     private void OnEnable()
     {
         GetComponent<Rigidbody2D>().AddForce(Direction() * speed, ForceMode2D.Force);
+
+        Debug.Log(timeToDie);
+
+        if (lifeTime)
+        {
+            StartCoroutine(LifeTime());
+        }
+        
     }
     private void OnBecameInvisible()
     {
@@ -23,9 +33,16 @@ public class Projectile : MonoBehaviour
 
     private Vector2 Direction()
     {
-        Vector2 direction = (target.position - transform.position).normalized;
+        Vector2 direction = (target - transform.position).normalized;
 
         return direction;
+    }
+
+    IEnumerator LifeTime()
+    {
+        yield return new WaitForSeconds(timeToDie);
+
+        EndProjectile();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -51,4 +68,6 @@ public class Projectile : MonoBehaviour
         gameObject.transform.position = new Vector3(0, 0);
         gameObject.SetActive(false);
     }
+
+
 }

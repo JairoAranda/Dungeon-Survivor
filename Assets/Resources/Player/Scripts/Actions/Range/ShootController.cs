@@ -3,52 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SOFinderPlayer))]
-public class ShootController : MonoBehaviour
+public class ShootController : EnemyDetector
 {
-    [SerializeField] string enemyTag = "Enemy";
-
-    private SOPlayerInfo sOFinderPlayer;
-
-    private float detectionRange;
-    private float shootCooldown;
-
-    private float lastShootTime;
-
-    void Start()
-    {
-        sOFinderPlayer = GetComponent<SOFinderPlayer>().sOPlayerInfo;
-
-        detectionRange = sOFinderPlayer.range;
-        shootCooldown = sOFinderPlayer.cooldown;
-    }
+    [SerializeField] bool isAuto;
 
     void Update()
     {
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, detectionRange);
-        Transform closestEnemy = null;
-        float closestDistance = detectionRange;
-
         lastShootTime += Time.deltaTime;
 
-        foreach (var hit in hitColliders)
+        if (isAuto)
         {
-            if (hit.CompareTag(enemyTag))
-            {
-                float distance = Vector2.Distance(transform.position, hit.transform.position);
-                if (distance < closestDistance)
-                {
-                    closestEnemy = hit.transform;
-                    closestDistance = distance;
-                }
-            }
+            AutoShot();
         }
+        else if (Input.GetMouseButtonDown(0))
+        {
+            TargetShot();
+        }
+    }
+
+    void AutoShot()
+    {
+        Transform closestEnemy = DetectClosestEnemy();
+
+        float lifeTime = detectionRange / (sOFinderPlayer.projectileSpeed / 100);
 
         if (closestEnemy != null && lastShootTime > shootCooldown)
         {
-            ProjectilePool.instance.ShootBullet(gameObject.transform.position, sOFinderPlayer.projectileSpeed, sOFinderPlayer.damage, closestEnemy, enemyTag);
+            ProjectilePool.instance.ShootBullet(gameObject.transform.position, sOFinderPlayer.projectileSpeed, sOFinderPlayer.damage, closestEnemy.position, enemyTag, true, lifeTime);
             lastShootTime = 0;
         }
+    }
 
+    void TargetShot()
+    {
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        mousePosition.z = 0;
+
+        Debug.Log(mousePosition);
+
+        float lifeTime = detectionRange / (sOFinderPlayer.projectileSpeed / 50);
+
+        if (lastShootTime > shootCooldown)
+        {
+            ProjectilePool.instance.ShootBullet(gameObject.transform.position, sOFinderPlayer.projectileSpeed, sOFinderPlayer.damage, mousePosition, enemyTag, true, lifeTime);
+            lastShootTime = 0;
+        }
     }
 
 }
