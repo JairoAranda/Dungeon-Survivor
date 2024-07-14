@@ -25,7 +25,7 @@ public class ShootController : EnemyDetector
     {
         Transform closestEnemy = DetectClosestEnemy();
 
-        float lifeTime = detectionRange / (sOFinderPlayer.projectileSpeed / 100);
+        float lifeTime = detectionRange / (sOFinderPlayer.projectileSpeed / 50);
 
         if (closestEnemy != null && lastShootTime > shootCooldown)
         {

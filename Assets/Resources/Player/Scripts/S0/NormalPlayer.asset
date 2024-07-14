@@ -17,5 +17,5 @@ MonoBehaviour:
   iFrames: 2
   damage: 1
   cooldown: 1
-  projectileSpeed: 400
-  range: 40
+  projectileSpeed: 600
+  range: 6
