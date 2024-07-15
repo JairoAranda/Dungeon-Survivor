@@ -18,8 +18,6 @@ public class Projectile : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().AddForce(Direction() * speed, ForceMode2D.Force);
 
-        Debug.Log(timeToDie);
-
         if (lifeTime)
         {
             StartCoroutine(LifeTime());

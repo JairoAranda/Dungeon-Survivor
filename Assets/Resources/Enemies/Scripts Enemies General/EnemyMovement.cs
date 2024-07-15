@@ -15,7 +15,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
-        player = PlayerStats.instance.player.transform;
+        player = PlayerStats.instance.transform;
 
         distanceToPlayer = GetComponent<DistanceToPlayer>();
 

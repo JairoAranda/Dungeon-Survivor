@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(SOFinderEnemy))]
 public class EnemyStats : MonoBehaviour
 {
+    public static event Action<Vector3> EventTriggerHitEnemy, EventTriggerDeathEnemy;
+
     private SOEnemyInfo enemyInfoSO;
 
     private float life;
@@ -24,10 +27,15 @@ public class EnemyStats : MonoBehaviour
         {
             Death();
         }
+        else
+        {
+            //EventTriggerHitEnemy();
+        }
     }
 
     void Death()
     {
+        EventTriggerDeathEnemy(gameObject.transform.position);
         gameObject.SetActive(false);
     }
 }

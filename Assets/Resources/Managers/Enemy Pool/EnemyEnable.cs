@@ -20,7 +20,7 @@ public class EnemyEnable : MonoBehaviour
     // Start is called before the first frame update
     public void LateStart()
     {
-        m_enemys = GetComponent<EnemyPoolManager>().enemys;
+        m_enemys = GetComponent<EnemyPoolManager>().typesInstances;
 
         StartCoroutine(RandomSpawn());
     }
@@ -44,7 +44,7 @@ public class EnemyEnable : MonoBehaviour
 
     Vector2 RandomPos()
     {
-        Vector2 playerPosition = PlayerStats.instance.player.transform.position;
+        Vector2 playerPosition = PlayerStats.instance.transform.position;
         float angle = Random.Range(0f, Mathf.PI * 2);
         float distance = Random.Range(minDistance, maxDistance);
         Vector2 spawnPosition = playerPosition + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * distance;

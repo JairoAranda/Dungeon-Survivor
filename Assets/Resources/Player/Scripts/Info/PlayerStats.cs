@@ -9,10 +9,7 @@ public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats instance;
 
-    public static event Action EventTriggerHit, EventTriggerDeath;
-
-    [HideInInspector]
-    public GameObject player;
+    public static event Action EventTriggerHitPlayer, EventTriggerDeathPlayer;
 
     private SOPlayerInfo sOFinderPlayer;
     private float life;
@@ -22,7 +19,6 @@ public class PlayerStats : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            player = gameObject;
         }
 
         else
@@ -33,7 +29,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
-        sOFinderPlayer = player.GetComponent<SOFinderPlayer>().sOPlayerInfo;
+        sOFinderPlayer = gameObject.GetComponent<SOFinderPlayer>().sOPlayerInfo;
 
         life = sOFinderPlayer.health;
     }
@@ -44,12 +40,12 @@ public class PlayerStats : MonoBehaviour
 
         if (life <= 0)
         {
-            EventTriggerDeath();
+            EventTriggerDeathPlayer();
             SceneManager.LoadScene(0);
         }
         else
         {
-            EventTriggerHit();
+            EventTriggerHitPlayer();
         }
     }
 

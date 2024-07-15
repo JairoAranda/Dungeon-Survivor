@@ -3,16 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class ProjectilePool : MonoBehaviour
+public class ProjectilePool : GeneralPool
 {
     public static ProjectilePool instance;
 
-    [Header("Object Pool Data")]
-    [Range(1, 50)]
-    [SerializeField] int bulletPoolSize = 13;
-    [SerializeField] GameObject bullet;
-
-    private GameObject[] bullets;
     private int shootNumber = -1;
     private void Awake()
     {
@@ -26,26 +20,17 @@ public class ProjectilePool : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void Start()
-    {
-        bullets = new GameObject[bulletPoolSize];
 
-        for (int i = 0; i < bulletPoolSize; i++)
-        {
-            bullets[i] = Instantiate(bullet, Vector2.zero, Quaternion.identity);
-            bullets[i].transform.SetSiblingIndex(gameObject.transform.GetSiblingIndex() + 1);
-        }
-    }
     public void ShootBullet(Vector2 shootPosition, float m_speed, float m_dmg, Vector3 m_target, string m_tag, bool m_lifeTime, float m_timeToDie)
     {
         shootNumber++;
 
-        if (shootNumber > bulletPoolSize - 1)
+        if (shootNumber > poolSize - 1)
         {
             shootNumber = 0;
         }
 
-        GameObject bulletToShoot = bullets[shootNumber];
+        GameObject bulletToShoot = typesInstances[shootNumber];
         Projectile projectileComponent = bulletToShoot.GetComponent<Projectile>();
 
         projectileComponent.speed = m_speed;

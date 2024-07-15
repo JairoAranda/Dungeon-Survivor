@@ -10,7 +10,7 @@ public class DistanceToPlayer : MonoBehaviour
 
     private void Start()
     {
-        player = PlayerStats.instance.player.transform;
+        player = PlayerStats.instance.transform;
 
         enemyInfo = GetComponent<SOFinderEnemy>().enemyInfoSO;
     }

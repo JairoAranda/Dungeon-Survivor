@@ -17,12 +17,12 @@ public class Iframes : MonoBehaviour
     private SOPlayerInfo sOFinderPlayer;
     private void OnEnable()
     {
-        PlayerStats.EventTriggerHit += StartIframes;
+        PlayerStats.EventTriggerHitPlayer += StartIframes;
     }
 
     private void OnDisable()
     {
-        PlayerStats.EventTriggerHit -= StartIframes;
+        PlayerStats.EventTriggerHitPlayer -= StartIframes;
     }
 
     private void Start()

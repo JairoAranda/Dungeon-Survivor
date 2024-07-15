@@ -18,6 +18,10 @@ public class SOPlayerInfo : ScriptableObject
     [Range(0.1f, 5f)]
     public float cooldown = 1;
 
+    [Header("General Stats")]
+    [Range(0f, 20f)]
+    public int luck = 0;
+
     [Header("Range Stats")]
     [Range(250f, 750f)]
     [Tooltip("Only Ranged.")]
