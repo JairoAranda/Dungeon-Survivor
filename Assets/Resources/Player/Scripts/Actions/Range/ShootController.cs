@@ -29,7 +29,7 @@ public class ShootController : EnemyDetector
 
         if (closestEnemy != null && lastShootTime > shootCooldown)
         {
-            ProjectilePool.instance.ShootBullet(gameObject.transform.position, sOFinderPlayer.projectileSpeed, sOFinderPlayer.damage, closestEnemy.position, enemyTag, true, lifeTime);
+            ProjectilePool.instance.ShootBullet(gameObject.transform.position, sOFinderPlayer.projectileSpeed, sOFinderPlayer.damage, closestEnemy.position, detectionLayer, true, lifeTime);
             lastShootTime = 0;
         }
     }
@@ -46,7 +46,7 @@ public class ShootController : EnemyDetector
 
         if (lastShootTime > shootCooldown)
         {
-            ProjectilePool.instance.ShootBullet(gameObject.transform.position, sOFinderPlayer.projectileSpeed, sOFinderPlayer.damage, mousePosition, enemyTag, true, lifeTime);
+            ProjectilePool.instance.ShootBullet(gameObject.transform.position, sOFinderPlayer.projectileSpeed, sOFinderPlayer.damage, mousePosition, detectionLayer, true, lifeTime);
             lastShootTime = 0;
         }
     }

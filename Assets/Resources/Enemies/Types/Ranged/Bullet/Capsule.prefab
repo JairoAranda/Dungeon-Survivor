@@ -99,8 +99,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd3c9d2c617dcff4d9f4da3f6dd96ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
   speed: 0
   dmg: 0
+  timeToDie: 0
+  target: {x: 0, y: 0, z: 0}
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  lifeTime: 0
 --- !u!50 &4068158539470796547
 Rigidbody2D:
   serializedVersion: 4

@@ -7,10 +7,7 @@ public class DropAmount : MonoBehaviour
 {
     [Range(0f, 10f)]
     [SerializeField] private int minDrop = 0, maxDrop = 4;
-
-    [SerializeField]
-    double[] thresholds;
-
+    
     private static System.Random random = new System.Random();
 
     private int luck;
@@ -27,7 +24,7 @@ public class DropAmount : MonoBehaviour
 
         double luckFactor = Math.Pow(2, luck / 10.0) - 1;
         double step = 1.0 / range;
-        thresholds = new double[range];
+        double[] thresholds = new double[range];
 
         for (int i = 0; i < range; i++)
         {

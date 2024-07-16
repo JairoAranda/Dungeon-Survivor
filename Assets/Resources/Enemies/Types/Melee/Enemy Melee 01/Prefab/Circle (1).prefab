@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 949920260691764520}
   - component: {fileID: 7049985686369097925}
   - component: {fileID: 8964418744487315667}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Circle (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -228,4 +228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9bdb5fce5d4f1742b9141d20bc5110c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTag: Player
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8

@@ -21,7 +21,7 @@ public class ProjectilePool : GeneralPool
         }
     }
 
-    public void ShootBullet(Vector2 shootPosition, float m_speed, float m_dmg, Vector3 m_target, string m_tag, bool m_lifeTime, float m_timeToDie)
+    public void ShootBullet(Vector2 shootPosition, float m_speed, float m_dmg, Vector3 m_target, LayerMask m_Layer, bool m_lifeTime, float m_timeToDie)
     {
         shootNumber++;
 
@@ -36,7 +36,7 @@ public class ProjectilePool : GeneralPool
         projectileComponent.speed = m_speed;
         projectileComponent.dmg = m_dmg;
         projectileComponent.target = m_target;
-        projectileComponent.hitTag = m_tag;
+        projectileComponent.hitLayer = m_Layer;
         projectileComponent.lifeTime = m_lifeTime;
         projectileComponent.timeToDie = m_timeToDie;
 

@@ -171,7 +171,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDrop: 0
   maxDrop: 4
-  thresholds: []
 --- !u!4 &430356439
 Transform:
   m_ObjectHideFlags: 0
@@ -390,7 +389,8 @@ GameObject:
   - component: {fileID: 1452371840}
   - component: {fileID: 1452371843}
   - component: {fileID: 1452371844}
-  m_Layer: 0
+  - component: {fileID: 1452371845}
+  m_Layer: 3
   m_Name: Square
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -612,8 +612,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9102ffd736cfad14b8636271800ab5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTag: Enemy
+  detectionLayer:
+    serializedVersion: 2
+    m_Bits: 64
   isAuto: 1
+--- !u!114 &1452371845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452371834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f433d856aba4745b81b60648612016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadiusDefault: 2
+  detectionLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &1958911683
 GameObject:
   m_ObjectHideFlags: 0

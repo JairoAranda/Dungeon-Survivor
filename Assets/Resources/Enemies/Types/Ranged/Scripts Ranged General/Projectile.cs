@@ -5,12 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] private LayerMask enemyLayer, playerLayer;
+
     [HideInInspector]
     public float speed, dmg, timeToDie;
     [HideInInspector]
     public Vector3 target;
     [HideInInspector]
-    public string hitTag;
+    public LayerMask hitLayer;
     [HideInInspector]
     public bool lifeTime;
 
@@ -45,14 +47,14 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == hitTag)
+        if (((1 << other.gameObject.layer) & hitLayer) != 0)
         {
-            if (hitTag == "Enemy")
+            if (hitLayer == enemyLayer)
             {
                 other.GetComponent<EnemyStats>().GetHit(dmg);
             }
             
-            else if (hitTag == "Player")
+            else if (hitLayer == playerLayer)
             {
                 PlayerStats.instance.Hit(dmg);
 

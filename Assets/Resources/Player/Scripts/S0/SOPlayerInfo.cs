@@ -19,8 +19,10 @@ public class SOPlayerInfo : ScriptableObject
     public float cooldown = 1;
 
     [Header("General Stats")]
-    [Range(0f, 20f)]
-    public int luck = 0;
+    [Range(1f, 20f)]
+    public int luck = 1;
+    [Range(1f, 20f)]
+    public int absortion = 1;
 
     [Header("Range Stats")]
     [Range(250f, 750f)]

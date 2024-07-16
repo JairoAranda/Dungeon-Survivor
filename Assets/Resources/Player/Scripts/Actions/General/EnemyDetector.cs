@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyDetector : MonoBehaviour
 {
-    [SerializeField] protected string enemyTag = "Enemy";
+    [SerializeField] protected LayerMask detectionLayer;
 
     private protected SOPlayerInfo sOFinderPlayer;
 
@@ -23,20 +23,17 @@ public class EnemyDetector : MonoBehaviour
 
     protected Transform DetectClosestEnemy()
     {
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, detectionRange);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, detectionRange, detectionLayer);
         Transform closestEnemy = null;
         float closestDistance = detectionRange;
 
         foreach (var hit in hitColliders)
         {
-            if (hit.CompareTag(enemyTag))
+            float distance = Vector2.Distance(transform.position, hit.transform.position);
+            if (distance < closestDistance)
             {
-                float distance = Vector2.Distance(transform.position, hit.transform.position);
-                if (distance < closestDistance)
-                {
-                    closestEnemy = hit.transform;
-                    closestDistance = distance;
-                }
+                closestEnemy = hit.transform;
+                closestDistance = distance;
             }
         }
 
