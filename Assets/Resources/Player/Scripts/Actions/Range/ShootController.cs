@@ -5,7 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(SOFinderPlayer))]
 public class ShootController : EnemyDetector
 {
-    [SerializeField] bool isAuto;
+    public bool isAuto;
+
+    [SerializeField] Transform handPosition;
 
     void Update()
     {
@@ -25,11 +27,11 @@ public class ShootController : EnemyDetector
     {
         Transform closestEnemy = DetectClosestEnemy();
 
-        float lifeTime = detectionRange / (sOFinderPlayer.projectileSpeed / 50);
+        float lifeTime = detectionRange / (sOPlayerInfo.projectileSpeed / 50);
 
         if (closestEnemy != null && lastShootTime > shootCooldown)
         {
-            ProjectilePool.instance.ShootBullet(gameObject.transform.position, sOFinderPlayer.projectileSpeed, sOFinderPlayer.damage, closestEnemy.position, detectionLayer, true, lifeTime);
+            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, sOPlayerInfo.damage, closestEnemy.position, detectionLayer, true, lifeTime);
             lastShootTime = 0;
         }
     }
@@ -42,11 +44,11 @@ public class ShootController : EnemyDetector
 
         Debug.Log(mousePosition);
 
-        float lifeTime = detectionRange / (sOFinderPlayer.projectileSpeed / 50);
+        float lifeTime = detectionRange / (sOPlayerInfo.projectileSpeed / 50);
 
         if (lastShootTime > shootCooldown)
         {
-            ProjectilePool.instance.ShootBullet(gameObject.transform.position, sOFinderPlayer.projectileSpeed, sOFinderPlayer.damage, mousePosition, detectionLayer, true, lifeTime);
+            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, sOPlayerInfo.damage, mousePosition, detectionLayer, true, lifeTime);
             lastShootTime = 0;
         }
     }

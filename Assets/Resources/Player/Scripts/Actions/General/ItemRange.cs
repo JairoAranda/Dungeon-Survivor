@@ -26,8 +26,6 @@ public class ItemRangeAbsortion : MonoBehaviour
 
         float detectionRadius = detectionRadiusDefault * scaleFactor;
 
-        Debug.Log(detectionRadius);
-
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius, detectionLayer);
 
         foreach (var hitCollider in hitColliders)

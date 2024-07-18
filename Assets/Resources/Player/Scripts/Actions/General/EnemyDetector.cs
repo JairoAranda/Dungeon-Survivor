@@ -6,19 +6,29 @@ public class EnemyDetector : MonoBehaviour
 {
     [SerializeField] protected LayerMask detectionLayer;
 
-    private protected SOPlayerInfo sOFinderPlayer;
+    private protected SOPlayerInfo sOPlayerInfo;
 
     private protected float shootCooldown;
     private protected float lastShootTime;
     private protected float detectionRange;
 
 
-    protected void Start()
+    protected virtual void Start()
     {
-        sOFinderPlayer = GetComponent<SOFinderPlayer>().sOPlayerInfo;
+        SOFinderPlayer sOFinderPlayer = GetComponent<SOFinderPlayer>();
 
-        detectionRange = sOFinderPlayer.range;
-        shootCooldown = sOFinderPlayer.cooldown;
+        if (sOFinderPlayer != null)
+        {
+            sOPlayerInfo = sOFinderPlayer.sOPlayerInfo;
+        }
+
+        else
+        {
+            sOPlayerInfo = GetComponentInParent<SOFinderPlayer>().sOPlayerInfo;
+        }
+
+        detectionRange = sOPlayerInfo.range;
+        shootCooldown = sOPlayerInfo.cooldown;
     }
 
     protected Transform DetectClosestEnemy()
