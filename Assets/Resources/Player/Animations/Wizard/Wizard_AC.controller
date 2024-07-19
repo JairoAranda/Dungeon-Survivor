@@ -178,10 +178,18 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: horizontalLook
     m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 69c84cb29e4b7f34d846b477664b585d, type: 2}
+    m_Threshold: 180
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: angle
+    m_Mirror: 0
   m_BlendParameter: angle
   m_BlendParameterY: verticalLook
   m_MinThreshold: -180
-  m_MaxThreshold: 90
+  m_MaxThreshold: 180
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
@@ -250,10 +258,18 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: horizontalLook
     m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 40014c5d97487d841965aea76d64b0cb, type: 2}
+    m_Threshold: 180
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: angle
+    m_Mirror: 0
   m_BlendParameter: angle
   m_BlendParameterY: verticalLook
   m_MinThreshold: -180
-  m_MaxThreshold: 90
+  m_MaxThreshold: 180
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0

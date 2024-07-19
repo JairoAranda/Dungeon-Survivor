@@ -15,17 +15,7 @@ public class EnemyDetector : MonoBehaviour
 
     protected virtual void Start()
     {
-        SOFinderPlayer sOFinderPlayer = GetComponent<SOFinderPlayer>();
-
-        if (sOFinderPlayer != null)
-        {
-            sOPlayerInfo = sOFinderPlayer.sOPlayerInfo;
-        }
-
-        else
-        {
-            sOPlayerInfo = GetComponentInParent<SOFinderPlayer>().sOPlayerInfo;
-        }
+        sOPlayerInfo = GetComponent<SOFinderPlayer>().sOPlayerInfo;
 
         detectionRange = sOPlayerInfo.range;
         shootCooldown = sOPlayerInfo.cooldown;
