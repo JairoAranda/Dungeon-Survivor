@@ -31,7 +31,7 @@ public class ShootController : EnemyDetector
 
         if (closestEnemy != null && lastShootTime > shootCooldown)
         {
-            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, sOPlayerInfo.damage, closestEnemy.position, detectionLayer, true, lifeTime);
+            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, sOPlayerInfo.damage, closestEnemy.position, detectionLayer ,true, lifeTime);
             lastShootTime = 0;
         }
     }
@@ -41,8 +41,6 @@ public class ShootController : EnemyDetector
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         mousePosition.z = 0;
-
-        Debug.Log(mousePosition);
 
         float lifeTime = detectionRange / (sOPlayerInfo.projectileSpeed / 50);
 

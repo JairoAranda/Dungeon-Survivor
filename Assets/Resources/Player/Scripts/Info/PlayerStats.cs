@@ -5,14 +5,20 @@ using System;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(SOFinderPlayer))]
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : MonoBehaviour, IStats
 {
     public static PlayerStats instance;
 
     public static event Action EventTriggerHitPlayer, EventTriggerDeathPlayer;
 
     private SOPlayerInfo sOFinderPlayer;
-    private float life;
+
+    private float _life;
+    public float life
+    {
+        get => _life;
+        set => _life = value;
+    }
 
     private void Awake()
     {
@@ -34,16 +40,20 @@ public class PlayerStats : MonoBehaviour
         life = sOFinderPlayer.health;
     }
 
-    public void Hit(float dmg)
+    private void Update()
     {
-        life -= dmg;
-
         if (life <= 0)
         {
             EventTriggerDeathPlayer();
             SceneManager.LoadScene(0);
         }
-        else
+    }
+
+    public void Hit(float dmg)
+    {
+        life -= dmg;
+       
+        if (life > 0)
         {
             EventTriggerHitPlayer();
         }

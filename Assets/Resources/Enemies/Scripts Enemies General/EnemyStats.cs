@@ -4,13 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SOFinderEnemy))]
-public class EnemyStats : MonoBehaviour
+public class EnemyStats : MonoBehaviour, IStats
 {
     public static event Action<Vector3> EventTriggerHitEnemy, EventTriggerDeathEnemy;
 
     private SOEnemyInfo enemyInfoSO;
 
-    private float life;
+    private float _life;
+    public float life
+    {
+        get => _life;
+        set => _life = value;
+    }
 
     void Start()
     {
@@ -19,18 +24,23 @@ public class EnemyStats : MonoBehaviour
         life = enemyInfoSO.health;
     }
 
-    public void GetHit(float dmg)
+    private void Update()
     {
-        life -= dmg;
-
-        if (life <= 0 )
+        if (life <= 0)
         {
             Death();
         }
-        else
+    }
+
+    public void GetHit(float dmg)
+    {
+        life -= dmg;
+        
+        if (life > 0)
         {
             //EventTriggerHitEnemy();
         }
+
     }
 
     void Death()

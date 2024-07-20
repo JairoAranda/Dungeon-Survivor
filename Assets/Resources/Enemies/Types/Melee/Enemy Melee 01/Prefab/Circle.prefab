@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 8129629938191406522}
   - component: {fileID: 3628962391881758778}
   - component: {fileID: 2203659267132572736}
+  - component: {fileID: 6412672718377702421}
   m_Layer: 6
   m_Name: Circle
   m_TagString: Enemy
@@ -229,5 +230,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d406eca24244e247b464b7c8d932d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6412672718377702421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725159313396139033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0441d430efb295a43ac852ac60eda8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
