@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NormalBullet : MonoBehaviour, IBulletType
 {
-    public void Effect(GameObject target, bool isPlayer)
+    public void Effect(GameObject target)
     {
 
     }

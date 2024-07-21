@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IBulletType
 {
-    void Effect(GameObject target, bool isPlayer);
+    void Effect(GameObject target);
 }

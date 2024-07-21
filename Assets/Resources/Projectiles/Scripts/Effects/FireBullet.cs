@@ -7,11 +7,10 @@ public class FireBullet : MonoBehaviour, IBulletType
 
     [SerializeField] float fireDmg = 10, burnTime = 1;
 
-    public void Effect(GameObject target, bool isPlayer)
+    public void Effect(GameObject target)
     {
-        if (isPlayer)
+        if (target.tag == "Player")
         {
-
             StartCoroutine(PlayerFireDamage(PlayerStats.instance, fireDmg, burnTime));
         }
         else
@@ -29,7 +28,6 @@ public class FireBullet : MonoBehaviour, IBulletType
         while (elapsedTime < duration)
         {
             targetStats.life -= damagePerSecond * Time.deltaTime;
-            Debug.Log(targetStats.life);
             elapsedTime += Time.deltaTime;
             yield return null;
         }

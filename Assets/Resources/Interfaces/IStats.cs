@@ -5,4 +5,6 @@ using UnityEngine;
 public interface IStats
 {
     float life {get; set;}
+
+    void GetHit(float dmg);
 }

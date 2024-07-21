@@ -5,12 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Projectile : MonoBehaviour
 {
-    [Header("Layers")]
-    [SerializeField] private LayerMask enemyLayer;
-    [SerializeField] private LayerMask playerLayer;
-
-    [Header("Bullet Effects")]
-    private IBulletType effectType;
+    private IStats statsType;
+    [HideInInspector]
+    public IBulletType effectType;
 
     [HideInInspector]
     public float speed, dmg, timeToDie;
@@ -54,23 +51,15 @@ public class Projectile : MonoBehaviour
     {
         if (((1 << other.gameObject.layer) & hitLayer) != 0)
         {
-            if (hitLayer == enemyLayer)
+            statsType = other.GetComponent<IStats>();
+
+            if (statsType != null && effectType != null)
             {
-                effectType = PlayerStats.instance.GetComponent<IBulletType>();
+                statsType.GetHit(dmg);
 
-                other.GetComponent<EnemyStats>().GetHit(dmg);
-
-                effectType.Effect(other.gameObject, false);
+                effectType.Effect(other.gameObject);
             }
-            
-            else if (hitLayer == playerLayer)
-            {
-                effectType = other.GetComponent<IBulletType>();
 
-                PlayerStats.instance.Hit(dmg);
-
-                effectType.Effect(other.gameObject, true);
-            }
             EndProjectile();
         }
     }

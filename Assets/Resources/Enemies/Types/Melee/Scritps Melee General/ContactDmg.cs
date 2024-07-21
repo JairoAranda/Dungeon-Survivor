@@ -17,7 +17,7 @@ public class ContactDmg : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            PlayerStats.instance.Hit(enemyInfoSO.damage);
+            PlayerStats.instance.GetHit(enemyInfoSO.damage);
         }
 
     }

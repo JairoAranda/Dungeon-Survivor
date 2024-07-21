@@ -49,7 +49,7 @@ public class PlayerStats : MonoBehaviour, IStats
         }
     }
 
-    public void Hit(float dmg)
+    public void GetHit(float dmg)
     {
         life -= dmg;
        
