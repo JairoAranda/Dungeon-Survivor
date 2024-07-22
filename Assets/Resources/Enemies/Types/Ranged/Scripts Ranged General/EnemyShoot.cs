@@ -36,7 +36,7 @@ public class EnemyShoot : MonoBehaviour
 
         if (distanceToPlayer.NearPlayer() && shootTimer >= shootInterval)
         {
-            ProjectilePool.instance.ShootBullet(gameObject.transform.position, enemyInfoSO.projectileSpeed, enemyInfoSO.damage, PlayerStats.instance.transform.position, playerLayer, effect ,false, 0);
+            ProjectilePool.instance.ShootBullet(gameObject.transform.position, enemyInfoSO.projectileSpeed, enemyInfoSO.damage, enemyInfoSO.attackRange + 40 ,PlayerStats.instance.transform.position, transform.position ,playerLayer, effect);
             shootTimer = 0;
         }
     }

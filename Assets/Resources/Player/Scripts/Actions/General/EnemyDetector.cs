@@ -6,6 +6,8 @@ public class EnemyDetector : MonoBehaviour
 {
     [SerializeField] protected LayerMask detectionLayer;
 
+    [SerializeField] protected Transform handPosition;
+
     private protected SOPlayerInfo sOPlayerInfo;
 
     private protected float shootCooldown;
@@ -23,13 +25,13 @@ public class EnemyDetector : MonoBehaviour
 
     protected Transform DetectClosestEnemy()
     {
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, detectionRange, detectionLayer);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(handPosition.position, detectionRange, detectionLayer);
         Transform closestEnemy = null;
         float closestDistance = detectionRange;
 
         foreach (var hit in hitColliders)
         {
-            float distance = Vector2.Distance(transform.position, hit.transform.position);
+            float distance = Vector2.Distance(handPosition.position, hit.transform.position);
             if (distance < closestDistance)
             {
                 closestEnemy = hit.transform;

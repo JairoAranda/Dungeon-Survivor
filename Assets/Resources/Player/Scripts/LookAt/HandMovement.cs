@@ -9,14 +9,14 @@ public class HandMovement : EnemyDetector
 
     protected override void Start()
     {
-        m_isAuto = GetComponentInParent<ShootController>().isAuto;
+        //m_isAuto = GetComponentInParent<ShootController>().isAuto;
 
         detectionRange = float.PositiveInfinity;
     }
 
     void Update()
     {
-        if (m_isAuto)
+        if (GetComponentInParent<ShootController>().isAuto)
         {
             AutoAim();
         }

@@ -7,7 +7,11 @@ public class ProjectilePool : GeneralPool
 {
     public static ProjectilePool instance;
 
-    private int shootNumber = -1;
+    private Vector3 startPosition, target;
+
+    [HideInInspector]
+    public int shootNumber = -1;
+
     private void Awake()
     {
         if (instance == null)
@@ -21,7 +25,7 @@ public class ProjectilePool : GeneralPool
         }
     }
 
-    public void ShootBullet(Vector2 shootPosition, float m_speed, float m_dmg, Vector3 m_target, LayerMask m_Layer , IBulletType effect , bool m_lifeTime, float m_timeToDie)
+    public void ShootBullet(Vector2 shootPosition, float m_speed, float m_dmg, float m_range ,Vector3 m_target, Vector3 m_startPosition ,LayerMask m_Layer , IBulletType effect)
     {
         shootNumber++;
 
@@ -32,17 +36,29 @@ public class ProjectilePool : GeneralPool
 
         GameObject bulletToShoot = typesInstances[shootNumber];
         Projectile projectileComponent = bulletToShoot.GetComponent<Projectile>();
+        Rigidbody2D rb = bulletToShoot.GetComponent<Rigidbody2D>(); 
 
-        projectileComponent.speed = m_speed;
         projectileComponent.dmg = m_dmg;
-        projectileComponent.target = m_target;
+        projectileComponent.range = m_range;
         projectileComponent.hitLayer = m_Layer;
-        projectileComponent.lifeTime = m_lifeTime;
-        projectileComponent.timeToDie = m_timeToDie;
         projectileComponent.effectType = effect;
+
+        target = m_target;
+        startPosition = m_startPosition;
 
         bulletToShoot.transform.position = shootPosition;
         bulletToShoot.SetActive(true);
+
+        rb.AddForce(Direction() * m_speed, ForceMode2D.Impulse);
+
+
+    }
+
+    private Vector2 Direction()
+    {
+        Vector2 direction = (target - startPosition).normalized;
+
+        return direction;
     }
 
 }

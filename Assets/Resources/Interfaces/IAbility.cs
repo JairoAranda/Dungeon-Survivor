@@ -6,7 +6,7 @@ public interface IAbility
 {
     SOPlayerInfo sOPlayerInfo { get; set; }
 
-    AbilitiesPoolManager abilitiesManager { get; set; }
+    ProjectilePool projectilePool { get; set; }
 
     float cd { get; set; }
 

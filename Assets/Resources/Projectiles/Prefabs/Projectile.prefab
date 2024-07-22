@@ -13,10 +13,8 @@ GameObject:
   - component: {fileID: 4068158539470796547}
   - component: {fileID: 7905485990104201301}
   - component: {fileID: 4633943534990904308}
-  - component: {fileID: 1437174966656545013}
-  - component: {fileID: 727402775245946725}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,16 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd3c9d2c617dcff4d9f4da3f6dd96ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  effects:
-  - {fileID: 1437174966656545013}
-  - {fileID: 727402775245946725}
-  weaponEffect: 0
   speed: 0
   dmg: 0
   timeToDie: 0
@@ -181,29 +169,3 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   lifeTime: 0
---- !u!114 &1437174966656545013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1029232009479910354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0441d430efb295a43ac852ac60eda8eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &727402775245946725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1029232009479910354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd7db3ccfbea20a44ae1d316315fd368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireDmg: 10
-  burnTime: 2

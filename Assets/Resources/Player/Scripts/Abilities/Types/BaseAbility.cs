@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BaseAbility : MonoBehaviour
@@ -28,19 +29,35 @@ public class BaseAbility : MonoBehaviour
         set => _sOPlayerInfo = value;
     }
 
-    private AbilitiesPoolManager _abilitiesManager;
+    private ProjectilePool _projectilePool;
 
-    public AbilitiesPoolManager abilitiesManager
+    public ProjectilePool projectilePool
     {
-        get => _abilitiesManager;
-        set => _abilitiesManager = value;
+        get => _projectilePool;
+        set => _projectilePool = value;
+    }
+
+    private LayerMask _enemyLayer;
+
+    public LayerMask enemyLayer
+    {
+        get => _enemyLayer;
+        set => _enemyLayer = value;
     }
 
     protected virtual void Start()
     {
-        _sOPlayerInfo = GetComponent<SOFinderPlayer>().sOPlayerInfo;
+        _sOPlayerInfo = GetComponentInParent<SOFinderPlayer>().sOPlayerInfo;
 
-        _abilitiesManager = AbilitiesPoolManager.Instance;
+        _projectilePool = ProjectilePool.instance;
     }
 
+
+    protected virtual void Update()
+    {
+        if (currentCD > 0)
+        {
+            currentCD -= Time.deltaTime;
+        }
+    }
 }

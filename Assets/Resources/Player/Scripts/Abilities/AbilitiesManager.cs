@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Playables;
 using UnityEngine;
 
-public class AbilitiesPoolManager : GeneralPool
+public class AbilitiesManager : MonoBehaviour
 {
-    public static AbilitiesPoolManager Instance;
-
-    [HideInInspector]
-    public int bulletNumber = -1;
+    public static AbilitiesManager Instance;
 
     public IAbility qAbility, eAbility;
 
@@ -25,19 +23,23 @@ public class AbilitiesPoolManager : GeneralPool
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && qAbility.currentCD == 0)
+        if (Input.GetKeyDown(KeyCode.Q) && qAbility != null)
         {
-            if (qAbility != null)
+            if (qAbility.currentCD <= 0)
             {
+                qAbility.currentCD = qAbility.cd;
+
                 qAbility.Ability();
             }
             
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && eAbility.currentCD == 0)
+        if (Input.GetKeyDown(KeyCode.E) && eAbility != null)
         {
-            if (eAbility != null)
+            if (eAbility.currentCD <= 0)
             {
+                eAbility.currentCD = eAbility.cd;
+
                 eAbility.Ability();
             }
             

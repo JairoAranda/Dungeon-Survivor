@@ -25,9 +25,9 @@ public class SOPlayerInfo : ScriptableObject
     public int absortion = 1;
 
     [Header("Range Stats")]
-    [Range(250f, 750f)]
+    [Range(1f, 50f)]
     [Tooltip("Only Ranged.")]
-    public float projectileSpeed = 250;
+    public float projectileSpeed = 2;
     [Range(0, 50)]
     [Tooltip("Only Ranged.")]
     public float range = 2;

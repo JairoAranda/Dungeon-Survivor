@@ -9,8 +9,6 @@ public class ShootController : EnemyDetector
 
     private IBulletType effect;
 
-    [SerializeField] Transform handPosition;
-
     protected override void Start()
     {
         base.Start();
@@ -45,7 +43,7 @@ public class ShootController : EnemyDetector
 
         if (closestEnemy != null && lastShootTime > shootCooldown)
         {
-            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, sOPlayerInfo.damage, closestEnemy.position, detectionLayer, effect ,true, lifeTime);
+            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, sOPlayerInfo.damage, detectionRange, closestEnemy.position, handPosition.position ,detectionLayer, effect);
             lastShootTime = 0;
         }
     }
@@ -60,7 +58,7 @@ public class ShootController : EnemyDetector
 
         if (lastShootTime > shootCooldown)
         {
-            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, sOPlayerInfo.damage, mousePosition, detectionLayer, effect ,true, lifeTime);
+            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, sOPlayerInfo.damage, detectionRange, mousePosition, handPosition.position ,detectionLayer, effect);
             lastShootTime = 0;
         }
     }

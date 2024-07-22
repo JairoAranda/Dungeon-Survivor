@@ -19,5 +19,5 @@ MonoBehaviour:
   cooldown: 1
   luck: 1
   absortion: 20
-  projectileSpeed: 600
+  projectileSpeed: 10
   range: 6

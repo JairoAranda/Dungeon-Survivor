@@ -6,26 +6,23 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private IStats statsType;
-    [HideInInspector]
+
     public IBulletType effectType;
 
     [HideInInspector]
-    public float speed, dmg, timeToDie;
-    [HideInInspector]
-    public Vector3 target;
+    public float dmg, range;
+    //[HideInInspector]
+    //public Vector3 target;
     [HideInInspector]
     public LayerMask hitLayer;
-    [HideInInspector]
-    public bool lifeTime;
+
+    private Vector2 startPosition;
 
     private void OnEnable()
     {
-        GetComponent<Rigidbody2D>().AddForce(Direction() * speed, ForceMode2D.Force);
+        //GetComponent<Rigidbody2D>().AddForce(Direction() * speed, ForceMode2D.Impulse);
 
-        if (lifeTime)
-        {
-            StartCoroutine(LifeTime());
-        }
+        startPosition = transform.position;
         
     }
     private void OnBecameInvisible()
@@ -33,18 +30,21 @@ public class Projectile : MonoBehaviour
         EndProjectile();
     }
 
-    private Vector2 Direction()
+    //private Vector2 Direction()
+    //{
+    //    Vector2 direction = (target - transform.position).normalized;
+
+    //    return direction;
+    //}
+
+    private void Update()
     {
-        Vector2 direction = (target - transform.position).normalized;
+        float distanceTravelled = Vector2.Distance(startPosition, transform.position);
 
-        return direction;
-    }
-
-    IEnumerator LifeTime()
-    {
-        yield return new WaitForSeconds(timeToDie);
-
-        EndProjectile();
+        if (distanceTravelled >= range)
+        {
+            EndProjectile();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

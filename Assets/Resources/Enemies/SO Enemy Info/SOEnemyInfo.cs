@@ -23,6 +23,6 @@ public class SOEnemyInfo : ScriptableObject
     [Range(0.1f, 5f)]
     public float cooldown = 1;
     [Tooltip("Only Ranged.")]
-    [Range(250f, 750f)]
-    public float projectileSpeed = 100;
+    [Range(1, 50)]
+    public float projectileSpeed = 2;
 }
