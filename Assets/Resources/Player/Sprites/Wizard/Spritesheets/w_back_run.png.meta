@@ -113,10 +113,10 @@ TextureImporter:
       name: w_back_run_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 86
-        width: 52
-        height: 69
+        x: 0
+        y: 80
+        width: 60
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +134,10 @@ TextureImporter:
       name: w_back_run_1
       rect:
         serializedVersion: 2
-        x: 65
-        y: 85
-        width: 52
-        height: 69
+        x: 60
+        y: 80
+        width: 60
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,10 +155,10 @@ TextureImporter:
       name: w_back_run_2
       rect:
         serializedVersion: 2
-        x: 125
-        y: 85
-        width: 53
-        height: 66
+        x: 120
+        y: 80
+        width: 60
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,10 +176,10 @@ TextureImporter:
       name: w_back_run_3
       rect:
         serializedVersion: 2
-        x: 185
-        y: 85
-        width: 52
-        height: 68
+        x: 180
+        y: 80
+        width: 60
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,10 +197,10 @@ TextureImporter:
       name: w_back_run_4
       rect:
         serializedVersion: 2
-        x: 245
-        y: 86
-        width: 52
-        height: 69
+        x: 240
+        y: 80
+        width: 60
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,10 +218,10 @@ TextureImporter:
       name: w_back_run_5
       rect:
         serializedVersion: 2
-        x: 5
-        y: 5
-        width: 52
-        height: 69
+        x: 0
+        y: 0
+        width: 60
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,10 +239,10 @@ TextureImporter:
       name: w_back_run_6
       rect:
         serializedVersion: 2
-        x: 65
-        y: 5
-        width: 53
-        height: 66
+        x: 60
+        y: 0
+        width: 60
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,10 +260,10 @@ TextureImporter:
       name: w_back_run_7
       rect:
         serializedVersion: 2
-        x: 125
-        y: 5
-        width: 52
-        height: 68
+        x: 120
+        y: 0
+        width: 60
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,7 +271,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43289d36d328fb14c9845c19b06e66bf
+      spriteID: 04c0c8ba446b6cc4bbf3eae64062b57a
       internalID: -353120370
       vertices: []
       indices: 
