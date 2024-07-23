@@ -6,24 +6,50 @@ using UnityEngine;
 
 public class GeneralReciveDrop : MonoBehaviour
 {
-    public bool canRecieve = false;
-
     public EnumDropType type;
+
+    public bool isPlaying;
 
     [Range(0.1f , 5f)]
     [SerializeField] private float time = 1;
 
-    protected virtual void Update()
+    Tweener tweener;
+
+    public void StartAnim()
     {
-        if (canRecieve)
+        tweener = transform.DOMove(PlayerStats.instance.transform.position, time).OnComplete(() => AnimDone());
+
+        CheckLastPost();
+    }
+
+    IEnumerator CheckLastPost()
+    {
+        while (true)
         {
-            transform.DOMove(PlayerStats.instance.transform.position, time).OnComplete(() => AnimDone());
+            yield return new WaitForEndOfFrame();
+
+            if (transform.position != PlayerStats.instance.transform.position)
+            {
+                tweener.ChangeEndValue(PlayerStats.instance.transform.position, true);
+            }
         }
     }
 
+    //protected virtual void Update()
+    //{
+    //    if (canRecieve)
+    //    {
+    //        transform.DOMove(PlayerStats.instance.transform.position, time).OnComplete(() => AnimDone());
+    //    }
+    //}
+
+
     protected virtual void AnimDone()
     {
-        canRecieve = false;
+        StopAllCoroutines();
+
+        isPlaying = false;
+
         gameObject.SetActive(false);
     }
 

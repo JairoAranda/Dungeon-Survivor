@@ -34,9 +34,10 @@ public class ItemRangeAbsortion : MonoBehaviour
 
             foreach (var drop in generalReciveDrops)
             {
-                if (drop.canRecieve == false && drop.enabled == true)
+                if (drop.enabled && !drop.isPlaying)
                 {
-                    drop.canRecieve = true;
+                    drop.isPlaying = true;
+                    drop.StartAnim();
                 }
             }
 
