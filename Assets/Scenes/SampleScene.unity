@@ -327,8 +327,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 430356439}
-  - component: {fileID: 430356438}
   - component: {fileID: 430356437}
+  - component: {fileID: 430356438}
   m_Layer: 0
   m_Name: ----------OBJECT POOL-------------
   m_TagString: Untagged
@@ -352,7 +352,11 @@ MonoBehaviour:
   types:
   - {fileID: 1629918578079747545, guid: 52e3127102705eb4d9f1da7e68c091e4, type: 3}
   typesInstances: []
+  drops:
+  - {fileID: 11400000, guid: cd7929ec3387c814283ee133c704b798, type: 2}
+  - {fileID: 11400000, guid: a54a05a3d455ed243a8396ce996d07f9, type: 2}
   maxRange: 0.5
+  dropTypes: []
 --- !u!114 &430356438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,8 +369,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfec0d3194efd0f488770193c34e3327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDrop: 0
-  maxDrop: 4
 --- !u!4 &430356439
 Transform:
   m_ObjectHideFlags: 0
@@ -826,6 +828,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1feb944f65aef947a785c66220097db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xp: 0
+  xpMax: 0
+  lvl: 1
 --- !u!114 &1452371841
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(DropAmount))]
 public class DropPool : GeneralPool
 {
-    [Header("Drop Range")]
+    [Header("Drops Types")]
+    [SerializeField] SODrop[] drops;
+
+    [Header("Spread Range")]
     [Range(0.0f, 2.0f)]
-    [SerializeField] private float maxRange = 5f;
+    [SerializeField] private float maxRange = 0.5f;
+
+    [SerializeField]
+    GeneralReciveDrop[] dropTypes;
 
     private DropAmount amount;
 
@@ -32,21 +39,38 @@ public class DropPool : GeneralPool
 
     void Drop(Vector3 position)
     {
-        int chance = amount.GetDropNumber();
-
-        for (int i = 0; i < chance; i++)
+        foreach (var drop in drops)
         {
-            dropNumber++;
+            int chance = amount.GetDropNumber(drop.minDrop, drop.maxDrop);
 
-            if (dropNumber > poolSize - 1)
+            for (int i = 0; i < chance; i++)
             {
-                dropNumber = 0;
+                dropNumber++;
+
+                if (dropNumber > poolSize - 1)
+                {
+                    dropNumber = 0;
+                }
+
+                dropTypes = typesInstances[dropNumber].GetComponents<GeneralReciveDrop>();
+
+                foreach (GeneralReciveDrop dropType in dropTypes)
+                {
+                    if (dropType.type == drop.types)
+                    {
+                        dropType.enabled = true;
+                    }
+
+                    else
+                    {
+                        dropType.enabled = false;
+                    }
+                }
+
+                typesInstances[dropNumber].transform.position = GetRandomPositionAroundPoint(position, maxRange);
+                typesInstances[dropNumber].SetActive(true);
             }
-
-
-            typesInstances[dropNumber].transform.position = GetRandomPositionAroundPoint(position, maxRange);
-            typesInstances[dropNumber].SetActive(true);
-        }      
+        }
 
     }
 

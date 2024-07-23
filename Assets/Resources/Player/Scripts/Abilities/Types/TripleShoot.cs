@@ -11,10 +11,7 @@ public class TripleShoot : BaseAbility, IAbility
 
     Rigidbody2D rb;
 
-    protected override void Start()
-    {
-        base.Start();
-    }
+
     public void Ability()
     {
 

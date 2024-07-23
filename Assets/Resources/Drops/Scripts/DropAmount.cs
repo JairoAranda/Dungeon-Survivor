@@ -4,10 +4,7 @@ using UnityEngine;
 using System;
 
 public class DropAmount : MonoBehaviour
-{
-    [Range(0f, 10f)]
-    [SerializeField] private int minDrop = 0, maxDrop = 4;
-    
+{    
     private static System.Random random = new System.Random();
 
     private int luck;
@@ -18,7 +15,7 @@ public class DropAmount : MonoBehaviour
        
     }
 
-    public int GetDropNumber()
+    public int GetDropNumber(int minDrop, int maxDrop)
     {
         int range = maxDrop - minDrop + 1;
 

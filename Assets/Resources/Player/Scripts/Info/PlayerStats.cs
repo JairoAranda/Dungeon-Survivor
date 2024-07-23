@@ -13,6 +13,14 @@ public class PlayerStats : MonoBehaviour, IStats
 
     private SOPlayerInfo sOFinderPlayer;
 
+    //[HideInInspector]
+    public float xp;
+
+    [SerializeField] private float xpMax;
+
+    //[HideInInspector]
+    public int lvl = 1;
+
     private float _life;
     public float life
     {
@@ -46,6 +54,13 @@ public class PlayerStats : MonoBehaviour, IStats
         {
             EventTriggerDeathPlayer();
             SceneManager.LoadScene(0);
+        }
+
+        if (xp  >= xpMax) 
+        {
+            lvl++;
+            xp = 0;
+            xpMax *= 1.2f;
         }
     }
 

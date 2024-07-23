@@ -30,11 +30,16 @@ public class ItemRangeAbsortion : MonoBehaviour
 
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.GetComponent<ReciveDrop>().canRecieve == false)
-            {
-                hitCollider.GetComponent<ReciveDrop>().canRecieve = true;
+            GeneralReciveDrop[] generalReciveDrops = hitCollider.GetComponents<GeneralReciveDrop>();
 
+            foreach (var drop in generalReciveDrops)
+            {
+                if (drop.canRecieve == false && drop.enabled == true)
+                {
+                    drop.canRecieve = true;
+                }
             }
+
         }
     }
 }

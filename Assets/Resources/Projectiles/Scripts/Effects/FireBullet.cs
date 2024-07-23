@@ -13,12 +13,13 @@ public class FireBullet : MonoBehaviour, IBulletType
         {
             StartCoroutine(PlayerFireDamage(PlayerStats.instance, fireDmg, burnTime));
         }
-        else
+        else if (target.tag == "Enemy")
         {
             var enemyStats = target.GetComponent<EnemyStats>();
 
             StartCoroutine(PlayerFireDamage(enemyStats, fireDmg, burnTime));
         }
+
     }
 
     IEnumerator PlayerFireDamage(IStats targetStats, float totalDamage, float duration)

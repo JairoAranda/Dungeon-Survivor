@@ -4,17 +4,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReciveDrop : MonoBehaviour
+public class GeneralReciveDrop : MonoBehaviour
 {
-    //public static event Action EventGetMoney;
-
     public bool canRecieve = false;
+
+    public EnumDropType type;
 
     [Range(0.1f , 5f)]
     [SerializeField] private float time = 1;
 
-
-    private void Update()
+    protected virtual void Update()
     {
         if (canRecieve)
         {
@@ -22,10 +21,9 @@ public class ReciveDrop : MonoBehaviour
         }
     }
 
-    void AnimDone()
+    protected virtual void AnimDone()
     {
-        //EventGetMoney();
-
+        canRecieve = false;
         gameObject.SetActive(false);
     }
 

@@ -43,6 +43,8 @@ public class Projectile : MonoBehaviour
 
         if (distanceTravelled >= range)
         {
+            effectType.Effect(gameObject);
+
             EndProjectile();
         }
     }
