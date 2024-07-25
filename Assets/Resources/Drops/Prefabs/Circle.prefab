@@ -134,9 +134,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7181e5d889258054c8c3392abede9516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canRecieve: 0
   type: 1
-  time: 1
+  isPlaying: 0
+  time: 0.8
+  animCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.003357187
+      value: -0.0047256183
+      inSlope: 0.74803776
+      outSlope: 0.74803776
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.11006189
+    - serializedVersion: 3
+      time: 0.25431705
+      value: 0.02432388
+      inSlope: -0.8492081
+      outSlope: -0.8492081
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.13572684
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &-4477603994969838709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +182,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c2a2d81e71b4d45a5159676341fe63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canRecieve: 0
   type: 0
-  time: 1
+  isPlaying: 0
+  time: 0.8
+  animCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.003357187
+      value: -0.0047256183
+      inSlope: 0.74803776
+      outSlope: 0.74803776
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.11006189
+    - serializedVersion: 3
+      time: 0.25431705
+      value: 0.02432388
+      inSlope: -0.8492081
+      outSlope: -0.8492081
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.13572684
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

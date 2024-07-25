@@ -52,6 +52,8 @@ public class DropPool : GeneralPool
                     dropNumber = 0;
                 }
 
+                typesInstances[dropNumber].transform.position = GetRandomPositionAroundPoint(position, maxRange);
+
                 dropTypes = typesInstances[dropNumber].GetComponents<GeneralReciveDrop>();
 
                 foreach (GeneralReciveDrop dropType in dropTypes)
@@ -67,7 +69,6 @@ public class DropPool : GeneralPool
                     }
                 }
 
-                typesInstances[dropNumber].transform.position = GetRandomPositionAroundPoint(position, maxRange);
                 typesInstances[dropNumber].SetActive(true);
             }
         }

@@ -20,4 +20,4 @@ MonoBehaviour:
   luck: 1
   absortion: 20
   projectileSpeed: 10
-  range: 6
+  range: 20
