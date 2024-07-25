@@ -13,36 +13,31 @@ public class GeneralReciveDrop : MonoBehaviour
     [Range(0.1f , 5f)]
     [SerializeField] private float time = 1;
 
-    [SerializeField] AnimationCurve animCurve;
+    Tweener tweener;
+
+    float currentTime;
 
     public void StartAnim()
     {
-        StartCoroutine(PickUpAnim());
+        tweener = transform.DOMove(PlayerStats.instance.transform.position, time)
+            .SetEase(Ease.InBack)
+            .OnUpdate(() =>
+            {
+                currentTime += Time.deltaTime;
+
+                if (currentTime >= time/2 & currentTime <= time)
+                {
+                    tweener.SetEase(Ease.Linear);
+
+                    tweener.ChangeEndValue(PlayerStats.instance.transform.position, time - currentTime ,true);
+                }
+            })
+            .OnComplete(() => AnimDone());
+
     }
-
-    IEnumerator PickUpAnim()
-    {
-        float timeElapsed = 0;
-        Vector3 startPosition = transform.position;
-
-        while (timeElapsed < time)
-        {
-            Vector3 endPosition = PlayerStats.instance.transform.position;
-
-            float t = animCurve.Evaluate(timeElapsed / time);
-            transform.position = Vector3.Lerp(startPosition, endPosition, t);
-            timeElapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        AnimDone();
-    }
-
 
     protected virtual void AnimDone()
     {
-
-        StopAllCoroutines();
 
         isPlaying = false;
 
