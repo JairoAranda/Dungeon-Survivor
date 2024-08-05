@@ -9,9 +9,9 @@ public class MoneyRecive : GeneralReciveDrop
     [SerializeField] float baseMoney = 5;
     protected override void AnimDone()
     {
-        //float _money = XPCalc(sOPlayerInfo.money, baseMoney, 2f);
+        float _money = XPCalc(sOPlayerInfo.money, baseMoney, 2f);
 
-        //MoneyManager.Instance.money += Mathf.RoundToInt(_money);
+        MoneyManager.Instance.money += Mathf.RoundToInt(_money);
 
         base.AnimDone();
 
