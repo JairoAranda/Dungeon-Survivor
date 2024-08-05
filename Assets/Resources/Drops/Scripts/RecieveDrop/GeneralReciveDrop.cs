@@ -26,6 +26,8 @@ public class GeneralReciveDrop : MonoBehaviour
 
     public void StartAnim()
     {
+        currentTime = 0;
+
         tweener = transform.DOMove(PlayerStats.instance.transform.position, time)
             .SetEase(Ease.InBack)
             .OnUpdate(() =>
@@ -39,6 +41,7 @@ public class GeneralReciveDrop : MonoBehaviour
                     tweener.ChangeEndValue(PlayerStats.instance.transform.position, time - currentTime ,true);
 
                 }
+
 
             })
             .OnComplete(() => AnimDone());
