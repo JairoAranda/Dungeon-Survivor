@@ -13,7 +13,6 @@ public class DropPool : GeneralPool
     [Range(0.0f, 2.0f)]
     [SerializeField] private float maxRange = 0.5f;
 
-    [SerializeField]
     GeneralReciveDrop[] dropTypes;
 
     private DropAmount amount;

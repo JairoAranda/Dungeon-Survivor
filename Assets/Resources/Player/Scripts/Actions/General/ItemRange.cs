@@ -9,10 +9,21 @@ public class ItemRangeAbsortion : MonoBehaviour
     [SerializeField] LayerMask detectionLayer;
 
     private int absortion;
+    private float scaleFactor;
+    private float detectionRadius;
 
     private void Start()
     {
+        UpdateDetectionRange();
+    }
+
+    public void UpdateDetectionRange()
+    {
         absortion = GetComponent<SOFinderPlayer>().sOPlayerInfo.absortion;
+
+        scaleFactor = 1f + ((float)(absortion - 1) / 19f) * 4f;
+
+        detectionRadius = detectionRadiusDefault * scaleFactor;
     }
 
     void Update()
@@ -22,10 +33,6 @@ public class ItemRangeAbsortion : MonoBehaviour
 
     void DetectItems()
     {
-        float scaleFactor = 1f + (absortion - 1) * (4f / 19f);
-
-        float detectionRadius = detectionRadiusDefault * scaleFactor;
-
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius, detectionLayer);
 
         foreach (var hitCollider in hitColliders)

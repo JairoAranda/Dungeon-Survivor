@@ -449,6 +449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 298395985}
   - component: {fileID: 298395984}
+  - component: {fileID: 298395986}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -483,6 +484,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &298395986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298395983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f251208c586fa7946b7e25b5c2859c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: 0
 --- !u!1 &430356436
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +535,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cd7929ec3387c814283ee133c704b798, type: 2}
   - {fileID: 11400000, guid: a54a05a3d455ed243a8396ce996d07f9, type: 2}
   maxRange: 0.5
-  dropTypes: []
 --- !u!114 &430356438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -994,7 +1007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xp: 0
-  xpMax: 0
+  xpMax: 100
   lvl: 1
 --- !u!114 &1452371841
 MonoBehaviour:
@@ -1196,9 +1209,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 0, z: -10}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_XDamping: 0
+  m_YDamping: 0
+  m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0

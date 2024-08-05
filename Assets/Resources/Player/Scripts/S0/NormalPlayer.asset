@@ -19,5 +19,7 @@ MonoBehaviour:
   cooldown: 1
   luck: 1
   absortion: 20
+  xp: 1
+  money: 1
   projectileSpeed: 10
   range: 20

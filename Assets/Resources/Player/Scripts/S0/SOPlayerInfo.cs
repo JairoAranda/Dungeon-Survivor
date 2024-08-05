@@ -23,6 +23,10 @@ public class SOPlayerInfo : ScriptableObject
     public int luck = 1;
     [Range(1f, 20f)]
     public int absortion = 1;
+    [Range(1f, 20f)]
+    public int xp = 1;
+    [Range(1f, 20f)]
+    public int money = 1;
 
     [Header("Range Stats")]
     [Range(1f, 50f)]

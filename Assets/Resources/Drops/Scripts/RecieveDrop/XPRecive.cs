@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class XPRecive : GeneralReciveDrop
 {
+
+    [Range(0f, 10f)]
+    [SerializeField] float baseXP = 5;
+   
     protected override void AnimDone()
     {
-        base.AnimDone();
+        float _xp = XPCalc(sOPlayerInfo.xp ,baseXP, 2f);
 
-        Debug.Log("XP");
+        PlayerStats.instance.xp += _xp;
+
+        base.AnimDone();
     }
+
 }

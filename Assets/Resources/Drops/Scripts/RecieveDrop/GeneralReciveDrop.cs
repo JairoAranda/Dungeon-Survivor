@@ -17,6 +17,13 @@ public class GeneralReciveDrop : MonoBehaviour
 
     float currentTime;
 
+    protected SOPlayerInfo sOPlayerInfo;
+
+    private void Start()
+    {
+        sOPlayerInfo = PlayerStats.instance.GetComponent<SOFinderPlayer>().sOPlayerInfo;
+    }
+
     public void StartAnim()
     {
         tweener = transform.DOMove(PlayerStats.instance.transform.position, time)
@@ -25,16 +32,29 @@ public class GeneralReciveDrop : MonoBehaviour
             {
                 currentTime += Time.deltaTime;
 
-                if (currentTime >= time/2 & currentTime <= time)
+                if (currentTime >= time/2 && currentTime <= time)
                 {
                     tweener.SetEase(Ease.Linear);
 
                     tweener.ChangeEndValue(PlayerStats.instance.transform.position, time - currentTime ,true);
+
                 }
+
             })
             .OnComplete(() => AnimDone());
 
     }
+
+
+    protected virtual float XPCalc(int valor, float baseValor, float multyplayer)
+    {
+        float factor = 1f + (float)(valor - 1 / 19f) * multyplayer;
+
+        float finalCalc = baseValor * factor;
+
+        return finalCalc;
+    }
+
 
     protected virtual void AnimDone()
     {

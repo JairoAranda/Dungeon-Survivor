@@ -16,7 +16,7 @@ public class PlayerStats : MonoBehaviour, IStats
     //[HideInInspector]
     public float xp;
 
-    [SerializeField] private float xpMax;
+    [SerializeField] private float xpMax = 100;
 
     //[HideInInspector]
     public int lvl = 1;
@@ -50,18 +50,9 @@ public class PlayerStats : MonoBehaviour, IStats
 
     private void Update()
     {
-        if (life <= 0)
-        {
-            EventTriggerDeathPlayer();
-            SceneManager.LoadScene(0);
-        }
+        CheckLife();
 
-        if (xp  >= xpMax) 
-        {
-            lvl++;
-            xp = 0;
-            xpMax *= 1.2f;
-        }
+        CheckXP();
     }
 
     public void GetHit(float dmg)
@@ -71,6 +62,25 @@ public class PlayerStats : MonoBehaviour, IStats
         if (life > 0)
         {
             EventTriggerHitPlayer();
+        }
+    }
+
+    void CheckLife()
+    {
+        if (life <= 0)
+        {
+            EventTriggerDeathPlayer();
+            SceneManager.LoadScene(0);
+        }
+    }
+
+    void CheckXP()
+    {
+        if (xp >= xpMax)
+        {
+            lvl++;
+            xp = 0;
+            xpMax *= 1.2f;
         }
     }
 
