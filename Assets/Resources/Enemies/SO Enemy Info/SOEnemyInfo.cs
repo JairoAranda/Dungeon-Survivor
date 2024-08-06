@@ -10,7 +10,7 @@ public class SOEnemyInfo : ScriptableObject
 
     [Range(0f, 10f)]
     public float speed = 1;
-    public int health = 10;
+    public float health = 10;
 
     [Header("Combat")]
     [Tooltip("Attack range in units (0 if melee)")]

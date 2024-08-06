@@ -21,11 +21,10 @@ public class PlayerStats : MonoBehaviour, IStats
     //[HideInInspector]
     public int lvl = 1;
 
-    private float _life;
     public float life
     {
-        get => _life;
-        set => _life = value;
+        get => sOFinderPlayer.health;
+        set => sOFinderPlayer.health = value;
     }
 
     private void Awake()
@@ -45,7 +44,6 @@ public class PlayerStats : MonoBehaviour, IStats
     {
         sOFinderPlayer = gameObject.GetComponent<SOFinderPlayer>().sOPlayerInfo;
 
-        life = sOFinderPlayer.health;
     }
 
     private void Update()

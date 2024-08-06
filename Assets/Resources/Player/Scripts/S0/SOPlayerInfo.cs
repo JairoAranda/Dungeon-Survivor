@@ -8,7 +8,7 @@ public class SOPlayerInfo : ScriptableObject
     [Header("General Information")]
     [Range(0f, 10f)]
     public float speed = 1;
-    public int health;
+    public float health;
     [Range(0.1f, 5f)]
     public float iFrames;
 

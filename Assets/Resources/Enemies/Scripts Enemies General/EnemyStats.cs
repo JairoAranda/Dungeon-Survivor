@@ -10,18 +10,16 @@ public class EnemyStats : MonoBehaviour, IStats
 
     private SOEnemyInfo enemyInfoSO;
 
-    private float _life;
     public float life
     {
-        get => _life;
-        set => _life = value;
+        get => enemyInfoSO.health;
+        set => enemyInfoSO.health = value;
     }
 
     void Start()
     {
         enemyInfoSO = GetComponent<SOFinderEnemy>().enemyInfoSO;
 
-        life = enemyInfoSO.health;
     }
 
     private void Update()
