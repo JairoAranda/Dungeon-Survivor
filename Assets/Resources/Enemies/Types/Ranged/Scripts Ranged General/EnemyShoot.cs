@@ -7,6 +7,7 @@ using UnityEngine;
 public class EnemyShoot : MonoBehaviour
 {
     [SerializeField] LayerMask playerLayer;
+    [SerializeField] Color bulletColor;
 
     private IBulletType effect;
 
@@ -36,7 +37,7 @@ public class EnemyShoot : MonoBehaviour
 
         if (distanceToPlayer.NearPlayer() && shootTimer >= shootInterval)
         {
-            ProjectilePool.instance.ShootBullet(gameObject.transform.position, enemyInfoSO.projectileSpeed, enemyInfoSO.damage, enemyInfoSO.attackRange + 40 ,PlayerStats.instance.transform.position, transform.position ,playerLayer, effect);
+            ProjectilePool.instance.ShootBullet(gameObject.transform.position, enemyInfoSO.projectileSpeed, enemyInfoSO.damage, enemyInfoSO.attackRange + 40 ,PlayerStats.instance.transform.position, transform.position ,playerLayer, effect, bulletColor);
             shootTimer = 0;
         }
     }

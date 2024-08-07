@@ -6,9 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(SOFinderPlayer))]
 public class MeleeHitController : MonoBehaviour
 {
-    public static MeleeHitController Instance;
+    public static MeleeHitController instance;
 
-    public bool isAuto;
 
     [SerializeField] GameObject armPosition;
 
@@ -29,9 +28,9 @@ public class MeleeHitController : MonoBehaviour
 
     private void OnEnable()
     {
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
         }
         else
         {
@@ -50,7 +49,7 @@ public class MeleeHitController : MonoBehaviour
     {
         Timer();
 
-        if (!isAuto)
+        if (OptionManager.instance.isAuto)
         {
             ManualHit();
         }

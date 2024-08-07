@@ -18,7 +18,7 @@ public class SOPlayerInfo : ScriptableObject
     [Range(0.1f, 5f)]
     public float cooldown = 1;
 
-    [Header("General Stats")]
+    [Header("Stats Upgrades")]
     [Range(1f, 20f)]
     public int luck = 1;
     [Range(1f, 20f)]

@@ -7,9 +7,9 @@ public class CheckWeaponRange : MonoBehaviour
     [SerializeField] LayerMask enemyLayer;
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (((1 << collision.gameObject.layer) & enemyLayer) != 0 && MeleeHitController.Instance.isAuto)
+        if (((1 << collision.gameObject.layer) & enemyLayer) != 0 && OptionManager.instance.isAuto)
         {
-            MeleeHitController.Instance.AutoHit();
+            MeleeHitController.instance.AutoHit();
         }
     }
 

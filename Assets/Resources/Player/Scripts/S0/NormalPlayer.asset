@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: NormalPlayer
   m_EditorClassIdentifier: 
   speed: 5
-  health: 10
+  health: 9
   iFrames: 2
   damage: 1
   cooldown: 1
   luck: 1
-  absortion: 20
+  absortion: 1
   xp: 1
   money: 1
   projectileSpeed: 10

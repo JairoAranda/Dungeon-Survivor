@@ -11,27 +11,27 @@ public class AbilityAsign : MonoBehaviour
         ability = gameObject.GetComponent<IAbility>();
 
 
-        if (AbilitiesManager.Instance.qAbility == null)
+        if (AbilitiesManager.instance.qAbility == null)
         {
-            AbilitiesManager.Instance.qAbility = ability;
+            AbilitiesManager.instance.qAbility = ability;
         }
         else
         {
-            AbilitiesManager.Instance.eAbility = ability;
+            AbilitiesManager.instance.eAbility = ability;
         }
 
     }
 
     private void OnDestroy()
     {
-        if (AbilitiesManager.Instance.qAbility == ability)
+        if (AbilitiesManager.instance.qAbility == ability)
         {
-            AbilitiesManager.Instance.qAbility = null;
+            AbilitiesManager.instance.qAbility = null;
         }
 
         else
         {
-            AbilitiesManager.Instance.eAbility = null;
+            AbilitiesManager.instance.eAbility = null;
         }
     }
 }

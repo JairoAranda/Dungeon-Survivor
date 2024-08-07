@@ -11,7 +11,7 @@ public class MoneyRecive : GeneralReciveDrop
     {
         float _money = XPCalc(sOPlayerInfo.money, baseMoney, 2f);
 
-        MoneyManager.Instance.money += Mathf.RoundToInt(_money);
+        MoneyManager.instance.money += Mathf.RoundToInt(_money);
 
         base.AnimDone();
 

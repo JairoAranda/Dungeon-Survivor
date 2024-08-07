@@ -25,7 +25,7 @@ public class ProjectilePool : GeneralPool
         }
     }
 
-    public void ShootBullet(Vector2 shootPosition, float m_speed, float m_dmg, float m_range ,Vector3 m_target, Vector3 m_startPosition ,LayerMask m_Layer , IBulletType effect)
+    public void ShootBullet(Vector2 shootPosition, float m_speed, float m_dmg, float m_range ,Vector3 m_target, Vector3 m_startPosition ,LayerMask m_Layer , IBulletType effect, Color _color)
     {
         shootNumber++;
 
@@ -46,6 +46,7 @@ public class ProjectilePool : GeneralPool
         target = m_target;
         startPosition = m_startPosition;
 
+        bulletToShoot.GetComponent<SpriteRenderer>().color = _color;
         bulletToShoot.transform.position = shootPosition;
         bulletToShoot.SetActive(true);
 

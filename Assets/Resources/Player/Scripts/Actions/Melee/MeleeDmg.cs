@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MeleeDmg : MonoBehaviour
 {
-    public static MeleeDmg Instance;
+    public static MeleeDmg instance;
 
     public IBulletType effectType;
 
@@ -18,9 +18,9 @@ public class MeleeDmg : MonoBehaviour
 
     private void OnEnable()
     {
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
         }
 
         else

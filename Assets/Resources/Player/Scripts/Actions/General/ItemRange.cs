@@ -23,6 +23,8 @@ public class ItemRangeAbsortion : MonoBehaviour
 
         scaleFactor = 1f + ((float)(absortion - 1) / 19f) * 4f;
 
+        Debug.Log(scaleFactor);
+
         detectionRadius = detectionRadiusDefault * scaleFactor;
     }
 

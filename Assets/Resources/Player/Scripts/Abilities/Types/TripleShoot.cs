@@ -52,7 +52,7 @@ public class TripleShoot : BaseAbility, IAbility
 
         Vector2 direction = new Vector2(Mathf.Cos(endAngle * Mathf.Deg2Rad), Mathf.Sin(endAngle * Mathf.Deg2Rad));
 
-        rb.AddForce(direction * sOPlayerInfo.speed, ForceMode2D.Impulse);
+        rb.AddForce(direction * sOPlayerInfo.projectileSpeed, ForceMode2D.Impulse);
     }
 
     void SetAtributes()
@@ -63,5 +63,6 @@ public class TripleShoot : BaseAbility, IAbility
 
         projectile.dmg = sOPlayerInfo.damage;
         projectile.range = sOPlayerInfo.range;
+        projectile.effectType = PlayerStats.instance.GetComponent<IBulletType>();
     }
 }

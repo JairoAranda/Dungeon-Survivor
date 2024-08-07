@@ -5,18 +5,14 @@ using static UnityEngine.GraphicsBuffer;
 
 public class HandMovement : EnemyDetector
 {
-    bool m_isAuto;
-
     protected override void Start()
     {
-        //m_isAuto = GetComponentInParent<ShootController>().isAuto;
-
         detectionRange = float.PositiveInfinity;
     }
 
     void Update()
     {
-        if (GetComponentInParent<ShootController>().isAuto)
+        if (OptionManager.instance.isAuto)
         {
             AutoAim();
         }

@@ -37,7 +37,7 @@ public class BaseAbility : MonoBehaviour
         set => _projectilePool = value;
     }
 
-    private LayerMask _enemyLayer;
+    [SerializeField] private LayerMask _enemyLayer;
 
     public LayerMask enemyLayer
     {

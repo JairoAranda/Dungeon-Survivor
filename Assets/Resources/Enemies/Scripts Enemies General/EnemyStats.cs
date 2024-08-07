@@ -10,25 +10,36 @@ public class EnemyStats : MonoBehaviour, IStats
 
     private SOEnemyInfo enemyInfoSO;
 
+    private bool _isDead = false;
+
+    public bool isDead
+    {
+        get => _isDead;
+    }
+
+    private float _life;
+
     public float life
     {
-        get => enemyInfoSO.health;
-        set => enemyInfoSO.health = value;
+        get => _life;
+        set 
+        {
+            _life = value;
+
+            if (_life <= 0)
+            {
+                Death();
+            }
+        }
     }
 
     void Start()
     {
         enemyInfoSO = GetComponent<SOFinderEnemy>().enemyInfoSO;
 
+        life = enemyInfoSO.health;
     }
 
-    private void Update()
-    {
-        if (life <= 0)
-        {
-            Death();
-        }
-    }
 
     public void GetHit(float dmg)
     {
@@ -36,14 +47,19 @@ public class EnemyStats : MonoBehaviour, IStats
         
         if (life > 0)
         {
-            //EventTriggerHitEnemy();
+            EventTriggerHitEnemy?.Invoke(transform.position);
         }
 
     }
 
-    void Death()
+    public void Death()
     {
-        EventTriggerDeathEnemy(gameObject.transform.position);
-        gameObject.SetActive(false);
+        if (!_isDead)
+        {
+            _isDead = true;
+            EventTriggerDeathEnemy?.Invoke(transform.position);
+            gameObject.SetActive(false);
+        }
+        
     }
 }

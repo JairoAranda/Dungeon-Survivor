@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireBullet : MonoBehaviour, IBulletType
 {
-
+    [Range(0.1f, 5f)]
     [SerializeField] float fireDmg = 10, burnTime = 1;
 
     public void Effect(GameObject target)

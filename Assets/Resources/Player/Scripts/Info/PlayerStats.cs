@@ -11,20 +11,36 @@ public class PlayerStats : MonoBehaviour, IStats
 
     public static event Action EventTriggerHitPlayer, EventTriggerDeathPlayer;
 
-    private SOPlayerInfo sOFinderPlayer;
+    private SOPlayerInfo soPlayerInfo;
 
-    //[HideInInspector]
+    [HideInInspector]
     public float xp;
 
     [SerializeField] private float xpMax = 100;
 
-    //[HideInInspector]
+    [HideInInspector]
     public int lvl = 1;
+
+    private float _life;
 
     public float life
     {
-        get => sOFinderPlayer.health;
-        set => sOFinderPlayer.health = value;
+        get => _life;
+        set
+        {
+            _life = value;
+            if (_life <= 0 )
+            {
+                Death();
+            }
+        }
+    }
+
+    private bool _isDead = false;
+
+    public bool isDead
+    {
+        get => _isDead;
     }
 
     private void Awake()
@@ -42,14 +58,13 @@ public class PlayerStats : MonoBehaviour, IStats
 
     private void Start()
     {
-        sOFinderPlayer = gameObject.GetComponent<SOFinderPlayer>().sOPlayerInfo;
+        soPlayerInfo = gameObject.GetComponent<SOFinderPlayer>().sOPlayerInfo;
 
+        life = soPlayerInfo.health;
     }
 
     private void Update()
     {
-        CheckLife();
-
         CheckXP();
     }
 
@@ -59,17 +74,20 @@ public class PlayerStats : MonoBehaviour, IStats
        
         if (life > 0)
         {
-            EventTriggerHitPlayer();
+            EventTriggerHitPlayer?.Invoke();
         }
     }
 
-    void CheckLife()
+    public void Death()
     {
-        if (life <= 0)
+        if (_isDead)
         {
-            EventTriggerDeathPlayer();
+            _isDead = true;
+
+            EventTriggerDeathPlayer?.Invoke();
             SceneManager.LoadScene(0);
         }
+        
     }
 
     void CheckXP()

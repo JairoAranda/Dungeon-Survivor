@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoneyManager : MonoBehaviour
+public class OptionManager : MonoBehaviour
 {
-    public static MoneyManager instance;
+    public static OptionManager instance;
 
-    public int money;
+    public bool isAuto;
 
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
+
         else
         {
             Destroy(gameObject);
         }
     }
+
 }

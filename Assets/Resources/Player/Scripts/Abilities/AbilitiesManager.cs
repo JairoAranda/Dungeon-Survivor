@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class AbilitiesManager : MonoBehaviour
 {
-    public static AbilitiesManager Instance;
+    public static AbilitiesManager instance;
 
     public IAbility qAbility, eAbility;
 
     private void OnEnable()
     {
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
         }
         else
         {
