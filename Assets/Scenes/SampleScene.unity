@@ -194,11 +194,6 @@ Transform:
   - {fileID: 1612688168}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &289472206 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2436938410995096647, guid: d610469790874e2408222863be71514b, type: 3}
-  m_PrefabInstance: {fileID: 276424328328962635}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &298395983
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,6 +552,11 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!4 &709458154 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8631217466926080632, guid: d610469790874e2408222863be71514b, type: 3}
+  m_PrefabInstance: {fileID: 276424328328962635}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1452371839 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3164183031912566847, guid: d610469790874e2408222863be71514b, type: 3}
@@ -756,22 +756,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3515880702225438154, guid: d610469790874e2408222863be71514b, type: 3}
-      propertyPath: detectionRadiusDefault
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6177929329354340508, guid: d610469790874e2408222863be71514b, type: 3}
-      propertyPath: handPoint
-      value: 
-      objectReference: {fileID: 289472206}
-    - target: {fileID: 6177929329354340508, guid: d610469790874e2408222863be71514b, type: 3}
-      propertyPath: _enemyLayer.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
     - target: {fileID: 8795806857085826211, guid: d610469790874e2408222863be71514b, type: 3}
       propertyPath: handPosition
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 709458154}
     - target: {fileID: 8798764990493325172, guid: d610469790874e2408222863be71514b, type: 3}
       propertyPath: m_Name
       value: Player

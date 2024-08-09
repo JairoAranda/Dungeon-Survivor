@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SOFinderPlayer))]
 public class ShootController : EnemyDetector
 {
+    [Header("Bullet Color")]
     [SerializeField] Color bulletColor;
 
     private IBulletType effect;
@@ -43,7 +44,7 @@ public class ShootController : EnemyDetector
 
         if (closestEnemy != null && lastShootTime > shootCooldown)
         {
-            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, sOPlayerInfo.damage, detectionRange, closestEnemy.position, handPosition.position ,detectionLayer, effect, bulletColor);
+            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, PlayerStats.instance.dmg, detectionRange, closestEnemy.position, handPosition.position ,detectionLayer, effect, bulletColor);
             lastShootTime = 0;
         }
     }
@@ -58,7 +59,7 @@ public class ShootController : EnemyDetector
 
         if (lastShootTime > shootCooldown)
         {
-            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, sOPlayerInfo.damage, detectionRange, mousePosition, handPosition.position ,detectionLayer, effect, bulletColor);
+            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, PlayerStats.instance.dmg, detectionRange, mousePosition, handPosition.position ,detectionLayer, effect, bulletColor);
             lastShootTime = 0;
         }
     }

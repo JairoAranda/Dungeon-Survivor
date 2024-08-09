@@ -96,8 +96,6 @@ GameObject:
   - component: {fileID: 2436938410995096647}
   - component: {fileID: 4937560061142707400}
   - component: {fileID: 3573646737267636886}
-  - component: {fileID: 7970068247283812512}
-  - component: {fileID: 771942020991594599}
   m_Layer: 0
   m_Name: Staff
   m_TagString: Untagged
@@ -217,38 +215,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.13, y: 0.44457456}
   m_EdgeRadius: 0
---- !u!114 &7970068247283812512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968971658024977722}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8279c735d2c70f4cb5386a5760d8e69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  dmg: 0
-  canDmg: 0
---- !u!114 &771942020991594599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968971658024977722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a33a7ea72a6b49342983acdaf85d1955, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!1 &2169951325301275798
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,8 +310,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cd: 3
-  handPoint: {fileID: 0}
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  handPoint: {fileID: 2436938410995096647}
   armPosition: {fileID: 2713520089696809415}
+  shotAngle: 15
+  bulletColor: {r: 0.49803922, g: 0.49803922, b: 0.99215686, a: 1}
 --- !u!114 &6815184505245377462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -641,7 +612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f433d856aba4745b81b60648612016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadiusDefault: 2.5
+  detectionRadiusDefault: 3
   detectionLayer:
     serializedVersion: 2
     m_Bits: 128

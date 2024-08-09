@@ -8,11 +8,12 @@ public class MeleeHitController : MonoBehaviour
 {
     public static MeleeHitController instance;
 
-
+    [Header("General Config")]
     [SerializeField] GameObject armPosition;
 
     [SerializeField] HandMovement handMovement;
 
+    [Header("Swing Config")]
     [Range(1f, 180f)]
     [SerializeField] float swingAngle;
     [Range(0.1f, 1f)]
@@ -98,7 +99,7 @@ public class MeleeHitController : MonoBehaviour
 
         meleeDmg.effectType = effect;
 
-        meleeDmg.dmg = playerInfo.damage;
+        meleeDmg.dmg = PlayerStats.instance.dmg;
 
         armPosition.transform.DOLocalRotate(new Vector3(0, 0, armPosition.transform.localEulerAngles.z - swingAngle), 0);
 

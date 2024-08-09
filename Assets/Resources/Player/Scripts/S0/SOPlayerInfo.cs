@@ -6,11 +6,12 @@ using UnityEngine;
 public class SOPlayerInfo : ScriptableObject
 {
     [Header("General Information")]
+    [Range(0.1f, 50f)]
+    public float health = 10;
     [Range(0f, 10f)]
-    public float speed = 1;
-    public float health;
+    public float speed = 5;
     [Range(0.1f, 5f)]
-    public float iFrames;
+    public float iFrames = 2;
 
     [Header("Combat")]
     [Range(0.1f, 10f)]
@@ -18,21 +19,30 @@ public class SOPlayerInfo : ScriptableObject
     [Range(0.1f, 5f)]
     public float cooldown = 1;
 
-    [Header("Stats Upgrades")]
-    [Range(1f, 20f)]
-    public int luck = 1;
-    [Range(1f, 20f)]
-    public int absortion = 1;
-    [Range(1f, 20f)]
-    public int xp = 1;
-    [Range(1f, 20f)]
-    public int money = 1;
-
     [Header("Range Stats")]
     [Range(1f, 50f)]
     [Tooltip("Only Ranged.")]
-    public float projectileSpeed = 2;
+    public float projectileSpeed = 10;
     [Range(0, 50)]
     [Tooltip("Only Ranged.")]
-    public float range = 2;
+    public float range = 5;
+
+    [Header("Stats Upgrades")]
+    [Range(1f, 20f)]
+    public int healthLvl = 1;
+    [Range(1f, 20f)]
+    public int speedLvl = 1;
+    [Range(1f, 20f)]
+    public int dmgLvl = 1;
+    [Range(1f, 20f)]
+    public int cooldownLvl = 1;
+    [Range(1f, 20f)]
+    public int luckLvl = 1;
+    [Range(1f, 20f)]
+    public int absortionLvl = 1;
+    [Range(1f, 20f)]
+    public int xpLvl = 1;
+    [Range(1f, 20f)]
+    public int moneyLvl = 1;
+
 }

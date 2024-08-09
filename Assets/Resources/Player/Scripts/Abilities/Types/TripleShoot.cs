@@ -5,7 +5,16 @@ using UnityEngine;
 [RequireComponent(typeof(AbilityAsign))]
 public class TripleShoot : BaseAbility, IAbility
 {
-    [SerializeField] Transform handPoint, armPosition;
+    [Header("Transforms Positions")]
+    [SerializeField] Transform handPoint;
+    [SerializeField] Transform armPosition;
+
+    [Header("Aperture Angle")]
+    [Range(.1f, 40f)]
+    [SerializeField] float shotAngle;
+
+    [Header("Bullet Color")]
+    [SerializeField] Color bulletColor;
 
     GameObject bulletToShoot;
 
@@ -15,7 +24,7 @@ public class TripleShoot : BaseAbility, IAbility
     public void Ability()
     {
 
-        for (float i = -30; i <= 30; i+=30) 
+        for (float i = -shotAngle; i <= shotAngle; i+=shotAngle) 
         {
             AddPool();
 
@@ -61,8 +70,9 @@ public class TripleShoot : BaseAbility, IAbility
 
         projectile.hitLayer = enemyLayer;
 
-        projectile.dmg = sOPlayerInfo.damage;
+        projectile.dmg = PlayerStats.instance.dmg;
         projectile.range = sOPlayerInfo.range;
         projectile.effectType = PlayerStats.instance.GetComponent<IBulletType>();
+        projectile.GetComponent<SpriteRenderer>().color = bulletColor;
     }
 }

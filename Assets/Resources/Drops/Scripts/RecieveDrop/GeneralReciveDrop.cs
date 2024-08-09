@@ -6,10 +6,13 @@ using UnityEngine;
 
 public class GeneralReciveDrop : MonoBehaviour
 {
+    [Header("Drop type")]
     public EnumDropType type;
 
+    [HideInInspector]
     public bool isPlaying;
 
+    [Header("Collect time")]
     [Range(0.1f , 5f)]
     [SerializeField] private float time = 1;
 
@@ -47,17 +50,6 @@ public class GeneralReciveDrop : MonoBehaviour
             .OnComplete(() => AnimDone());
 
     }
-
-
-    protected virtual float XPCalc(int valor, float baseValor, float multyplayer)
-    {
-        float factor = 1f + (float)(valor - 1 / 19f) * multyplayer;
-
-        float finalCalc = baseValor * factor;
-
-        return finalCalc;
-    }
-
 
     protected virtual void AnimDone()
     {

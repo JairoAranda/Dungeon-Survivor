@@ -6,6 +6,7 @@ public class MeleeDmg : MonoBehaviour
 {
     public static MeleeDmg instance;
 
+    [HideInInspector]
     public IBulletType effectType;
 
     [SerializeField] LayerMask enemyLayer;

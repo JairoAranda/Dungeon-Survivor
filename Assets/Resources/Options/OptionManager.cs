@@ -6,6 +6,8 @@ public class OptionManager : MonoBehaviour
 {
     public static OptionManager instance;
 
+
+    [Header("Aim Options")]
     public bool isAuto;
 
     private void Awake()

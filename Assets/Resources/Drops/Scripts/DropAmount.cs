@@ -11,7 +11,7 @@ public class DropAmount : MonoBehaviour
 
     void Start()
     {
-        luck = PlayerStats.instance.GetComponentInParent<SOFinderPlayer>().sOPlayerInfo.luck;
+        luck = PlayerStats.instance.GetComponentInParent<SOFinderPlayer>().sOPlayerInfo.luckLvl;
        
     }
 

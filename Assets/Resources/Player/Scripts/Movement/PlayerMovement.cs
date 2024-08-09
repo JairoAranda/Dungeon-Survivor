@@ -7,6 +7,10 @@ using UnityEngine;
 [RequireComponent(typeof(SOFinderPlayer))]
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Lvl Multiplier")]
+    [Range(2, 10)]
+    [SerializeField] private int multiplier = 5;
+
     private SOPlayerInfo sOPlayerInfo;
     private float m_speed;
     private Rigidbody2D rb;
@@ -18,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
         inputHandler = GetComponent<InputHandler>();
         sOPlayerInfo = GetComponent<SOFinderPlayer>().sOPlayerInfo;
 
-        m_speed = sOPlayerInfo.speed;
+        m_speed = sOPlayerInfo.speed * ScaleMultiplier.scaleFactor(multiplier, sOPlayerInfo.speedLvl);
     }
 
     private void Update()

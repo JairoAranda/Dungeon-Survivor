@@ -7,6 +7,7 @@ public class AbilitiesManager : MonoBehaviour
 {
     public static AbilitiesManager instance;
 
+    [HideInInspector]
     public IAbility qAbility, eAbility;
 
     private void OnEnable()

@@ -6,9 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class AnimChecker : MonoBehaviour
 {
-    Animator animator;
-    // Update is called once per frame
-
+    private Animator animator;
     private void Start()
     {
         animator = GetComponent<Animator>();

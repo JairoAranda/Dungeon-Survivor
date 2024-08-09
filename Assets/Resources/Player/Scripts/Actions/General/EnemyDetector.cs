@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyDetector : MonoBehaviour
 {
+    [Header("General Config")]
     [SerializeField] protected LayerMask detectionLayer;
 
     [SerializeField] protected Transform handPosition;

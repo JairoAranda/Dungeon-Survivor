@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
 {
     private IStats statsType;
 
+    [HideInInspector]
     public IBulletType effectType;
 
     [HideInInspector]

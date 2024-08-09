@@ -5,11 +5,16 @@ using UnityEngine;
 
 public class MoneyRecive : GeneralReciveDrop
 {
+    [Header("Coin Value")]
     [Range(0f, 10f)]
     [SerializeField] float baseMoney = 5;
+
+    [Header("Lvl Multiplier")]
+    [Range(2f, 10f)]
+    [SerializeField] private int multiplier = 5;
     protected override void AnimDone()
     {
-        float _money = XPCalc(sOPlayerInfo.money, baseMoney, 2f);
+        float _money = baseMoney * ScaleMultiplier.scaleFactor(multiplier, sOPlayerInfo.moneyLvl);
 
         MoneyManager.instance.money += Mathf.RoundToInt(_money);
 

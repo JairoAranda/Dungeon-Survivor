@@ -16,10 +16,26 @@ public class PlayerStats : MonoBehaviour, IStats
     [HideInInspector]
     public float xp;
 
+    [Header("Lvl XP")]
+    [Range(0.1f, 500f)]
     [SerializeField] private float xpMax = 100;
+
+    [Header("Lvl Multiplier")]
+    [Range(2, 10)]
+    [SerializeField] private int lifeMultiplier = 5;
+    [Range(2, 10)]
+    [SerializeField] private int dmgMultiplier = 5;
+    [Range(2, 10)]
+    [SerializeField] private int cooldownMultiplier = 5;
 
     [HideInInspector]
     public int lvl = 1;
+
+    [HideInInspector]
+    public float dmg;
+
+    [HideInInspector]
+    public float coolDown;
 
     private float _life;
 
@@ -60,8 +76,11 @@ public class PlayerStats : MonoBehaviour, IStats
     {
         soPlayerInfo = gameObject.GetComponent<SOFinderPlayer>().sOPlayerInfo;
 
-        life = soPlayerInfo.health;
+        life = soPlayerInfo.health * ScaleMultiplier.scaleFactor(lifeMultiplier, soPlayerInfo.healthLvl);
+        dmg = soPlayerInfo.damage * ScaleMultiplier.scaleFactor(dmgMultiplier, soPlayerInfo.dmgLvl);
+        coolDown = soPlayerInfo.cooldown * ScaleMultiplier.scaleFactor(cooldownMultiplier, soPlayerInfo.cooldownLvl);
     }
+
 
     private void Update()
     {

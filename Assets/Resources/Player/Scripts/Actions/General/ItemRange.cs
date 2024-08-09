@@ -5,7 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(SOFinderPlayer))]
 public class ItemRangeAbsortion : MonoBehaviour
 {
+    [Header("Absortion Options")]
+    [Range(0.1f, 50f)]
     [SerializeField] float detectionRadiusDefault = 20f;
+    [Range(2, 10)]
+    [SerializeField] int multiplier = 5;
+
+    [Header("Object Layer")]
     [SerializeField] LayerMask detectionLayer;
 
     private int absortion;
@@ -19,13 +25,9 @@ public class ItemRangeAbsortion : MonoBehaviour
 
     public void UpdateDetectionRange()
     {
-        absortion = GetComponent<SOFinderPlayer>().sOPlayerInfo.absortion;
+        absortion = GetComponent<SOFinderPlayer>().sOPlayerInfo.absortionLvl;
 
-        scaleFactor = 1f + ((float)(absortion - 1) / 19f) * 4f;
-
-        Debug.Log(scaleFactor);
-
-        detectionRadius = detectionRadiusDefault * scaleFactor;
+        detectionRadius = detectionRadiusDefault * ScaleMultiplier.scaleFactor(multiplier, absortion);
     }
 
     void Update()
