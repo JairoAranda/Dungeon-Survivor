@@ -572,6 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df32a438457331e4d9c758fe53bd6011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  multiplier: 3
 --- !u!114 &3820639312582617082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -586,7 +587,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xp: 0
   xpMax: 100
+  lifeMultiplier: 5
+  dmgMultiplier: 5
+  cooldownMultiplier: 5
   lvl: 1
+  dmg: 0
+  coolDown: 0
 --- !u!114 &2732032281820459234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -613,6 +619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRadiusDefault: 3
+  multiplier: 5
   detectionLayer:
     serializedVersion: 2
     m_Bits: 128

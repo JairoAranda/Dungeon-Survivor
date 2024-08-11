@@ -27,16 +27,32 @@ public class EnemyEnable : MonoBehaviour
 
     IEnumerator RandomSpawn()
     {
+        yield return new WaitForSeconds(delay);
+
         while (count < m_enemys.Length)
         {
+            if (!m_enemys[count].activeSelf)
+            {
+                m_enemys[count].transform.position = RandomPos();
 
-            m_enemys[count].transform.position = RandomPos();
+                m_enemys[count].SetActive(true);
 
-            m_enemys[count].SetActive(true);
+                yield return new WaitForSeconds(delay);
+            }
 
-            count++;
+            else
+            {
+                yield return new WaitForEndOfFrame();
+            }
 
-            yield return new WaitForSeconds(delay);
+            if (count == m_enemys.Length - 1)
+            {
+                count = 0;
+            }
+            else
+            {
+                count++;
+            }
 
         }
 

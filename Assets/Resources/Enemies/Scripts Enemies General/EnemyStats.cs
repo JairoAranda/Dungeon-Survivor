@@ -33,9 +33,15 @@ public class EnemyStats : MonoBehaviour, IStats
         }
     }
 
-    void Start()
+
+    private void OnEnable()
     {
-        enemyInfoSO = GetComponent<SOFinderEnemy>().enemyInfoSO;
+        if (enemyInfoSO == null)
+        {
+            enemyInfoSO = GetComponent<SOFinderEnemy>().enemyInfoSO;
+        }
+
+        _isDead = false;
 
         life = enemyInfoSO.health;
     }

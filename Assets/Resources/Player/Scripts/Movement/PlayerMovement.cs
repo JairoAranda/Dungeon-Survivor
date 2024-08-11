@@ -12,21 +12,27 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private int multiplier = 5;
 
     private SOPlayerInfo sOPlayerInfo;
-    private float m_speed;
+    private float m_speed, scaleFactor;
     private Rigidbody2D rb;
     private InputHandler inputHandler;
+    private Animator animator;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         inputHandler = GetComponent<InputHandler>();
         sOPlayerInfo = GetComponent<SOFinderPlayer>().sOPlayerInfo;
+        animator = GetComponent<Animator>();
 
-        m_speed = sOPlayerInfo.speed * ScaleMultiplier.scaleFactor(multiplier, sOPlayerInfo.speedLvl);
+        scaleFactor = ScaleMultiplier.scaleFactor(multiplier, sOPlayerInfo.speedLvl);
+
+        m_speed = sOPlayerInfo.speed * scaleFactor;
     }
 
     private void Update()
     {
+        animator.SetFloat("Speed", scaleFactor);
+
         Vector2 movement = inputHandler.GetMovementInput();
         MovePlayer(movement);
     }
