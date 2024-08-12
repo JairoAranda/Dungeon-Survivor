@@ -19,11 +19,3 @@ MonoBehaviour:
   cooldown: 1
   projectileSpeed: 10
   range: 10
-  healthLvl: 1
-  speedLvl: 1
-  dmgLvl: 1
-  cooldownLvl: 1
-  luckLvl: 1
-  absortionLvl: 1
-  xpLvl: 1
-  moneyLvl: 1

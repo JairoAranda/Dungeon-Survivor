@@ -28,21 +28,14 @@ public class SOPlayerInfo : ScriptableObject
     public float range = 5;
 
     [Header("Stats Upgrades")]
-    [Range(1f, 20f)]
-    public int healthLvl = 1;
-    [Range(1f, 20f)]
-    public int speedLvl = 1;
-    [Range(1f, 20f)]
-    public int dmgLvl = 1;
-    [Range(1f, 20f)]
-    public int cooldownLvl = 1;
-    [Range(1f, 20f)]
-    public int luckLvl = 1;
-    [Range(1f, 20f)]
-    public int absortionLvl = 1;
-    [Range(1f, 20f)]
-    public int xpLvl = 1;
-    [Range(1f, 20f)]
-    public int moneyLvl = 1;
+    public Dictionary<PlayerUpgradeEnum, int> statUpgrades = new Dictionary<PlayerUpgradeEnum, int>();
+
+    private void OnEnable()
+    {
+        foreach (PlayerUpgradeEnum stat in System.Enum.GetValues(typeof(PlayerUpgradeEnum)))
+        {
+            statUpgrades[stat] = 1;
+        }
+    }  
 
 }

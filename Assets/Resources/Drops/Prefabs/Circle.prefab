@@ -138,6 +138,8 @@ MonoBehaviour:
   isPlaying: 0
   time: 0.8
   baseXP: 5
+  multiplier: 5
+  xpUpgrade: 6
 --- !u!114 &-4477603994969838709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,3 +156,5 @@ MonoBehaviour:
   isPlaying: 0
   time: 0.8
   baseMoney: 5
+  multiplier: 5
+  moneyUpgrade: 7

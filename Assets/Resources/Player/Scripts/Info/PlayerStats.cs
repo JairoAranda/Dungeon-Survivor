@@ -9,7 +9,7 @@ public class PlayerStats : MonoBehaviour, IStats
 {
     public static PlayerStats instance;
 
-    public static event Action EventTriggerHitPlayer, EventTriggerDeathPlayer;
+    public static event Action EventTriggerHitPlayer, EventTriggerDeathPlayer, EventTriggerLevelUp;
 
     private SOPlayerInfo soPlayerInfo;
 
@@ -27,6 +27,11 @@ public class PlayerStats : MonoBehaviour, IStats
     [SerializeField] private int dmgMultiplier = 5;
     [Range(2, 10)]
     [SerializeField] private int cooldownMultiplier = 5;
+
+    [Header("Stat Type")]
+    [SerializeField] private PlayerUpgradeEnum lifeUpgrade;
+    [SerializeField] private PlayerUpgradeEnum dmgUpgrade;
+    [SerializeField] private PlayerUpgradeEnum cdUpgrade;
 
     [HideInInspector]
     public int lvl = 1;
@@ -72,13 +77,28 @@ public class PlayerStats : MonoBehaviour, IStats
         }
     }
 
+    private void OnEnable()
+    {
+        RandomStatsUpgradeManager.EventTriggerOnUpgradeStat += UpgradeStats;
+    }
+
+    private void OnDisable()
+    {
+        RandomStatsUpgradeManager.EventTriggerOnUpgradeStat -= UpgradeStats;
+    }
+
     private void Start()
     {
         soPlayerInfo = gameObject.GetComponent<SOFinderPlayer>().sOPlayerInfo;
 
-        life = soPlayerInfo.health * ScaleMultiplier.scaleFactor(lifeMultiplier, soPlayerInfo.healthLvl);
-        dmg = soPlayerInfo.damage * ScaleMultiplier.scaleFactor(dmgMultiplier, soPlayerInfo.dmgLvl);
-        coolDown = soPlayerInfo.cooldown * ScaleMultiplier.scaleFactor(cooldownMultiplier, soPlayerInfo.cooldownLvl);
+        UpgradeStats();
+    }
+
+    void UpgradeStats()
+    {
+        life = soPlayerInfo.health * ScaleMultiplier.scaleFactor(lifeMultiplier, soPlayerInfo.statUpgrades[lifeUpgrade]);
+        dmg = soPlayerInfo.damage * ScaleMultiplier.scaleFactor(dmgMultiplier, soPlayerInfo.statUpgrades[dmgUpgrade]);
+        coolDown = soPlayerInfo.cooldown * ScaleMultiplier.scaleFactor(cooldownMultiplier, soPlayerInfo.statUpgrades[cdUpgrade]);
     }
 
 
@@ -116,6 +136,8 @@ public class PlayerStats : MonoBehaviour, IStats
             lvl++;
             xp = 0;
             xpMax *= 1.2f;
+
+            EventTriggerLevelUp?.Invoke();
         }
     }
 

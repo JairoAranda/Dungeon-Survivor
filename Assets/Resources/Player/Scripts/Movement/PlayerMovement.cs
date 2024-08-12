@@ -11,11 +11,24 @@ public class PlayerMovement : MonoBehaviour
     [Range(2, 10)]
     [SerializeField] private int multiplier = 5;
 
+    [Header("Updrade Type")]
+    [SerializeField] private PlayerUpgradeEnum speedUpgrade;
+
     private SOPlayerInfo sOPlayerInfo;
     private float m_speed, scaleFactor;
     private Rigidbody2D rb;
     private InputHandler inputHandler;
     private Animator animator;
+
+    private void OnEnable()
+    {
+        RandomStatsUpgradeManager.EventTriggerOnUpgradeStat += UpgradeStat;
+    }
+
+    private void OnDisable()
+    {
+        RandomStatsUpgradeManager.EventTriggerOnUpgradeStat -= UpgradeStat;
+    }
 
     private void Start()
     {
@@ -24,7 +37,12 @@ public class PlayerMovement : MonoBehaviour
         sOPlayerInfo = GetComponent<SOFinderPlayer>().sOPlayerInfo;
         animator = GetComponent<Animator>();
 
-        scaleFactor = ScaleMultiplier.scaleFactor(multiplier, sOPlayerInfo.speedLvl);
+        UpgradeStat();
+    }
+
+    void UpgradeStat()
+    {
+        scaleFactor = ScaleMultiplier.scaleFactor(multiplier, sOPlayerInfo.statUpgrades[speedUpgrade]);
 
         m_speed = sOPlayerInfo.speed * scaleFactor;
     }

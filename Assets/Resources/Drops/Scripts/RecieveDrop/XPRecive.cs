@@ -12,9 +12,12 @@ public class XPRecive : GeneralReciveDrop
     [Range(2f, 10f)]
     [SerializeField] private int multiplier = 5;
 
+    [Header("Stat Upgrade")]
+    [SerializeField] private PlayerUpgradeEnum xpUpgrade;
+
     protected override void AnimDone()
     {
-        float _xp = baseXP * ScaleMultiplier.scaleFactor(multiplier, sOPlayerInfo.xpLvl);
+        float _xp = baseXP * ScaleMultiplier.scaleFactor(multiplier, sOPlayerInfo.statUpgrades[xpUpgrade]);
 
         PlayerStats.instance.xp += _xp;
 

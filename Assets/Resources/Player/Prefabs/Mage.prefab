@@ -263,7 +263,7 @@ MonoBehaviour:
   detectionLayer:
     serializedVersion: 2
     m_Bits: 64
-  handPosition: {fileID: 0}
+  handPosition: {fileID: 8631217466926080632}
 --- !u!1 &2936110399176464549
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,6 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 3
+  speedUpgrade: 1
 --- !u!114 &3820639312582617082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -590,6 +591,9 @@ MonoBehaviour:
   lifeMultiplier: 5
   dmgMultiplier: 5
   cooldownMultiplier: 5
+  lifeUpgrade: 0
+  dmgUpgrade: 2
+  cdUpgrade: 3
   lvl: 1
   dmg: 0
   coolDown: 0
@@ -623,6 +627,7 @@ MonoBehaviour:
   detectionLayer:
     serializedVersion: 2
     m_Bits: 128
+  absortionUpgrade: 5
 --- !u!114 &2077730637904822169
 MonoBehaviour:
   m_ObjectHideFlags: 0

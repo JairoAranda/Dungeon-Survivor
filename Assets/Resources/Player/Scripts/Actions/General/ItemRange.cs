@@ -14,18 +14,31 @@ public class ItemRangeAbsortion : MonoBehaviour
     [Header("Object Layer")]
     [SerializeField] LayerMask detectionLayer;
 
+    [Header("Stat Type")]
+    [SerializeField] private PlayerUpgradeEnum absortionUpgrade;
+
     private int absortion;
     private float scaleFactor;
     private float detectionRadius;
+
+    private void OnEnable()
+    {
+        RandomStatsUpgradeManager.EventTriggerOnUpgradeStat += UpdateDetectionRange;
+    }
+
+    private void OnDisable()
+    {
+        RandomStatsUpgradeManager.EventTriggerOnUpgradeStat -= UpdateDetectionRange;
+    }
 
     private void Start()
     {
         UpdateDetectionRange();
     }
 
-    public void UpdateDetectionRange()
+    void UpdateDetectionRange()
     {
-        absortion = GetComponent<SOFinderPlayer>().sOPlayerInfo.absortionLvl;
+        absortion = GetComponent<SOFinderPlayer>().sOPlayerInfo.statUpgrades[absortionUpgrade];
 
         detectionRadius = detectionRadiusDefault * ScaleMultiplier.scaleFactor(multiplier, absortion);
     }
