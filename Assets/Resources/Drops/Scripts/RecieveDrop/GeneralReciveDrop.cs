@@ -9,12 +9,23 @@ public class GeneralReciveDrop : MonoBehaviour
     [Header("Drop type")]
     public EnumDropType type;
 
+    [Header("Stat Upgrade")]
+    [SerializeField] private PlayerUpgradeEnum upgrade;
+
     [HideInInspector]
     public bool isPlaying;
 
-    [Header("Collect time")]
+    [Header("Stat Options")]
     [Range(0.1f , 5f)]
-    [SerializeField] private float time = 1;
+    [SerializeField] private float gatherTime = 1;
+
+    [Range(0f, 10f)]
+    [SerializeField] private float baseValue = 5;
+
+    [Range(2f, 10f)]
+    [SerializeField] private int multiplier = 5;
+
+    protected float totalValue;
 
     Tweener tweener;
 
@@ -27,21 +38,22 @@ public class GeneralReciveDrop : MonoBehaviour
         sOPlayerInfo = PlayerStats.instance.GetComponent<SOFinderPlayer>().sOPlayerInfo;
     }
 
+
     public void StartAnim()
     {
         currentTime = 0;
 
-        tweener = transform.DOMove(PlayerStats.instance.transform.position, time)
+        tweener = transform.DOMove(PlayerStats.instance.transform.position, gatherTime)
             .SetEase(Ease.InBack)
             .OnUpdate(() =>
             {
                 currentTime += Time.deltaTime;
 
-                if (currentTime >= time/2 && currentTime <= time)
+                if (currentTime >= gatherTime/2 && currentTime <= gatherTime)
                 {
                     tweener.SetEase(Ease.Linear);
 
-                    tweener.ChangeEndValue(PlayerStats.instance.transform.position, time - currentTime ,true);
+                    tweener.ChangeEndValue(PlayerStats.instance.transform.position, gatherTime - currentTime ,true);
 
                 }
 
@@ -53,11 +65,19 @@ public class GeneralReciveDrop : MonoBehaviour
 
     protected virtual void AnimDone()
     {
+        totalValue = baseValue * ScaleMultiplier.scaleFactor(multiplier, sOPlayerInfo.statUpgrades[upgrade]);
+
+        StartCoroutine(DestoyObject());
+
+    }
+
+    protected virtual IEnumerator DestoyObject()
+    {
+        yield return new WaitForEndOfFrame();
 
         isPlaying = false;
 
         gameObject.SetActive(false);
-
     }
 
 }

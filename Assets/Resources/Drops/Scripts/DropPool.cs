@@ -13,7 +13,7 @@ public class DropPool : GeneralPool
     [Range(0.0f, 2.0f)]
     [SerializeField] private float maxRange = 0.5f;
 
-    private GeneralReciveDrop[] dropTypes;
+    //private GeneralReciveDrop[] dropTypes;
 
     private DropAmount amount;
 
@@ -31,16 +31,40 @@ public class DropPool : GeneralPool
 
     protected override void Start()
     {
+        poolSize = 0;
+
         amount = GetComponent<DropAmount>();
 
-        base.Start();
+
+        foreach (var drop in drops)
+        {
+            poolSize += drop.dropAmount;
+        }
+
+        typesInstances = new GameObject[poolSize];
+
+        int type = -1;
+        int j = 0;
+
+        foreach (var drop in drops)
+        {
+            type++;
+
+            for (int i = 0; i < drop.dropAmount; i++)
+            {
+                typesInstances[j] = Instantiate(types[type], new Vector2(0, 0f), Quaternion.identity);
+                typesInstances[j].transform.SetSiblingIndex(gameObject.transform.GetSiblingIndex() + 1);
+                j++;
+            }
+
+        }
     }
 
     void Drop(Vector3 position)
     {
         foreach (var drop in drops)
         {
-            int chance = amount.GetDropNumber(drop.minDrop, drop.maxDrop);
+            int chance = amount.GetDropNumber(drop.minDrop, drop.maxDrop, drop.probabilityMaxDrop);
 
             for (int i = 0; i < chance; i++)
             {
@@ -53,20 +77,20 @@ public class DropPool : GeneralPool
 
                 typesInstances[dropNumber].transform.position = GetRandomPositionAroundPoint(position, maxRange);
 
-                dropTypes = typesInstances[dropNumber].GetComponents<GeneralReciveDrop>();
+                //dropTypes = typesInstances[dropNumber].GetComponents<GeneralReciveDrop>();
 
-                foreach (GeneralReciveDrop dropType in dropTypes)
-                {
-                    if (dropType.type == drop.types)
-                    {
-                        dropType.enabled = true;
-                    }
+                //foreach (GeneralReciveDrop dropType in dropTypes)
+                //{
+                //    if (dropType.type == drop.types)
+                //    {
+                //        dropType.enabled = true;
+                //    }
 
-                    else
-                    {
-                        dropType.enabled = false;
-                    }
-                }
+                //    else
+                //    {
+                //        dropType.enabled = false;
+                //    }
+                //}
 
                 typesInstances[dropNumber].SetActive(true);
             }

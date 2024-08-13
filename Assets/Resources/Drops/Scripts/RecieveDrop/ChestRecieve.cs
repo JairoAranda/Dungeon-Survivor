@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class XPRecive : GeneralReciveDrop
+public class ChestRecieve : GeneralReciveDrop
 {
-
     protected override void AnimDone()
     {
-        base.AnimDone();
+        StartCoroutine(DestoyObject());
 
-        PlayerStats.instance.xp += totalValue;
+        Debug.Log("cofre");
+
     }
-
 }

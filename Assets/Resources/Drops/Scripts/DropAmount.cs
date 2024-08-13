@@ -31,7 +31,7 @@ public class DropAmount : MonoBehaviour
         luck = PlayerStats.instance.GetComponentInParent<SOFinderPlayer>().sOPlayerInfo.statUpgrades[luckUpgrade];
     }
 
-    public int GetDropNumber(int minDrop, int maxDrop)
+    public int GetDropNumber(int minDrop, int maxDrop, double probabilityMaxDrop)
     {
         int range = maxDrop - minDrop + 1;
 
@@ -44,10 +44,10 @@ public class DropAmount : MonoBehaviour
             thresholds[i] = step * (i + 1) - luckFactor / range;
         }
 
-        // Generate a random number between 0 and 1
+        thresholds[range - 1] = 1.0 - probabilityMaxDrop;
+
         double randomValue = random.NextDouble();
 
-        // Determine the random number based on the thresholds
         for(int i = 0; i < range; i++)
         {
             if (randomValue < thresholds[i])

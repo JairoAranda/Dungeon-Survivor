@@ -6,7 +6,6 @@ public class MoneyManager : MonoBehaviour
 {
     public static MoneyManager instance;
 
-    [HideInInspector]
     public int money;
 
     private void Awake()

@@ -5,5 +5,6 @@ using UnityEngine;
 public enum EnumDropType
 {
     Money,
-    Exp
+    Exp,
+    Chest
 }

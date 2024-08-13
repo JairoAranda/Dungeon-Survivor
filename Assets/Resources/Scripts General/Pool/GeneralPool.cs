@@ -7,7 +7,7 @@ public class GeneralPool : MonoBehaviour
     [Header("Pool Data")]
     [Range(1, 50)]
     public int poolSize = 20;
-    [SerializeField] GameObject[] types;
+    [SerializeField] protected GameObject[] types;
 
     [HideInInspector]
     public GameObject[] typesInstances;

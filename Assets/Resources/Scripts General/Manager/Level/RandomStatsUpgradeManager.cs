@@ -12,7 +12,9 @@ public class RandomStatsUpgradeManager : MonoBehaviour
 
     [SerializeField] Button[] upgradeCards;
 
-    private PlayerUpgradeEnum[] keyButtons;
+    private PlayerUpgradeEnum?[] keyButtons;
+
+    private HashSet<PlayerUpgradeEnum> assignedValues;
 
     Dictionary<PlayerUpgradeEnum, int> dictionary;
 
@@ -21,7 +23,8 @@ public class RandomStatsUpgradeManager : MonoBehaviour
     {
         dictionary = PlayerStats.instance.GetComponent<SOFinderPlayer>().sOPlayerInfo.statUpgrades;
 
-        keyButtons = new PlayerUpgradeEnum[upgradeCards.Length];
+        keyButtons = new PlayerUpgradeEnum?[upgradeCards.Length];
+        assignedValues = new HashSet<PlayerUpgradeEnum>();
 
         for (int i = 0; i < upgradeCards.Length; i++)
         {
@@ -29,26 +32,45 @@ public class RandomStatsUpgradeManager : MonoBehaviour
 
             AssingRandomStat(upgradeCards[index], out keyButtons[index]);
 
-            upgradeCards[index].onClick.AddListener(() => IncrementValue(keyButtons[index]));
+            if (keyButtons[index].HasValue)
+            {
+                upgradeCards[index].onClick.AddListener(() => IncrementValue(keyButtons[index].Value));
+            }
+            else
+            {
+                upgradeCards[index].onClick.AddListener(() => GetMoney());
+            }
         }
     }
 
-    void AssingRandomStat(Button button, out PlayerUpgradeEnum key)
+    void AssingRandomStat(Button button, out PlayerUpgradeEnum? key)
     {
-        int randomIndex = UnityEngine.Random.Range(0, dictionary.Count);
-        key = dictionary.ElementAt(randomIndex).Key;
+        var availableKeys = dictionary.Where(kv => kv.Value < 20 && !assignedValues.Contains(kv.Key))
+                                    .Select(kv => kv.Key)
+                                    .ToList();
+
+        if (availableKeys.Count == 0)
+        {
+            button.GetComponentInChildren<TextMeshProUGUI>().text = "Dinero";
+            key = null;
+            return;
+        }
+
+        int randomIndex = UnityEngine.Random.Range(0, availableKeys.Count);
+
+        key = availableKeys[randomIndex];
+
+        assignedValues.Add(key.Value);
 
         button.GetComponentInChildren<TextMeshProUGUI>().text = key.ToString();
     }
 
+
     void IncrementValue(PlayerUpgradeEnum key)
     {
-        foreach (PlayerUpgradeEnum stat in System.Enum.GetValues(typeof(PlayerUpgradeEnum)))
+        if (dictionary.ContainsKey(key))
         {
-            if (stat == key)
-            {
-                dictionary[stat]++;
-            }
+            dictionary[key]++;
         }
 
         Time.timeScale = 1;
@@ -56,7 +78,17 @@ public class RandomStatsUpgradeManager : MonoBehaviour
         EventTriggerOnUpgradeStat?.Invoke();
 
         gameObject.SetActive(false);
+    }
 
+    void GetMoney()
+    {
+        MoneyManager.instance.money += 30;
+
+        Time.timeScale = 1;
+
+        EventTriggerOnUpgradeStat?.Invoke();
+
+        gameObject.SetActive(false);
     }
 
 }

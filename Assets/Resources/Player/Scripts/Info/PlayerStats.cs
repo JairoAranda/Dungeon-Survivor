@@ -13,7 +13,6 @@ public class PlayerStats : MonoBehaviour, IStats
 
     private SOPlayerInfo soPlayerInfo;
 
-    [HideInInspector]
     public float xp;
 
     [Header("Lvl XP")]
@@ -134,7 +133,7 @@ public class PlayerStats : MonoBehaviour, IStats
         if (xp >= xpMax)
         {
             lvl++;
-            xp = 0;
+            xp -= xpMax;
             xpMax *= 1.2f;
 
             EventTriggerLevelUp?.Invoke();
