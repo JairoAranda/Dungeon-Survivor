@@ -41,10 +41,18 @@ public class DropAmount : MonoBehaviour
 
         for (int i = 0; i < range; i++)
         {
-            thresholds[i] = step * (i + 1) - luckFactor / range;
+            thresholds[i] = Math.Max(step * (i + 1) - luckFactor / range, 0.001);
         }
 
-        thresholds[range - 1] = 1.0 - probabilityMaxDrop;
+        if (luck == 20)
+        {
+            thresholds[range - 1] = 1.0 - probabilityMaxDrop;
+        }
+
+        else
+        {
+            thresholds[range - 1] = Math.Max(1.0 - probabilityMaxDrop - luckFactor / range, 0.001);
+        }
 
         double randomValue = random.NextDouble();
 
