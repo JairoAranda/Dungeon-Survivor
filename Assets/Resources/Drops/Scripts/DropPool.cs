@@ -17,7 +17,7 @@ public class DropPool : GeneralPool
 
     private DropAmount amount;
 
-    int[] dropNumber;
+    [SerializeField] int[] dropNumber;
 
     int currentDrop = -1;
 
@@ -78,9 +78,7 @@ public class DropPool : GeneralPool
             {
                 currentDrop++;
 
-                minNum = maxNum;
-
-                Debug.Log("si");
+                minNum = maxNum - 1;
 
             }
 
@@ -92,18 +90,20 @@ public class DropPool : GeneralPool
 
                 maxNum = 0;
 
-                Debug.Log("no");
             }
 
             maxNum += drop.dropAmount;
 
-            dropNumber[currentDrop] = minNum;
+            if (dropNumber[currentDrop] == 0)
+            {
+                dropNumber[currentDrop] = minNum;
+            }
 
-            for (int i = minNum; i < maxNum; i++)
+            for (int i = 0; i < chance; i++)
             {
                 dropNumber[currentDrop]++;
 
-                if (dropNumber[currentDrop] > maxNum)
+                if (dropNumber[currentDrop] >= maxNum)
                 {
                     dropNumber[currentDrop] = minNum;
                 }
