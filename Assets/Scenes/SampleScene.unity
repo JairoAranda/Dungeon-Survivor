@@ -461,7 +461,8 @@ MonoBehaviour:
   drops:
   - {fileID: 11400000, guid: cd7929ec3387c814283ee133c704b798, type: 2}
   - {fileID: 11400000, guid: a54a05a3d455ed243a8396ce996d07f9, type: 2}
-  maxRange: 0.5
+  - {fileID: 11400000, guid: 40606751b88806548aa6b417d3f2ba46, type: 2}
+  maxRange: 1
 --- !u!114 &430356438
 MonoBehaviour:
   m_ObjectHideFlags: 0

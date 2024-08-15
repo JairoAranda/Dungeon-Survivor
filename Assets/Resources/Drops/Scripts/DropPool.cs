@@ -17,7 +17,13 @@ public class DropPool : GeneralPool
 
     private DropAmount amount;
 
-    private int dropNumber = -1;
+    int[] dropNumber;
+
+    int currentDrop = -1;
+
+    int minNum = 0;
+
+    int maxNum = 0;
 
     private void OnEnable()
     {
@@ -34,6 +40,8 @@ public class DropPool : GeneralPool
         poolSize = 0;
 
         amount = GetComponent<DropAmount>();
+
+        dropNumber = new int[drops.Length];
 
 
         foreach (var drop in drops)
@@ -66,16 +74,41 @@ public class DropPool : GeneralPool
         {
             int chance = amount.GetDropNumber(drop.minDrop, drop.maxDrop, drop.probabilityMaxDrop);
 
-            for (int i = 0; i < chance; i++)
+            if (currentDrop < dropNumber.Length - 1)
             {
-                dropNumber++;
+                currentDrop++;
 
-                if (dropNumber > poolSize - 1)
+                minNum = maxNum;
+
+                Debug.Log("si");
+
+            }
+
+            else
+            {
+                currentDrop = 0;
+
+                minNum = 0;
+
+                maxNum = 0;
+
+                Debug.Log("no");
+            }
+
+            maxNum += drop.dropAmount;
+
+            dropNumber[currentDrop] = minNum;
+
+            for (int i = minNum; i < maxNum; i++)
+            {
+                dropNumber[currentDrop]++;
+
+                if (dropNumber[currentDrop] > maxNum)
                 {
-                    dropNumber = 0;
+                    dropNumber[currentDrop] = minNum;
                 }
 
-                typesInstances[dropNumber].transform.position = GetRandomPositionAroundPoint(position, maxRange);
+                typesInstances[dropNumber[currentDrop]].transform.position = GetRandomPositionAroundPoint(position, maxRange);
 
                 //dropTypes = typesInstances[dropNumber].GetComponents<GeneralReciveDrop>();
 
@@ -92,7 +125,7 @@ public class DropPool : GeneralPool
                 //    }
                 //}
 
-                typesInstances[dropNumber].SetActive(true);
+                typesInstances[dropNumber[currentDrop]].SetActive(true);
             }
         }
 
