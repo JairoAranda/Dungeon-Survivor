@@ -30,7 +30,7 @@ public class ShootController : EnemyDetector
         {
             AutoShot();
         }
-        else if (Input.GetMouseButtonDown(0))
+        else if (Input.GetMouseButton(0))
         {
             TargetShot();
         }

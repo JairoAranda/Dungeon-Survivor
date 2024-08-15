@@ -76,7 +76,7 @@ public class MeleeHitController : MonoBehaviour
 
     void ManualHit()
     {
-        if (currentCD <= 0 && Input.GetMouseButtonDown(0))
+        if (currentCD <= 0 && Input.GetMouseButton(0))
         {
             Swing();
 
