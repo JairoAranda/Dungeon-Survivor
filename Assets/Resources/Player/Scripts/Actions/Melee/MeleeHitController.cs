@@ -27,7 +27,7 @@ public class MeleeHitController : MonoBehaviour
 
     MeleeDmg meleeDmg;
 
-    private void OnEnable()
+    private void Awake()
     {
         if (instance == null)
         {
@@ -39,11 +39,29 @@ public class MeleeHitController : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        UpdateEffect.EventTriggerUpdateEffect += Effect;
+    }
+
+    private void OnDisable()
+    {
+        UpdateEffect.EventTriggerUpdateEffect -= Effect;
+    }
+
     private void Start()
     {
         playerInfo = GetComponent<SOFinderPlayer>().sOPlayerInfo;
 
-        effect = GetComponent<IBulletType>();
+        Effect();
+    }
+
+
+    void Effect()
+    {
+        effect = GetComponentInChildren<IBulletType>();
+
+        currentCD = playerInfo.cooldown;
     }
 
     private void Update()

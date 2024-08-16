@@ -25,10 +25,6 @@ public class EnemyShoot : MonoBehaviour
 
         effect = GetComponent<IBulletType>();
 
-        if (effect == null)
-        {
-            Debug.Log(gameObject.name + " necesita un efecto");
-        }
     }
 
     void Update()

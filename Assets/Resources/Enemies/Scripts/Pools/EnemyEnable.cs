@@ -17,7 +17,15 @@ public class EnemyEnable : MonoBehaviour
 
     private int count = 0;
 
-    // Start is called before the first frame update
+
+    private void OnValidate()
+    {
+        if (maxDistance < minDistance)
+        {
+            maxDistance = minDistance;
+        }
+    }
+
     public void LateStart()
     {
         m_enemys = GetComponent<EnemyPoolManager>().typesInstances;

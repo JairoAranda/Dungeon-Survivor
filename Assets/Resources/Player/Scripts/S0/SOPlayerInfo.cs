@@ -36,6 +36,7 @@ public class SOPlayerInfo : ScriptableObject
         {
             statUpgrades[stat] = 1;
         }
-    }  
+    }
+
 
 }

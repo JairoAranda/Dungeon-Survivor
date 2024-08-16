@@ -13,7 +13,8 @@ public class PlayerStats : MonoBehaviour, IStats
 
     private SOPlayerInfo soPlayerInfo;
 
-    public float xp;
+    [Header("Player Tpye")]
+    public PlayerType playerType;
 
     [Header("Lvl XP")]
     [Range(0.1f, 500f)]
@@ -34,6 +35,9 @@ public class PlayerStats : MonoBehaviour, IStats
 
     [HideInInspector]
     public int lvl = 1;
+
+    [HideInInspector]
+    public float xp;
 
     [HideInInspector]
     public float dmg;

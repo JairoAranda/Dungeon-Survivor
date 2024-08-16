@@ -73,8 +73,6 @@ public class RandomStatsUpgradeManager : MonoBehaviour
             dictionary[key]++;
         }
 
-        Time.timeScale = 1;
-
         EventTriggerOnUpgradeStat?.Invoke();
 
         gameObject.SetActive(false);
@@ -83,10 +81,6 @@ public class RandomStatsUpgradeManager : MonoBehaviour
     void GetMoney()
     {
         MoneyManager.instance.money += 30;
-
-        Time.timeScale = 1;
-
-        EventTriggerOnUpgradeStat?.Invoke();
 
         gameObject.SetActive(false);
     }

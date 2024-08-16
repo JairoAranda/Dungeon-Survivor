@@ -34,4 +34,5 @@ public class FireBullet : MonoBehaviour, IBulletType
         }
     }
 
+
 }

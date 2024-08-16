@@ -13,11 +13,9 @@ public class DropPool : GeneralPool
     [Range(0.0f, 2.0f)]
     [SerializeField] private float maxRange = 0.5f;
 
-    //private GeneralReciveDrop[] dropTypes;
-
     private DropAmount amount;
 
-    [SerializeField] int[] dropNumber;
+    int[] dropNumber;
 
     int currentDrop = -1;
 
@@ -79,7 +77,6 @@ public class DropPool : GeneralPool
                 currentDrop++;
 
                 minNum = maxNum - 1;
-
             }
 
             else
@@ -89,7 +86,6 @@ public class DropPool : GeneralPool
                 minNum = 0;
 
                 maxNum = 0;
-
             }
 
             maxNum += drop.dropAmount;
@@ -109,21 +105,6 @@ public class DropPool : GeneralPool
                 }
 
                 typesInstances[dropNumber[currentDrop]].transform.position = GetRandomPositionAroundPoint(position, maxRange);
-
-                //dropTypes = typesInstances[dropNumber].GetComponents<GeneralReciveDrop>();
-
-                //foreach (GeneralReciveDrop dropType in dropTypes)
-                //{
-                //    if (dropType.type == drop.types)
-                //    {
-                //        dropType.enabled = true;
-                //    }
-
-                //    else
-                //    {
-                //        dropType.enabled = false;
-                //    }
-                //}
 
                 typesInstances[dropNumber[currentDrop]].SetActive(true);
             }

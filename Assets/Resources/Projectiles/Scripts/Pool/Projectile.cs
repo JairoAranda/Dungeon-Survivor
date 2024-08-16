@@ -12,8 +12,6 @@ public class Projectile : MonoBehaviour
 
     [HideInInspector]
     public float dmg, range;
-    //[HideInInspector]
-    //public Vector3 target;
     [HideInInspector]
     public LayerMask hitLayer;
 
@@ -21,8 +19,6 @@ public class Projectile : MonoBehaviour
 
     private void OnEnable()
     {
-        //GetComponent<Rigidbody2D>().AddForce(Direction() * speed, ForceMode2D.Impulse);
-
         startPosition = transform.position;
         
     }
@@ -30,13 +26,6 @@ public class Projectile : MonoBehaviour
     {
         EndProjectile();
     }
-
-    //private Vector2 Direction()
-    //{
-    //    Vector2 direction = (target - transform.position).normalized;
-
-    //    return direction;
-    //}
 
     private void Update()
     {

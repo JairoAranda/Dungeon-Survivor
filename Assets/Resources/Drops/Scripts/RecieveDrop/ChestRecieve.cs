@@ -6,9 +6,8 @@ public class ChestRecieve : GeneralReciveDrop
 {
     protected override void AnimDone()
     {
+        ChestManager.instance.ActiveChestMenu();
+
         StartCoroutine(DestoyObject());
-
-        Debug.Log("cofre");
-
     }
 }

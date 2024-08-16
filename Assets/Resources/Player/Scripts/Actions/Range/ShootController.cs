@@ -10,16 +10,29 @@ public class ShootController : EnemyDetector
 
     private IBulletType effect;
 
+    private void OnEnable()
+    {
+        UpdateEffect.EventTriggerUpdateEffect += Effect;
+    }
+
+    private void OnDisable()
+    {
+        UpdateEffect.EventTriggerUpdateEffect -= Effect;
+    }
+
     protected override void Start()
     {
         base.Start();
 
-        effect = GetComponent<IBulletType>();
+        Effect();
+    }
 
-        if (effect == null)
-        {
-            Debug.Log(gameObject.name + " necesita un efecto");
-        }
+    void Effect()
+    {
+        effect = GetComponentInChildren<IBulletType>();
+
+        lastShootTime = 0;
+
     }
 
     void Update()

@@ -72,7 +72,7 @@ public class TripleShoot : BaseAbility, IAbility
 
         projectile.dmg = PlayerStats.instance.dmg;
         projectile.range = sOPlayerInfo.range;
-        projectile.effectType = PlayerStats.instance.GetComponent<IBulletType>();
+        projectile.effectType = PlayerStats.instance.GetComponentInChildren<IBulletType>();
         projectile.GetComponent<SpriteRenderer>().color = bulletColor;
     }
 }
