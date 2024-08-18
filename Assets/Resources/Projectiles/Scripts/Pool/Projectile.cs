@@ -8,12 +8,14 @@ public class Projectile : MonoBehaviour
     private IStats statsType;
 
     [HideInInspector]
-    public IBulletType effectType;
+    public GameObject owner;
 
     [HideInInspector]
     public float dmg, range;
     [HideInInspector]
     public LayerMask hitLayer;
+
+    IBulletType effectType;
 
     private Vector2 startPosition;
 
@@ -25,6 +27,7 @@ public class Projectile : MonoBehaviour
     private void OnBecameInvisible()
     {
         EndProjectile();
+
     }
 
     private void Update()
@@ -33,6 +36,8 @@ public class Projectile : MonoBehaviour
 
         if (distanceTravelled >= range)
         {
+            effectType = owner.GetComponentInChildren<IBulletType>();
+
             effectType.Effect(gameObject);
 
             EndProjectile();
@@ -44,6 +49,8 @@ public class Projectile : MonoBehaviour
         if (((1 << other.gameObject.layer) & hitLayer) != 0)
         {
             statsType = other.GetComponent<IStats>();
+
+            effectType = owner.GetComponentInChildren<IBulletType>();
 
             if (statsType != null && effectType != null)
             {

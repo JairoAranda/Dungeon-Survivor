@@ -25,7 +25,7 @@ public class ProjectilePool : GeneralPool
         }
     }
 
-    public void ShootBullet(Vector2 shootPosition, float m_speed, float m_dmg, float m_range ,Vector3 m_target, Vector3 m_startPosition ,LayerMask m_Layer , IBulletType effect, Color _color)
+    public void ShootBullet(Vector2 shootPosition, float m_speed, float m_dmg, float m_range ,Vector3 m_target, Vector3 m_startPosition ,LayerMask m_Layer , GameObject _owner, Color _color)
     {
         shootNumber++;
 
@@ -41,7 +41,7 @@ public class ProjectilePool : GeneralPool
         projectileComponent.dmg = m_dmg;
         projectileComponent.range = m_range;
         projectileComponent.hitLayer = m_Layer;
-        projectileComponent.effectType = effect;
+        projectileComponent.owner = _owner;
 
         target = m_target;
         startPosition = m_startPosition;

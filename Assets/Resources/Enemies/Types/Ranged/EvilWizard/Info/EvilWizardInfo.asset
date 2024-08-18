@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b5fb1f9c5ceb394484c4a9c803eba60, type: 3}
-  m_Name: EnemyMeleInfo
+  m_Name: EvilWizardInfo
   m_EditorClassIdentifier: 
-  id: 0
-  speed: 3
-  health: 3
-  attackRange: 0
+  id: 1
+  speed: 2
+  health: 4
+  attackRange: 5
   damage: 1
-  cooldown: 1
-  projectileSpeed: 2
+  attackSpeed: 1
+  projectileSpeed: 10

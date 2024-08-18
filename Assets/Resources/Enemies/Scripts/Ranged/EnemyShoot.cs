@@ -21,7 +21,7 @@ public class EnemyShoot : MonoBehaviour
         distanceToPlayer = GetComponent<DistanceToPlayer>();
         enemyInfoSO = GetComponent<SOFinderEnemy>().enemyInfoSO;
 
-        shootInterval = enemyInfoSO.cooldown;
+        shootInterval = enemyInfoSO.attackSpeed;
 
         effect = GetComponent<IBulletType>();
 
@@ -33,7 +33,7 @@ public class EnemyShoot : MonoBehaviour
 
         if (distanceToPlayer.NearPlayer() && shootTimer >= shootInterval)
         {
-            ProjectilePool.instance.ShootBullet(gameObject.transform.position, enemyInfoSO.projectileSpeed, enemyInfoSO.damage, enemyInfoSO.attackRange + 40 ,PlayerStats.instance.transform.position, transform.position ,playerLayer, effect, bulletColor);
+            ProjectilePool.instance.ShootBullet(gameObject.transform.position, enemyInfoSO.projectileSpeed, enemyInfoSO.damage, enemyInfoSO.attackRange + 40 ,PlayerStats.instance.transform.position, transform.position ,playerLayer, gameObject, bulletColor);
             shootTimer = 0;
         }
     }

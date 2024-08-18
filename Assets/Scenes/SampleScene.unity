@@ -2058,7 +2058,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1588856809}
   - component: {fileID: 1588856808}
-  - component: {fileID: 1588856810}
   m_Layer: 0
   m_Name: ChestManager
   m_TagString: Untagged
@@ -2095,18 +2094,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1588856810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1588856807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a524d956ad6f7f43b80420236a433a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1612688167
 GameObject:
   m_ObjectHideFlags: 3
@@ -2374,7 +2361,6 @@ MonoBehaviour:
   abilityButton: {fileID: 585818368}
   moneyButton: {fileID: 1892921439}
   parentObject: {fileID: 1581279806}
-  updateEffect: {fileID: 1588856810}
 --- !u!114 &1852574976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2642,6 +2628,7 @@ MonoBehaviour:
   types:
   - {fileID: 725159313396139033, guid: f272460673298d249b0579c0a634c84a, type: 3}
   - {fileID: 8597611865417768350, guid: 053e0afd9ffc76b48933aaff58fcdcfb, type: 3}
+  - {fileID: 725159313396139033, guid: 8cbeea0a1e7fb7e4d9db1c1bb6adcd53, type: 3}
   typesInstances: []
 --- !u!114 &1958911686
 MonoBehaviour:

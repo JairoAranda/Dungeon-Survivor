@@ -21,7 +21,7 @@ public class SOEnemyInfo : ScriptableObject
 
     [Header("Ranged Stats")]
     [Range(0.1f, 5f)]
-    public float cooldown = 1;
+    public float attackSpeed = 1;
     [Tooltip("Only Ranged.")]
     [Range(1, 50)]
     public float projectileSpeed = 2;

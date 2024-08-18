@@ -30,9 +30,6 @@ public class ShootController : EnemyDetector
     void Effect()
     {
         effect = GetComponentInChildren<IBulletType>();
-
-        lastShootTime = 0;
-
     }
 
     void Update()
@@ -57,7 +54,7 @@ public class ShootController : EnemyDetector
 
         if (closestEnemy != null && lastShootTime > shootCooldown)
         {
-            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, PlayerStats.instance.dmg, detectionRange, closestEnemy.position, handPosition.position ,detectionLayer, effect, bulletColor);
+            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, PlayerStats.instance.dmg, detectionRange, closestEnemy.position, handPosition.position ,detectionLayer, gameObject, bulletColor);
             lastShootTime = 0;
         }
     }
@@ -72,7 +69,7 @@ public class ShootController : EnemyDetector
 
         if (lastShootTime > shootCooldown)
         {
-            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, PlayerStats.instance.dmg, detectionRange, mousePosition, handPosition.position ,detectionLayer, effect, bulletColor);
+            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, PlayerStats.instance.dmg, detectionRange, mousePosition, handPosition.position ,detectionLayer, gameObject, bulletColor);
             lastShootTime = 0;
         }
     }

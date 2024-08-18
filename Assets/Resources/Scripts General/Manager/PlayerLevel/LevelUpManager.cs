@@ -22,7 +22,7 @@ public class LevelUpManager : MonoBehaviour
     {
         while (chestMenu.activeSelf)
         {
-            CheckMenu();
+            StartCoroutine(CheckMenu());
         }
 
         upgradeOptionGO.SetActive(true);
@@ -30,7 +30,7 @@ public class LevelUpManager : MonoBehaviour
 
     IEnumerator CheckMenu()
     {
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForFixedUpdate();
 
         EnableLevelUpOptions();
     }

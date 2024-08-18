@@ -6,10 +6,10 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy01_AC
+  m_Name: EvilWizard_AC
   m_Controller: {fileID: 9100000, guid: 15654fd0681db874e9c34e429db0c52f, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 6743807762460614381, guid: 449bcfe220b94fb4d886579d8b2925bb, type: 3}
-    m_OverrideClip: {fileID: 7400000, guid: f4542a8adee8aa0439d4e62eea983486, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d10d8eb053059064894872c7032a5dba, type: 2}
   - m_OriginalClip: {fileID: 3253936337251633953, guid: 449bcfe220b94fb4d886579d8b2925bb, type: 3}
-    m_OverrideClip: {fileID: 7400000, guid: 3262f2dec4bcb174fb64b427997cbe15, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 19697ebeffe9b054e9910fe8844b43e1, type: 2}

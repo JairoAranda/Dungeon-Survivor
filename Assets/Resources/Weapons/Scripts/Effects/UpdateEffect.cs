@@ -14,7 +14,7 @@ public class UpdateEffect : MonoBehaviour
     
     private IEnumerator Event()
     {
-       
+
         yield return new WaitForEndOfFrame();
 
         EventTriggerUpdateEffect?.Invoke();

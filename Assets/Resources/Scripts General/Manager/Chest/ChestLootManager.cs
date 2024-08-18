@@ -17,8 +17,6 @@ public class ChestLootManager : MonoBehaviour
     [Header("Other Configs")]
     [SerializeField] Transform parentObject;
 
-    [SerializeField] UpdateEffect updateEffect;
-
     private GameObject weapon;
 
     private GameObject[] abilities = new GameObject[2];
@@ -121,10 +119,6 @@ public class ChestLootManager : MonoBehaviour
         {
             type = Instantiate(loot, parentObject.position, parentObject.rotation, parentObject);
         }
-
-        Debug.Log("Test");
-
-        updateEffect.CallEvent();
 
         gameObject.SetActive(false);
     }

@@ -26,7 +26,7 @@ public class ChestManager : MonoBehaviour
     {
         while(xpMenu.activeSelf)
         {
-            CheckMenu();
+            StartCoroutine(CheckMenu());
         }
 
         chestMenu.SetActive(true);
@@ -34,7 +34,7 @@ public class ChestManager : MonoBehaviour
 
     IEnumerator CheckMenu()
     {
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForFixedUpdate();
 
         ActiveChestMenu();
     }
