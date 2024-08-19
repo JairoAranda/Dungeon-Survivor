@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuButtonManager : MonoBehaviour
 {
+    [SerializeField] GameObject[] currentMenus;
+
     public void ChangeScene (int scene)
     {
         SceneManager.LoadScene (scene);
@@ -12,10 +14,12 @@ public class MainMenuButtonManager : MonoBehaviour
 
     public void ChangeMenu(GameObject nextMenu)
     {
-        GameObject currentMenu = gameObject.GetComponentInParent<GameObject> ();
+        foreach (GameObject menu in currentMenus)
+        {
+            menu.SetActive(false);
+        }
 
         nextMenu.SetActive (true);
 
-        currentMenu.SetActive (false);
     }
 }
