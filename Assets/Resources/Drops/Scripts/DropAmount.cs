@@ -33,6 +33,8 @@ public class DropAmount : MonoBehaviour
 
     public int GetDropNumber(int minDrop, int maxDrop, double probabilityMaxDrop)
     {
+        probabilityMaxDrop += PlayerPrefs.GetInt("Luck", 1) * 0.1f - 0.1f;
+
         int range = maxDrop - minDrop;
 
         double luckFactor = Math.Pow(2, luck / 10.0) - 1;

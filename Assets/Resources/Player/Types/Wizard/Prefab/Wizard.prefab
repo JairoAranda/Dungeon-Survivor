@@ -465,7 +465,7 @@ MonoBehaviour:
   detectionLayer:
     serializedVersion: 2
     m_Bits: 128
-  absortionUpgrade: 5
+  absortionUpgrade: 6
 --- !u!114 &2610013235999457917
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -99,8 +99,8 @@ public class PlayerStats : MonoBehaviour, IStats
 
     void UpgradeStats()
     {
-        life = soPlayerInfo.health * PlayerPrefs.GetInt("Life", 1) * ScaleMultiplier.ScaleFactor(lifeMultiplier, soPlayerInfo.statUpgrades[lifeUpgrade]);
-        dmg = soPlayerInfo.damage * PlayerPrefs.GetInt("Dmg", 1) * ScaleMultiplier.ScaleFactor(dmgMultiplier, soPlayerInfo.statUpgrades[dmgUpgrade]);
+        life = soPlayerInfo.health * PlayerPrefs.GetInt("Health", 1) * ScaleMultiplier.ScaleFactor(lifeMultiplier, soPlayerInfo.statUpgrades[lifeUpgrade]);
+        dmg = soPlayerInfo.damage * PlayerPrefs.GetInt("Damage", 1) * ScaleMultiplier.ScaleFactor(dmgMultiplier, soPlayerInfo.statUpgrades[dmgUpgrade]);
         coolDownReduction = PlayerPrefs.GetInt("CD", 1) * ScaleMultiplier.ScaleFactor(cooldownMultiplier, soPlayerInfo.statUpgrades[cdUpgrade]);
     }
 

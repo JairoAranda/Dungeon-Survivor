@@ -67,7 +67,7 @@ public class GeneralReciveDrop : MonoBehaviour
 
     protected virtual void AnimDone()
     {
-        totalValue = baseValue* PlayerPrefs.GetInt(playerPrefs, 1) * ScaleMultiplier.ScaleFactor(multiplier, sOPlayerInfo.statUpgrades[upgrade]);
+        totalValue = baseValue * PlayerPrefs.GetInt(playerPrefs, 1) * ScaleMultiplier.ScaleFactor(multiplier, sOPlayerInfo.statUpgrades[upgrade]);
 
         StartCoroutine(DestoyObject());
 

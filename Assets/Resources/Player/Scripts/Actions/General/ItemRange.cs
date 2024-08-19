@@ -5,9 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SOFinderPlayer))]
 public class ItemRangeAbsortion : MonoBehaviour
 {
-    [Header("Absortion Options")]
-    [Range(0.1f, 50f)]
-    [SerializeField] float detectionRadiusDefault = 20f;
+    [Header("Absortion Multiplier")]
     [Range(2, 10)]
     [SerializeField] int multiplier = 5;
 
@@ -17,8 +15,9 @@ public class ItemRangeAbsortion : MonoBehaviour
     [Header("Stat Type")]
     [SerializeField] private PlayerUpgradeEnum absortionUpgrade;
 
+    float detectionRadiusDefault;
+
     private int absortion;
-    private float scaleFactor;
     private float detectionRadius;
 
     private void OnEnable()
@@ -34,13 +33,15 @@ public class ItemRangeAbsortion : MonoBehaviour
     private void Start()
     {
         UpdateDetectionRange();
+
+        detectionRadiusDefault = GetComponent<SOFinderPlayer>().sOPlayerInfo.absortion;
     }
 
     void UpdateDetectionRange()
     {
         absortion = GetComponent<SOFinderPlayer>().sOPlayerInfo.statUpgrades[absortionUpgrade];
 
-        detectionRadius = detectionRadiusDefault * ScaleMultiplier.ScaleFactor(multiplier, absortion);
+        detectionRadius = detectionRadiusDefault * PlayerPrefs.GetInt("Absortion", 1) * ScaleMultiplier.ScaleFactor(multiplier, absortion);
     }
 
     void Update()
