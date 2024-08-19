@@ -12,6 +12,8 @@ public class GeneralReciveDrop : MonoBehaviour
     [Header("Stat Upgrade")]
     [SerializeField] private PlayerUpgradeEnum upgrade;
 
+    [SerializeField] private string playerPrefs;
+
     [HideInInspector]
     public bool isPlaying;
 
@@ -65,7 +67,7 @@ public class GeneralReciveDrop : MonoBehaviour
 
     protected virtual void AnimDone()
     {
-        totalValue = baseValue * ScaleMultiplier.scaleFactor(multiplier, sOPlayerInfo.statUpgrades[upgrade]);
+        totalValue = baseValue* PlayerPrefs.GetInt(playerPrefs, 1) * ScaleMultiplier.ScaleFactor(multiplier, sOPlayerInfo.statUpgrades[upgrade]);
 
         StartCoroutine(DestoyObject());
 

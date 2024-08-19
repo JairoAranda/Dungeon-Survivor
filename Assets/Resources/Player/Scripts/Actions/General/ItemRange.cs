@@ -40,7 +40,7 @@ public class ItemRangeAbsortion : MonoBehaviour
     {
         absortion = GetComponent<SOFinderPlayer>().sOPlayerInfo.statUpgrades[absortionUpgrade];
 
-        detectionRadius = detectionRadiusDefault * ScaleMultiplier.scaleFactor(multiplier, absortion);
+        detectionRadius = detectionRadiusDefault * ScaleMultiplier.ScaleFactor(multiplier, absortion);
     }
 
     void Update()

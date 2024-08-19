@@ -23,7 +23,6 @@ public class TripleShoot : BaseAbility, IAbility
 
     public void Ability()
     {
-
         for (float i = -shotAngle; i <= shotAngle; i+=shotAngle) 
         {
             AddPool();

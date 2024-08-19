@@ -20,18 +20,16 @@ public class LevelUpManager : MonoBehaviour
 
     void EnableLevelUpOptions()
     {
-        while (chestMenu.activeSelf)
-        {
-            StartCoroutine(CheckMenu());
-        }
-
-        upgradeOptionGO.SetActive(true);
+        StartCoroutine(CheckMenu());
     }
 
     IEnumerator CheckMenu()
     {
-        yield return new WaitForFixedUpdate();
+        while (chestMenu.activeSelf)
+        {
+            yield return new WaitForFixedUpdate();
+        }
 
-        EnableLevelUpOptions();
+        upgradeOptionGO.SetActive(true);
     }
 }

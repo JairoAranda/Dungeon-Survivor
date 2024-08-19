@@ -156,7 +156,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  upgrade: 6
+  upgrade: 7
+  playerPrefs: XP
   isPlaying: 0
   gatherTime: 1
   baseValue: 5

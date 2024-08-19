@@ -166,6 +166,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   handPosition: {fileID: 8631217466926080632}
+  attackSpeedMultiplier: 0
+  attackSpeedUpgrade: 0
 --- !u!1 &8798764990493325172
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +190,7 @@ GameObject:
   - component: {fileID: 3515880702225438154}
   - component: {fileID: 2610013235999457917}
   m_Layer: 3
-  m_Name: Mage
+  m_Name: Wizard
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -421,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1feb944f65aef947a785c66220097db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xp: 0
+  playerType: 0
   xpMax: 100
   lifeMultiplier: 5
   dmgMultiplier: 5
@@ -430,8 +432,9 @@ MonoBehaviour:
   dmgUpgrade: 2
   cdUpgrade: 3
   lvl: 1
+  xp: 0
   dmg: 0
-  coolDown: 0
+  coolDownReduction: 0
 --- !u!114 &2732032281820459234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,6 +482,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   handPosition: {fileID: 2436938410995096647}
+  attackSpeedMultiplier: 2
+  attackSpeedUpgrade: 0
   bulletColor: {r: 0.4999555, g: 0.4999555, b: 0.990566, a: 1}
 --- !u!1001 &4542120967809364155
 PrefabInstance:

@@ -2833,6 +2833,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2610013235999457917, guid: d610469790874e2408222863be71514b, type: 3}
+      propertyPath: attackSpeedMultiplier
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3164183031912566847, guid: d610469790874e2408222863be71514b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2883,7 +2887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8798764990493325172, guid: d610469790874e2408222863be71514b, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Mage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

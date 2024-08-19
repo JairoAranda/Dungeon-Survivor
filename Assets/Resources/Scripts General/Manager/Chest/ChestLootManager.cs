@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -62,12 +63,15 @@ public class ChestLootManager : MonoBehaviour
         GameObject randomWeapon = GetRandomObjectNotInScene(loot.weapons);
         if (randomWeapon != null)
         {
+            weaponButton.GetComponentInChildren<TextMeshProUGUI>().text = randomWeapon.name;
             weaponButton.onClick.AddListener(() => ActivateLoot(randomWeapon, weapon));
         }
 
         GameObject randomAbility = GetRandomObjectNotInScene(loot.abilities);
         if (randomAbility != null)
         {
+            abilityButton.GetComponentInChildren<TextMeshProUGUI>().text = randomAbility.name;
+
             abilityButton.onClick.AddListener(() => ActivateLoot(randomAbility, abilities[abilityNum]));
 
             abilityNum++;
@@ -77,6 +81,8 @@ public class ChestLootManager : MonoBehaviour
                 abilityNum = 0;
             }
         }
+
+        moneyButton.GetComponentInChildren<TextMeshProUGUI>().text = "30 gold";
 
         moneyButton.onClick.AddListener(() => GetMoney());
     }

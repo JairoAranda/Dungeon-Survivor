@@ -9,6 +9,13 @@ public class EnemyDetector : MonoBehaviour
 
     [SerializeField] protected Transform handPosition;
 
+    [Header("Lvl Multiplier")]
+    [Range(2, 10)]
+    [SerializeField] protected int attackSpeedMultiplier;
+
+    [Header("Stat Type")]
+    [SerializeField] private PlayerUpgradeEnum attackSpeedUpgrade;
+
     private protected SOPlayerInfo sOPlayerInfo;
 
     private protected float shootCooldown;
@@ -21,7 +28,7 @@ public class EnemyDetector : MonoBehaviour
         sOPlayerInfo = GetComponent<SOFinderPlayer>().sOPlayerInfo;
 
         detectionRange = sOPlayerInfo.range;
-        shootCooldown = sOPlayerInfo.cooldown;
+        shootCooldown = sOPlayerInfo.attackSpeed * PlayerPrefs.GetInt("AttackSpeed", 1) * ScaleMultiplier.ScaleFactor(attackSpeedMultiplier, sOPlayerInfo.statUpgrades[attackSpeedUpgrade]);
     }
 
     protected Transform DetectClosestEnemy()

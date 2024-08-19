@@ -7,6 +7,7 @@ public enum PlayerUpgradeEnum
     HealthLvl,
     SpeedLvl,
     DmgLvl,
+    AttackSpeedLvl,
     CooldownLvl,
     LuckLvl,
     AbsortionLvl,

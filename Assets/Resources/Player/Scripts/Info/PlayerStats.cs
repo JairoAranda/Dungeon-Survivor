@@ -43,7 +43,7 @@ public class PlayerStats : MonoBehaviour, IStats
     public float dmg;
 
     [HideInInspector]
-    public float coolDown;
+    public float coolDownReduction;
 
     private float _life;
 
@@ -99,9 +99,9 @@ public class PlayerStats : MonoBehaviour, IStats
 
     void UpgradeStats()
     {
-        life = soPlayerInfo.health * ScaleMultiplier.scaleFactor(lifeMultiplier, soPlayerInfo.statUpgrades[lifeUpgrade]);
-        dmg = soPlayerInfo.damage * ScaleMultiplier.scaleFactor(dmgMultiplier, soPlayerInfo.statUpgrades[dmgUpgrade]);
-        coolDown = soPlayerInfo.cooldown * ScaleMultiplier.scaleFactor(cooldownMultiplier, soPlayerInfo.statUpgrades[cdUpgrade]);
+        life = soPlayerInfo.health * PlayerPrefs.GetInt("Life", 1) * ScaleMultiplier.ScaleFactor(lifeMultiplier, soPlayerInfo.statUpgrades[lifeUpgrade]);
+        dmg = soPlayerInfo.damage * PlayerPrefs.GetInt("Dmg", 1) * ScaleMultiplier.ScaleFactor(dmgMultiplier, soPlayerInfo.statUpgrades[dmgUpgrade]);
+        coolDownReduction = PlayerPrefs.GetInt("CD", 1) * ScaleMultiplier.ScaleFactor(cooldownMultiplier, soPlayerInfo.statUpgrades[cdUpgrade]);
     }
 
 

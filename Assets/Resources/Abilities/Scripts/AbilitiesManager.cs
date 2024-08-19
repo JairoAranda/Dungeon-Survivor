@@ -28,7 +28,7 @@ public class AbilitiesManager : MonoBehaviour
         {
             if (qAbility.currentCD <= 0)
             {
-                qAbility.currentCD = qAbility.cd;
+                qAbility.currentCD = qAbility.cd / PlayerStats.instance.coolDownReduction;
 
                 qAbility.Ability();
             }
@@ -39,7 +39,7 @@ public class AbilitiesManager : MonoBehaviour
         {
             if (eAbility.currentCD <= 0)
             {
-                eAbility.currentCD = eAbility.cd;
+                eAbility.currentCD = eAbility.cd / PlayerStats.instance.coolDownReduction;
 
                 eAbility.Ability();
             }

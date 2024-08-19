@@ -42,9 +42,9 @@ public class PlayerMovement : MonoBehaviour
 
     void UpgradeStat()
     {
-        scaleFactor = ScaleMultiplier.scaleFactor(multiplier, sOPlayerInfo.statUpgrades[speedUpgrade]);
+        scaleFactor = ScaleMultiplier.ScaleFactor(multiplier, sOPlayerInfo.statUpgrades[speedUpgrade]);
 
-        m_speed = sOPlayerInfo.speed * scaleFactor;
+        m_speed = sOPlayerInfo.speed * PlayerPrefs.GetInt("Speed", 1)  * scaleFactor;
     }
 
     private void Update()

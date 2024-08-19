@@ -6,6 +6,7 @@ using UnityEngine;
 public class BaseAbility : MonoBehaviour
 {
     [Header("Ability CoolDown")]
+    [Range(.1f, 20f)]
     [SerializeField] private float _cd;
 
     public float cd

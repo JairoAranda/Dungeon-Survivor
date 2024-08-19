@@ -24,18 +24,16 @@ public class ChestManager : MonoBehaviour
 
     public void ActiveChestMenu()
     {
-        while(xpMenu.activeSelf)
-        {
-            StartCoroutine(CheckMenu());
-        }
-
-        chestMenu.SetActive(true);
+        StartCoroutine(CheckMenu());
     }
 
     IEnumerator CheckMenu()
     {
-        yield return new WaitForFixedUpdate();
+        while (xpMenu.activeSelf)
+        {
+            yield return new WaitForFixedUpdate();
+        }
 
-        ActiveChestMenu();
+        chestMenu.SetActive(true);
     }
 }
