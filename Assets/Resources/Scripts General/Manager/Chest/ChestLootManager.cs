@@ -131,7 +131,7 @@ public class ChestLootManager : MonoBehaviour
 
     private void GetMoney()
     {
-        MoneyManager.instance.money += 30;
+        MoneyManager.money += 30;
 
         gameObject.SetActive(false);
     }

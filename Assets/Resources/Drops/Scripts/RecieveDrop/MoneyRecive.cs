@@ -9,7 +9,7 @@ public class MoneyRecive : GeneralReciveDrop
     {
         base.AnimDone();
 
-        MoneyManager.instance.money += Mathf.RoundToInt(totalValue);
+        MoneyManager.money += Mathf.RoundToInt(totalValue);
 
     }
 }
