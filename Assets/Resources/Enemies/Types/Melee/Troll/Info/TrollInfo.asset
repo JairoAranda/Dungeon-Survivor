@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TrollInfo
   m_EditorClassIdentifier: 
   id: 3
-  speed: 2
+  speed: 4
   health: 6
   attackRange: 0
   damage: 2

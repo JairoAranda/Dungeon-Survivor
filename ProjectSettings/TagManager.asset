@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - Projectile
   - Weapon
+  - ChestMenu
+  - Hand
+  - Arm
   layers:
   - Default
   - TransparentFX

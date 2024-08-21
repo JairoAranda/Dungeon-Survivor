@@ -5,9 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(AbilityAsign))]
 public class TripleShoot : BaseAbility, IAbility
 {
-    [Header("Transforms Positions")]
-    [SerializeField] Transform handPoint;
-    [SerializeField] Transform armPosition;
 
     [Header("Aperture Angle")]
     [Range(.1f, 40f)]
@@ -16,10 +13,20 @@ public class TripleShoot : BaseAbility, IAbility
     [Header("Bullet Color")]
     [SerializeField] Color bulletColor;
 
+    private Transform handPoint;
+    private Transform armPosition;
+
     GameObject bulletToShoot;
 
     Rigidbody2D rb;
 
+
+    private void OnEnable()
+    {
+        handPoint = GameObject.FindGameObjectWithTag("Hand").transform;
+
+        armPosition = GameObject.FindGameObjectWithTag("Arm").transform;
+    }
 
     public void Ability()
     {

@@ -1,12 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class DropAmount : MonoBehaviour
 {    
-    private static System.Random random = new System.Random();
-
     private int luck;
 
     [SerializeField] private PlayerUpgradeEnum luckUpgrade;
@@ -34,38 +31,29 @@ public class DropAmount : MonoBehaviour
     public int GetDropNumber(int minDrop, int maxDrop, double probabilityMaxDrop)
     {
         probabilityMaxDrop += PlayerPrefs.GetInt("Luck", 1) * 0.1f - 0.1f;
+        probabilityMaxDrop = Mathf.Clamp((float)probabilityMaxDrop, 0.01f, 1.0f);
+
+        luck = Mathf.Clamp(luck, 1, 20);
 
         int range = maxDrop - minDrop;
 
-        double luckFactor = Math.Pow(2, luck / 10.0) - 1;
-        double step = 1.0 / range;
-        double[] thresholds = new double[range];
+        float luckFactor = Mathf.Clamp01(Mathf.Pow((float)luck / 20f, 2) * (float)probabilityMaxDrop);
 
-        for (int i = 0; i < range; i++)
-        {
-            thresholds[i] = Math.Max(step * (i + 1) - luckFactor / range, 0.001);
-        }
+        float randomValue = Random.Range(0f, 1f);
 
-        if (luck == 20)
+        int result;
+        if (randomValue <= luckFactor)
         {
-            thresholds[range - 1] = 1.0 - probabilityMaxDrop;
+            result = maxDrop;
         }
 
         else
         {
-            thresholds[range - 1] = Math.Max(1.0 - probabilityMaxDrop - luckFactor / range, 0.001);
+            result = Mathf.FloorToInt(minDrop + randomValue * range);
         }
 
-        double randomValue = random.NextDouble();
+        result = Mathf.Clamp(result, minDrop, maxDrop);
 
-        for(int i = 0; i < range; i++)
-        {
-            if (randomValue < thresholds[i])
-            {
-                return minDrop + i;
-            }
-        }
-
-        return maxDrop;
+        return result;
     }
 }

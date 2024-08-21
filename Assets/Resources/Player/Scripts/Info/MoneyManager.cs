@@ -15,7 +15,5 @@ public class MoneyManager : MonoBehaviour
     private void Start()
     {
         money = PlayerPrefs.GetInt("CurrentMoney", 0);
-
-        money = 1000;
     }
 }
