@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: NormalPlayer
   m_EditorClassIdentifier: 
   health: 10
-  speed: 3
-  absortion: 3
+  speed: 4.1
+  absortion: 5
   iFrames: 2
   damage: 1
   attackSpeed: 1

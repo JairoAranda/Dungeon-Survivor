@@ -4,16 +4,46 @@ using UnityEngine;
 
 public class MoneyManager : MonoBehaviour
 {
+    public static MoneyManager instance;
 
-    public static int money;
+    public int money;
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+
+        else
+        {
+            Destroy(gameObject);
+        }
+
         DontDestroyOnLoad(gameObject);
     }
+
+
+    private void OnEnable()
+    {
+        PlayerStats.EventTriggerDeathPlayer += SaveMoney;
+    }
+
+    private void OnDisable()
+    {
+        PlayerStats.EventTriggerDeathPlayer -= SaveMoney;
+    }
+
 
     private void Start()
     {
         money = PlayerPrefs.GetInt("CurrentMoney", 0);
+    }
+
+    void SaveMoney()
+    {
+        Debug.Log("hola");
+
+        PlayerPrefs.SetInt("CurrentMoney", money);
     }
 }

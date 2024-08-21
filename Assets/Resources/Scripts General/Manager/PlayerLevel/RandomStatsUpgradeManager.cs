@@ -80,7 +80,7 @@ public class RandomStatsUpgradeManager : MonoBehaviour
 
     void GetMoney()
     {
-        MoneyManager.money += 30;
+        MoneyManager.instance.money += 30;
 
         gameObject.SetActive(false);
     }

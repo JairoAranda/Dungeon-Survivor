@@ -10,6 +10,6 @@ public class MoneyText : MonoBehaviour
 
     private void FixedUpdate()
     {
-        money.text = MoneyManager.money + " $";
+        money.text = MoneyManager.instance.money + " $";
     }
 }

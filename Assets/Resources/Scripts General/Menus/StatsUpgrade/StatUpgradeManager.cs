@@ -35,7 +35,7 @@ public class StatUpgradeManager : MonoBehaviour
 
         upgradeMoney *= level;
 
-        if (MoneyManager.money >= upgradeMoney && level <= maxLevels)
+        if (MoneyManager.instance.money >= upgradeMoney && level <= maxLevels)
         {
             levels[level - 1].GetComponent<Image>().color = Color.yellow;
 
@@ -43,9 +43,9 @@ public class StatUpgradeManager : MonoBehaviour
 
             PlayerPrefs.SetInt(stat, level);
 
-            MoneyManager.money -= upgradeMoney;
+            MoneyManager.instance.money -= upgradeMoney;
 
-            Debug.Log(MoneyManager.money);
+            Debug.Log(MoneyManager.instance.money);
         }
  
     }

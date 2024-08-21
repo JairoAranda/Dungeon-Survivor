@@ -122,7 +122,7 @@ public class PlayerStats : MonoBehaviour, IStats
 
     public void Death()
     {
-        if (_isDead)
+        if (!_isDead)
         {
             _isDead = true;
 
