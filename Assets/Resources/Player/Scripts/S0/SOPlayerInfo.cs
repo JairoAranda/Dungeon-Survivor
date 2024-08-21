@@ -10,7 +10,7 @@ public class SOPlayerInfo : ScriptableObject
     public float health = 10;
     [Range(0f, 10f)]
     public float speed = 5;
-    [Range(0f, 10f)]
+    [Range(0f, 20)]
     public float absortion = 1;
     [Range(0.1f, 5f)]
     public float iFrames = 2;

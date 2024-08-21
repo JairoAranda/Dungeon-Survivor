@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   speed: 4.1
-  absortion: 5
+  absortion: 4
   iFrames: 2
   damage: 1
   attackSpeed: 1

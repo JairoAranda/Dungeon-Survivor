@@ -34,11 +34,14 @@ public class Projectile : MonoBehaviour
     {
         float distanceTravelled = Vector2.Distance(startPosition, transform.position);
 
-        if (distanceTravelled >= range)
+        if (distanceTravelled >= range )
         {
             effectType = owner.GetComponentInChildren<IBulletType>();
 
-            effectType.Effect(gameObject);
+            if (effectType != null )
+            {
+                effectType.Effect(gameObject);
+            }
 
             EndProjectile();
         }

@@ -15,9 +15,12 @@ public class ItemRangeAbsortion : MonoBehaviour
     [Header("Stat Type")]
     [SerializeField] private PlayerUpgradeEnum absortionUpgrade;
 
+    [SerializeField]
     float detectionRadiusDefault;
 
+    [SerializeField]
     private int absortion;
+    [SerializeField]
     private float detectionRadius;
 
     private void OnEnable()
@@ -32,9 +35,10 @@ public class ItemRangeAbsortion : MonoBehaviour
 
     private void Start()
     {
-        UpdateDetectionRange();
-
         detectionRadiusDefault = GetComponent<SOFinderPlayer>().sOPlayerInfo.absortion;
+
+
+        UpdateDetectionRange();
     }
 
     void UpdateDetectionRange()
