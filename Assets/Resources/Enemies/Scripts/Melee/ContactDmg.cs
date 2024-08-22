@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SOFinderEnemy))]
 public class ContactDmg : MonoBehaviour
 {
     private SOEnemyInfo enemyInfoSO;
 
     void Start()
     {
-        enemyInfoSO = GetComponent<SOFinderEnemy>().enemyInfoSO;
+        enemyInfoSO = GetComponentInParent<SOFinderEnemy>().enemyInfoSO;
     }
 
 

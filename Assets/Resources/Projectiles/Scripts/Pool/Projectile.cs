@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
     }
     private void OnBecameInvisible()
     {
-        EndProjectile();
+        //EndProjectile();
 
     }
 
@@ -60,9 +60,10 @@ public class Projectile : MonoBehaviour
                 statsType.GetHit(dmg);
 
                 effectType.Effect(other.gameObject);
+
+                Debug.Log("HOLA");
             }
 
-            EndProjectile();
         }
     }
 

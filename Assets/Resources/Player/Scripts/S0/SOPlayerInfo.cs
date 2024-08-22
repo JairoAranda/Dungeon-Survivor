@@ -17,7 +17,7 @@ public class SOPlayerInfo : ScriptableObject
 
     [Header("Combat")]
     [Range(0.1f, 10f)]
-    public int damage = 1;
+    public float damage = 1;
     [Range(0.1f, 5f)]
     public float attackSpeed = 1;
     [Range(0.1f, 5f)]

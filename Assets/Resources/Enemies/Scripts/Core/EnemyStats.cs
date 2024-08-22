@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(SOFinderEnemy))]
 public class EnemyStats : MonoBehaviour, IStats
 {
-    public static event Action<Vector3> EventTriggerHitEnemy, EventTriggerDeathEnemy;
+    public static event Action<GameObject> EventTriggerHitEnemy, EventTriggerDeathEnemy;
 
     private SOEnemyInfo enemyInfoSO;
 
@@ -53,7 +53,7 @@ public class EnemyStats : MonoBehaviour, IStats
         
         if (life > 0)
         {
-            EventTriggerHitEnemy?.Invoke(transform.position);
+            EventTriggerHitEnemy?.Invoke(gameObject);
         }
 
     }
@@ -63,7 +63,7 @@ public class EnemyStats : MonoBehaviour, IStats
         if (!_isDead)
         {
             _isDead = true;
-            EventTriggerDeathEnemy?.Invoke(transform.position);
+            EventTriggerDeathEnemy?.Invoke(gameObject);
             gameObject.SetActive(false);
         }
         

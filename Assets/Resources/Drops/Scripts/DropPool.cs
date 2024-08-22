@@ -66,7 +66,7 @@ public class DropPool : GeneralPool
         }
     }
 
-    void Drop(Vector3 position)
+    void Drop(GameObject gameobject)
     {
         foreach (var drop in drops)
         {
@@ -104,7 +104,7 @@ public class DropPool : GeneralPool
                     dropNumber[currentDrop] = minNum;
                 }
 
-                typesInstances[dropNumber[currentDrop]].transform.position = GetRandomPositionAroundPoint(position, maxRange);
+                typesInstances[dropNumber[currentDrop]].transform.position = GetRandomPositionAroundPoint(gameobject.transform.position, maxRange);
 
                 typesInstances[dropNumber[currentDrop]].SetActive(true);
             }
