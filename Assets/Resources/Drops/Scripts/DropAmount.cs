@@ -30,14 +30,16 @@ public class DropAmount : MonoBehaviour
 
     public int GetDropNumber(int minDrop, int maxDrop, double probabilityMaxDrop)
     {
-        probabilityMaxDrop += PlayerPrefs.GetInt("Luck", 1) * 0.1f - 0.1f;
-        probabilityMaxDrop = Mathf.Clamp((float)probabilityMaxDrop, 0.01f, 1.0f);
+        float multiplier = (float)(1 + 0.1 * PlayerPrefs.GetInt("Luck", 1) - 0.1);
+
+        double currentprobabilityMaxDrop = probabilityMaxDrop * multiplier;
+        currentprobabilityMaxDrop = Mathf.Clamp((float)currentprobabilityMaxDrop, 0.01f, 1.0f);
 
         luck = Mathf.Clamp(luck, 1, 20);
 
         int range = maxDrop - minDrop;
 
-        float luckFactor = Mathf.Clamp01(Mathf.Pow((float)luck / 20f, 2) * (float)probabilityMaxDrop);
+        float luckFactor = Mathf.Clamp01(Mathf.Pow((float)luck / 20f, 2) * (float)currentprobabilityMaxDrop);
 
         float randomValue = Random.Range(0f, 1f);
 
