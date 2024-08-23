@@ -668,6 +668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 544134623}
+  wallTile: {fileID: 11400000, guid: 354088d6687dcc54cb82393a086654fa, type: 2}
   floorTiles:
   - {fileID: 11400000, guid: 7835744f75ccde548bece56465d3831d, type: 2}
   - {fileID: 11400000, guid: 39278f9892535c9468a324b1c5ef0de2, type: 2}
@@ -680,10 +681,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c8e5523980aa01428fe50d74890886d, type: 2}
   - {fileID: 11400000, guid: f9872128eb9a0284aac1ab6ba234e3c0, type: 2}
   - {fileID: 11400000, guid: fa00b4280374bac4da41491f310f595d, type: 2}
-  wallTiles:
-  - {fileID: 11400000, guid: 6cd9d2f45cb6e634797ffca99204d978, type: 2}
   floorTileWeights: 0100000001000000010000000100000001000000010000000100000001000000010000000100000050000000
-  wallTileWeights: 01000000
   roomMinSize: 100
   roomMaxSize: 150
 --- !u!4 &471716240
@@ -950,7 +948,7 @@ Camera:
   far clip plane: 1000
   field of view: 90
   orthographic: 1
-  orthographic size: 9.642857
+  orthographic size: 8.571428
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -1160,15 +1158,139 @@ Tilemap:
   m_Enabled: 1
   m_Tiles: {}
   m_AnimatedTiles: {}
-  m_TileAssetArray: []
-  m_TileSpriteArray: []
-  m_TileMatrixArray: []
-  m_TileColorArray: []
+  m_TileAssetArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileSpriteArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileMatrixArray:
+  - m_RefCount: 0
+    m_Data:
+      e00: 0
+      e01: 0
+      e02: 2.439459e-19
+      e03: 2.439459e-19
+      e10: 0
+      e11: 0
+      e12: 6.36e-43
+      e13: 6.36e-43
+      e20: 2.1419518e+36
+      e21: -0.0201073
+      e22: -1.76849e-28
+      e23: 1.6490353e+29
+      e30: 4.5905e-41
+      e31: 6.39e-43
+      e32: 6.36e-43
+      e33: 6.39e-43
+  - m_RefCount: 0
+    m_Data:
+      e00: 0
+      e01: 0
+      e02: 0
+      e03: 6.875826e+37
+      e10: 0
+      e11: 0
+      e12: 0
+      e13: 8e-45
+      e20: 0
+      e21: 0
+      e22: 9.354856e+35
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 4.5905e-41
+      e33: 0
+  - m_RefCount: 0
+    m_Data:
+      e00: 0
+      e01: 0
+      e02: 0
+      e03: 6.875826e+37
+      e10: 0
+      e11: 0
+      e12: 0
+      e13: 8e-45
+      e20: 0
+      e21: 0
+      e22: 9.354856e+35
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 4.5905e-41
+      e33: 0
+  - m_RefCount: 0
+    m_Data:
+      e00: 0
+      e01: 0
+      e02: 0
+      e03: 6.875826e+37
+      e10: 0
+      e11: 0
+      e12: 0
+      e13: 8e-45
+      e20: 0
+      e21: 0
+      e22: 9.354856e+35
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 4.5905e-41
+      e33: 0
+  - m_RefCount: 0
+    m_Data:
+      e00: 0
+      e01: 0
+      e02: 0
+      e03: 6.875826e+37
+      e10: 0
+      e11: 0
+      e12: 0
+      e13: 8e-45
+      e20: 0
+      e21: 0
+      e22: 9.354856e+35
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 4.5905e-41
+      e33: 0
+  m_TileColorArray:
+  - m_RefCount: 0
+    m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: 0, y: 0, z: 0}
-  m_Size: {x: 0, y: 0, z: 1}
+  m_Origin: {x: 0, y: -9, z: 0}
+  m_Size: {x: 17, y: 13, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:

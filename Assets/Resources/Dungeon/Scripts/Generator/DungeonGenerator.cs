@@ -7,13 +7,14 @@ public class DungeonGenerator : MonoBehaviour
 {
     [SerializeField] Tilemap tilemap;
 
-    // Arrays de tiles para suelos y muros
-    [SerializeField] Tile[] floorTiles;
-    [SerializeField] Tile[] wallTiles;
+    // RuleTile para muros
+    [SerializeField] RuleTile wallTile;
 
-    // Lista de pesos para los tiles de suelo y muros
+    // Arrays de tiles para suelos
+    [SerializeField] Tile[] floorTiles;
+
+    // Lista de pesos para los tiles de suelo
     [SerializeField] int[] floorTileWeights;
-    [SerializeField] int[] wallTileWeights;
 
     [SerializeField] int roomMinSize = 5;
     [SerializeField] int roomMaxSize = 10;
@@ -28,18 +29,6 @@ public class DungeonGenerator : MonoBehaviour
                 if (floorTileWeights[i] == 0)
                 {
                     floorTileWeights[i] = 1;
-                }
-            }
-        }
-
-        if (wallTileWeights == null || wallTileWeights.Length != wallTiles.Length)
-        {
-            System.Array.Resize(ref wallTileWeights, wallTiles.Length);
-            for (int i = 0; i < wallTileWeights.Length; i++)
-            {
-                if (wallTileWeights[i] == 0)
-                {
-                    wallTileWeights[i] = 1;
                 }
             }
         }
@@ -86,7 +75,7 @@ public class DungeonGenerator : MonoBehaviour
             {
                 if (IsBorderOfIrregularShape(x, y, room))
                 {
-                    Tile wallTile = GetRandomWeightedTile(wallTiles, wallTileWeights);
+                    // Establece el RuleTile para los muros
                     tilemap.SetTile(new Vector3Int(x, y, 0), wallTile);
                 }
             }
@@ -149,5 +138,4 @@ public class DungeonGenerator : MonoBehaviour
 
         return tiles[0]; // Fallback (por si acaso)
     }
-
 }
