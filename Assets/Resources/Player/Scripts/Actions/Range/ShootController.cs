@@ -6,31 +6,9 @@ using UnityEngine;
 public class ShootController : EnemyDetector
 {
     [Header("Bullet Color")]
+    [Space]
     [SerializeField] Color bulletColor;
 
-    private IBulletType effect;
-
-    private void OnEnable()
-    {
-        UpdateEffect.EventTriggerUpdateEffect += Effect;
-    }
-
-    private void OnDisable()
-    {
-        UpdateEffect.EventTriggerUpdateEffect -= Effect;
-    }
-
-    protected override void Start()
-    {
-        base.Start();
-
-        Effect();
-    }
-
-    void Effect()
-    {
-        effect = GetComponentInChildren<IBulletType>();
-    }
 
     void Update()
     {

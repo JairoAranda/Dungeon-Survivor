@@ -7,9 +7,11 @@ using UnityEngine;
 public class GeneralReciveDrop : MonoBehaviour
 {
     [Header("Drop type")]
+    [Space]
     public EnumDropType type;
 
     [Header("Stat Upgrade")]
+    [Space]
     [SerializeField] private PlayerUpgradeEnum upgrade;
 
     [SerializeField] private string playerPrefs;
@@ -18,6 +20,7 @@ public class GeneralReciveDrop : MonoBehaviour
     public bool isPlaying;
 
     [Header("Stat Options")]
+    [Space]
     [Range(0.1f , 5f)]
     [SerializeField] private float gatherTime = 1;
 

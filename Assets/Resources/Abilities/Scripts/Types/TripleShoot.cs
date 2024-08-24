@@ -5,12 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(AbilityAsign))]
 public class TripleShoot : BaseAbility, IAbility
 {
-
     [Header("Aperture Angle")]
+    [Space]
     [Range(.1f, 40f)]
     [SerializeField] float shotAngle;
 
     [Header("Bullet Color")]
+    [Space]
     [SerializeField] Color bulletColor;
 
     private Transform handPoint;

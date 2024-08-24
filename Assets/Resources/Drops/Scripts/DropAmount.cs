@@ -28,32 +28,39 @@ public class DropAmount : MonoBehaviour
         luck = PlayerStats.instance.GetComponentInParent<SOFinderPlayer>().sOPlayerInfo.statUpgrades[luckUpgrade];
     }
 
-    public int GetDropNumber(int minDrop, int maxDrop, double probabilityMaxDrop)
+    public int GetDropNumber(int minDrop, int maxDrop, double minProbabilityMaxDrop, double maxProbabilityMaxDrop)
     {
         float multiplier = (float)(1 + 0.1 * PlayerPrefs.GetInt("Luck", 1) - 0.1);
 
-        double currentprobabilityMaxDrop = probabilityMaxDrop * multiplier;
-        currentprobabilityMaxDrop = Mathf.Clamp((float)currentprobabilityMaxDrop, 0.01f, 1.0f);
-
         luck = Mathf.Clamp(luck, 1, 20);
+
+        // Interpolar la probabilidad de obtener maxDrop entre minprobabilityMaxDrop (luck = 1) y probabilityMaxDrop (luck = 20)
+        double interpolatedProbability = Mathf.Lerp((float)minProbabilityMaxDrop, (float)maxProbabilityMaxDrop, (float)(luck - 1) / 19f);
+
+        double currentprobabilityMaxDrop = interpolatedProbability * multiplier;
+
+        currentprobabilityMaxDrop = Mathf.Clamp((float)currentprobabilityMaxDrop, 0.01f, 1.0f);
 
         int range = maxDrop - minDrop;
 
-        float luckFactor = Mathf.Clamp01(Mathf.Pow((float)luck / 20f, 2) * (float)currentprobabilityMaxDrop);
+        // Calcular el factor de suerte basado en la probabilidad interpolada
+        float luckFactor = Mathf.Clamp01((float)currentprobabilityMaxDrop);
 
         float randomValue = Random.Range(0f, 1f);
 
         int result;
+        // Si el valor aleatorio es menor o igual al factor de suerte, dar el valor máximo
         if (randomValue <= luckFactor)
         {
             result = maxDrop;
         }
-
         else
         {
+            // De lo contrario, calcular un valor basado en el rango
             result = Mathf.FloorToInt(minDrop + randomValue * range);
         }
 
+        // Restringir el resultado dentro del rango válido
         result = Mathf.Clamp(result, minDrop, maxDrop);
 
         return result;

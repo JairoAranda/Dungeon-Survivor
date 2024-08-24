@@ -8,14 +8,17 @@ public class ChestLootManager : MonoBehaviour
 {
 
     [Header("Class Arrays")]
+    [Space]
     [SerializeField] ChestLootArray[] playerTypeLoots;
 
     [Header("Buttons")]
+    [Space]
     [SerializeField] Button weaponButton;
     [SerializeField] Button abilityButton;
     [SerializeField] Button moneyButton;
 
     [Header("Other Configs")]
+    [Space]
     [SerializeField] Transform parentObject;
 
     private GameObject weapon;

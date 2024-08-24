@@ -7,9 +7,11 @@ using UnityEngine;
 public class DropPool : GeneralPool
 {
     [Header("Drops Types")]
+    [Space]
     [SerializeField] SODrop[] drops;
 
     [Header("Spread Range")]
+    [Space]
     [Range(0.0f, 2.0f)]
     [SerializeField] private float maxRange = 0.5f;
 
@@ -70,7 +72,7 @@ public class DropPool : GeneralPool
     {
         foreach (var drop in drops)
         {
-            int chance = amount.GetDropNumber(drop.minDrop, drop.maxDrop, drop.probabilityMaxDrop);
+            int chance = amount.GetDropNumber(drop.minDrop, drop.maxDrop, drop.minProbabilityMaxDrop ,drop.maxProbabilityMaxDrop);
 
             if (currentDrop < dropNumber.Length - 1)
             {

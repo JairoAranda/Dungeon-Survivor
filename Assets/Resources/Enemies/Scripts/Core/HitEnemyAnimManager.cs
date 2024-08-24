@@ -5,9 +5,9 @@ using UnityEngine;
 public class HitEnemyAnimManager : MonoBehaviour
 {
     [Header("Animation Config")]
+    [Space]
     [SerializeField] Color hitColor = Color.red;
 
-    [Space]
     [Range(0.1f, 5f)]
     [SerializeField] float blinkDuration = 2f;
 

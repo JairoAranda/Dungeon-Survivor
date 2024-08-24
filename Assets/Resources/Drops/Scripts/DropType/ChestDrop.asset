@@ -15,4 +15,5 @@ MonoBehaviour:
   dropAmount: 5
   minDrop: 0
   maxDrop: 1
-  probabilityMaxDrop: 0.009999999776482582
+  minProbabilityMaxDrop: 0.05000000074505806
+  maxProbabilityMaxDrop: 0.10000000149011612

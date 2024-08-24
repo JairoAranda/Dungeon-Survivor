@@ -14,13 +14,16 @@ public class PlayerStats : MonoBehaviour, IStats
     private SOPlayerInfo soPlayerInfo;
 
     [Header("Player Tpye")]
+    [Space]
     public PlayerType playerType;
 
     [Header("Lvl XP")]
+    [Space]
     [Range(0.1f, 500f)]
     [SerializeField] private float xpMax = 100;
 
     [Header("Lvl Multiplier")]
+    [Space]
     [Range(2, 10)]
     [SerializeField] private int lifeMultiplier = 5;
     [Range(2, 10)]
@@ -29,6 +32,7 @@ public class PlayerStats : MonoBehaviour, IStats
     [SerializeField] private int cooldownMultiplier = 5;
 
     [Header("Stat Type")]
+    [Space]
     [SerializeField] private PlayerUpgradeEnum lifeUpgrade;
     [SerializeField] private PlayerUpgradeEnum dmgUpgrade;
     [SerializeField] private PlayerUpgradeEnum cdUpgrade;

@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class BaseAbility : MonoBehaviour
 {
-    [Header("Ability CoolDown")]
+    [Header("Ability Config")]
+    [Space]
     [Range(.1f, 20f)]
     [SerializeField] private float _cd;
+
+    [SerializeField] private LayerMask _enemyLayer;
 
     public float cd
     {
@@ -39,7 +42,6 @@ public class BaseAbility : MonoBehaviour
         set => _projectilePool = value;
     }
 
-    [SerializeField] private LayerMask _enemyLayer;
 
     public LayerMask enemyLayer
     {

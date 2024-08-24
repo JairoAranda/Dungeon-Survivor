@@ -9,11 +9,13 @@ public class MeleeHitController : MonoBehaviour
     public static MeleeHitController instance;
 
     [Header("General Config")]
+    [Space]
     [SerializeField] GameObject armPosition;
 
     [SerializeField] HandMovement handMovement;
 
     [Header("Swing Config")]
+    [Space]
     [Range(1f, 180f)]
     [SerializeField] float swingAngle;
     [Range(0.1f, 1f)]

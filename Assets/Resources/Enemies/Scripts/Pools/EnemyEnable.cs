@@ -5,10 +5,13 @@ using UnityEngine;
 public class EnemyEnable : MonoBehaviour
 {
     [Header("Spawn Data")]
+    [Space]
     [Range(0.1f, 10f)]
     [SerializeField] float delay;
-    [Range(1f, 10f)]
+
     [Tooltip("Number of enemy spawn at once")]
+    [Space]
+    [Range(1f, 10f)]
     [SerializeField] int enemyRound;
     [Range(1f, 100f)]
     [SerializeField] float minDistance, maxDistance;

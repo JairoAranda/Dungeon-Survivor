@@ -8,10 +8,12 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Lvl Multiplier")]
+    [Space]
     [Range(2, 10)]
     [SerializeField] private int multiplier = 5;
 
     [Header("Updrade Type")]
+    [Space]
     [SerializeField] private PlayerUpgradeEnum speedUpgrade;
 
     private SOPlayerInfo sOPlayerInfo;

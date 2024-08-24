@@ -5,19 +5,24 @@ using UnityEngine.Tilemaps;
 
 public class DungeonGenerator : MonoBehaviour
 {
+    [Header("Tile Config")]
+    [Space]
     [SerializeField] Tilemap tilemap;
 
-    // RuleTile para muros
     [SerializeField] RuleTile wallTile;
 
-    // Arrays de tiles para suelos
     [SerializeField] Tile[] floorTiles;
 
-    // Lista de pesos para los tiles de suelo
     [SerializeField] int[] floorTileWeights;
 
-    [SerializeField] int roomMinSize = 5;
-    [SerializeField] int roomMaxSize = 10;
+    [Header("Room Config")]
+    [Space]
+    [Range(50f, 500f)]
+    [SerializeField] int roomMinSize = 100;
+    [Range(50f, 500f)]
+    [SerializeField] int roomMaxSize = 150;
+    [Range(50f, 500f)]
+    [SerializeField] int wallThickness = 80;
 
     private void OnValidate()
     {
@@ -31,6 +36,11 @@ public class DungeonGenerator : MonoBehaviour
                     floorTileWeights[i] = 1;
                 }
             }
+        }
+
+        if (roomMaxSize < roomMinSize)
+        {
+            roomMaxSize = roomMinSize;
         }
     }
 
@@ -69,11 +79,11 @@ public class DungeonGenerator : MonoBehaviour
         }
 
         // Luego genera los tiles de muro alrededor de la forma ovalada
-        for (int x = Mathf.FloorToInt(room.x) - 1; x <= Mathf.CeilToInt(room.xMax); x++)
+        for (int x = Mathf.FloorToInt(room.x) - wallThickness; x <= Mathf.CeilToInt(room.xMax) + wallThickness; x++)
         {
-            for (int y = Mathf.FloorToInt(room.y) - 1; y <= Mathf.CeilToInt(room.yMax); y++)
+            for (int y = Mathf.FloorToInt(room.y) - wallThickness; y <= Mathf.CeilToInt(room.yMax) + wallThickness; y++)
             {
-                if (IsBorderOfIrregularShape(x, y, room))
+                if (IsBorderOfIrregularShapeWithThickness(x, y, room, wallThickness))
                 {
                     // Establece el RuleTile para los muros
                     tilemap.SetTile(new Vector3Int(x, y, 0), wallTile);
@@ -95,7 +105,7 @@ public class DungeonGenerator : MonoBehaviour
         return (dx * dx + dy * dy) <= 1.0f;
     }
 
-    bool IsBorderOfIrregularShape(int x, int y, Rect room)
+    bool IsBorderOfIrregularShapeWithThickness(int x, int y, Rect room, int thickness)
     {
         float centerX = room.x + room.width / 2;
         float centerY = room.y + room.height / 2;
@@ -105,12 +115,14 @@ public class DungeonGenerator : MonoBehaviour
         float dx = (x - centerX) / radiusX;
         float dy = (y - centerY) / radiusY;
 
-        // Calcula si el tile está en el borde de la forma ovalada
+        // Calcula si el tile está en el borde o dentro del grosor especificado
         float distance = (dx * dx + dy * dy);
-        bool isInShape = distance <= 1.0f;
-        bool isOnBorder = Mathf.Abs(distance - 1.0f) < 0.1f; // Ajusta el margen para el borde
+        float innerRadius = 1.0f; // Radio de la forma ovalada original
+        float outerRadius = 1.0f + (float)thickness / Mathf.Max(room.width, room.height); // Radio expandido según el grosor
 
-        return isInShape && isOnBorder;
+        bool isWithinThickness = distance >= innerRadius && distance <= outerRadius;
+
+        return isWithinThickness;
     }
 
     Tile GetRandomWeightedTile(Tile[] tiles, int[] weights)

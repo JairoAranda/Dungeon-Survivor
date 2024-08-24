@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CheckLevel : MonoBehaviour
 {
+    [Header("Stat config")]
+    [Space]
     [SerializeField] GameObject[] levels;
 
     [SerializeField] string stat;

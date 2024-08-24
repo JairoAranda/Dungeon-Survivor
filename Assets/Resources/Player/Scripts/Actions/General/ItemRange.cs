@@ -6,13 +6,16 @@ using UnityEngine;
 public class ItemRangeAbsortion : MonoBehaviour
 {
     [Header("Absortion Multiplier")]
+    [Space]
     [Range(2, 10)]
     [SerializeField] int multiplier = 5;
 
     [Header("Object Layer")]
+    [Space]
     [SerializeField] LayerMask detectionLayer;
 
     [Header("Stat Type")]
+    [Space]
     [SerializeField] private PlayerUpgradeEnum absortionUpgrade;
 
     [SerializeField]

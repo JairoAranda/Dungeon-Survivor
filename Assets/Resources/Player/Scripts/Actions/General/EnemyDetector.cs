@@ -5,15 +5,18 @@ using UnityEngine;
 public class EnemyDetector : MonoBehaviour
 {
     [Header("General Config")]
+    [Space]
     [SerializeField] protected LayerMask detectionLayer;
 
     [SerializeField] protected Transform handPosition;
 
     [Header("Lvl Multiplier")]
+    [Space]
     [Range(2, 10)]
     [SerializeField] protected int attackSpeedMultiplier;
 
     [Header("Stat Type")]
+    [Space]
     [SerializeField] private PlayerUpgradeEnum attackSpeedUpgrade;
 
     private protected SOPlayerInfo sOPlayerInfo;

@@ -6,10 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(SOFinderEnemy))]
 public class EnemyShoot : MonoBehaviour
 {
+    [Header("Shoot Config")]
+    [Space]
     [SerializeField] LayerMask playerLayer;
     [SerializeField] Color bulletColor;
-
-    private IBulletType effect;
 
     private DistanceToPlayer distanceToPlayer;
     private SOEnemyInfo enemyInfoSO;
@@ -22,8 +22,6 @@ public class EnemyShoot : MonoBehaviour
         enemyInfoSO = GetComponent<SOFinderEnemy>().enemyInfoSO;
 
         shootInterval = enemyInfoSO.attackSpeed;
-
-        effect = GetComponent<IBulletType>();
 
     }
 

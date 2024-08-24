@@ -5,6 +5,7 @@ using UnityEngine;
 public class GeneralPool : MonoBehaviour
 {
     [Header("Pool Data")]
+    [Space]
     [Range(1, 50)]
     public int poolSize = 20;
     [SerializeField] protected GameObject[] types;

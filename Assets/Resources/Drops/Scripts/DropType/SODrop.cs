@@ -9,18 +9,23 @@ public class SODrop : ScriptableObject
     //public EnumDropType types;
 
     [Header("Drop Pool Amount")]
+    [Space]
     [Range(1f, 20f)]
     public int dropAmount;
 
     [Header("Amount Drop Range")]
+    [Space]
     [Range(0f, 10f)]
     public int minDrop;
     [Range(0, 10f)]
     public int maxDrop;
 
     [Header("Max Drop Probability")]
+    [Space]
     [Range(0f, 1f)]
-    public double probabilityMaxDrop;
+    public double minProbabilityMaxDrop;
+    [Range(0f, 1f)]
+    public double maxProbabilityMaxDrop;
 
     void OnValidate()
     {
@@ -29,6 +34,10 @@ public class SODrop : ScriptableObject
             maxDrop = minDrop;
         }
 
+        if (maxProbabilityMaxDrop < minProbabilityMaxDrop)
+        {
+            maxProbabilityMaxDrop = minProbabilityMaxDrop;
+        }
 
     }
 }

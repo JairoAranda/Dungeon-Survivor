@@ -6,6 +6,7 @@ using UnityEngine;
 public class SOEnemyInfo : ScriptableObject
 {
     [Header("General Information")]
+    [Space]
     public int id;
 
     [Range(0f, 10f)]
@@ -13,6 +14,7 @@ public class SOEnemyInfo : ScriptableObject
     public float health = 10;
 
     [Header("Combat")]
+    [Space]
     [Tooltip("Attack range in units (0 if melee)")]
     [Range(0f, 10f)]
     public float attackRange = 0f;
@@ -20,6 +22,7 @@ public class SOEnemyInfo : ScriptableObject
     public int damage = 1;
 
     [Header("Ranged Stats")]
+    [Space]
     [Range(0.1f, 5f)]
     public float attackSpeed = 1;
     [Tooltip("Only Ranged.")]

@@ -9,6 +9,7 @@ using UnityEngine;
 public class Iframes : MonoBehaviour
 {
     [Tooltip("Flicker time on seconds")]
+    [Space]
     [Range(0f, 1f)]
     [SerializeField] float animFlicker = 0.1f;
 

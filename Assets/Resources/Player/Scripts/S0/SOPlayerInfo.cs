@@ -6,6 +6,7 @@ using UnityEngine;
 public class SOPlayerInfo : ScriptableObject
 {
     [Header("General Information")]
+    [Space]
     [Range(0.1f, 50f)]
     public float health = 10;
     [Range(0f, 10f)]
@@ -16,6 +17,7 @@ public class SOPlayerInfo : ScriptableObject
     public float iFrames = 2;
 
     [Header("Combat")]
+    [Space]
     [Range(0.1f, 10f)]
     public float damage = 1;
     [Range(0.1f, 5f)]
@@ -24,14 +26,18 @@ public class SOPlayerInfo : ScriptableObject
     public float cooldown = 1;
 
     [Header("Range Stats")]
+    [Space]
     [Range(1f, 50f)]
     [Tooltip("Only Ranged.")]
+    [Space]
     public float projectileSpeed = 10;
     [Range(0, 50)]
     [Tooltip("Only Ranged.")]
+    [Space]
     public float range = 5;
 
     [Header("Stats Upgrades")]
+    [Space]
     public Dictionary<PlayerUpgradeEnum, int> statUpgrades = new Dictionary<PlayerUpgradeEnum, int>();
 
     private void OnEnable()
