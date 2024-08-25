@@ -61,7 +61,6 @@ public class Projectile : MonoBehaviour
 
                 effectType.Effect(other.gameObject);
 
-                Debug.Log("HOLA");
             }
 
         }

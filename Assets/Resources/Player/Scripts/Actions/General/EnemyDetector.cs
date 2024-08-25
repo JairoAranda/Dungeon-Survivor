@@ -31,7 +31,12 @@ public class EnemyDetector : MonoBehaviour
         sOPlayerInfo = GetComponent<SOFinderPlayer>().sOPlayerInfo;
 
         detectionRange = sOPlayerInfo.range;
-        shootCooldown = sOPlayerInfo.attackSpeed * PlayerPrefs.GetInt("AttackSpeed", 1) * ScaleMultiplier.ScaleFactor(attackSpeedMultiplier, sOPlayerInfo.statUpgrades[attackSpeedUpgrade]);
+
+        float attackspeed = sOPlayerInfo.attackSpeed * ScaleMultiplier.ScaleFactor(attackSpeedMultiplier, sOPlayerInfo.statUpgrades[attackSpeedUpgrade]);
+
+        attackspeed *= (float)(1 + 0.1 * PlayerPrefs.GetInt("AttackSpeed", 1));
+
+        shootCooldown = 1 / attackspeed;
     }
 
     protected Transform DetectClosestEnemy()

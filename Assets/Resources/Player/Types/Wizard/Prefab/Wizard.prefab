@@ -409,7 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df32a438457331e4d9c758fe53bd6011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 3
+  multiplier: 2
   speedUpgrade: 1
 --- !u!114 &3820639312582617082
 MonoBehaviour:
@@ -465,6 +465,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   absortionUpgrade: 6
+  detectionRadiusDefault: 0
+  absortion: 0
+  detectionRadius: 0
 --- !u!114 &2610013235999457917
 MonoBehaviour:
   m_ObjectHideFlags: 0
