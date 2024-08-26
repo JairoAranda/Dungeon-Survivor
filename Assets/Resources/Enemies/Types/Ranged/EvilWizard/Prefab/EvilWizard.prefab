@@ -154,7 +154,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -344,7 +344,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  bulletColor: {r: 1, g: 0, b: 0, a: 1}
+  bulletColor: {r: 23.96863, g: 0, b: 0, a: 1}
 --- !u!114 &9126082445389451593
 MonoBehaviour:
   m_ObjectHideFlags: 0

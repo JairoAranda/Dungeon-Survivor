@@ -46,7 +46,7 @@ public class ProjectilePool : GeneralPool
         target = m_target;
         startPosition = m_startPosition;
 
-        bulletToShoot.GetComponent<SpriteRenderer>().color = _color;
+        bulletToShoot.GetComponent<SpriteRenderer>().material.color = _color;
         bulletToShoot.transform.position = shootPosition;
         bulletToShoot.SetActive(true);
 

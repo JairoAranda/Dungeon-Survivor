@@ -7,6 +7,7 @@ public class ShootController : EnemyDetector
 {
     [Header("Bullet Color")]
     [Space]
+    [ColorUsage(true, true)]
     [SerializeField] Color bulletColor;
 
 

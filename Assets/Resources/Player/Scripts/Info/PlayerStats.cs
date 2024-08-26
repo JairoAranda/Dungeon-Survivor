@@ -28,7 +28,7 @@ public class PlayerStats : MonoBehaviour, IStats
     [SerializeField] private int lifeMultiplier = 5;
     [Range(2, 10)]
     [SerializeField] private int dmgMultiplier = 5;
-    [Range(2, 10)]
+    [Range(2, 50)]
     [SerializeField] private int cooldownMultiplier = 5;
 
     [Header("Stat Type")]
@@ -103,9 +103,9 @@ public class PlayerStats : MonoBehaviour, IStats
 
     void UpgradeStats()
     {
-        life = soPlayerInfo.health * PlayerPrefs.GetInt("Health", 1) * ScaleMultiplier.ScaleFactor(lifeMultiplier, soPlayerInfo.statUpgrades[lifeUpgrade]);
-        dmg = soPlayerInfo.damage * PlayerPrefs.GetInt("Damage", 1) * ScaleMultiplier.ScaleFactor(dmgMultiplier, soPlayerInfo.statUpgrades[dmgUpgrade]);
-        coolDownReduction = PlayerPrefs.GetInt("CD", 1) * ScaleMultiplier.ScaleFactor(cooldownMultiplier, soPlayerInfo.statUpgrades[cdUpgrade]);
+        life = soPlayerInfo.health * (float)(1 + 0.1 * PlayerPrefs.GetInt("Health", 1) - 0.1) * ScaleMultiplier.ScaleFactor(lifeMultiplier, soPlayerInfo.statUpgrades[lifeUpgrade]);
+        dmg = soPlayerInfo.damage * (float)(1 + 0.1 * PlayerPrefs.GetInt("Damage", 1) - 0.1) * ScaleMultiplier.ScaleFactor(dmgMultiplier, soPlayerInfo.statUpgrades[dmgUpgrade]);
+        coolDownReduction = (float)(1 + 0.1 * PlayerPrefs.GetInt("CD", 1) - 0.1) * ScaleMultiplier.ScaleFactor(cooldownMultiplier, soPlayerInfo.statUpgrades[cdUpgrade]);
     }
 
 

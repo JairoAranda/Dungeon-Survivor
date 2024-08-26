@@ -34,7 +34,7 @@ public class EnemyDetector : MonoBehaviour
 
         float attackspeed = sOPlayerInfo.attackSpeed * ScaleMultiplier.ScaleFactor(attackSpeedMultiplier, sOPlayerInfo.statUpgrades[attackSpeedUpgrade]);
 
-        attackspeed *= (float)(1 + 0.1 * PlayerPrefs.GetInt("AttackSpeed", 1));
+        attackspeed *= (float)(1 + 0.1 * PlayerPrefs.GetInt("AttackSpeed", 1) - 0.1);
 
         shootCooldown = 1 / attackspeed;
     }

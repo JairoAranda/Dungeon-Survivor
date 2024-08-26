@@ -9,6 +9,7 @@ public class EnemyShoot : MonoBehaviour
     [Header("Shoot Config")]
     [Space]
     [SerializeField] LayerMask playerLayer;
+    [ColorUsage(true, true)]
     [SerializeField] Color bulletColor;
 
     private DistanceToPlayer distanceToPlayer;
