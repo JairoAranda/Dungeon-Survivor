@@ -2926,7 +2926,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.8
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 0000000039a0e9c2
@@ -3822,11 +3822,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2610013235999457917, guid: d610469790874e2408222863be71514b, type: 3}
       propertyPath: bulletColor.b
-      value: 95.874504
+      value: 11.984313
       objectReference: {fileID: 0}
     - target: {fileID: 2610013235999457917, guid: d610469790874e2408222863be71514b, type: 3}
       propertyPath: bulletColor.g
-      value: 9.035295
+      value: 1.1294118
       objectReference: {fileID: 0}
     - target: {fileID: 2610013235999457917, guid: d610469790874e2408222863be71514b, type: 3}
       propertyPath: bulletColor.r

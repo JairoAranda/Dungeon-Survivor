@@ -344,7 +344,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  bulletColor: {r: 95.87452, g: 0, b: 0, a: 1}
+  bulletColor: {r: 5.9921565, g: 0, b: 0, a: 1}
 --- !u!114 &9126082445389451593
 MonoBehaviour:
   m_ObjectHideFlags: 0

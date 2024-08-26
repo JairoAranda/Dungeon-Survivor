@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UIElements;
 
 public class ProjectilePool : GeneralPool
@@ -47,6 +48,7 @@ public class ProjectilePool : GeneralPool
         startPosition = m_startPosition;
 
         bulletToShoot.GetComponent<SpriteRenderer>().material.color = _color;
+        bulletToShoot.GetComponent<Light2D>().color = _color;
         bulletToShoot.transform.position = shootPosition;
         bulletToShoot.SetActive(true);
 
