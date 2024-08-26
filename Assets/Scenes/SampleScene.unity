@@ -3822,11 +3822,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2610013235999457917, guid: d610469790874e2408222863be71514b, type: 3}
       propertyPath: bulletColor.b
-      value: 23.968626
+      value: 95.874504
       objectReference: {fileID: 0}
     - target: {fileID: 2610013235999457917, guid: d610469790874e2408222863be71514b, type: 3}
       propertyPath: bulletColor.g
-      value: 2.2588236
+      value: 9.035295
       objectReference: {fileID: 0}
     - target: {fileID: 2610013235999457917, guid: d610469790874e2408222863be71514b, type: 3}
       propertyPath: bulletColor.r
