@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] LayerMask wallLayer;
+
     private IStats statsType;
 
     [HideInInspector]
@@ -64,6 +66,32 @@ public class Projectile : MonoBehaviour
             }
 
         }
+
+        if (((1 << other.gameObject.layer) & wallLayer) != 0)
+        {
+            WallHit();
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (((1 << other.gameObject.layer) & wallLayer) != 0)
+        {
+            WallHit();
+        }
+    }
+
+    void WallHit()
+    {
+        effectType = owner.GetComponentInChildren<IBulletType>();
+
+        if (effectType != null)
+        {
+            effectType.Effect(gameObject);
+
+        }
+
+        EndProjectile();
     }
 
     void EndProjectile()

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 [RequireComponent(typeof(EnemyPoolManager))]
 public class EnemyEnable : MonoBehaviour
@@ -15,6 +16,10 @@ public class EnemyEnable : MonoBehaviour
     [SerializeField] int enemyRound;
     [Range(1f, 100f)]
     [SerializeField] float minDistance, maxDistance;
+
+    [Header("TileMap")]
+    [Space]
+    [SerializeField] private Tilemap spawnTilemap;
 
     private GameObject[] m_enemys;
 
@@ -44,13 +49,18 @@ public class EnemyEnable : MonoBehaviour
         {
             if (!m_enemys[count].activeSelf)
             {
-                m_enemys[count].transform.position = RandomPos();
+                Vector2 spawnPosition = RandomPos();
 
+                while (!IsPositionOnTilemap(spawnPosition))
+                {
+                    spawnPosition = RandomPos();
+                }
+
+                m_enemys[count].transform.position = spawnPosition;
                 m_enemys[count].SetActive(true);
 
                 yield return new WaitForSeconds(delay);
             }
-
             else
             {
                 yield return new WaitForEndOfFrame();
@@ -64,9 +74,7 @@ public class EnemyEnable : MonoBehaviour
             {
                 count++;
             }
-
         }
-
     }
 
     Vector2 RandomPos()
@@ -77,5 +85,16 @@ public class EnemyEnable : MonoBehaviour
         Vector2 spawnPosition = playerPosition + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * distance;
 
         return spawnPosition;
+    }
+
+    // Método para verificar si la posición tiene un tile en el tilemap
+    bool IsPositionOnTilemap(Vector2 position)
+    {
+        // Convertir la posición en coordenadas de celda del tilemap
+        Vector3Int cellPosition = spawnTilemap.WorldToCell(position);
+        TileBase tile = spawnTilemap.GetTile(cellPosition);
+
+        // Retorna true si hay un tile en esa posición, false si no lo hay
+        return tile != null;
     }
 }

@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+[RequireComponent(typeof(DungeonDecoration))]
 public class DungeonGenerator : MonoBehaviour
 {
-    [Header("Tile Config")]
+    [Header("TileMaps")]
     [Space]
-    [SerializeField] Tilemap tilemap;
+    [SerializeField] Tilemap groundTileMap;
+    [SerializeField] Tilemap wallTileMap;
 
+    [Header("Tiles")]
+    [Space]
     [SerializeField] RuleTile wallTile;
 
     [SerializeField] Tile[] floorTiles;
@@ -73,7 +77,7 @@ public class DungeonGenerator : MonoBehaviour
                 if (IsInsideIrregularShape(x, y, room))
                 {
                     Tile floorTile = GetRandomWeightedTile(floorTiles, floorTileWeights);
-                    tilemap.SetTile(new Vector3Int(x, y, 0), floorTile);
+                    groundTileMap.SetTile(new Vector3Int(x, y, 0), floorTile);
                 }
             }
         }
@@ -86,10 +90,12 @@ public class DungeonGenerator : MonoBehaviour
                 if (IsBorderOfIrregularShapeWithThickness(x, y, room, wallThickness))
                 {
                     // Establece el RuleTile para los muros
-                    tilemap.SetTile(new Vector3Int(x, y, 0), wallTile);
+                    wallTileMap.SetTile(new Vector3Int(x, y, 0), wallTile);
                 }
             }
         }
+
+        gameObject.GetComponent<DungeonDecoration>().Decoration();
     }
 
     bool IsInsideIrregularShape(int x, int y, Rect room)

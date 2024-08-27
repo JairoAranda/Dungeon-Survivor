@@ -49,6 +49,9 @@ public class PlayerStats : MonoBehaviour, IStats
     [HideInInspector]
     public float coolDownReduction;
 
+    [HideInInspector]
+    public bool canBeHit = true;
+
     private float _life;
 
     public float life
@@ -116,12 +119,16 @@ public class PlayerStats : MonoBehaviour, IStats
 
     public void GetHit(float dmg)
     {
-        life -= dmg;
-       
-        if (life > 0)
+        if (canBeHit)
         {
-            EventTriggerHitPlayer?.Invoke();
+            life -= dmg;
+
+            if (life > 0)
+            {
+                EventTriggerHitPlayer?.Invoke();
+            }
         }
+        
     }
 
     public void Death()
