@@ -4,7 +4,6 @@ using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(SOFinderPlayer))]
 public class Iframes : MonoBehaviour
 {
@@ -14,7 +13,6 @@ public class Iframes : MonoBehaviour
     [SerializeField] float animFlicker = 0.1f;
 
     private SpriteRenderer spriteRenderer;
-    private BoxCollider2D boxCollider2D;
     private SOPlayerInfo sOFinderPlayer;
     private void OnEnable()
     {
@@ -30,7 +28,6 @@ public class Iframes : MonoBehaviour
     {
         sOFinderPlayer = GetComponent<SOFinderPlayer>().sOPlayerInfo;
 
-        boxCollider2D = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -41,17 +38,17 @@ public class Iframes : MonoBehaviour
     }
     private IEnumerator iFrameTime()
     {
-        boxCollider2D.enabled = false;
+        PlayerStats.instance.canBeHit = false;
 
         yield return new WaitForSeconds(sOFinderPlayer.iFrames);
 
-        boxCollider2D.enabled = true;
+        PlayerStats.instance.canBeHit = true;
         spriteRenderer.enabled = true;
     }
 
     private IEnumerator iFrameAnim()
     {
-        while (!boxCollider2D.enabled)
+        while (!PlayerStats.instance.canBeHit)
         {
             spriteRenderer.enabled = !spriteRenderer.enabled;
 

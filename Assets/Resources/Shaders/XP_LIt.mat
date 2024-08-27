@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sprite_Lit
+  m_Name: XP_LIt
   m_Shader: {fileID: -6465566751694194690, guid: c9904fec14d057e46b00e2d09545fed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -63,5 +63,5 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _Color: {r: 42.722507, g: 0, b: 0, a: 1}
+    - _Color: {r: 0, g: 0, b: 32, a: 1}
   m_BuildTextureStacks: []
