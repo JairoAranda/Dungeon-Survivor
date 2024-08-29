@@ -9,7 +9,9 @@ public class PlayerStats : MonoBehaviour, IStats
 {
     public static PlayerStats instance;
 
-    public static event Action EventTriggerHitPlayer, EventTriggerDeathPlayer, EventTriggerLevelUp;
+    public static event Action<GameObject> EventTriggerHitPlayer, EventTriggerDeathPlayer;
+
+    public static event Action EventTriggerLevelUp;
 
     private SOPlayerInfo soPlayerInfo;
 
@@ -125,7 +127,7 @@ public class PlayerStats : MonoBehaviour, IStats
 
             if (life > 0)
             {
-                EventTriggerHitPlayer?.Invoke();
+                EventTriggerHitPlayer?.Invoke(gameObject);
             }
         }
         
@@ -137,7 +139,7 @@ public class PlayerStats : MonoBehaviour, IStats
         {
             _isDead = true;
 
-            EventTriggerDeathPlayer?.Invoke();
+            EventTriggerDeathPlayer?.Invoke(gameObject);
             SceneManager.LoadScene(0);
         }
         

@@ -40,7 +40,7 @@ public class MoneyManager : MonoBehaviour
         money = PlayerPrefs.GetInt("CurrentMoney", 0);
     }
 
-    void SaveMoney()
+    void SaveMoney(GameObject go)
     {
         Debug.Log("hola");
 

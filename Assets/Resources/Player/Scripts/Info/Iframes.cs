@@ -31,7 +31,7 @@ public class Iframes : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void StartIframes()
+    private void StartIframes(GameObject go)
     {
         StartCoroutine(iFrameTime());
         StartCoroutine(iFrameAnim());
