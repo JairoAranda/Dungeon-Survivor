@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 52205467}
   - component: {fileID: 52205466}
   - component: {fileID: 52205468}
+  - component: {fileID: 52205469}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -341,6 +342,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &52205469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52205465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ApplyAfter: 2
+  m_ChannelMask: 1
+  m_Gain: 1
+  m_Use2DDistance: 0
+  m_UseCameraSpace: 1
+  m_ReactionSettings:
+    m_SecondaryNoise: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+    m_AmplitudeGain: 4
+    m_FrequencyGain: 3
+    m_Duration: 0.5
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &136923882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,7 +1385,7 @@ MonoBehaviour:
   m_RefResolutionX: 320
   m_RefResolutionY: 180
   m_CropFrame: 0
-  m_GridSnapping: 1
+  m_GridSnapping: 0
   m_FilterMode: 0
   m_UpscaleRT: 0
   m_PixelSnapping: 0
@@ -2579,6 +2603,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1211578640 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8798764990493325172, guid: d610469790874e2408222863be71514b, type: 3}
+  m_PrefabInstance: {fileID: 276424328328962635}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1261781424
 GameObject:
   m_ObjectHideFlags: 0
@@ -2764,6 +2793,72 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3164183031912566847, guid: d610469790874e2408222863be71514b, type: 3}
   m_PrefabInstance: {fileID: 276424328328962635}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1452371852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211578640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 2
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.2
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 0, y: -1, z: 0}
+--- !u!114 &1452371853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211578640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f71acea7283dd943b7fa463c1d4cc88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intesity: 1
 --- !u!1 &1466469128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2820,6 +2915,7 @@ GameObject:
   - component: {fileID: 1467847505}
   - component: {fileID: 1467847507}
   - component: {fileID: 1467847506}
+  - component: {fileID: 1467847508}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -2868,6 +2964,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeOptionGO: {fileID: 1849170142}
   chestMenu: {fileID: 1852574974}
+--- !u!114 &1467847508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467847504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb3b56a99c325e4c8483ddf3a4d0ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.1
 --- !u!1 &1517430950
 GameObject:
   m_ObjectHideFlags: 0
@@ -4353,7 +4462,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3164183031912566847, guid: d610469790874e2408222863be71514b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1749783478}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8798764990493325172, guid: d610469790874e2408222863be71514b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1452371852}
+    - targetCorrespondingSourceObject: {fileID: 8798764990493325172, guid: d610469790874e2408222863be71514b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1452371853}
   m_SourcePrefab: {fileID: 100100000, guid: d610469790874e2408222863be71514b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
