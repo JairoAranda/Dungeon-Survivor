@@ -13,24 +13,20 @@ public class HealthBarManager : MonoBehaviour
     private void OnEnable()
     {
         PlayerStats.EventTriggerHitPlayer += UpdateLifeBar;
-        RandomStatsUpgradeManager.EventTriggerOnUpgradeStat += UpdateLate;
+        RandomStatsUpgradeManager.EventTriggerOnUpgradeStat += UpgradeMaxLife;
     }
 
     private void OnDisable()
     {
         PlayerStats.EventTriggerHitPlayer -= UpdateLifeBar;
-        RandomStatsUpgradeManager.EventTriggerOnUpgradeStat -= UpdateLate;
+        RandomStatsUpgradeManager.EventTriggerOnUpgradeStat -= UpgradeMaxLife;
     }
 
     void Start()
     {
-        UpdateLate();
+        UpgradeMaxLife();
     }
 
-    private void UpdateLate()
-    {
-        StartCoroutine(LateCall());
-    }
 
     void UpgradeMaxLife()
     {
@@ -39,12 +35,6 @@ public class HealthBarManager : MonoBehaviour
         UpdateLifeBar(gameObject);
     }
 
-    IEnumerator LateCall()
-    {
-        yield return new WaitForSeconds(0.1f);
-
-        UpgradeMaxLife();
-    }
 
     void UpdateLifeBar(GameObject go)
     {

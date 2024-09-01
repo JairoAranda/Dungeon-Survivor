@@ -49,10 +49,8 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  handPoint: {fileID: 0}
-  armPosition: {fileID: 0}
   shotAngle: 15
-  bulletColor: {r: 0.49803922, g: 0.49803922, b: 0.99215686, a: 1}
+  bulletColor: {r: 0, g: 72.28236, b: 766.99603, a: 1}
 --- !u!114 &3907088108238674601
 MonoBehaviour:
   m_ObjectHideFlags: 0

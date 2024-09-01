@@ -12,6 +12,7 @@ public class TripleShoot : BaseAbility, IAbility
 
     [Header("Bullet Color")]
     [Space]
+    [ColorUsage(true, true)]
     [SerializeField] Color bulletColor;
 
     private Transform handPoint;
@@ -80,6 +81,6 @@ public class TripleShoot : BaseAbility, IAbility
         projectile.dmg = PlayerStats.instance.dmg;
         projectile.range = sOPlayerInfo.range;
         projectile.owner = PlayerStats.instance.gameObject;
-        projectile.GetComponent<SpriteRenderer>().color = bulletColor;
+        projectile.GetComponent<SpriteRenderer>().material.color = bulletColor;
     }
 }
