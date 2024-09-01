@@ -22,7 +22,7 @@ public class PlayerStats : MonoBehaviour, IStats
     [Header("Lvl XP")]
     [Space]
     [Range(0.1f, 500f)]
-    [SerializeField] private float xpMax = 100;
+    public float xpMax = 100;
 
     [Header("Lvl Multiplier")]
     [Space]
@@ -54,7 +54,10 @@ public class PlayerStats : MonoBehaviour, IStats
     [HideInInspector]
     public bool canBeHit = true;
 
+    [SerializeField]
     private float _life;
+
+    public float currentMaxLife, maxLife;
 
     public float life
     {
@@ -108,7 +111,10 @@ public class PlayerStats : MonoBehaviour, IStats
 
     void UpgradeStats()
     {
-        life = soPlayerInfo.health * (float)(1 + 0.1 * PlayerPrefs.GetInt("Health", 1) - 0.1) * ScaleMultiplier.ScaleFactor(lifeMultiplier, soPlayerInfo.statUpgrades[lifeUpgrade]);
+        maxLife = soPlayerInfo.health * (float)(1 + 0.1 * PlayerPrefs.GetInt("Health", 1) - 0.1) * ScaleMultiplier.ScaleFactor(lifeMultiplier, soPlayerInfo.statUpgrades[lifeUpgrade]);
+        life += maxLife - currentMaxLife;
+        currentMaxLife = maxLife;
+
         dmg = soPlayerInfo.damage * (float)(1 + 0.1 * PlayerPrefs.GetInt("Damage", 1) - 0.1) * ScaleMultiplier.ScaleFactor(dmgMultiplier, soPlayerInfo.statUpgrades[dmgUpgrade]);
         coolDownReduction = (float)(1 + 0.1 * PlayerPrefs.GetInt("CD", 1) - 0.1) * ScaleMultiplier.ScaleFactor(cooldownMultiplier, soPlayerInfo.statUpgrades[cdUpgrade]);
     }
