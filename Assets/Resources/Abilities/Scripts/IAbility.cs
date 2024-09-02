@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public interface IAbility
 {
@@ -11,6 +12,12 @@ public interface IAbility
     float cd { get; set; }
 
     float currentCD { get; set; }
+
+    KeyCode keycode { get; set; }
+
+    Sprite img { get; set; }
+
+    Image CDimg { get; set; }
 
     void Ability();
 }

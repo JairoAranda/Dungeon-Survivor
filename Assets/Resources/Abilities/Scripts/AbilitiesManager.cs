@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.Playables;
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AbilitiesManager : MonoBehaviour
 {
@@ -9,6 +12,10 @@ public class AbilitiesManager : MonoBehaviour
 
     [HideInInspector]
     public IAbility qAbility, eAbility;
+
+    public Image qCdImg, eCdImg, qImg, eImg;
+
+    public TextMeshProUGUI qCdText, eCdText;
 
     private void OnEnable()
     {
@@ -24,26 +31,73 @@ public class AbilitiesManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && qAbility != null)
-        {
-            if (qAbility.currentCD <= 0)
-            {
-                qAbility.currentCD = qAbility.cd / PlayerStats.instance.coolDownReduction;
+        Ability(qAbility);
 
-                qAbility.Ability();
-            }
-            
+        Ability(eAbility);
+    }
+
+    void Ability(IAbility ability)
+    {
+        if (ability != null)
+        {
+            AbilityUse(ability);
+
+            ImgCd(ability);
+
+            CD(ability);
         }
+        
+    }
 
-        if (Input.GetKeyDown(KeyCode.E) && eAbility != null)
+    void AbilityUse(IAbility ability)
+    {
+        if (Input.GetKeyDown(ability.keycode))
         {
-            if (eAbility.currentCD <= 0)
+            if (ability.currentCD <= 0)
             {
-                eAbility.currentCD = eAbility.cd / PlayerStats.instance.coolDownReduction;
+                ability.currentCD = ability.cd / PlayerStats.instance.coolDownReduction;
 
-                eAbility.Ability();
+                ability.Ability();
             }
-            
+
         }
     }
+
+    void ImgCd(IAbility ability)
+    {
+        ability.CDimg.fillAmount = ability.currentCD / (ability.cd / PlayerStats.instance.coolDownReduction);
+    }
+
+    void CD(IAbility ability)
+    {
+        if (ability.img == qImg.sprite)
+        {
+            if (!qCdText.enabled)
+            {
+                qCdText.enabled = true;
+            }
+            
+            qCdText.text = Math.Ceiling(ability.currentCD).ToString();
+
+            if (qCdText.text == "0")
+            {
+                qCdText.enabled = false;
+            }
+        }
+        else
+        {
+            if (!eCdText.enabled)
+            {
+                eCdText.enabled = true;
+            }
+
+            eCdText.text = Math.Ceiling(ability.currentCD).ToString();
+
+            if (eCdText.text == "0")
+            {
+                eCdText.enabled = false;
+            }
+        }
+    }
+
 }

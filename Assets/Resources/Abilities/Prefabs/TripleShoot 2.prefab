@@ -49,6 +49,7 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 64
+  _abilityImg: {fileID: -614881460, guid: 6357c0512abd76044b9243a244796639, type: 3}
   shotAngle: 15
   bulletColor: {r: 0, g: 72.28236, b: 766.99603, a: 1}
 --- !u!114 &3907088108238674601

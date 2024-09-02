@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7fc36d5604b4746819388c0fa66de7, type: 3}
   m_Name: XPDrop
   m_EditorClassIdentifier: 
-  dropAmount: 10
+  dropAmount: 20
   minDrop: 1
   maxDrop: 6
   minProbabilityMaxDrop: 0.5
