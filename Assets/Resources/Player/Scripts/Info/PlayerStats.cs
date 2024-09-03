@@ -54,9 +54,9 @@ public class PlayerStats : MonoBehaviour, IStats
     [HideInInspector]
     public bool canBeHit = true;
 
-    [SerializeField]
     private float _life;
 
+    [HideInInspector]
     public float currentMaxLife, maxLife;
 
     public float life
@@ -116,7 +116,9 @@ public class PlayerStats : MonoBehaviour, IStats
         currentMaxLife = maxLife;
 
         dmg = soPlayerInfo.damage * (float)(1 + 0.1 * PlayerPrefs.GetInt("Damage", 1) - 0.1) * ScaleMultiplier.ScaleFactor(dmgMultiplier, soPlayerInfo.statUpgrades[dmgUpgrade]);
-        coolDownReduction = (float)(1 + 0.1 * PlayerPrefs.GetInt("CD", 1) - 0.1) * ScaleMultiplier.ScaleFactor(cooldownMultiplier, soPlayerInfo.statUpgrades[cdUpgrade]);
+
+        coolDownReduction = (float)(1 + 0.1 * PlayerPrefs.GetInt("CD", 1) - 0.1) * ScaleMultiplier.ScaleFactor(cooldownMultiplier, soPlayerInfo.statUpgrades[cdUpgrade]) - 1;
+
     }
 
 

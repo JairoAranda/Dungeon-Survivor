@@ -26,6 +26,11 @@ public class RandomStatsUpgradeManager : MonoBehaviour
         keyButtons = new PlayerUpgradeEnum?[upgradeCards.Length];
         assignedValues = new HashSet<PlayerUpgradeEnum>();
 
+        foreach (var upgradeCard in upgradeCards)
+        {
+            upgradeCard.onClick.RemoveAllListeners();
+        }
+
         for (int i = 0; i < upgradeCards.Length; i++)
         {
             int index = i;
@@ -71,6 +76,7 @@ public class RandomStatsUpgradeManager : MonoBehaviour
         if (dictionary.ContainsKey(key))
         {
             dictionary[key]++;
+
         }
 
         EventTriggerOnUpgradeStat?.Invoke();

@@ -6283,7 +6283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1958911684
 Transform:
   m_ObjectHideFlags: 0
@@ -6839,6 +6839,10 @@ PrefabInstance:
     - target: {fileID: 3820639312582617082, guid: d610469790874e2408222863be71514b, type: 3}
       propertyPath: xpMax
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3820639312582617082, guid: d610469790874e2408222863be71514b, type: 3}
+      propertyPath: cdUpgrade
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3820639312582617082, guid: d610469790874e2408222863be71514b, type: 3}
       propertyPath: cooldownMultiplier

@@ -55,7 +55,7 @@ public class AbilitiesManager : MonoBehaviour
         {
             if (ability.currentCD <= 0)
             {
-                ability.currentCD = ability.cd / PlayerStats.instance.coolDownReduction;
+                ability.currentCD = ability.cd * (1 - PlayerStats.instance.coolDownReduction / 100);
 
                 ability.Ability();
             }
@@ -65,7 +65,7 @@ public class AbilitiesManager : MonoBehaviour
 
     void ImgCd(IAbility ability)
     {
-        ability.CDimg.fillAmount = ability.currentCD / (ability.cd / PlayerStats.instance.coolDownReduction);
+        ability.CDimg.fillAmount = ability.currentCD / (ability.cd * (1 - PlayerStats.instance.coolDownReduction / 100));
     }
 
     void CD(IAbility ability)
@@ -77,7 +77,7 @@ public class AbilitiesManager : MonoBehaviour
                 qCdText.enabled = true;
             }
             
-            qCdText.text = Math.Ceiling(ability.currentCD).ToString();
+            qCdText.text = ability.currentCD.ToString("F1");
 
             if (qCdText.text == "0")
             {
@@ -91,7 +91,7 @@ public class AbilitiesManager : MonoBehaviour
                 eCdText.enabled = true;
             }
 
-            eCdText.text = Math.Ceiling(ability.currentCD).ToString();
+            eCdText.text = ability.currentCD.ToString("F1");
 
             if (eCdText.text == "0")
             {
