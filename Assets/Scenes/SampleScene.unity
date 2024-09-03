@@ -6789,6 +6789,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2610013235999457917, guid: d610469790874e2408222863be71514b, type: 3}
+      propertyPath: attackSpeedUpgrade
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610013235999457917, guid: d610469790874e2408222863be71514b, type: 3}
       propertyPath: attackSpeedMultiplier
       value: 2
       objectReference: {fileID: 0}
