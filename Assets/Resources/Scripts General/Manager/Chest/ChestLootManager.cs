@@ -21,11 +21,11 @@ public class ChestLootManager : MonoBehaviour
     [Space]
     [SerializeField] Transform parentObject;
 
+    [SerializeField] GameObject changeAbility;
+
     private GameObject weapon;
 
-    private GameObject[] abilities = new GameObject[2];
-
-    private int abilityNum;
+    private int abilities = 0;
 
 
     private void Start()
@@ -35,6 +35,12 @@ public class ChestLootManager : MonoBehaviour
 
     private void OnEnable()
     {
+        weaponButton.gameObject.SetActive(true);
+
+        abilityButton.gameObject.SetActive(true);
+
+        moneyButton.gameObject.SetActive(true);
+
         SetPlayerLoot();
     }
 
@@ -63,11 +69,15 @@ public class ChestLootManager : MonoBehaviour
 
     private void AssignLootToButtons(ChestLootArray loot)
     {
+        weaponButton.onClick.RemoveAllListeners();
+        abilityButton.onClick.RemoveAllListeners();
+        moneyButton.onClick.RemoveAllListeners();
+
         GameObject randomWeapon = GetRandomObjectNotInScene(loot.weapons);
         if (randomWeapon != null)
         {
             weaponButton.GetComponentInChildren<TextMeshProUGUI>().text = randomWeapon.name;
-            weaponButton.onClick.AddListener(() => ActivateLoot(randomWeapon, weapon));
+            weaponButton.onClick.AddListener(() => StartCoroutine(ActivateLoot(randomWeapon, false)));
         }
 
         GameObject randomAbility = GetRandomObjectNotInScene(loot.abilities);
@@ -75,14 +85,8 @@ public class ChestLootManager : MonoBehaviour
         {
             abilityButton.GetComponentInChildren<TextMeshProUGUI>().text = randomAbility.name;
 
-            abilityButton.onClick.AddListener(() => ActivateLoot(randomAbility, abilities[abilityNum]));
+            abilityButton.onClick.AddListener(() => StartCoroutine(ActivateLoot(randomAbility, true)));
 
-            abilityNum++;
-
-            if (abilityNum > 1)
-            {
-                abilityNum = 0;
-            }
         }
 
         moneyButton.GetComponentInChildren<TextMeshProUGUI>().text = "30 gold";
@@ -117,19 +121,48 @@ public class ChestLootManager : MonoBehaviour
         return GameObject.Find(obj.name) != null;
     }
 
-    private void ActivateLoot(GameObject loot, GameObject type)
+    private IEnumerator ActivateLoot(GameObject loot, bool isAbility)
     {
-        if (type != null)
+        if (isAbility)
         {
-            Destroy(type);
+            if (abilities == 2)
+            {
+                changeAbility.SetActive(true);
+
+                weaponButton.gameObject.SetActive(false);
+
+                abilityButton.gameObject.SetActive(false);
+
+                moneyButton.gameObject.SetActive(false);
+
+                yield return new WaitUntil(() => !changeAbility.activeSelf);
+            }
+
+            else
+            {
+                abilities++;
+            }
+        }
+
+        else
+        {
+            Destroy(weapon);
         }
 
         if (loot != null)
         {
-            type = Instantiate(loot, parentObject.position, parentObject.rotation, parentObject);
+            GameObject newType = Instantiate(loot, parentObject.position, parentObject.rotation, parentObject);
+
+            newType.name = loot.name;
+
+            if (!isAbility)
+            {
+                weapon = newType;
+            }
         }
 
         gameObject.SetActive(false);
+
     }
 
     private void GetMoney()

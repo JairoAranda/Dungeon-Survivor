@@ -70,7 +70,7 @@ public class AbilitiesManager : MonoBehaviour
 
     void CD(IAbility ability)
     {
-        if (ability.img == qImg.sprite)
+        if (ability.CDimg == qCdImg)
         {
             if (!qCdText.enabled)
             {

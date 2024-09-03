@@ -19,5 +19,7 @@ public interface IAbility
 
     Image CDimg { get; set; }
 
+    GameObject go { get; set; }
+
     void Ability();
 }

@@ -10,6 +10,7 @@ TagManager:
   - ChestMenu
   - Hand
   - Arm
+  - Ability
   layers:
   - Default
   - TransparentFX

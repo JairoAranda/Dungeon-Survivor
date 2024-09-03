@@ -72,11 +72,21 @@ public class BaseAbility : MonoBehaviour
         set => _abilityCDImg = value;
     }
 
+    GameObject _go;
+
+    public GameObject go
+    {
+        get => _go;
+        set => _go = value;
+    }
+
     protected virtual void Start()
     {
         _sOPlayerInfo = GetComponentInParent<SOFinderPlayer>().sOPlayerInfo;
 
         _projectilePool = ProjectilePool.instance;
+
+        go = gameObject;
     }
 
 

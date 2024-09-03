@@ -38,6 +38,7 @@ public class AbilityAsign : MonoBehaviour
 
     private void OnDestroy()
     {
+
         if (AbilitiesManager.instance.qAbility == ability)
         {
             AbilitiesManager.instance.qAbility = null;
