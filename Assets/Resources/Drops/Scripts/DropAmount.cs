@@ -8,6 +8,8 @@ public class DropAmount : MonoBehaviour
 
     [SerializeField] private PlayerUpgradeEnum luckUpgrade;
 
+    [SerializeField] private PlayerPrefsEnum luckPrefs;
+
     private void OnEnable()
     {
         RandomStatsUpgradeManager.EventTriggerOnUpgradeStat += GetLuck;
@@ -25,12 +27,12 @@ public class DropAmount : MonoBehaviour
 
     void GetLuck()
     {
-        luck = PlayerStats.instance.GetComponentInParent<SOFinderPlayer>().sOPlayerInfo.statUpgrades[luckUpgrade];
+        luck = PlayerStats.instance.soPlayerInfo.statUpgrades[luckUpgrade];
     }
 
     public int GetDropNumber(int minDrop, int maxDrop, double minProbabilityMaxDrop, double maxProbabilityMaxDrop)
     {
-        float multiplier = (float)(1 + 0.1 * PlayerPrefs.GetInt("Luck", 1) - 0.1);
+        float multiplier = (float)(1 + 0.1 * PlayerPrefs.GetInt(luckPrefs.ToString(), 1) - 0.1);
 
         luck = Mathf.Clamp(luck, 1, 20);
 

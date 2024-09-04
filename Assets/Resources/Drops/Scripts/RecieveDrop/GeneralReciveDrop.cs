@@ -14,7 +14,7 @@ public class GeneralReciveDrop : MonoBehaviour
     [Space]
     [SerializeField] private PlayerUpgradeEnum upgrade;
 
-    [SerializeField] private string playerPrefs;
+    [SerializeField] private PlayerPrefsEnum playerPrefs;
 
     [HideInInspector]
     public bool isPlaying;
@@ -40,7 +40,9 @@ public class GeneralReciveDrop : MonoBehaviour
 
     private void Start()
     {
-        sOPlayerInfo = PlayerStats.instance.GetComponent<SOFinderPlayer>().sOPlayerInfo;
+        sOPlayerInfo = PlayerStats.instance.soPlayerInfo;
+
+        Debug.Log(sOPlayerInfo + " generalrecievedrop");
     }
 
 
@@ -70,7 +72,7 @@ public class GeneralReciveDrop : MonoBehaviour
 
     protected virtual void AnimDone()
     {
-        totalValue = baseValue * PlayerPrefs.GetInt(playerPrefs, 1) * ScaleMultiplier.ScaleFactor(multiplier, sOPlayerInfo.statUpgrades[upgrade]);
+        totalValue = baseValue * PlayerPrefs.GetInt(playerPrefs.ToString(), 1) * ScaleMultiplier.ScaleFactor(multiplier, sOPlayerInfo.statUpgrades[upgrade]);
 
         StartCoroutine(DestoyObject());
 

@@ -9,14 +9,14 @@ public class CheckLevel : MonoBehaviour
     [Space]
     [SerializeField] GameObject[] levels;
 
-    [SerializeField] string stat;
+    [SerializeField] PlayerPrefsEnum stat;
     void Start()
     {
         int i = 2;
 
         foreach (GameObject level in levels)
         {
-            if (PlayerPrefs.GetInt(stat, 1) >= i)
+            if (PlayerPrefs.GetInt(stat.ToString(), 1) >= i)
             {
                 level.GetComponent<Image>().color = Color.yellow;
                 i++;

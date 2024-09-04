@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   upgrade: 5
-  playerPrefs: 
+  playerPrefs: 5
   isPlaying: 0
   gatherTime: 1
   baseValue: 5

@@ -13,7 +13,8 @@ public class PlayerStats : MonoBehaviour, IStats
 
     public static event Action EventTriggerLevelUp;
 
-    private SOPlayerInfo soPlayerInfo;
+    [HideInInspector]
+    public SOPlayerInfo soPlayerInfo;
 
     [Header("Player Tpye")]
     [Space]
@@ -38,6 +39,12 @@ public class PlayerStats : MonoBehaviour, IStats
     [SerializeField] private PlayerUpgradeEnum lifeUpgrade;
     [SerializeField] private PlayerUpgradeEnum dmgUpgrade;
     [SerializeField] private PlayerUpgradeEnum cdUpgrade;
+
+    [Header("PlayerPrefs Type")]
+    [Space]
+    [SerializeField] private PlayerPrefsEnum lifePref;
+    [SerializeField] private PlayerPrefsEnum dmgPref;
+    [SerializeField] private PlayerPrefsEnum cdPref;
 
     [HideInInspector]
     public int lvl = 1;
@@ -111,13 +118,13 @@ public class PlayerStats : MonoBehaviour, IStats
 
     void UpgradeStats()
     {
-        maxLife = soPlayerInfo.health * (float)(1 + 0.1 * PlayerPrefs.GetInt("Health", 1) - 0.1) * ScaleMultiplier.ScaleFactor(lifeMultiplier, soPlayerInfo.statUpgrades[lifeUpgrade]);
+        maxLife = soPlayerInfo.health * (float)(1 + 0.1 * PlayerPrefs.GetInt(lifePref.ToString(), 1) - 0.1) * ScaleMultiplier.ScaleFactor(lifeMultiplier, soPlayerInfo.statUpgrades[lifeUpgrade]);
         life += maxLife - currentMaxLife;
         currentMaxLife = maxLife;
 
-        dmg = soPlayerInfo.damage * (float)(1 + 0.1 * PlayerPrefs.GetInt("Damage", 1) - 0.1) * ScaleMultiplier.ScaleFactor(dmgMultiplier, soPlayerInfo.statUpgrades[dmgUpgrade]);
+        dmg = soPlayerInfo.damage * (float)(1 + 0.1 * PlayerPrefs.GetInt(dmgPref.ToString(), 1) - 0.1) * ScaleMultiplier.ScaleFactor(dmgMultiplier, soPlayerInfo.statUpgrades[dmgUpgrade]);
 
-        coolDownReduction = (float)(1 + 0.1 * PlayerPrefs.GetInt("CD", 1) - 0.1) * ScaleMultiplier.ScaleFactor(cooldownMultiplier, soPlayerInfo.statUpgrades[cdUpgrade]) - 1;
+        coolDownReduction = (float)(1 + 0.1 * PlayerPrefs.GetInt(cdPref.ToString(), 1) - 0.1) * ScaleMultiplier.ScaleFactor(cooldownMultiplier, soPlayerInfo.statUpgrades[cdUpgrade]) - 1;
 
     }
 

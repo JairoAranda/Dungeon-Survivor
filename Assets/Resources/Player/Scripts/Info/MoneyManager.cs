@@ -6,6 +6,9 @@ public class MoneyManager : MonoBehaviour
 {
     public static MoneyManager instance;
 
+    [SerializeField] PlayerPrefsEnum currentMoneyPrefs;
+
+    [HideInInspector]
     public int money;
 
     private void Awake()
@@ -37,13 +40,13 @@ public class MoneyManager : MonoBehaviour
 
     private void Start()
     {
-        money = PlayerPrefs.GetInt("CurrentMoney", 0);
+        money = PlayerPrefs.GetInt(currentMoneyPrefs.ToString(), 0);
     }
 
     void SaveMoney(GameObject go)
     {
         Debug.Log("hola");
 
-        PlayerPrefs.SetInt("CurrentMoney", money);
+        PlayerPrefs.SetInt(currentMoneyPrefs.ToString(), money);
     }
 }

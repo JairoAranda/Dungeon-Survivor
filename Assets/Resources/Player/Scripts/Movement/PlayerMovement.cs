@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     [Space]
     [SerializeField] private PlayerUpgradeEnum speedUpgrade;
 
+    [SerializeField] private PlayerPrefsEnum speedPrefs;
+
     private SOPlayerInfo sOPlayerInfo;
     private float m_speed, scaleFactor;
     private Rigidbody2D rb;
@@ -44,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
     void UpgradeStat()
     {
-        float baseMultiplier = (float)(1 + 0.1 * PlayerPrefs.GetInt("Speed", 1) - 0.1);
+        float baseMultiplier = (float)(1 + 0.1 * PlayerPrefs.GetInt(speedPrefs.ToString(), 1) - 0.1);
 
         scaleFactor = baseMultiplier * ScaleMultiplier.ScaleFactor(multiplier, sOPlayerInfo.statUpgrades[speedUpgrade]);
 

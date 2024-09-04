@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   upgrade: 8
-  playerPrefs: Money
+  playerPrefs: 8
   isPlaying: 0
   gatherTime: 1
   baseValue: 5

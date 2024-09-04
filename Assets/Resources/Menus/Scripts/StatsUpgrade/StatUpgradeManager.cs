@@ -11,6 +11,8 @@ public class StatUpgradeManager : MonoBehaviour
 
     GameObject[] levels;
 
+    [SerializeField] PlayerPrefsEnum currentMoneyPrefs;
+
     public void LevelArray(GameObject levelGO)
     {
         Transform[] childTransforms = levelGO.GetComponentsInChildren<Transform>();
@@ -29,9 +31,11 @@ public class StatUpgradeManager : MonoBehaviour
        upgradeMoney = money;
     }
 
-    public void UpgradeButton(string stat)
+    public void UpgradeButton(GameObject go)
     {
-        int level = PlayerPrefs.GetInt(stat, 1);
+        PlayerPrefsEnum stat = go.GetComponent<CheckPlayerPref>().statPrefs;
+
+        int level = PlayerPrefs.GetInt(stat.ToString(), 1);
 
         upgradeMoney *= level;
 
@@ -41,9 +45,11 @@ public class StatUpgradeManager : MonoBehaviour
 
             level++;
 
-            PlayerPrefs.SetInt(stat, level);
+            PlayerPrefs.SetInt(stat.ToString(), level);
 
             MoneyManager.instance.money -= upgradeMoney;
+
+            PlayerPrefs.SetInt(currentMoneyPrefs.ToString(), MoneyManager.instance.money);
 
             Debug.Log(MoneyManager.instance.money);
         }

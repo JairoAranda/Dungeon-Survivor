@@ -21,7 +21,7 @@ public class RandomStatsUpgradeManager : MonoBehaviour
 
     private void OnEnable()
     {
-        dictionary = PlayerStats.instance.GetComponent<SOFinderPlayer>().sOPlayerInfo.statUpgrades;
+        dictionary = PlayerStats.instance.soPlayerInfo.statUpgrades;
 
         keyButtons = new PlayerUpgradeEnum?[upgradeCards.Length];
         assignedValues = new HashSet<PlayerUpgradeEnum>();

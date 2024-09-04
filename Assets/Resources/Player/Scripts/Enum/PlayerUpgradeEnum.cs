@@ -5,13 +5,13 @@ using UnityEngine;
 
 public enum PlayerUpgradeEnum
 {
-    HealthLvl,
-    SpeedLvl,
-    DmgLvl,
-    AttackSpeedLvl,
-    CooldownLvl,
-    LuckLvl,
-    AbsortionLvl,
-    XpLvl,
-    MoneyLvl
+    Health,
+    Speed,
+    Dmg,
+    AttackSpeed,
+    Cooldown,
+    Luck,
+    Absortion,
+    Xp,
+    Money
 }
