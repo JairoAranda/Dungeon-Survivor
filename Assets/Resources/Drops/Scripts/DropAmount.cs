@@ -22,6 +22,13 @@ public class DropAmount : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(LateStart());
+    }
+
+    IEnumerator LateStart()
+    {
+        yield return new WaitForEndOfFrame();
+
         GetLuck();
     }
 

@@ -42,7 +42,6 @@ public class GeneralReciveDrop : MonoBehaviour
     {
         sOPlayerInfo = PlayerStats.instance.soPlayerInfo;
 
-        Debug.Log(sOPlayerInfo + " generalrecievedrop");
     }
 
 

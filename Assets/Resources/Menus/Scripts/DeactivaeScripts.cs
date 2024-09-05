@@ -27,7 +27,10 @@ public class DeactivaeScripts : MonoBehaviour
     {
         foreach (var script in scripts)
         {
-            script.enabled = false;
+            if (script != null)
+            {
+                script.enabled = false;
+            }
         }
     }
 
@@ -35,7 +38,10 @@ public class DeactivaeScripts : MonoBehaviour
     {
         foreach(var script in scripts)
         {
-            script.enabled = true;
+            if (script != null)
+            {
+                script.enabled = true;
+            }
         }
     }
 }

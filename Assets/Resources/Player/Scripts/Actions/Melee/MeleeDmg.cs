@@ -17,7 +17,8 @@ public class MeleeDmg : MonoBehaviour
     [HideInInspector]
     public bool canDmg;
 
-    private void OnEnable()
+
+    private void Awake()
     {
         if (instance == null)
         {

@@ -24,6 +24,12 @@ public class XPBarManager : MonoBehaviour
         UpdateMaxXP();
     }
 
+    IEnumerator LateStart()
+    {
+        yield return new WaitForEndOfFrame();
+        UpdateMaxXP();
+    }
+
     void UpdateMaxXP()
     {
         maxXP = PlayerStats.instance.xpMax;
@@ -31,6 +37,9 @@ public class XPBarManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        XPBar.fillAmount = PlayerStats.instance.xp / maxXP;
+        if (PlayerStats.instance != null)
+        {
+            XPBar.fillAmount = PlayerStats.instance.xp / maxXP;
+        }       
     }
 }

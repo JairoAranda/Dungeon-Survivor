@@ -24,9 +24,14 @@ public class HealthBarManager : MonoBehaviour
 
     void Start()
     {
-        UpgradeMaxLife();
+        StartCoroutine(LateStart());
     }
 
+    IEnumerator LateStart()
+    {
+        yield return new WaitForEndOfFrame();
+        UpgradeMaxLife();
+    }
 
     void UpgradeMaxLife()
     {
@@ -38,6 +43,9 @@ public class HealthBarManager : MonoBehaviour
 
     void UpdateLifeBar(GameObject go)
     {
-        healthBar.fillAmount = PlayerStats.instance.life / maxHealth;
+        if (PlayerStats.instance != null)
+        {
+            healthBar.fillAmount = PlayerStats.instance.life / maxHealth;
+        }
     }
 }

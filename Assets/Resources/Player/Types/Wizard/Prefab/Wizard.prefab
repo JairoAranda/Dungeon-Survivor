@@ -1,5 +1,87 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &998359963352872427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2133156892855846168}
+  - component: {fileID: 3941472670485136066}
+  m_Layer: 3
+  m_Name: 2D Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2133156892855846168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998359963352872427}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3164183031912566847}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3941472670485136066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998359963352872427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.7
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 2
+  m_LightVolumeIntensity: 1
+  m_LightVolumeIntensityEnabled: 0
+  m_ApplyToSortingLayers: 0000000039a0e9c2
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowIntensityEnabled: 0
+  m_ShadowIntensity: 0.75
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 20
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &1920106032973529433
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,6 +250,7 @@ MonoBehaviour:
   handPosition: {fileID: 8631217466926080632}
   attackSpeedMultiplier: 2
   attackSpeedUpgrade: 0
+  attackSpeedPrefs: 0
 --- !u!1 &8798764990493325172
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +272,8 @@ GameObject:
   - component: {fileID: 2732032281820459234}
   - component: {fileID: 3515880702225438154}
   - component: {fileID: 2610013235999457917}
+  - component: {fileID: 8756019317094945089}
+  - component: {fileID: 6204326963935836168}
   m_Layer: 3
   m_Name: Wizard
   m_TagString: Player
@@ -210,6 +295,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2713520089696809415}
+  - {fileID: 2133156892855846168}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6069791181852320719
@@ -232,7 +318,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -319,7 +405,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_CallbackLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 447
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -411,6 +497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multiplier: 2
   speedUpgrade: 1
+  speedPrefs: 1
 --- !u!114 &3820639312582617082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,18 +510,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1feb944f65aef947a785c66220097db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soPlayerInfo: {fileID: 0}
   playerType: 0
   xpMax: 100
   lifeMultiplier: 5
   dmgMultiplier: 5
-  cooldownMultiplier: 5
+  cooldownMultiplier: 40
   lifeUpgrade: 0
   dmgUpgrade: 2
-  cdUpgrade: 3
+  cdUpgrade: 4
+  lifePref: 0
+  dmgPref: 2
+  cdPref: 4
   lvl: 1
   xp: 0
   dmg: 0
   coolDownReduction: 0
+  canBeHit: 1
+  currentMaxLife: 0
+  maxLife: 0
 --- !u!114 &2732032281820459234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,9 +559,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   absortionUpgrade: 6
-  detectionRadiusDefault: 0
-  absortion: 0
-  detectionRadius: 0
+  absortionPrefs: 6
 --- !u!114 &2610013235999457917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,8 +577,75 @@ MonoBehaviour:
     m_Bits: 64
   handPosition: {fileID: 2436938410995096647}
   attackSpeedMultiplier: 2
-  attackSpeedUpgrade: 0
-  bulletColor: {r: 0.4999555, g: 0.4999555, b: 0.990566, a: 1}
+  attackSpeedUpgrade: 3
+  attackSpeedPrefs: 3
+  bulletColor: {r: 0, g: 9.035295, b: 95.874504, a: 1}
+--- !u!114 &8756019317094945089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8798764990493325172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 2
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.2
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 0, y: -1, z: 0}
+--- !u!114 &6204326963935836168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8798764990493325172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a292eb86da7d219418290a46b7b7a2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intesity: 1
 --- !u!1001 &4542120967809364155
 PrefabInstance:
   m_ObjectHideFlags: 0
