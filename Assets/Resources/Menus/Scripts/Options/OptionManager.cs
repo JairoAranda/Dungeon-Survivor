@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OptionManager : MonoBehaviour
 {
     public static OptionManager instance;
 
 
-    [Header("Aim Options")]
+    //[HideInInspector]
     public bool isAuto;
+
+    [Header("Aim Options")]
+    [SerializeField] Toggle toggle;
 
     private void Awake()
     {
+        CheckToggle();
+
         if (instance == null)
         {
             instance = this;
@@ -21,6 +27,11 @@ public class OptionManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void CheckToggle()
+    {
+        isAuto = toggle.isOn;
     }
 
 }

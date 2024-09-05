@@ -6,19 +6,13 @@ public class ChangeMenuManager : MonoBehaviour
 {
     [SerializeField] GameObject[] currentMenus;
 
-    public void ChangeMenu()
+    public void ChangeMenu(GameObject nextMenu)
     {
         foreach (GameObject menu in currentMenus)
         {
-            if (!menu.activeSelf)
-            {
-                menu.SetActive(true);
-            }
-            else
-            {
-                menu.SetActive(false);
-            }
+            menu.SetActive(false);
         }
 
+        nextMenu.SetActive(true);
     }
 }
