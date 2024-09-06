@@ -4213,6 +4213,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706479915}
   m_CullTransparentMesh: 1
+--- !u!1 &731946831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 731946833}
+  - component: {fileID: 731946832}
+  m_Layer: 0
+  m_Name: CurrentCharacterManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &731946832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731946831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c31bac1db06fbf4289973504df1645d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0, g: 1, b: 0, a: 1}
+  buttons:
+  - {fileID: 1618925044}
+  - {fileID: 1409093834}
+--- !u!4 &731946833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731946831}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &792344034
 GameObject:
   m_ObjectHideFlags: 0
@@ -8147,7 +8195,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1409093834}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1021412330}
+        m_TargetAssemblyTypeName: SelectedCharacterManager, Assembly-CSharp
+        m_MethodName: SelectPlayer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8798764990493325172, guid: c8c33a7228f94204bab2445ebfb8904b, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 731946832}
+        m_TargetAssemblyTypeName: CurrentButtonColor, Assembly-CSharp
+        m_MethodName: ChangeColorButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1409093834}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1417130671
 GameObject:
   m_ObjectHideFlags: 0
@@ -9353,6 +9425,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 8798764990493325172, guid: d610469790874e2408222863be71514b, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 731946832}
+        m_TargetAssemblyTypeName: CurrentButtonColor, Assembly-CSharp
+        m_MethodName: ChangeColorButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1618925044}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11647,6 +11731,7 @@ SceneRoots:
   - {fileID: 697953798}
   - {fileID: 969356949}
   - {fileID: 559525622}
+  - {fileID: 731946833}
   - {fileID: 1021412331}
   - {fileID: 878880462}
   - {fileID: 1490895699}

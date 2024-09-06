@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBullet : MonoBehaviour, IBulletType
+public class FireEffect : MonoBehaviour, IEffectType
 {
     [Range(0.1f, 5f)]
     [SerializeField] float fireDmg = 10, burnTime = 1;

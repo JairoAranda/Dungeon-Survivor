@@ -11,7 +11,7 @@ public class IngameStats : MonoBehaviour
 
     SOPlayerInfo playerInfo;
 
-    private void Start()
+    private void OnEnable()
     {
         playerInfo = PlayerStats.instance.soPlayerInfo;
 

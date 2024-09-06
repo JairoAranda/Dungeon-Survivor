@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7595e3b0bca612f4b8c7d0693a18e817, type: 3}
-  m_Name: NormalPlayer
+  m_Name: Knight
   m_EditorClassIdentifier: 
-  health: 10
-  speed: 4
-  absortion: 2
-  iFrames: 2
-  damage: 1
+  health: 12.5
+  speed: 6
+  absortion: 1
+  iFrames: 2.5
+  damage: 1.5
   attackSpeed: 1
   cooldown: 1
-  projectileSpeed: 10
-  range: 10
+  projectileSpeed: 1
+  range: 0

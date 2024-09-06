@@ -13,16 +13,21 @@ public class HealthBarManager : MonoBehaviour
     private void OnEnable()
     {
         PlayerStats.EventTriggerHitPlayer += UpdateLifeBar;
-        RandomStatsUpgradeManager.EventTriggerOnUpgradeStat += UpgradeMaxLife;
+        RandomStatsUpgradeManager.EventTriggerOnUpgradeStat += Upgrade;
     }
 
     private void OnDisable()
     {
         PlayerStats.EventTriggerHitPlayer -= UpdateLifeBar;
-        RandomStatsUpgradeManager.EventTriggerOnUpgradeStat -= UpgradeMaxLife;
+        RandomStatsUpgradeManager.EventTriggerOnUpgradeStat -= Upgrade;
     }
 
     void Start()
+    {
+        StartCoroutine(LateStart());
+    }
+
+    void Upgrade()
     {
         StartCoroutine(LateStart());
     }

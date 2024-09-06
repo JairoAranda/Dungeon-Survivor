@@ -5,6 +5,6 @@ using UnityEngine;
 public enum PlayerType
 {
     Mage,
-    Melee,
+    Knight,
     Archer
 }

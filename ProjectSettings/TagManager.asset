@@ -11,6 +11,7 @@ TagManager:
   - Hand
   - Arm
   - Ability
+  - WeaponPosition
   layers:
   - Default
   - TransparentFX
@@ -22,8 +23,8 @@ TagManager:
   - Drops
   - Wall
   - Not Post
-  - 
-  - 
+  - Weapon
+  - Projectile
   - 
   - 
   - 

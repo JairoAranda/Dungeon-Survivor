@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour
     [HideInInspector]
     public LayerMask hitLayer;
 
-    IBulletType effectType;
+    IEffectType effectType;
 
     private Vector2 startPosition;
 
@@ -38,7 +38,7 @@ public class Projectile : MonoBehaviour
 
         if (distanceTravelled >= range )
         {
-            effectType = owner.GetComponentInChildren<IBulletType>();
+            effectType = owner.GetComponentInChildren<IEffectType>();
 
             if (effectType != null )
             {
@@ -55,7 +55,7 @@ public class Projectile : MonoBehaviour
         {
             statsType = other.GetComponent<IStats>();
 
-            effectType = owner.GetComponentInChildren<IBulletType>();
+            effectType = owner.GetComponentInChildren<IEffectType>();
 
             if (statsType != null && effectType != null)
             {
@@ -83,7 +83,7 @@ public class Projectile : MonoBehaviour
 
     void WallHit()
     {
-        effectType = owner.GetComponentInChildren<IBulletType>();
+        effectType = owner.GetComponentInChildren<IEffectType>();
 
         if (effectType != null)
         {

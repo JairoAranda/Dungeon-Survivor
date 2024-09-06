@@ -7,15 +7,15 @@ public class CurrentButtonColor : MonoBehaviour
 {
     [SerializeField] private Color color;
 
-    [SerializeField] Image button;
+    [SerializeField] Image[] buttons;
 
-    private void OnEnable()
+    public void ChangeColorButton(Image currentButton)
     {
-        button.color = color;
-    }
+        foreach (var button in buttons)
+        {
+            button.color = Color.white;
+        }
 
-    private void OnDisable()
-    {
-        button.color = Color.white;
+        currentButton.color = color;
     }
 }

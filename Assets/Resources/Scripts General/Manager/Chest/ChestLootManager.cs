@@ -19,10 +19,12 @@ public class ChestLootManager : MonoBehaviour
 
     [Header("Other Configs")]
     [Space]
-    [SerializeField] Transform parentObject;
-
     [SerializeField] GameObject changeAbility;
 
+    [SerializeField]
+    private Transform parentObject;
+
+    [SerializeField]
     private GameObject weapon;
 
     private int abilities = 0;
@@ -30,7 +32,16 @@ public class ChestLootManager : MonoBehaviour
 
     private void Start()
     {
-        weapon = GameObject.FindGameObjectWithTag("Weapon");
+        if (weapon == null)
+        {
+            weapon = GameObject.FindGameObjectWithTag("Weapon");
+        }
+        
+        if (parentObject == null)
+        {
+            parentObject = weapon.transform.parent;
+        }
+        
     }
 
     private void OnEnable()
@@ -147,10 +158,15 @@ public class ChestLootManager : MonoBehaviour
         else
         {
             Destroy(weapon);
+            Debug.Log("destroy");
         }
+
+        yield return new WaitForEndOfFrame();
 
         if (loot != null)
         {
+            Debug.Log(loot);
+
             GameObject newType = Instantiate(loot, parentObject.position, parentObject.rotation, parentObject);
 
             newType.name = loot.name;

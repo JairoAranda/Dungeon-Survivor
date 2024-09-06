@@ -16,6 +16,8 @@ public class DeactivaeScripts : MonoBehaviour
 
             scripts.Add(player.GetComponent<ShootController>());
 
+            scripts.Add(player.GetComponent<MeleeHitController>());
+
             scripts.Add(player.GetComponentInChildren<HandMovement>());
 
             scripts.Add(player.GetComponent<PlayerAnimation>());

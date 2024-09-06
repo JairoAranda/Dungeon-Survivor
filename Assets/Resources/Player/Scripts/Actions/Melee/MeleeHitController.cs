@@ -23,11 +23,13 @@ public class MeleeHitController : MonoBehaviour
 
     private float currentCD;
 
-    private IBulletType effect;
+    [HideInInspector]
+    public IEffectType effect;
 
     SOPlayerInfo playerInfo;
 
-    MeleeDmg meleeDmg;
+    [HideInInspector]
+    public MeleeDmg meleeDmg;
 
     private void Awake()
     {
@@ -41,36 +43,24 @@ public class MeleeHitController : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        UpdateEffect.EventTriggerUpdateEffect += Effect;
-    }
-
-    private void OnDisable()
-    {
-        UpdateEffect.EventTriggerUpdateEffect -= Effect;
-    }
 
     private void Start()
     {
         playerInfo = GetComponent<SOFinderPlayer>().sOPlayerInfo;
 
-        Effect();
+        meleeDmg = GetComponentInChildren<MeleeDmg>();
+
+        effect = GetComponentInChildren<IEffectType>();
+
+        currentCD = playerInfo.attackSpeed;
     }
 
-
-    void Effect()
-    {
-        effect = GetComponentInChildren<IBulletType>();
-
-        currentCD = playerInfo.cooldown;
-    }
 
     private void Update()
     {
         Timer();
 
-        if (OptionManager.instance.isAuto)
+        if (!OptionManager.instance.isAuto)
         {
             ManualHit();
         }
@@ -90,7 +80,7 @@ public class MeleeHitController : MonoBehaviour
         {
             Swing();
 
-            currentCD = playerInfo.cooldown;
+            currentCD = playerInfo.attackSpeed;
         }
     }
 
@@ -100,17 +90,18 @@ public class MeleeHitController : MonoBehaviour
         {
             Swing();
 
-            currentCD = playerInfo.cooldown;
+            currentCD = playerInfo.attackSpeed;
         }
     }
 
     void Swing()
     {
-        if (meleeDmg == null)
-        {
-            meleeDmg = GetComponentInChildren<MeleeDmg>();
-        }
-        
+        BoxCollider2D boxCollider2D = meleeDmg.gameObject.GetComponent<BoxCollider2D>();
+
+        boxCollider2D.enabled = false;
+
+        boxCollider2D.enabled = true;
+
         float endRotation = armPosition.transform.localEulerAngles.z + swingAngle;
 
         handMovement.enabled = false;

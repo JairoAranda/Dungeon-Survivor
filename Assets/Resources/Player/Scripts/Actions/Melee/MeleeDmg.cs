@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(UpdateMeleeWeapon))]
 public class MeleeDmg : MonoBehaviour
 {
     public static MeleeDmg instance;
 
     [HideInInspector]
-    public IBulletType effectType;
+    public IEffectType effectType;
 
     [SerializeField] LayerMask enemyLayer;
 
@@ -35,9 +36,16 @@ public class MeleeDmg : MonoBehaviour
     {
         if (((1 << collision.gameObject.layer) & enemyLayer) != 0 && canDmg)
         {
-            collision.GetComponent<EnemyStats>().GetHit(dmg);
+
+            Debug.Log("test");
+
+            EnemyStats enemy = collision.GetComponentInParent<EnemyStats>();
+
+            enemy.GetHit(dmg);
 
             effectType.Effect(collision.gameObject);
+
+            
         }
     }
 
