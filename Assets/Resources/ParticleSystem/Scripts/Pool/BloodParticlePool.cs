@@ -18,6 +18,17 @@ public class BloodParticlePool : GeneralPool
         EnemyStats.EventTriggerDeathEnemy += SpawnBlood;
     }
 
+    private void OnDisable()
+    {
+        PlayerStats.EventTriggerHitPlayer -= SpawnBlood;
+
+        PlayerStats.EventTriggerDeathPlayer -= SpawnBlood;
+
+        EnemyStats.EventTriggerHitEnemy -= SpawnBlood;
+
+        EnemyStats.EventTriggerDeathEnemy -= SpawnBlood;
+    }
+
     void SpawnBlood(GameObject go)
     {
         bloodNumber++;

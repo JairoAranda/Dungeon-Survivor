@@ -36,6 +36,12 @@ public class EnemyEnable : MonoBehaviour
 
     public void LateStart()
     {
+        enemyRound += Mathf.FloorToInt(RoundTimerManager.instance.currentFloor / 10f + 0.1f);
+
+        delay = delay / (RoundTimerManager.instance.currentFloor / 10f + 1 - 0.1f);
+
+        Debug.Log(enemyRound + " / " + delay);
+
         m_enemys = GetComponent<EnemyPoolManager>().typesInstances;
 
         StartCoroutine(RandomSpawn());
@@ -43,12 +49,16 @@ public class EnemyEnable : MonoBehaviour
 
     IEnumerator RandomSpawn()
     {
+        int i = 0;
+
         yield return new WaitForSeconds(delay);
 
         while (count < m_enemys.Length)
         {
             if (!m_enemys[count].activeSelf)
             {
+                i++;
+
                 Vector2 spawnPosition = RandomPos();
 
                 while (!IsPositionOnTilemap(spawnPosition))
@@ -59,7 +69,12 @@ public class EnemyEnable : MonoBehaviour
                 m_enemys[count].transform.position = spawnPosition;
                 m_enemys[count].SetActive(true);
 
-                yield return new WaitForSeconds(delay);
+                if (i >= enemyRound)
+                {
+                    yield return new WaitForSeconds(delay);
+
+                    i = 0;
+                }
             }
             else
             {

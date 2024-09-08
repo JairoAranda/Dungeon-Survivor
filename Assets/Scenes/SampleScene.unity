@@ -2040,7 +2040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059759843b6271d4bb563e66932b8bb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorTime: 30
+  floorTime: 60
   floorTimeRemaining: 0
   currentFloor: 1
 --- !u!1 &222254596
