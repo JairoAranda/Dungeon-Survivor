@@ -46,8 +46,16 @@ public class RoundTimerManager : MonoBehaviour
         if (scene.buildIndex == 0)
         {
             currentFloor = 1;
+
+            StopAllCoroutines();
+        }
+
+        else if (scene.buildIndex == 1)
+        {
+            StartCoroutine(Countdown(floorTime));
         }
     }
+
 
     private void Start()
     {
@@ -63,11 +71,8 @@ public class RoundTimerManager : MonoBehaviour
             time--;
         }
 
-
         currentFloor++;
 
         SceneManager.LoadScene(1);
-
-        StartCoroutine(Countdown(floorTime));
     }
 }

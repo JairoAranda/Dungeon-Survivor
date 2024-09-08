@@ -14,4 +14,14 @@ public class ChangeScene : MonoBehaviour
         }
     }
 
+
+    public void ChangeTimeScale(int timeScale)
+    {
+        Time.timeScale = timeScale;
+    }
+
+    public void DestoyPlayer()
+    {
+        Destroy(PlayerStats.instance.gameObject);
+    }
 }

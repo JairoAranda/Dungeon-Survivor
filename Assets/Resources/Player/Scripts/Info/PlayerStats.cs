@@ -97,16 +97,20 @@ public class PlayerStats : MonoBehaviour, IStats
         {
             Destroy(gameObject);
         }
+
+        DontDestroyOnLoad(gameObject);
     }
 
     private void OnEnable()
     {
         RandomStatsUpgradeManager.EventTriggerOnUpgradeStat += UpgradeStats;
+        SceneManager.sceneLoaded += DestroyPlayer;
     }
 
     private void OnDisable()
     {
         RandomStatsUpgradeManager.EventTriggerOnUpgradeStat -= UpgradeStats;
+        SceneManager.sceneLoaded -= DestroyPlayer;
     }
 
     private void Start()
@@ -128,11 +132,19 @@ public class PlayerStats : MonoBehaviour, IStats
 
     }
 
+    void DestroyPlayer(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 1 && gameObject != null)
+        {
+            gameObject.transform.position = Vector3.zero;
+        }
+    }
 
     private void Update()
     {
         CheckXP();
     }
+
 
     public void GetHit(float dmg)
     {

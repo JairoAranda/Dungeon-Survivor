@@ -1,13 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AbilityAsign : MonoBehaviour
 {
     IAbility ability;
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     private void Start()
+    {
+        Assign();
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 1)
+        {
+            Assign();
+        }
+    }
+
+    void Assign()
     {
         ability = gameObject.GetComponent<IAbility>();
 
@@ -33,7 +56,6 @@ public class AbilityAsign : MonoBehaviour
 
             AbilitiesManager.instance.eAbility = ability;
         }
-
     }
 
     private void OnDestroy()

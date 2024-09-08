@@ -19,5 +19,5 @@ MonoBehaviour:
   damage: 1.5
   attackSpeed: 1
   cooldown: 1
-  projectileSpeed: 1
+  projectileSpeed: 0
   range: 0

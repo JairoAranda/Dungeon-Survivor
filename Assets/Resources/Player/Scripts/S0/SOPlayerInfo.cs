@@ -27,12 +27,12 @@ public class SOPlayerInfo : ScriptableObject
 
     [Header("Range Stats")]
     [Space]
-    [Range(1f, 50f)]
-    [Tooltip("Only Ranged.")]
+    [Range(0f, 50f)]
+    [Tooltip("If melee = 0.")]
     [Space]
     public float projectileSpeed = 10;
     [Range(0, 50)]
-    [Tooltip("Only Ranged.")]
+    [Tooltip("If melee = 0")]
     [Space]
     public float range = 5;
 

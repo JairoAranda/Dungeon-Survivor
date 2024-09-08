@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AbilityAsign))]
 public class TripleShoot : BaseAbility, IAbility
@@ -22,12 +23,14 @@ public class TripleShoot : BaseAbility, IAbility
 
     Rigidbody2D rb;
 
-
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
+
         handPoint = GameObject.FindGameObjectWithTag("Hand").transform;
 
         armPosition = GameObject.FindGameObjectWithTag("Arm").transform;
+
     }
 
     public void Ability()
@@ -36,13 +39,18 @@ public class TripleShoot : BaseAbility, IAbility
         {
             AddPool();
 
-            bulletToShoot = projectilePool.typesInstances[projectilePool.shootNumber];
+            Bullet();
 
             SetAtributes();
 
             AddForce(i);
         }
         
+    }
+
+    void Bullet()
+    {
+        bulletToShoot = projectilePool.typesInstances[projectilePool.shootNumber];
     }
 
     void AddPool()

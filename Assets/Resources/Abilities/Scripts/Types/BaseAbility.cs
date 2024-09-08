@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BaseAbility : MonoBehaviour
@@ -80,13 +81,38 @@ public class BaseAbility : MonoBehaviour
         set => _go = value;
     }
 
+    protected virtual void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    protected virtual void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    protected virtual void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 1)
+        {
+            ProjectPool();
+        }
+    }
+
     protected virtual void Start()
     {
         _sOPlayerInfo = GetComponentInParent<SOFinderPlayer>().sOPlayerInfo;
 
-        _projectilePool = ProjectilePool.instance;
+        ProjectPool();
 
         go = gameObject;
+    }
+
+    protected virtual void ProjectPool()
+    {
+        Debug.Log("test");
+
+        _projectilePool = ProjectilePool.instance;
     }
 
 

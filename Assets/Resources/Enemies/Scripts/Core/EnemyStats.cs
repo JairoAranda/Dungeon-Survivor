@@ -49,6 +49,8 @@ public class EnemyStats : MonoBehaviour, IStats
 
     public void GetHit(float dmg)
     {
+        if (_isDead) return;
+
         life -= dmg;
         
         if (life > 0)

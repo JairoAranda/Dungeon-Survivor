@@ -7,7 +7,7 @@ public class SelectedCharacterManager : MonoBehaviour
 {
     public static SelectedCharacterManager instance;
 
-    [HideInInspector]
+    //[HideInInspector]
     public GameObject player;
 
     [Header("No need Main Menu")]
@@ -57,11 +57,11 @@ public class SelectedCharacterManager : MonoBehaviour
 
     void SpawnPlayer()
     {
-        if (player == null)
+        if (player == null && PlayerStats.instance == null)
         {
             Instantiate(testPlayer, Vector3.zero,Quaternion.identity);
         }
-        else
+        else if (PlayerStats.instance == null)
         {
             Instantiate(player, Vector3.zero, Quaternion.identity);
         }

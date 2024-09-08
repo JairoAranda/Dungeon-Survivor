@@ -1,11 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FireEffect : MonoBehaviour, IEffectType
 {
     [Range(0.1f, 5f)]
     [SerializeField] float fireDmg = 10, burnTime = 1;
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 1)
+        {
+            StopAllCoroutines();
+        }
+    }
 
     public void Effect(GameObject target)
     {
@@ -28,9 +47,18 @@ public class FireEffect : MonoBehaviour, IEffectType
         float damagePerSecond = totalDamage / duration;
         while (elapsedTime < duration)
         {
-            targetStats.life -= damagePerSecond * Time.deltaTime;
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            if (targetStats != null)
+            {
+                if (targetStats.isDead) yield break;
+
+                targetStats.life -= damagePerSecond * Time.deltaTime;
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            else
+            {
+                yield break;
+            }
         }
     }
 

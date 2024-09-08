@@ -17,7 +17,7 @@ public class AbilitiesManager : MonoBehaviour
 
     public TextMeshProUGUI qCdText, eCdText;
 
-    private void OnEnable()
+    private void Awake()
     {
         if (instance == null)
         {
@@ -27,6 +27,7 @@ public class AbilitiesManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
     private void Update()
@@ -79,7 +80,7 @@ public class AbilitiesManager : MonoBehaviour
             
             qCdText.text = ability.currentCD.ToString("F1");
 
-            if (qCdText.text == "0")
+            if (ability.currentCD <= 0)
             {
                 qCdText.enabled = false;
             }
@@ -93,7 +94,7 @@ public class AbilitiesManager : MonoBehaviour
 
             eCdText.text = ability.currentCD.ToString("F1");
 
-            if (eCdText.text == "0")
+            if (ability.currentCD <= 0)
             {
                 eCdText.enabled = false;
             }
