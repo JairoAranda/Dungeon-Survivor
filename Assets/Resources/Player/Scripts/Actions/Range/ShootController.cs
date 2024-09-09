@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(SOFinderPlayer))]
 public class ShootController : EnemyDetector
 {
+    public static event Action<GameObject> EventTriggerShoot;
+
     [Header("Bullet Color")]
     [Space]
     [ColorUsage(true, true)]
@@ -33,6 +36,8 @@ public class ShootController : EnemyDetector
 
         if (closestEnemy != null && lastShootTime > shootCooldown)
         {
+            EventTriggerShoot(gameObject);
+
             ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, PlayerStats.instance.dmg, detectionRange, closestEnemy.position, handPosition.position ,detectionLayer, gameObject, bulletColor);
             lastShootTime = 0;
         }
@@ -48,6 +53,8 @@ public class ShootController : EnemyDetector
 
         if (lastShootTime > shootCooldown)
         {
+            EventTriggerShoot(gameObject);
+
             ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, PlayerStats.instance.dmg, detectionRange, mousePosition, handPosition.position ,detectionLayer, gameObject, bulletColor);
             lastShootTime = 0;
         }

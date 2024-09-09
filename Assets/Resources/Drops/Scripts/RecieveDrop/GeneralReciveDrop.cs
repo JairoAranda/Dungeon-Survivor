@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class GeneralReciveDrop : MonoBehaviour
 {
+    public static event Action<GameObject> EventTriggerGetItem;
+
     [Header("Drop type")]
     [Space]
     public EnumDropType type;
@@ -71,6 +73,8 @@ public class GeneralReciveDrop : MonoBehaviour
 
     protected virtual void AnimDone()
     {
+        EventTriggerGetItem(gameObject);
+
         totalValue = baseValue * PlayerPrefs.GetInt(playerPrefs.ToString(), 1) * ScaleMultiplier.ScaleFactor(multiplier, sOPlayerInfo.statUpgrades[upgrade]);
 
         StartCoroutine(DestoyObject());

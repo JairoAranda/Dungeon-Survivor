@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine;
 [RequireComponent(typeof(SOFinderPlayer))]
 public class MeleeHitController : MonoBehaviour
 {
+    public static event Action<GameObject> EventTriggerSwing;
+
     public static MeleeHitController instance;
 
     [Header("General Config")]
@@ -96,6 +99,8 @@ public class MeleeHitController : MonoBehaviour
 
     void Swing()
     {
+        EventTriggerSwing(gameObject);
+
         BoxCollider2D boxCollider2D = meleeDmg.gameObject.GetComponent<BoxCollider2D>();
 
         boxCollider2D.enabled = false;

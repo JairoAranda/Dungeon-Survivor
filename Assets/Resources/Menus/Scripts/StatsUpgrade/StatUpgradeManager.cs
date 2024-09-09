@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine.UI;
 
 public class StatUpgradeManager : MonoBehaviour
 {
+    public static event Action<GameObject> EventTriggerAccept, EventTriggerDeny;
+
     int upgradeMoney;
 
     int maxLevels;
@@ -41,6 +44,8 @@ public class StatUpgradeManager : MonoBehaviour
 
         if (MoneyManager.instance.money >= upgradeMoney && level <= maxLevels)
         {
+            EventTriggerAccept(gameObject);
+
             levels[level - 1].GetComponent<Image>().color = Color.yellow;
 
             level++;
@@ -52,6 +57,11 @@ public class StatUpgradeManager : MonoBehaviour
             PlayerPrefs.SetInt(currentMoneyPrefs.ToString(), MoneyManager.instance.money);
 
             Debug.Log(MoneyManager.instance.money);
+        }
+
+        else
+        {
+            EventTriggerDeny(gameObject);
         }
  
     }

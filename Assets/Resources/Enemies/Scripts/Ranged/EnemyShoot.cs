@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine;
 [RequireComponent(typeof(SOFinderEnemy))]
 public class EnemyShoot : MonoBehaviour
 {
+    public static event Action<GameObject> EventTriggerEnemyShoot;
+
     [Header("Shoot Config")]
     [Space]
     [SerializeField] LayerMask playerLayer;
@@ -32,6 +35,8 @@ public class EnemyShoot : MonoBehaviour
 
         if (distanceToPlayer.NearPlayer() && shootTimer >= shootInterval)
         {
+            EventTriggerEnemyShoot(gameObject);
+
             ProjectilePool.instance.ShootBullet(gameObject.transform.position, enemyInfoSO.projectileSpeed, enemyInfoSO.damage, enemyInfoSO.attackRange + 40 ,PlayerStats.instance.transform.position, transform.position ,playerLayer, gameObject, bulletColor);
             shootTimer = 0;
         }

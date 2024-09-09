@@ -7,7 +7,7 @@ public class SelectedCharacterManager : MonoBehaviour
 {
     public static SelectedCharacterManager instance;
 
-    //[HideInInspector]
+    [HideInInspector]
     public GameObject player;
 
     [Header("No need Main Menu")]
