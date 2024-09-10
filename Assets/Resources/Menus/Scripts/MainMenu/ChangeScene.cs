@@ -6,12 +6,22 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
 
+    [SerializeField] bool needPlayer;
+
     public void ChangeSceneButton (int scene)
     {
-        if (SelectedCharacterManager.instance.player != null)
+        if (needPlayer)
+        {
+            if (SelectedCharacterManager.instance.player != null)
+            {
+                SceneManager.LoadScene(scene);
+            }
+        }
+        else
         {
             SceneManager.LoadScene(scene);
         }
+        
     }
 
 

@@ -12,6 +12,8 @@ TagManager:
   - Arm
   - Ability
   - WeaponPosition
+  - EndMenu
+  - EnemyPool
   layers:
   - Default
   - TransparentFX

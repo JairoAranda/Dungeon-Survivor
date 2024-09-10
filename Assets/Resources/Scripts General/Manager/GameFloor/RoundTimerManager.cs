@@ -12,9 +12,13 @@ public class RoundTimerManager : MonoBehaviour
     [Range(0f, 180f)]
     [SerializeField] int floorTime;
 
+    private EnemyPoolManager enemyPoolManager;
+
+    private GameObject endMenu;
+
     public int floorTimeRemaining;
 
-    public int currentFloor = 1;
+    public int currentFloor = 0;
 
     private void OnEnable()
     {
@@ -45,7 +49,7 @@ public class RoundTimerManager : MonoBehaviour
     {
         if (scene.buildIndex == 0)
         {
-            currentFloor = 1;
+            currentFloor = 0;
 
             StopAllCoroutines();
         }
@@ -53,26 +57,35 @@ public class RoundTimerManager : MonoBehaviour
         else if (scene.buildIndex == 1)
         {
             StartCoroutine(Countdown(floorTime));
+
+            currentFloor++;
         }
     }
 
 
-    private void Start()
-    {
-        StartCoroutine(Countdown(floorTime));
-    }
 
     private IEnumerator Countdown(int time)
     {
+        floorTimeRemaining = time;
+
         while (time > 0)
         {
-            floorTimeRemaining = time;
             yield return new WaitForSeconds(1);
             time--;
+            floorTimeRemaining = time;
         }
 
-        currentFloor++;
+        enemyPoolManager = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<EnemyPoolManager>();
 
-        SceneManager.LoadScene(1);
+        foreach (var enemy in enemyPoolManager.typesInstances)
+        {
+            enemy.gameObject.SetActive(false);
+        }
+
+        endMenu = GameObject.FindGameObjectWithTag("EndMenu");
+
+        endMenu.transform.GetChild(0).gameObject.SetActive(true);
+        
+        enemyPoolManager.gameObject.SetActive(false);
     }
 }

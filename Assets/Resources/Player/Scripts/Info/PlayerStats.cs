@@ -9,7 +9,7 @@ public class PlayerStats : MonoBehaviour, IStats
 {
     public static PlayerStats instance;
 
-    public static event Action<GameObject> EventTriggerHitPlayer, EventTriggerDeathPlayer;
+    public static event Action<GameObject> EventTriggerHitPlayer, EventTriggerDeathPlayer, EventTriggerHealthRegen;
 
     public static event Action EventTriggerLevelUp;
 
@@ -30,6 +30,8 @@ public class PlayerStats : MonoBehaviour, IStats
     [Range(2, 10)]
     [SerializeField] private int lifeMultiplier = 5;
     [Range(2, 10)]
+    [SerializeField] private int lifeRegenMultiplier = 5;
+    [Range(2, 10)]
     [SerializeField] private int dmgMultiplier = 5;
     [Range(2, 50)]
     [SerializeField] private int cooldownMultiplier = 5;
@@ -37,12 +39,14 @@ public class PlayerStats : MonoBehaviour, IStats
     [Header("Stat Type")]
     [Space]
     [SerializeField] private PlayerUpgradeEnum lifeUpgrade;
+    [SerializeField] private PlayerUpgradeEnum lifeRegenUpgrade;
     [SerializeField] private PlayerUpgradeEnum dmgUpgrade;
     [SerializeField] private PlayerUpgradeEnum cdUpgrade;
 
     [Header("PlayerPrefs Type")]
     [Space]
     [SerializeField] private PlayerPrefsEnum lifePref;
+    [SerializeField] private PlayerPrefsEnum lifeRegenPref;
     [SerializeField] private PlayerPrefsEnum dmgPref;
     [SerializeField] private PlayerPrefsEnum cdPref;
 
@@ -54,6 +58,9 @@ public class PlayerStats : MonoBehaviour, IStats
 
     [HideInInspector]
     public float dmg;
+
+    [HideInInspector]
+    public float healthRegen;
 
     [HideInInspector]
     public float coolDownReduction;
@@ -118,6 +125,8 @@ public class PlayerStats : MonoBehaviour, IStats
         soPlayerInfo = gameObject.GetComponent<SOFinderPlayer>().sOPlayerInfo;
 
         UpgradeStats();
+
+        StartCoroutine(HealthRegen());
     }
 
     void UpgradeStats()
@@ -125,6 +134,8 @@ public class PlayerStats : MonoBehaviour, IStats
         maxLife = soPlayerInfo.health * (float)(1 + 0.1 * PlayerPrefs.GetInt(lifePref.ToString(), 1) - 0.1) * ScaleMultiplier.ScaleFactor(lifeMultiplier, soPlayerInfo.statUpgrades[lifeUpgrade]);
         life += maxLife - currentMaxLife;
         currentMaxLife = maxLife;
+
+        healthRegen = soPlayerInfo.healthRegen * (float)(1 + 0.1 * PlayerPrefs.GetInt(lifeRegenPref.ToString(), 1) - 0.1) * ScaleMultiplier.ScaleFactor(lifeRegenMultiplier, soPlayerInfo.statUpgrades[lifeRegenUpgrade]);
 
         dmg = soPlayerInfo.damage * (float)(1 + 0.1 * PlayerPrefs.GetInt(dmgPref.ToString(), 1) - 0.1) * ScaleMultiplier.ScaleFactor(dmgMultiplier, soPlayerInfo.statUpgrades[dmgUpgrade]);
 
@@ -143,6 +154,7 @@ public class PlayerStats : MonoBehaviour, IStats
     private void Update()
     {
         CheckXP();
+
     }
 
 
@@ -182,6 +194,21 @@ public class PlayerStats : MonoBehaviour, IStats
 
             EventTriggerLevelUp?.Invoke();
         }
+    }
+
+    IEnumerator HealthRegen()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+
+            if (life < maxLife)
+            {
+                life += healthRegen;
+                EventTriggerHealthRegen(gameObject);
+            }
+        }
+        
     }
 
 }

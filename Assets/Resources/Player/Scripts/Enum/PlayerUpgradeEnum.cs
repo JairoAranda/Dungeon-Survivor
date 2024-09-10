@@ -6,6 +6,7 @@ using UnityEngine;
 public enum PlayerUpgradeEnum
 {
     Health,
+    HealthRegen,
     Speed,
     Dmg,
     AttackSpeed,

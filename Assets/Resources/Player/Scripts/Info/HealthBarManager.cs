@@ -13,12 +13,14 @@ public class HealthBarManager : MonoBehaviour
     private void OnEnable()
     {
         PlayerStats.EventTriggerHitPlayer += UpdateLifeBar;
+        PlayerStats.EventTriggerHealthRegen += UpdateLifeBar;
         RandomStatsUpgradeManager.EventTriggerOnUpgradeStat += Upgrade;
     }
 
     private void OnDisable()
     {
         PlayerStats.EventTriggerHitPlayer -= UpdateLifeBar;
+        PlayerStats.EventTriggerHealthRegen -= UpdateLifeBar;
         RandomStatsUpgradeManager.EventTriggerOnUpgradeStat -= Upgrade;
     }
 

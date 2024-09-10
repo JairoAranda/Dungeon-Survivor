@@ -9,6 +9,8 @@ public class SOPlayerInfo : ScriptableObject
     [Space]
     [Range(0.1f, 50f)]
     public float health = 10;
+    [Range(0.01f, 1f)]
+    public float healthRegen = 0.01f;
     [Range(0f, 10f)]
     public float speed = 5;
     [Range(0f, 20)]

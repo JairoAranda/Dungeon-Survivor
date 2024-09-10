@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[RequireComponent(typeof(EnemyPoolManager))]
 public class EnemyEnable : MonoBehaviour
 {
     [Header("Spawn Data")]
@@ -24,6 +23,7 @@ public class EnemyEnable : MonoBehaviour
     private GameObject[] m_enemys;
 
     private int count = 0;
+
 
 
     private void OnValidate()

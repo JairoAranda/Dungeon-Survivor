@@ -7,6 +7,7 @@ using UnityEngine;
 public enum PlayerPrefsEnum
 {
     Health,
+    HealthRegen,
     Speed,
     Damage,
     AttackSpeed,
