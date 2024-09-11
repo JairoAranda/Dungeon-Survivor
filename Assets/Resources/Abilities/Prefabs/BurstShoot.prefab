@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5004824956258341201}
-  - component: {fileID: 4400241289992094083}
+  - component: {fileID: 3986794399859613892}
   - component: {fileID: 3907088108238674601}
   m_Layer: 3
-  m_Name: TripleShoot 2
+  m_Name: BurstShoot
   m_TagString: Ability
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4400241289992094083
+--- !u!114 &3986794399859613892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,16 +42,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 4617189107953820090}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe33d91c7f907a94bb080708a1b884c8, type: 3}
+  m_Script: {fileID: 11500000, guid: b50f4c4375bce664389870f828e0a17f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cd: 3
+  _cd: 6
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  _abilityImg: {fileID: -614881460, guid: 6357c0512abd76044b9243a244796639, type: 3}
-  shotAngle: 15
+  _abilityImg: {fileID: 690214940, guid: 4b186f5f5c49fe04a90050f4938ca5da, type: 3}
   bulletColor: {r: 0, g: 72.28236, b: 766.99603, a: 1}
+  shoots: 3
 --- !u!114 &3907088108238674601
 MonoBehaviour:
   m_ObjectHideFlags: 0

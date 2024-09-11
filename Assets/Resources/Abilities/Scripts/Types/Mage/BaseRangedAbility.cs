@@ -1,27 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(AbilityAsign))]
-public class TripleShoot : BaseAbility, IAbility
+public class BaseRangedAbility : BaseAbility
 {
-    [Header("Aperture Angle")]
-    [Space]
-    [Range(.1f, 40f)]
-    [SerializeField] float shotAngle;
+    private GameObject _bulletToShoot;
+
+    private Transform handPoint;
+    private Transform armPosition;
+
+    Rigidbody2D rb;
+    public GameObject bulletToShoot
+    {
+        get => _bulletToShoot;
+        set => _bulletToShoot = value;
+    }
 
     [Header("Bullet Color")]
     [Space]
     [ColorUsage(true, true)]
     [SerializeField] Color bulletColor;
-
-    private Transform handPoint;
-    private Transform armPosition;
-
-    GameObject bulletToShoot;
-
-    Rigidbody2D rb;
 
     protected override void OnEnable()
     {
@@ -33,27 +32,12 @@ public class TripleShoot : BaseAbility, IAbility
 
     }
 
-    public void Ability()
-    {
-        for (float i = -shotAngle; i <= shotAngle; i+=shotAngle) 
-        {
-            AddPool();
-
-            Bullet();
-
-            SetAtributes();
-
-            AddForce(i);
-        }
-        
-    }
-
-    void Bullet()
+    protected virtual void Bullet()
     {
         bulletToShoot = projectilePool.typesInstances[projectilePool.shootNumber];
     }
 
-    void AddPool()
+    protected virtual void AddPool()
     {
         projectilePool.shootNumber++;
 
@@ -63,7 +47,19 @@ public class TripleShoot : BaseAbility, IAbility
         }
     }
 
-    void AddForce(float zAngle)
+    protected virtual void SetAtributes()
+    {
+        Projectile projectile = bulletToShoot.GetComponent<Projectile>();
+
+        projectile.hitLayer = enemyLayer;
+
+        projectile.dmg = PlayerStats.instance.dmg;
+        projectile.range = sOPlayerInfo.range;
+        projectile.owner = PlayerStats.instance.gameObject;
+        projectile.GetComponent<SpriteRenderer>().material.color = bulletColor;
+    }
+
+    protected virtual void AddForce(float zAngle)
     {
         bulletToShoot.transform.position = handPoint.position;
 
@@ -78,17 +74,5 @@ public class TripleShoot : BaseAbility, IAbility
         Vector2 direction = new Vector2(Mathf.Cos(endAngle * Mathf.Deg2Rad), Mathf.Sin(endAngle * Mathf.Deg2Rad));
 
         rb.AddForce(direction * sOPlayerInfo.projectileSpeed, ForceMode2D.Impulse);
-    }
-
-    void SetAtributes()
-    {
-        Projectile projectile = bulletToShoot.GetComponent<Projectile>();
-
-        projectile.hitLayer = enemyLayer;
-
-        projectile.dmg = PlayerStats.instance.dmg;
-        projectile.range = sOPlayerInfo.range;
-        projectile.owner = PlayerStats.instance.gameObject;
-        projectile.GetComponent<SpriteRenderer>().material.color = bulletColor;
     }
 }
