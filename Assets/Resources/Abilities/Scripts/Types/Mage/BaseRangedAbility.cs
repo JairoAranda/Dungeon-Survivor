@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
@@ -5,6 +6,8 @@ using UnityEngine;
 
 public class BaseRangedAbility : BaseAbility
 {
+    public static event Action<GameObject> EventTriggerAbilityShoot;
+
     private GameObject _bulletToShoot;
 
     private Transform handPoint;
@@ -74,5 +77,7 @@ public class BaseRangedAbility : BaseAbility
         Vector2 direction = new Vector2(Mathf.Cos(endAngle * Mathf.Deg2Rad), Mathf.Sin(endAngle * Mathf.Deg2Rad));
 
         rb.AddForce(direction * sOPlayerInfo.projectileSpeed, ForceMode2D.Impulse);
+
+        EventTriggerAbilityShoot(gameObject);
     }
 }

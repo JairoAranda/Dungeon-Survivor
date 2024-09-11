@@ -9,12 +9,14 @@ public class ShootSound : SoundActive
     {
         ShootController.EventTriggerShoot += SoundEnable;
         MeleeHitController.EventTriggerSwing += SoundEnable;
+        BaseRangedAbility.EventTriggerAbilityShoot += SoundEnable;
     }
 
     private void OnDisable()
     {
         ShootController.EventTriggerShoot -= SoundEnable;
         MeleeHitController.EventTriggerSwing -= SoundEnable;
+        BaseRangedAbility.EventTriggerAbilityShoot -= SoundEnable;
     }
 
 
