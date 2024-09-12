@@ -58,7 +58,7 @@ public class GigantShoot : BaseRangedAbility, IAbility
             yield return null;
         }
 
-        bulletToShoot.transform.localScale = targetScale;
+        bulletToShoot.transform.localScale = initialScale;
     }
 
 }

@@ -7,8 +7,6 @@ public interface IAbility
 {
     SOPlayerInfo sOPlayerInfo { get; set; }
 
-    ProjectilePool projectilePool { get; set; }
-
     float cd { get; set; }
 
     float currentCD { get; set; }

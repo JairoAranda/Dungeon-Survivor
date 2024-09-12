@@ -5,21 +5,30 @@ using static UnityEngine.GraphicsBuffer;
 
 public class HandMovement : EnemyDetector
 {
+    [HideInInspector]
+    public bool canAim = true;
+
     protected override void Start()
     {
         detectionRange = float.PositiveInfinity;
+
+        canAim = true;
     }
 
     void Update()
     {
-        if (OptionManager.instance.isAuto)
+        if (canAim)
         {
-            AutoAim();
+            if (OptionManager.instance.isAuto)
+            {
+                AutoAim();
+            }
+            else
+            {
+                MouseAim();
+            }
         }
-        else
-        {
-            MouseAim();
-        }
+        
     }
 
     void AutoAim()

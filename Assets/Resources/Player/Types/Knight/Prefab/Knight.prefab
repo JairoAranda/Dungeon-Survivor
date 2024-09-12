@@ -249,8 +249,9 @@ MonoBehaviour:
     m_Bits: 64
   handPosition: {fileID: 8631217466926080632}
   attackSpeedMultiplier: 2
-  attackSpeedUpgrade: 0
-  attackSpeedPrefs: 0
+  attackSpeedUpgrade: 4
+  attackSpeedPrefs: 4
+  canAim: 0
 --- !u!1 &8798764990493325172
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,8 +497,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 2
-  speedUpgrade: 1
-  speedPrefs: 1
+  speedUpgrade: 2
+  speedPrefs: 2
 --- !u!114 &3820639312582617082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,17 +515,21 @@ MonoBehaviour:
   playerType: 1
   xpMax: 100
   lifeMultiplier: 5
+  lifeRegenMultiplier: 5
   dmgMultiplier: 5
   cooldownMultiplier: 40
   lifeUpgrade: 0
-  dmgUpgrade: 2
-  cdUpgrade: 4
+  lifeRegenUpgrade: 1
+  dmgUpgrade: 3
+  cdUpgrade: 5
   lifePref: 0
-  dmgPref: 2
-  cdPref: 4
+  lifeRegenPref: 1
+  dmgPref: 3
+  cdPref: 5
   lvl: 1
   xp: 0
   dmg: 0
+  healthRegen: 0
   coolDownReduction: 0
   canBeHit: 1
   currentMaxLife: 0
@@ -558,8 +563,8 @@ MonoBehaviour:
   detectionLayer:
     serializedVersion: 2
     m_Bits: 128
-  absortionUpgrade: 6
-  absortionPrefs: 6
+  absortionUpgrade: 7
+  absortionPrefs: 7
 --- !u!114 &5186466453088208456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,9 +579,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armPosition: {fileID: 2169951325301275798}
   handMovement: {fileID: 8795806857085826211}
-  swingAngle: 60
+  swingAngle: 89
   duration: 0.5
   meleeDmg: {fileID: 0}
+  candHit: 1
 --- !u!114 &8756019317094945089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,6 +701,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7386472262269498811, guid: 2afde42b5a797ba42af5b34d29a947c7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fc907b27cd9455f4890e300df9d977d4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

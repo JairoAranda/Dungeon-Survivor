@@ -2741,7 +2741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059759843b6271d4bb563e66932b8bb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorTime: 10
+  floorTime: 60
   floorTimeRemaining: 0
   currentFloor: 1
 --- !u!1 &201680506
@@ -6205,8 +6205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfec0d3194efd0f488770193c34e3327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  luckUpgrade: 5
-  luckPrefs: 5
+  luckUpgrade: 6
+  luckPrefs: 6
 --- !u!4 &430356439
 Transform:
   m_ObjectHideFlags: 0
@@ -9063,7 +9063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f251208c586fa7946b7e25b5c2859c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMoneyPrefs: 0
+  currentMoneyPrefs: 10
   money: 0
 --- !u!4 &592675840
 Transform:
@@ -9848,7 +9848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  testPlayer: {fileID: 8798764990493325172, guid: d610469790874e2408222863be71514b, type: 3}
+  testPlayer: {fileID: 8798764990493325172, guid: c8c33a7228f94204bab2445ebfb8904b, type: 3}
 --- !u!4 &681692787
 Transform:
   m_ObjectHideFlags: 0
@@ -24444,9 +24444,9 @@ MonoBehaviour:
     - {fileID: 4171751203937456460, guid: 56256b827282cda4aa19a3d7e30c0682, type: 3}
     - {fileID: 5011828617120494205, guid: 4f731b167550d6047ad89458cf91ae69, type: 3}
     abilities:
-    - {fileID: 4617189107953820090, guid: f0ff9c890264e564c992ccbd322a9bc2, type: 3}
-    - {fileID: 4617189107953820090, guid: ac7d6d2e081a0d24db9412a5bfa27166, type: 3}
-    - {fileID: 4617189107953820090, guid: cf08db465857d464c972a431c55df600, type: 3}
+    - {fileID: 4617189107953820090, guid: 08ba9ffe922627c428b25335bbd6e87f, type: 3}
+    - {fileID: 4617189107953820090, guid: f02982efba77d944ca334f8c5934e0fb, type: 3}
+    - {fileID: 4617189107953820090, guid: e6b8152990f483f4baa83cb566769d43, type: 3}
   - type: 2
     weapons: []
     abilities: []

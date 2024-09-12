@@ -13,13 +13,13 @@ public class MeleeHitController : MonoBehaviour
 
     [Header("General Config")]
     [Space]
-    [SerializeField] GameObject armPosition;
+    public GameObject armPosition;
 
-    [SerializeField] HandMovement handMovement;
+    public HandMovement handMovement;
 
     [Header("Swing Config")]
     [Space]
-    [Range(1f, 180f)]
+    [Range(1f, 89f)]
     [SerializeField] float swingAngle;
     [Range(0.1f, 1f)]
     [SerializeField] float duration;
@@ -33,6 +33,9 @@ public class MeleeHitController : MonoBehaviour
 
     [HideInInspector]
     public MeleeDmg meleeDmg;
+
+    [HideInInspector]
+    public bool candHit = true;
 
     private void Awake()
     {
@@ -79,7 +82,7 @@ public class MeleeHitController : MonoBehaviour
 
     public void AutoHit()
     {
-        if (currentCD <= 0)
+        if (currentCD <= 0 && candHit)
         {
             Swing();
 
@@ -89,7 +92,7 @@ public class MeleeHitController : MonoBehaviour
 
     void ManualHit()
     {
-        if (currentCD <= 0 && Input.GetMouseButton(0))
+        if (currentCD <= 0 && Input.GetMouseButton(0) && candHit)
         {
             Swing();
 

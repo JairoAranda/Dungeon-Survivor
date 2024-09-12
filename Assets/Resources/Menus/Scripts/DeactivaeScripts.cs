@@ -8,6 +8,10 @@ public class DeactivaeScripts : MonoBehaviour
 
     [SerializeField] bool deactivePlayer;
 
+    MeleeHitController meleeHitController;
+
+    HandMovement handMovement;
+
     private void Awake()
     {
         if (deactivePlayer)
@@ -16,9 +20,9 @@ public class DeactivaeScripts : MonoBehaviour
 
             scripts.Add(player.GetComponent<ShootController>());
 
-            scripts.Add(player.GetComponent<MeleeHitController>());
+            meleeHitController = player.GetComponent<MeleeHitController>();
 
-            scripts.Add(player.GetComponentInChildren<HandMovement>());
+            handMovement = player.GetComponentInChildren<HandMovement>();
 
             scripts.Add(player.GetComponent<PlayerAnimation>());
         }
@@ -34,6 +38,18 @@ public class DeactivaeScripts : MonoBehaviour
                 script.enabled = false;
             }
         }
+
+        if (meleeHitController != null)
+        {
+            meleeHitController.candHit = false;
+        }
+
+        if (handMovement != null)
+        {
+            Debug.Log("hjola");
+
+            handMovement.canAim = false;
+        }
     }
 
     private void OnDisable()
@@ -44,6 +60,13 @@ public class DeactivaeScripts : MonoBehaviour
             {
                 script.enabled = true;
             }
+        }
+
+        if (meleeHitController != null)
+        {
+            meleeHitController.candHit = true;
+
+            handMovement.canAim = true;
         }
     }
 }

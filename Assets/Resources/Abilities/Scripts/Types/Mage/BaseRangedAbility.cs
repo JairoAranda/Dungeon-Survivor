@@ -3,21 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BaseRangedAbility : BaseAbility
 {
     public static event Action<GameObject> EventTriggerAbilityShoot;
 
-    private GameObject _bulletToShoot;
-
     private Transform handPoint;
     private Transform armPosition;
 
     Rigidbody2D rb;
+
+    private GameObject _bulletToShoot;
     public GameObject bulletToShoot
     {
         get => _bulletToShoot;
         set => _bulletToShoot = value;
+    }
+
+    private ProjectilePool _projectilePool;
+
+    public ProjectilePool projectilePool
+    {
+        get => _projectilePool;
+        set => _projectilePool = value;
     }
 
     [Header("Bullet Color")]
@@ -25,14 +34,40 @@ public class BaseRangedAbility : BaseAbility
     [ColorUsage(true, true)]
     [SerializeField] Color bulletColor;
 
-    protected override void OnEnable()
+    protected virtual void OnEnable()
     {
-        base.OnEnable();
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
         handPoint = GameObject.FindGameObjectWithTag("Hand").transform;
 
         armPosition = GameObject.FindGameObjectWithTag("Arm").transform;
 
+    }
+
+    protected virtual void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    protected virtual void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 1)
+        {
+            ProjectPool();
+        }
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
+        ProjectPool();
+    }
+
+    protected virtual void ProjectPool()
+    {
+
+        _projectilePool = ProjectilePool.instance;
     }
 
     protected virtual void Bullet()

@@ -38,15 +38,6 @@ public class BaseAbility : MonoBehaviour
         set => _sOPlayerInfo = value;
     }
 
-    private ProjectilePool _projectilePool;
-
-    public ProjectilePool projectilePool
-    {
-        get => _projectilePool;
-        set => _projectilePool = value;
-    }
-
-
     public LayerMask enemyLayer
     {
         get => _enemyLayer;
@@ -81,38 +72,12 @@ public class BaseAbility : MonoBehaviour
         set => _go = value;
     }
 
-    protected virtual void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    protected virtual void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    protected virtual void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.buildIndex == 1)
-        {
-            ProjectPool();
-        }
-    }
 
     protected virtual void Start()
     {
         _sOPlayerInfo = GetComponentInParent<SOFinderPlayer>().sOPlayerInfo;
 
-        ProjectPool();
-
         go = gameObject;
-    }
-
-    protected virtual void ProjectPool()
-    {
-        Debug.Log("test");
-
-        _projectilePool = ProjectilePool.instance;
     }
 
 

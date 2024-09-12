@@ -251,6 +251,7 @@ MonoBehaviour:
   attackSpeedMultiplier: 2
   attackSpeedUpgrade: 0
   attackSpeedPrefs: 0
+  canAim: 0
 --- !u!1 &8798764990493325172
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,8 +497,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 2
-  speedUpgrade: 1
-  speedPrefs: 1
+  speedUpgrade: 2
+  speedPrefs: 2
 --- !u!114 &3820639312582617082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,17 +515,21 @@ MonoBehaviour:
   playerType: 0
   xpMax: 100
   lifeMultiplier: 5
+  lifeRegenMultiplier: 5
   dmgMultiplier: 5
   cooldownMultiplier: 40
   lifeUpgrade: 0
-  dmgUpgrade: 2
-  cdUpgrade: 4
+  lifeRegenUpgrade: 1
+  dmgUpgrade: 3
+  cdUpgrade: 5
   lifePref: 0
-  dmgPref: 2
-  cdPref: 4
+  lifeRegenPref: 1
+  dmgPref: 3
+  cdPref: 5
   lvl: 1
   xp: 0
   dmg: 0
+  healthRegen: 0
   coolDownReduction: 0
   canBeHit: 1
   currentMaxLife: 0
@@ -558,8 +563,8 @@ MonoBehaviour:
   detectionLayer:
     serializedVersion: 2
     m_Bits: 128
-  absortionUpgrade: 6
-  absortionPrefs: 6
+  absortionUpgrade: 7
+  absortionPrefs: 7
 --- !u!114 &2610013235999457917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -577,8 +582,8 @@ MonoBehaviour:
     m_Bits: 64
   handPosition: {fileID: 2436938410995096647}
   attackSpeedMultiplier: 2
-  attackSpeedUpgrade: 3
-  attackSpeedPrefs: 3
+  attackSpeedUpgrade: 4
+  attackSpeedPrefs: 4
   bulletColor: {r: 0, g: 9.035295, b: 95.874504, a: 1}
 --- !u!114 &8756019317094945089
 MonoBehaviour:
