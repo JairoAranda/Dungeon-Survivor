@@ -67,7 +67,9 @@ public class RandomStatsUpgradeManager : MonoBehaviour
 
         assignedValues.Add(key.Value);
 
-        button.GetComponentInChildren<TextMeshProUGUI>().text = key.ToString();
+        string name = StringUtils.CapitalizeFirstLetter(key.ToString());
+
+        button.GetComponentInChildren<TextMeshProUGUI>().text = name;
     }
 
 

@@ -17,6 +17,9 @@ public class IngameStats : MonoBehaviour
 
         statText = GetComponentInChildren<TextMeshProUGUI>();
 
-        statText.text = stat.ToString() + " : " + playerInfo.statUpgrades[stat].ToString();
+        string name = StringUtils.CapitalizeFirstLetter(stat.ToString());
+
+        statText.text = name + " : " + playerInfo.statUpgrades[stat].ToString();
     }
+
 }

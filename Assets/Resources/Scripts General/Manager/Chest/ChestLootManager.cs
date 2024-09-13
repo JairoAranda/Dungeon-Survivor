@@ -87,14 +87,18 @@ public class ChestLootManager : MonoBehaviour
         GameObject randomWeapon = GetRandomObjectNotInScene(loot.weapons);
         if (randomWeapon != null)
         {
-            weaponButton.GetComponentInChildren<TextMeshProUGUI>().text = randomWeapon.name;
+            string weapon = StringUtils.CapitalizeFirstLetter(randomWeapon.name);
+
+            weaponButton.GetComponentInChildren<TextMeshProUGUI>().text = weapon;
             weaponButton.onClick.AddListener(() => StartCoroutine(ActivateLoot(randomWeapon, false)));
         }
 
         GameObject randomAbility = GetRandomObjectNotInScene(loot.abilities);
         if (randomAbility != null)
         {
-            abilityButton.GetComponentInChildren<TextMeshProUGUI>().text = randomAbility.name;
+            string ability = StringUtils.CapitalizeFirstLetter(randomAbility.name);
+
+            abilityButton.GetComponentInChildren<TextMeshProUGUI>().text = ability;
 
             abilityButton.onClick.AddListener(() => StartCoroutine(ActivateLoot(randomAbility, true)));
 

@@ -22,12 +22,12 @@ public class CharacterStat : MonoBehaviour
             {
                 if (i < stats.Length) // Asegúrate de no exceder el tamaño del array de stats
                 {
-                    string name = CapitalizeFirstLetter(field.Name);
+                    string name = StringUtils.CapitalizeFirstLetter(field.Name);
                     float value = (float)field.GetValue(sOPlayerInfo);
 
                     if (value != 0f)
                     {
-                        stats[i].text = name + " :" + value.ToString();
+                        stats[i].text = "- " + name + " : " + value.ToString();
                     }
 
                     else
@@ -41,10 +41,5 @@ public class CharacterStat : MonoBehaviour
         }
     }
 
-    string CapitalizeFirstLetter(string str)
-    {
-        if (string.IsNullOrEmpty(str)) return str;
-        return char.ToUpper(str[0]) + str.Substring(1);
-    }
 
 }

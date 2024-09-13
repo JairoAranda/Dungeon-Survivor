@@ -32,13 +32,13 @@ public class ShootController : EnemyDetector
     {
         Transform closestEnemy = DetectClosestEnemy();
 
-        float lifeTime = detectionRange / (sOPlayerInfo.projectileSpeed / 50);
+        float lifeTime = detectionRange / (sOPlayerInfo.projectSpeed / 50);
 
         if (closestEnemy != null && lastShootTime > shootCooldown)
         {
             EventTriggerShoot(gameObject);
 
-            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, PlayerStats.instance.dmg, detectionRange, closestEnemy.position, handPosition.position ,detectionLayer, gameObject, bulletColor);
+            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectSpeed, PlayerStats.instance.dmg, detectionRange, closestEnemy.position, handPosition.position ,detectionLayer, gameObject, bulletColor);
             lastShootTime = 0;
         }
     }
@@ -49,13 +49,13 @@ public class ShootController : EnemyDetector
 
         mousePosition.z = 0;
 
-        float lifeTime = detectionRange / (sOPlayerInfo.projectileSpeed / 50);
+        float lifeTime = detectionRange / (sOPlayerInfo.projectSpeed / 50);
 
         if (lastShootTime > shootCooldown)
         {
             EventTriggerShoot(gameObject);
 
-            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectileSpeed, PlayerStats.instance.dmg, detectionRange, mousePosition, handPosition.position ,detectionLayer, gameObject, bulletColor);
+            ProjectilePool.instance.ShootBullet(handPosition.position, sOPlayerInfo.projectSpeed, PlayerStats.instance.dmg, detectionRange, mousePosition, handPosition.position ,detectionLayer, gameObject, bulletColor);
             lastShootTime = 0;
         }
     }

@@ -33,7 +33,7 @@ public class GigantShoot : BaseRangedAbility, IAbility
 
     IEnumerator ScaleOverTime()
     {
-        float duration = sOPlayerInfo.range / sOPlayerInfo.projectileSpeed;
+        float duration = sOPlayerInfo.range / sOPlayerInfo.projectSpeed;
 
         float elapsedTime = 0f;
 

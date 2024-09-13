@@ -32,7 +32,7 @@ public class SOPlayerInfo : ScriptableObject
     [Range(0f, 50f)]
     [Tooltip("If melee = 0.")]
     [Space]
-    public float projectileSpeed = 10;
+    public float projectSpeed = 10;
     [Range(0, 50)]
     [Tooltip("If melee = 0")]
     [Space]

@@ -111,7 +111,7 @@ public class BaseRangedAbility : BaseAbility
 
         Vector2 direction = new Vector2(Mathf.Cos(endAngle * Mathf.Deg2Rad), Mathf.Sin(endAngle * Mathf.Deg2Rad));
 
-        rb.AddForce(direction * sOPlayerInfo.projectileSpeed, ForceMode2D.Impulse);
+        rb.AddForce(direction * sOPlayerInfo.projectSpeed, ForceMode2D.Impulse);
 
         EventTriggerAbilityShoot(gameObject);
     }
