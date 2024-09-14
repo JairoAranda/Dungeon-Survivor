@@ -37,8 +37,6 @@ public class MeleeDmg : MonoBehaviour
         if (((1 << collision.gameObject.layer) & enemyLayer) != 0 && canDmg)
         {
 
-            Debug.Log("test");
-
             EnemyStats enemy = collision.GetComponentInParent<EnemyStats>();
 
             enemy.GetHit(dmg);

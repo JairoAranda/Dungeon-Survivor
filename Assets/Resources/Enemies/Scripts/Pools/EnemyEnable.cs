@@ -40,8 +40,6 @@ public class EnemyEnable : MonoBehaviour
 
         delay = delay / (RoundTimerManager.instance.currentFloor / 10f + 1 - 0.1f);
 
-        Debug.Log(enemyRound + " / " + delay);
-
         m_enemys = GetComponent<EnemyPoolManager>().typesInstances;
 
         StartCoroutine(RandomSpawn());

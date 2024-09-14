@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6115505805128272575}
   - component: {fileID: 3569848196052924976}
-  - component: {fileID: -7332756625063291236}
+  - component: {fileID: -5856872612150666246}
   m_Layer: 0
-  m_Name: Staff 1
+  m_Name: Explosive Staff
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: a6ca80157f5e9b34dad36b3105a258ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-7332756625063291236
+--- !u!114 &-5856872612150666246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,6 +94,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7952279387778880450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0441d430efb295a43ac852ac60eda8eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 99c7d9e748d8372489d9d3b6f24540cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosiveDmg: 0.5
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 64

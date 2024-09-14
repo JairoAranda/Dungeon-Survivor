@@ -162,14 +162,12 @@ public class ChestLootManager : MonoBehaviour
         else
         {
             Destroy(weapon);
-            Debug.Log("destroy");
         }
 
         yield return new WaitForEndOfFrame();
 
         if (loot != null)
         {
-            Debug.Log(loot);
 
             GameObject newType = Instantiate(loot, parentObject.position, parentObject.rotation, parentObject);
 

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class FireEffect : MonoBehaviour, IEffectType
 {
     [Range(0.1f, 5f)]
-    [SerializeField] float fireDmg = 10, burnTime = 1;
+    [SerializeField] float fireDmg = 1, burnTime = 1;
 
     private void OnEnable()
     {
@@ -31,12 +31,16 @@ public class FireEffect : MonoBehaviour, IEffectType
         if (target.tag == "Player")
         {
             StartCoroutine(PlayerFireDamage(PlayerStats.instance, fireDmg, burnTime));
+
+            StartCoroutine(FireParticlePool.instance.FireFollow(target, burnTime));
         }
         else if (target.tag == "Enemy")
         {
             var enemyStats = target.GetComponent<EnemyStats>();
 
             StartCoroutine(PlayerFireDamage(enemyStats, fireDmg, burnTime));
+
+            StartCoroutine(FireParticlePool.instance.FireFollow(target, burnTime));
         }
 
     }
@@ -45,6 +49,7 @@ public class FireEffect : MonoBehaviour, IEffectType
     {
         float elapsedTime = 0;
         float damagePerSecond = totalDamage / duration;
+
         while (elapsedTime < duration)
         {
             if (targetStats != null)

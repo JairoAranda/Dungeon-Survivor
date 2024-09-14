@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6115505805128272575}
   - component: {fileID: 3569848196052924976}
-  - component: {fileID: 8722314910015374527}
+  - component: {fileID: 5525499997859844831}
   m_Layer: 0
-  m_Name: Staff 2
+  m_Name: Fire Staff
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 829ac9a6e1e092146b3bf8dd09a4f950, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d07478bb6187c714c9f570bebc60ebd3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd973d2760a03684d983754cb03b6367, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8722314910015374527
+--- !u!114 &5525499997859844831
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,6 +94,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7952279387778880450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0441d430efb295a43ac852ac60eda8eb, type: 3}
+  m_Script: {fileID: 11500000, guid: dd7db3ccfbea20a44ae1d316315fd368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireDmg: 1
+  burnTime: 1

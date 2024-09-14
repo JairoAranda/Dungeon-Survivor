@@ -46,8 +46,6 @@ public class DeactivaeScripts : MonoBehaviour
 
         if (handMovement != null)
         {
-            Debug.Log("hjola");
-
             handMovement.canAim = false;
         }
     }
@@ -66,6 +64,10 @@ public class DeactivaeScripts : MonoBehaviour
         {
             meleeHitController.candHit = true;
 
+        }
+
+        if (handMovement != null)
+        {
             handMovement.canAim = true;
         }
     }

@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour
     [HideInInspector]
     public LayerMask hitLayer;
 
-    IEffectType effectType;
+    private IEffectType effectType;
 
     private Vector2 startPosition;
 

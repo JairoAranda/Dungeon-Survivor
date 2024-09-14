@@ -9637,7 +9637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  testPlayer: {fileID: 8798764990493325172, guid: c8c33a7228f94204bab2445ebfb8904b, type: 3}
+  testPlayer: {fileID: 8798764990493325172, guid: d610469790874e2408222863be71514b, type: 3}
 --- !u!4 &681692787
 Transform:
   m_ObjectHideFlags: 0
@@ -10023,6 +10023,8 @@ GameObject:
   m_Component:
   - component: {fileID: 720176806}
   - component: {fileID: 720176805}
+  - component: {fileID: 720176807}
+  - component: {fileID: 720176808}
   m_Layer: 0
   m_Name: ----------PARTICLE POOL-------------
   m_TagString: Untagged
@@ -10061,6 +10063,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &720176807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720176804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 427976ee6976bef4498b5380a71b7c48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolSize: 20
+  types:
+  - {fileID: 7274545247206790967, guid: 77bf1d95fe958304ea7b1b0131755701, type: 3}
+  typesInstances: []
+--- !u!114 &720176808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720176804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4da8e28013ac46b49a588b93fd86b9b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolSize: 20
+  types:
+  - {fileID: 7125138444246710894, guid: 7dff8732d34a0e340b7c65656f3a86a6, type: 3}
+  typesInstances: []
 --- !u!1 &732914550
 GameObject:
   m_ObjectHideFlags: 0
