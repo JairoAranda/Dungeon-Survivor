@@ -61,7 +61,7 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  _abilityImg: {fileID: -299026459477991297, guid: 84c00b1fb21553b47b243254d5b3223c, type: 3}
+  _abilityImg: {fileID: 21300000, guid: 109ddee4b3726794c9a97761fcfb73c1, type: 3}
   bulletColor: {r: 0, g: 72.28236, b: 766.99603, a: 1}
   targetScale: {x: 5, y: 5, z: 5}
   targetDmgMultiplier: 2

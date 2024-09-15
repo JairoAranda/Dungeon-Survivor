@@ -61,6 +61,6 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  _abilityImg: {fileID: -854056459, guid: bd0cfc72773d1344c8f436ceb9447a8d, type: 3}
+  _abilityImg: {fileID: 21300000, guid: 8828a70dfec391843b4e328cc6382e6e, type: 3}
   duration: 0.5
   loops: 5

@@ -49,9 +49,10 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  _abilityImg: {fileID: 690214940, guid: 4b186f5f5c49fe04a90050f4938ca5da, type: 3}
+  _abilityImg: {fileID: 21300000, guid: 9303c90f94256d543afa9490455fa7ed, type: 3}
   bulletColor: {r: 0, g: 72.28236, b: 766.99603, a: 1}
   shoots: 3
+  delayShoot: 0.25
 --- !u!114 &3907088108238674601
 MonoBehaviour:
   m_ObjectHideFlags: 0

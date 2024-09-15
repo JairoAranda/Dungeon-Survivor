@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,13 +22,16 @@ public class ChestLootManager : MonoBehaviour
     [Space]
     [SerializeField] GameObject changeAbility;
 
-    [SerializeField]
     private Transform parentObject;
 
-    [SerializeField]
     private GameObject weapon;
 
     private int abilities = 0;
+
+    [SerializeField]
+    Sprite abilityImage;
+
+    [SerializeField] Image test;
 
 
     private void Start()
@@ -87,18 +91,24 @@ public class ChestLootManager : MonoBehaviour
         GameObject randomWeapon = GetRandomObjectNotInScene(loot.weapons);
         if (randomWeapon != null)
         {
-            string weapon = StringUtils.CapitalizeFirstLetter(randomWeapon.name);
+            string weaponName = StringUtils.CapitalizeFirstLetter(randomWeapon.name);
 
-            weaponButton.GetComponentInChildren<TextMeshProUGUI>().text = weapon;
+            weaponButton.GetComponentInChildren<TextMeshProUGUI>().text = weaponName;
             weaponButton.onClick.AddListener(() => StartCoroutine(ActivateLoot(randomWeapon, false)));
         }
 
         GameObject randomAbility = GetRandomObjectNotInScene(loot.abilities);
         if (randomAbility != null)
         {
-            string ability = StringUtils.CapitalizeFirstLetter(randomAbility.name);
+            string abilityName = StringUtils.CapitalizeFirstLetter(randomAbility.name);
 
-            abilityButton.GetComponentInChildren<TextMeshProUGUI>().text = ability;
+            abilityImage = randomAbility.GetComponent<IAbility>().img;
+
+            abilityButton.GetComponentInChildren<TextMeshProUGUI>().text = abilityName;
+
+            test = GetIcon(abilityButton.gameObject);
+
+            test.sprite = abilityImage;
 
             abilityButton.onClick.AddListener(() => StartCoroutine(ActivateLoot(randomAbility, true)));
 
@@ -107,6 +117,11 @@ public class ChestLootManager : MonoBehaviour
         moneyButton.GetComponentInChildren<TextMeshProUGUI>().text = "30 gold";
 
         moneyButton.onClick.AddListener(() => GetMoney());
+    }
+
+    private Image GetIcon(GameObject gameObject)
+    {
+        return gameObject.GetComponentsInChildren<Image>().FirstOrDefault(img => img.gameObject != gameObject);
     }
 
 
