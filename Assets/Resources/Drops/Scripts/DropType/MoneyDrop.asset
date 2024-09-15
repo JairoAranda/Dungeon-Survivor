@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7fc36d5604b4746819388c0fa66de7, type: 3}
   m_Name: MoneyDrop
   m_EditorClassIdentifier: 
-  dropAmount: 20
+  dropAmount: 100
   minDrop: 0
   maxDrop: 4
   minProbabilityMaxDrop: 0.30000001192092896

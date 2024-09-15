@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Knight
   m_EditorClassIdentifier: 
   health: 12.5
+  healthRegen: 0.01
   speed: 6
-  absortion: 1
+  absortion: 2.5
   iFrames: 2.5
   damage: 1.5
   attackSpeed: 1
   cooldown: 1
-  projectileSpeed: 0
+  projectSpeed: 10
   range: 0

@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Wizard
   m_EditorClassIdentifier: 
   health: 10
+  healthRegen: 0.01
   speed: 4
-  absortion: 2
+  absortion: 2.5
   iFrames: 2
   damage: 1
   attackSpeed: 1
   cooldown: 1
-  projectileSpeed: 10
+  projectSpeed: 10
   range: 10

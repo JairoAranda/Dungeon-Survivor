@@ -149,6 +149,11 @@ public class PlayerStats : MonoBehaviour, IStats
         {
             gameObject.transform.position = Vector3.zero;
         }
+
+        if (scene.buildIndex == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Update()
@@ -179,7 +184,9 @@ public class PlayerStats : MonoBehaviour, IStats
             _isDead = true;
 
             EventTriggerDeathPlayer?.Invoke(gameObject);
+
             SceneManager.LoadScene(0);
+
         }
         
     }
@@ -202,7 +209,7 @@ public class PlayerStats : MonoBehaviour, IStats
         {
             yield return new WaitForSeconds(1f);
 
-            if (life < maxLife)
+            if (life < maxLife && life > 0)
             {
                 life += healthRegen;
                 EventTriggerHealthRegen(gameObject);

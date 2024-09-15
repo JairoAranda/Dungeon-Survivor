@@ -10,7 +10,7 @@ public class SODrop : ScriptableObject
 
     [Header("Drop Pool Amount")]
     [Space]
-    [Range(1f, 20f)]
+    [Range(1f, 100f)]
     public int dropAmount;
 
     [Header("Amount Drop Range")]
