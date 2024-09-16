@@ -79,7 +79,6 @@ public class RandomStatsUpgradeManager : MonoBehaviour
         {
             dictionary[key]++;
 
-            Debug.Log(dictionary[key]);
         }
 
         EventTriggerOnUpgradeStat?.Invoke();

@@ -2563,6 +2563,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180129868}
   m_CullTransparentMesh: 1
+--- !u!1 &184326995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 184326997}
+  - component: {fileID: 184326996}
+  m_Layer: 0
+  m_Name: LoadingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &184326996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184326995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c2a86dc357d8441b969451d6b65318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progress: 0
+  sceneIndex: 0
+--- !u!4 &184326997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184326995}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 832.5639, y: 473.59702, z: -3.9858716}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &196619747
 GameObject:
   m_ObjectHideFlags: 0
@@ -7457,7 +7503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e655ae10d4cd3c42a4f0903a8d02ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  needPlayer: 0
+  mainMenu: 0
 --- !u!114 &500882312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12440,7 +12486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e655ae10d4cd3c42a4f0903a8d02ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  needPlayer: 0
+  mainMenu: 0
 --- !u!114 &934134134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24971,7 +25017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e655ae10d4cd3c42a4f0903a8d02ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  needPlayer: 0
+  mainMenu: 0
 --- !u!1 &1878776218
 GameObject:
   m_ObjectHideFlags: 0
@@ -28140,6 +28186,7 @@ SceneRoots:
   - {fileID: 1982458454}
   - {fileID: 1588856809}
   - {fileID: 592675840}
+  - {fileID: 184326997}
   - {fileID: 2147400109}
   - {fileID: 1134790475}
   - {fileID: 642626991}

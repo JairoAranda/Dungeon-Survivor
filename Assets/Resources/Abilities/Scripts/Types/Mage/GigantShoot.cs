@@ -47,8 +47,6 @@ public class GigantShoot : BaseRangedAbility, IAbility
 
         while (elapsedTime < duration)
         {
-            Debug.Log("test");
-
             elapsedTime += Time.deltaTime;
 
             bulletToShoot.transform.localScale = Vector3.Lerp(initialScale, targetScale, elapsedTime / duration);

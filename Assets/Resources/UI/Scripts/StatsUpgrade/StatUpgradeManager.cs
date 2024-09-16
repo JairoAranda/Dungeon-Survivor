@@ -23,8 +23,6 @@ public class StatUpgradeManager : MonoBehaviour
 
         for (int i = 1; i < childTransforms.Length; i++)
         {
-            Debug.Log("test"); 
-
             levels[i - 1] = childTransforms[i].gameObject;
         }
 
@@ -58,7 +56,6 @@ public class StatUpgradeManager : MonoBehaviour
 
             PlayerPrefs.SetInt(currentMoneyPrefs.ToString(), MoneyManager.instance.money);
 
-            Debug.Log(MoneyManager.instance.money);
         }
 
         else
