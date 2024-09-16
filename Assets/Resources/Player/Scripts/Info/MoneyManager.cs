@@ -45,8 +45,6 @@ public class MoneyManager : MonoBehaviour
 
     void SaveMoney(GameObject go)
     {
-        Debug.Log("hola");
-
         PlayerPrefs.SetInt(currentMoneyPrefs.ToString(), money);
     }
 }

@@ -13,6 +13,7 @@ public class ProjectilePool : GeneralPool
     [HideInInspector]
     public int shootNumber = -1;
 
+
     private void Awake()
     {
         if (instance == null)

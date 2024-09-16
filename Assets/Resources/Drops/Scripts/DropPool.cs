@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(DropAmount))]
 public class DropPool : GeneralPool
 {
+
     [Header("Drops Types")]
     [Space]
     [SerializeField] SODrop[] drops;
