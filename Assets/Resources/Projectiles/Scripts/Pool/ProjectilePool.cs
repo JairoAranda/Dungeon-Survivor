@@ -38,20 +38,27 @@ public class ProjectilePool : GeneralPool
 
         GameObject bulletToShoot = typesInstances[shootNumber];
         Projectile projectileComponent = bulletToShoot.GetComponent<Projectile>();
-        Rigidbody2D rb = bulletToShoot.GetComponent<Rigidbody2D>(); 
+        Rigidbody2D rb = bulletToShoot.GetComponent<Rigidbody2D>();
 
+        // Configurar los parámetros del proyectil
         projectileComponent.dmg = m_dmg;
         projectileComponent.range = m_range;
         projectileComponent.hitLayer = m_Layer;
         projectileComponent.owner = _owner;
 
+        // Definir posiciones inicial y de destino
         target = m_target;
         startPosition = m_startPosition;
 
+        // Modificar color del proyectil
         bulletToShoot.GetComponent<SpriteRenderer>().material.color = _color;
         bulletToShoot.transform.position = shootPosition;
+
+        // Reinicia el proyectil antes de activarlo
         bulletToShoot.SetActive(true);
 
+        // Reinicia la velocidad antes de agregar fuerza
+        rb.velocity = Vector2.zero;
         rb.AddForce(Direction() * m_speed, ForceMode2D.Impulse);
 
 
