@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class HandPosition : MonoBehaviour
 {
-    [SerializeField] Transform handPosition;
+    [SerializeField] Transform handPosition; // Transform público para establecer la referencia a la posición de la mano
 
     void Update()
     {
-        transform.position = handPosition.position;
+        transform.position = handPosition.position; // Actualiza la posición del objeto a la posición del objeto 'handPosition'
     }
 }

@@ -6,9 +6,9 @@ using UnityEngine;
 public class HitStop : MonoBehaviour
 {
     [Range(0.01f, 1f)]
-    [SerializeField] float duration = 0.1f;
+    [SerializeField] float duration = 0.1f; // Duración del efecto de pausa en segundos
 
-    bool waiting;
+    bool waiting; // Indica si la pausa está en curso
 
     private void OnEnable()
     {
@@ -23,6 +23,7 @@ public class HitStop : MonoBehaviour
 
     void StopTime(GameObject go)
     {
+        // Inicia la corutina si no se está esperando actualmente
         if (!waiting)
         {
             StartCoroutine(HitStopCoroutine());
@@ -35,6 +36,7 @@ public class HitStop : MonoBehaviour
 
         waiting = true;
 
+        // Espera durante la duración especificada en tiempo real (ignora el `Time.timeScale`)
         yield return new WaitForSecondsRealtime(duration);
 
         Time.timeScale = 1f;

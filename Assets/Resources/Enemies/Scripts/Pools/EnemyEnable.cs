@@ -114,7 +114,6 @@ public class EnemyEnable : MonoBehaviour
         return spawnPosition;
     }
 
-    // Método para verificar si la posición tiene un tile en el tilemap
     bool IsPositionOnTilemap(Vector2 position)
     {
         // Convertir la posición en coordenadas de celda del tilemap

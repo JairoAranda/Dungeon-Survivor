@@ -39,7 +39,6 @@ public class ExplosionTrigger : MonoBehaviour
 
     IEnumerator DisableCollider()
     {
-        // Espera el tiempo de duración del sistema de partículas antes de desactivar el collider
         yield return new WaitForSeconds(particles.main.duration);
 
         // Desactiva este script

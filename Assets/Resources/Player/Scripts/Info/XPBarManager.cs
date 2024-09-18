@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class XPBarManager : MonoBehaviour
 {
-    [SerializeField] Image XPBar;
+    [SerializeField] Image XPBar; // Referencia a la imagen de la barra de experiencia (XP)
 
-    float maxXP;
+    float maxXP; // Almacena el valor máximo de experiencia (XP) necesario para el siguiente nivel
 
     private void OnEnable()
     {
@@ -24,22 +24,21 @@ public class XPBarManager : MonoBehaviour
         UpdateMaxXP();
     }
 
-    IEnumerator LateStart()
-    {
-        yield return new WaitForEndOfFrame();
-        UpdateMaxXP();
-    }
 
+    // Método que actualiza el valor máximo de experiencia (XP) en función del nivel actual del jugador
     void UpdateMaxXP()
     {
-        maxXP = PlayerStats.instance.xpMax;
+        maxXP = PlayerStats.instance.xpMax; // Obtiene el valor máximo de XP del jugador
     }
 
+    // Método llamado en intervalos fijos de tiempo, ideal para actualizaciones constantes como una barra de progreso
     private void FixedUpdate()
     {
+        // Comprueba si la instancia de PlayerStats existe
         if (PlayerStats.instance != null)
         {
+            // Calcula el porcentaje de XP actual y actualiza la barra de XP
             XPBar.fillAmount = PlayerStats.instance.xp / maxXP;
-        }       
+        }
     }
 }

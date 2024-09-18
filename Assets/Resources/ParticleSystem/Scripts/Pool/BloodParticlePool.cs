@@ -9,7 +9,6 @@ public class BloodParticlePool : GeneralPool
 
     private void OnEnable()
     {
-        // Registra el método SpawnBlood para los eventos de daño y muerte del jugador y enemigos
         PlayerStats.EventTriggerHitPlayer += SpawnBlood;
         PlayerStats.EventTriggerDeathPlayer += SpawnBlood;
         EnemyStats.EventTriggerHitEnemy += SpawnBlood;
@@ -18,7 +17,6 @@ public class BloodParticlePool : GeneralPool
 
     private void OnDisable()
     {
-        // Desregistra el método SpawnBlood de los eventos para evitar llamadas innecesarias
         PlayerStats.EventTriggerHitPlayer -= SpawnBlood;
         PlayerStats.EventTriggerDeathPlayer -= SpawnBlood;
         EnemyStats.EventTriggerHitEnemy -= SpawnBlood;

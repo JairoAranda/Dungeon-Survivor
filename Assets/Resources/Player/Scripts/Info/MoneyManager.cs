@@ -6,10 +6,10 @@ public class MoneyManager : MonoBehaviour
 {
     public static MoneyManager instance;
 
-    [SerializeField] PlayerPrefsEnum currentMoneyPrefs;
+    [SerializeField] PlayerPrefsEnum currentMoneyPrefs; // Clave para guardar el dinero en PlayerPrefs
 
     [HideInInspector]
-    public int money;
+    public int money; // Cantidad actual de dinero
 
     private void Awake()
     {
@@ -40,11 +40,13 @@ public class MoneyManager : MonoBehaviour
 
     private void Start()
     {
+        // Carga el dinero guardado desde PlayerPrefs o establece en 0 si no hay datos guardados
         money = PlayerPrefs.GetInt(currentMoneyPrefs.ToString(), 0);
     }
 
     void SaveMoney(GameObject go)
     {
+        // Guarda la cantidad de dinero en PlayerPrefs al morir el jugador
         PlayerPrefs.SetInt(currentMoneyPrefs.ToString(), money);
     }
 }
