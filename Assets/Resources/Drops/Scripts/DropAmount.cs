@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DropAmount : MonoBehaviour
 {    
-    private int luck;
+    [SerializeField] private PlayerUpgradeEnum luckUpgrade; // Enum para identificar la estadística de suerte
 
-    [SerializeField] private PlayerUpgradeEnum luckUpgrade;
+    [SerializeField] private PlayerPrefsEnum luckPrefs; // Enum para el save de suerte
 
-    [SerializeField] private PlayerPrefsEnum luckPrefs;
+    private int luck; // Valor de suerte del jugador
 
     private void OnEnable()
     {
@@ -22,6 +22,7 @@ public class DropAmount : MonoBehaviour
 
     void Start()
     {
+        // Esperar hasta el final del frame para asegurar que todas las referencias estén listas
         StartCoroutine(LateStart());
     }
 
@@ -29,32 +30,37 @@ public class DropAmount : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
-        GetLuck();
+        GetLuck(); 
     }
 
     void GetLuck()
     {
+        // Obtener el valor de suerte basado en el `luckUpgrade` del jugador
         luck = PlayerStats.instance.soPlayerInfo.statUpgrades[luckUpgrade];
     }
 
     public int GetDropNumber(int minDrop, int maxDrop, double minProbabilityMaxDrop, double maxProbabilityMaxDrop)
     {
+        // Calcular el multiplicador de suerte basado en las preferencias guardadas del jugador
         float multiplier = (float)(1 + 0.1 * PlayerPrefs.GetInt(luckPrefs.ToString(), 1) - 0.1);
 
+        // Limitar el valor de suerte entre 1 y 20
         luck = Mathf.Clamp(luck, 1, 20);
 
-        // Interpolar la probabilidad de obtener maxDrop entre minprobabilityMaxDrop (luck = 1) y probabilityMaxDrop (luck = 20)
+        // Interpolar la probabilidad de obtener el valor máximo de drop
         double interpolatedProbability = Mathf.Lerp((float)minProbabilityMaxDrop, (float)maxProbabilityMaxDrop, (float)(luck - 1) / 19f);
 
+        // Calcular la probabilidad actual de obtener el valor máximo de drop
         double currentprobabilityMaxDrop = interpolatedProbability * multiplier;
-
         currentprobabilityMaxDrop = Mathf.Clamp((float)currentprobabilityMaxDrop, 0.01f, 1.0f);
 
+        // Calcular el rango de posibles valores de drop
         int range = maxDrop - minDrop;
 
-        // Calcular el factor de suerte basado en la probabilidad interpolada
+        // Determinar el factor de suerte basado en la probabilidad interpolada
         float luckFactor = Mathf.Clamp01((float)currentprobabilityMaxDrop);
 
+        // Generar un valor aleatorio entre 0 y 1
         float randomValue = Random.Range(0f, 1f);
 
         int result;
@@ -65,11 +71,11 @@ public class DropAmount : MonoBehaviour
         }
         else
         {
-            // De lo contrario, calcular un valor basado en el rango
+            // De lo contrario, calcular un valor basado en el rango de valores posibles
             result = Mathf.FloorToInt(minDrop + randomValue * range);
         }
 
-        // Restringir el resultado dentro del rango válido
+        // Asegurarse de que el resultado esté dentro del rango válido
         result = Mathf.Clamp(result, minDrop, maxDrop);
 
         return result;

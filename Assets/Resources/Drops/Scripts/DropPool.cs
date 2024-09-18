@@ -9,22 +9,21 @@ public class DropPool : GeneralPool
 
     [Header("Drops Types")]
     [Space]
-    [SerializeField] SODrop[] drops;
+    [SerializeField] SODrop[] drops; // Array de tipos de drops configurados en ScriptableObjects
 
     [Header("Spread Range")]
     [Space]
     [Range(0.0f, 2.0f)]
-    [SerializeField] private float maxRange = 0.5f;
+    [SerializeField] private float maxRange = 0.5f; // Rango máximo para dispersar los objetos de drop
 
-    private DropAmount amount;
+    private DropAmount amount; // Componente para obtener la cantidad de drop basada en la suerte
 
-    int[] dropNumber;
+    int[] dropNumber; // Array para llevar el control de los números de drop
 
-    int currentDrop = -1;
+    int currentDrop = -1; // Índice actual del drop
 
-    int minNum = 0;
-
-    int maxNum = 0;
+    int minNum = 0; // Número mínimo de drops
+    int maxNum = 0; // Número máximo de drops
 
     private void OnEnable()
     {
@@ -38,23 +37,25 @@ public class DropPool : GeneralPool
 
     protected override void Start()
     {
-        poolSize = 0;
+        poolSize = 0; // Inicializar el tamaño del pool
 
-        amount = GetComponent<DropAmount>();
+        amount = GetComponent<DropAmount>(); // Obtener el componente DropAmount
 
-        dropNumber = new int[drops.Length];
+        dropNumber = new int[drops.Length]; // Inicializar el array de números de drop
 
-
+        // Calcular el tamaño total del pool en base a la cantidad de cada tipo de drop
         foreach (var drop in drops)
         {
             poolSize += drop.dropAmount;
         }
 
+        // Inicializar el array de instancias de los tipos de drops
         typesInstances = new GameObject[poolSize];
 
         int type = -1;
         int j = 0;
 
+        // Instanciar los objetos de drop y almacenarlos en el array typesInstances
         foreach (var drop in drops)
         {
             type++;
@@ -71,6 +72,7 @@ public class DropPool : GeneralPool
 
     void Drop(GameObject gameobject)
     {
+        // Lógica para determinar y activar los drops cuando un enemigo muere
         foreach (var drop in drops)
         {
             int chance = amount.GetDropNumber(drop.minDrop, drop.maxDrop, drop.minProbabilityMaxDrop ,drop.maxProbabilityMaxDrop);
@@ -107,8 +109,8 @@ public class DropPool : GeneralPool
                     dropNumber[currentDrop] = minNum;
                 }
 
+                // Establecer la posición aleatoria para el drop y activarlo
                 typesInstances[dropNumber[currentDrop]].transform.position = GetRandomPositionAroundPoint(gameobject.transform.position, maxRange);
-
                 typesInstances[dropNumber[currentDrop]].SetActive(true);
             }
         }
@@ -117,10 +119,9 @@ public class DropPool : GeneralPool
 
     Vector2 GetRandomPositionAroundPoint(Vector2 center, float maxDistance)
     {
+        // Obtener una posición aleatoria alrededor de un punto central dentro de una distancia máxima
         float angle = Random.Range(0f, 2f * Mathf.PI);
-
         float distance = Random.Range(0f, maxDistance);
-
         float x = center.x + distance * Mathf.Cos(angle);
         float y = center.y + distance * Mathf.Sin(angle);
 

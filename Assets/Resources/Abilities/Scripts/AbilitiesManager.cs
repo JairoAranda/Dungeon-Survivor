@@ -8,17 +8,18 @@ using UnityEngine.UI;
 
 public class AbilitiesManager : MonoBehaviour
 {
-    public static AbilitiesManager instance;
+    public static AbilitiesManager instance; // Instancia estática para acceso global
 
     [HideInInspector]
-    public IAbility qAbility, eAbility;
+    public IAbility qAbility, eAbility; // Referencias a las habilidades asociadas a las teclas Q y E
 
-    public Image qCdImg, eCdImg, qImg, eImg;
+    public Image qCdImg, eCdImg, qImg, eImg; // Imágenes en la UI para mostrar el tiempo de recarga de las habilidades Q y E
 
-    public TextMeshProUGUI qCdText, eCdText;
+    public TextMeshProUGUI qCdText, eCdText; // Textos en la UI para mostrar el tiempo de recarga en formato numérico
 
     private void Awake()
     {
+
         if (instance == null)
         {
             instance = this;
@@ -41,10 +42,9 @@ public class AbilitiesManager : MonoBehaviour
     {
         if (ability != null)
         {
+            // Actualiza el uso de la habilidad, la imagen de recarga y el texto de recarga
             AbilityUse(ability);
-
             ImgCd(ability);
-
             CD(ability);
         }
         
@@ -52,13 +52,16 @@ public class AbilitiesManager : MonoBehaviour
 
     void AbilityUse(IAbility ability)
     {
+        // Verifica si la tecla asociada a la habilidad ha sido presionada
         if (Input.GetKeyDown(ability.keycode))
         {
+            // Solo permite usar la habilidad si el tiempo de recarga es 0
             if (ability.currentCD <= 0)
             {
+                // Aplica la reducción de tiempo de recarga basada en las estadísticas del jugador
                 ability.currentCD = ability.cd * (1 - PlayerStats.instance.coolDownReduction / 100);
 
-                ability.Ability();
+                ability.Ability(); // Llama al método Ability de la habilidad
             }
 
         }
@@ -66,37 +69,39 @@ public class AbilitiesManager : MonoBehaviour
 
     void ImgCd(IAbility ability)
     {
+        // Actualiza la imagen de recarga para mostrar el tiempo restante
         ability.CDimg.fillAmount = ability.currentCD / (ability.cd * (1 - PlayerStats.instance.coolDownReduction / 100));
     }
 
     void CD(IAbility ability)
     {
+        // Actualiza el texto de recarga dependiendo de si la habilidad es Q o E
         if (ability.CDimg == qCdImg)
         {
             if (!qCdText.enabled)
             {
-                qCdText.enabled = true;
+                qCdText.enabled = true; // Muestra el texto si está desactivado
             }
             
-            qCdText.text = ability.currentCD.ToString("F1");
+            qCdText.text = ability.currentCD.ToString("F1"); // Muestra el tiempo de recarga con un decimal
 
             if (ability.currentCD <= 0)
             {
-                qCdText.enabled = false;
+                qCdText.enabled = false; // Oculta el texto si el tiempo de recarga ha terminado
             }
         }
         else
         {
             if (!eCdText.enabled)
             {
-                eCdText.enabled = true;
+                eCdText.enabled = true; // Muestra el texto si está desactivado
             }
 
-            eCdText.text = ability.currentCD.ToString("F1");
+            eCdText.text = ability.currentCD.ToString("F1"); // Muestra el tiempo de recarga con un decimal
 
             if (ability.currentCD <= 0)
             {
-                eCdText.enabled = false;
+                eCdText.enabled = false; // Oculta el texto si el tiempo de recarga ha terminado
             }
         }
     }

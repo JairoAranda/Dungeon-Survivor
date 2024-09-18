@@ -6,12 +6,23 @@ using UnityEngine.Tilemaps;
 public class DungeonDecoration : MonoBehaviour
 {
     [Header("Spawn Data")]
-    [SerializeField] private GameObject spritePrefab;
-    [SerializeField] private Tilemap targetTilemap;
-    [SerializeField] private int minSpritesToSpawn = 10;
-    [SerializeField] private int maxSpritesToSpawn = 20;
+    [SerializeField] private GameObject spritePrefab; // Prefab del sprite a spawnnear
+    [SerializeField] private Tilemap targetTilemap; // Tilemap donde se spawnnearán los sprites
+    [Range(1, 50f)]
+    [SerializeField] private int minSpritesToSpawn = 10; // Número mínimo de sprites a spawnnear
+    [Range(1, 50f)]
+    [SerializeField] private int maxSpritesToSpawn = 20;  // Número máximo de sprites a spawnnear
 
-    private List<Vector3> spawnPositions = new List<Vector3>();
+    private List<Vector3> spawnPositions = new List<Vector3>(); // Lista para almacenar posiciones válidas de spawn
+
+    private void OnValidate()
+    {
+        //Asegurar que maxSprites es mayor que minSprites
+        if (maxSpritesToSpawn < minSpritesToSpawn)
+        {
+            maxSpritesToSpawn = minSpritesToSpawn;
+        }
+    }
 
     public void Decoration()
     {
@@ -27,6 +38,7 @@ public class DungeonDecoration : MonoBehaviour
 
     void GetTilePositions()
     {
+        // Iterar a través de todas las posiciones dentro del área de celdas del Tilemap
         foreach (var pos in targetTilemap.cellBounds.allPositionsWithin)
         {
             if (targetTilemap.HasTile(pos))
@@ -42,12 +54,14 @@ public class DungeonDecoration : MonoBehaviour
     {
         int spritesSpawned = 0;
 
+        // Spawnnear sprites mientras no se haya alcanzado el número deseado y haya posiciones disponibles
         while (spritesSpawned < numberOfSpritesToSpawn && spawnPositions.Count > 0)
         {
             // Escoger una posición aleatoria de la lista
             int randomIndex = Random.Range(0, spawnPositions.Count);
             Vector3 spawnPosition = spawnPositions[randomIndex];
 
+            // Instanciar el prefab del sprite en la posición seleccionada
             GameObject instance = Instantiate(spritePrefab, spawnPosition, Quaternion.identity);
 
             instance.transform.SetSiblingIndex(gameObject.transform.GetSiblingIndex() + 1);

@@ -6,17 +6,18 @@ public class HitEnemyAnimManager : MonoBehaviour
 {
     [Header("Animation Config")]
     [Space]
-    [SerializeField] Color hitColor = Color.red;
+    [SerializeField] Color hitColor = Color.red; // Color que el objeto tomará al ser golpeado
 
     [Range(0.1f, 5f)]
-    [SerializeField] float blinkDuration = 2f;
+    [SerializeField] float blinkDuration = 2f; // Duración total de la animación de parpadeo
 
     [Range(0.01f, 1f)]
-    [SerializeField] float blinkFrequency = 0.2f;
+    [SerializeField] float blinkFrequency = 0.2f; // Frecuencia de parpadeo
 
 
-    private Renderer objectRenderer;
-    private Color originalColor;
+    private Renderer objectRenderer; // Renderer del objeto para cambiar su color
+    private Color originalColor; // Color original del objeto
+
 
     private void OnEnable()
     {
@@ -33,11 +34,21 @@ public class HitEnemyAnimManager : MonoBehaviour
     {
         HitEnemyAnim hitEnemyAnim = gameObject.GetComponent<HitEnemyAnim>();
 
-        objectRenderer = gameObject.GetComponent<Renderer>();
+        // Asegúrate de que el objeto tenga el componente HitEnemyAnim
+        if (hitEnemyAnim != null)
+        {
+            objectRenderer = gameObject.GetComponent<Renderer>();
 
-        originalColor = objectRenderer.material.color;
+            // Asegúrate de que el objeto tenga un Renderer
+            if (objectRenderer != null)
+            {
+                originalColor = objectRenderer.material.color;
 
-        StartCoroutine(hitEnemyAnim.HitAnim(blinkDuration, blinkFrequency, objectRenderer, originalColor, hitColor));
+                // Inicia la animación de golpe
+                StartCoroutine(hitEnemyAnim.HitAnim(blinkDuration, blinkFrequency, objectRenderer, originalColor, hitColor));
+            }
+        }
+        
     }
 
 

@@ -8,28 +8,28 @@ public class DungeonGenerator : MonoBehaviour
 {
     [Header("TileMaps")]
     [Space]
-    [SerializeField] Tilemap groundTileMap;
-    [SerializeField] Tilemap wallTileMap;
+    [SerializeField] Tilemap groundTileMap; // Tilemap para los tiles de suelo
+    [SerializeField] Tilemap wallTileMap; // Tilemap para los tiles de muro
 
     [Header("Tiles")]
     [Space]
-    [SerializeField] RuleTile wallTile;
-
-    [SerializeField] Tile[] floorTiles;
-
-    [SerializeField] int[] floorTileWeights;
+    [SerializeField] RuleTile wallTile; // Tile de muro, usando RuleTile para características complejas
+    [SerializeField] Tile[] floorTiles; // Array de tiles de suelo
+    [Range(1f, 1000f)]
+    [SerializeField] int[] floorTileWeights; // Pesos para la selección aleatoria de tiles de suelo
 
     [Header("Room Config")]
     [Space]
     [Range(50f, 500f)]
-    [SerializeField] int roomMinSize = 100;
+    [SerializeField] int roomMinSize = 100; // Tamaño mínimo de la sala
     [Range(50f, 500f)]
-    [SerializeField] int roomMaxSize = 150;
+    [SerializeField] int roomMaxSize = 150; // Tamaño máximo de la sala
     [Range(50f, 500f)]
-    [SerializeField] int wallThickness = 80;
+    [SerializeField] int wallThickness = 80; // Grosor de los muros
 
     private void OnValidate()
     {
+        // Asegura que los pesos de los tiles coincidan con la longitud de los tiles
         if (floorTileWeights == null || floorTileWeights.Length != floorTiles.Length)
         {
             System.Array.Resize(ref floorTileWeights, floorTiles.Length);
@@ -42,6 +42,7 @@ public class DungeonGenerator : MonoBehaviour
             }
         }
 
+        // Asegura que roomMaxSize no sea menor que roomMinSize
         if (roomMaxSize < roomMinSize)
         {
             roomMaxSize = roomMinSize;
@@ -50,7 +51,7 @@ public class DungeonGenerator : MonoBehaviour
 
     void Start()
     {
-        GenerateRoom();
+        GenerateRoom(); // Llama a la generación de la sala al iniciar
     }
 
     void GenerateRoom()
@@ -64,7 +65,7 @@ public class DungeonGenerator : MonoBehaviour
         int roomY = -roomHeight / 2;
 
         Rect room = new Rect(roomX, roomY, roomWidth, roomHeight);
-        CreateRoom(room);
+        CreateRoom(room); // Crea la sala usando las dimensiones calculadas
     }
 
     void CreateRoom(Rect room)
@@ -95,11 +96,13 @@ public class DungeonGenerator : MonoBehaviour
             }
         }
 
+        // Llama al método de decoración para añadir detalles adicionales
         gameObject.GetComponent<DungeonDecoration>().Decoration();
     }
 
     bool IsInsideIrregularShape(int x, int y, Rect room)
     {
+        // Calcula si una posición está dentro de la forma ovalada definida por la sala
         float centerX = room.x + room.width / 2;
         float centerY = room.y + room.height / 2;
         float radiusX = room.width / 2;
@@ -113,6 +116,7 @@ public class DungeonGenerator : MonoBehaviour
 
     bool IsBorderOfIrregularShapeWithThickness(int x, int y, Rect room, int thickness)
     {
+        // Calcula si una posición está en el borde o dentro del grosor especificado alrededor de la forma ovalada
         float centerX = room.x + room.width / 2;
         float centerY = room.y + room.height / 2;
         float radiusX = room.width / 2;
@@ -121,7 +125,6 @@ public class DungeonGenerator : MonoBehaviour
         float dx = (x - centerX) / radiusX;
         float dy = (y - centerY) / radiusY;
 
-        // Calcula si el tile está en el borde o dentro del grosor especificado
         float distance = (dx * dx + dy * dy);
         float innerRadius = 1.0f; // Radio de la forma ovalada original
         float outerRadius = 1.0f + (float)thickness / Mathf.Max(room.width, room.height); // Radio expandido según el grosor
@@ -133,7 +136,7 @@ public class DungeonGenerator : MonoBehaviour
 
     Tile GetRandomWeightedTile(Tile[] tiles, int[] weights)
     {
-        // Calcula la suma total de los pesos
+        // Calcula la suma total de los pesos de los tiles
         int totalWeight = 0;
         for (int i = 0; i < weights.Length; i++)
         {
@@ -154,6 +157,6 @@ public class DungeonGenerator : MonoBehaviour
             }
         }
 
-        return tiles[0]; // Fallback (por si acaso)
+        return tiles[0]; // Fallback por si acaso
     }
 }

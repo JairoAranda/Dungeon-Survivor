@@ -9,6 +9,7 @@ public class XPRecive : GeneralReciveDrop
     {
         base.AnimDone();
 
+        // Añade el valor total de experiencia al XP del PlayerStats
         PlayerStats.instance.xp += totalValue;
     }
 
