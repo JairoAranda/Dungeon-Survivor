@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
+    [SerializeField] bool mainMenu; // Indica si el botón de cambio de escena está en el menú principal.
 
-    [SerializeField] bool mainMenu;
-
+    // Cambia la escena a la especificada por el índice de escena.
     public void ChangeSceneButton (int scene)
     {
         if (mainMenu)
@@ -26,12 +26,13 @@ public class ChangeScene : MonoBehaviour
         
     }
 
-
+    // Cambia el valor de escala del tiempo del juego.
     public void ChangeTimeScale(int timeScale)
     {
         Time.timeScale = timeScale;
     }
 
+    // Destruye el objeto del jugador actual.
     public void DestoyPlayer()
     {
         Destroy(PlayerStats.instance.gameObject);

@@ -10,15 +10,15 @@ public class RoundTimerManager : MonoBehaviour
     [Header("Timer Options")]
     [Space]
     [Range(0f, 180f)]
-    [SerializeField] int floorTime;
+    [SerializeField] int floorTime; // Tiempo del piso en segundos.
 
-    private EnemyPoolManager enemyPoolManager;
+    private EnemyPoolManager enemyPoolManager; // Referencia al gestor de la piscina de enemigos.
 
-    private GameObject endMenu;
+    private GameObject endMenu; // Referencia al menú de fin de ronda.
 
-    public int floorTimeRemaining;
+    public int floorTimeRemaining; // Tiempo restante del piso en segundos.
 
-    public int currentFloor = 0;
+    public int currentFloor = 0; // Piso actual.
 
     private void OnEnable()
     {
@@ -63,7 +63,7 @@ public class RoundTimerManager : MonoBehaviour
     }
 
 
-
+    // Realiza una cuenta regresiva durante el tiempo especificado.
     private IEnumerator Countdown(int time)
     {
         floorTimeRemaining = time;
@@ -75,6 +75,7 @@ public class RoundTimerManager : MonoBehaviour
             floorTimeRemaining = time;
         }
 
+        // Desactiva todos los enemigos y muestra el menú de fin de ronda.
         enemyPoolManager = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<EnemyPoolManager>();
 
         foreach (var enemy in enemyPoolManager.typesInstances)

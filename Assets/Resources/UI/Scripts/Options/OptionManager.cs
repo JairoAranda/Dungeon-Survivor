@@ -8,8 +8,8 @@ public class OptionManager : MonoBehaviour
     public static OptionManager instance;
 
 
-    //[HideInInspector]
-    public bool isAuto;
+    [HideInInspector]
+    public bool isAuto; // Indica si el apuntado automático está habilitado o no.
 
     [Header("Aim Options")]
     [SerializeField] Toggle toggle;
@@ -29,6 +29,7 @@ public class OptionManager : MonoBehaviour
         }
     }
 
+    // Actualiza el valor de isAuto basado en el estado del toggle.
     public void CheckToggle()
     {
         isAuto = toggle.isOn;

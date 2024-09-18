@@ -12,6 +12,7 @@ public class SoundActive : MonoBehaviour
         randomSound = GetComponent<RandomSound>();
     }
 
+    // Reproduce un sonido usando el componente RandomSound cuando se activa el objeto.
     protected virtual void SoundEnable(GameObject go)
     {
         randomSound.SelectSound();

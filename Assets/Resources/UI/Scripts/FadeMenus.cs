@@ -6,21 +6,22 @@ using UnityEngine.UI;
 
 public class FadeMenus : MonoBehaviour
 {
-    [SerializeField] float fadeDuration;
+    [SerializeField] float fadeDuration; // Duración del efecto de desvanecimiento
 
-    private Image[] images;
-
-    private TextMeshProUGUI[] texts;
+    private Image[] images; // Array para almacenar imágenes en el menú
+    private TextMeshProUGUI[] texts; // Array para almacenar textos en el menú
 
     void Start()
     {
+        // Obtén todas las imágenes y textos hijos del objeto actual
         images = GetComponentsInChildren<Image>();
-
         texts = GetComponentsInChildren<TextMeshProUGUI>();
 
+        // Inicia el proceso de desvanecimiento a un alpha de 1 (completamente visible)
         StartCoroutine(FadeTo(1));
     }
 
+    // Realiza un desvanecimiento a un alpha objetivo durante un tiempo especificado.
     IEnumerator FadeTo(float targetAlpha)
     {
         float[] currentAlphas = new float[images.Length];
@@ -32,27 +33,27 @@ public class FadeMenus : MonoBehaviour
         // Almacena los valores alpha actuales de cada imagen
         for (int i = 0; i < images.Length; i++)
         {
-            currentAlphas[i] = 1 - targetAlpha;
-            alphaDifferences[i] = targetAlpha - currentAlphas[i];
+            currentAlphas[i] = 1 - targetAlpha; // Obtener alpha actual
+            alphaDifferences[i] = targetAlpha - currentAlphas[i]; // Diferencia entre el alpha objetivo y el actual
         }
 
         // Almacena los valores alpha actuales de cada texto
         for (int i = 0; i < texts.Length; i++)
         {
-            textCurrentAlphas[i] = 1 - targetAlpha;
-            textAlphaDifferences[i] = targetAlpha - textCurrentAlphas[i];
+            textCurrentAlphas[i] = 1 - targetAlpha; // Obtener alpha actual
+            textAlphaDifferences[i] = targetAlpha - textCurrentAlphas[i]; // Diferencia entre el alpha objetivo y el actual
         }
 
-        float elapsedTime = 0f;
+        float elapsedTime = 0f; // Tiempo transcurrido desde el inicio del desvanecimiento
 
         // Realiza el fade durante el tiempo especificado
         while (elapsedTime < fadeDuration)
         {
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.deltaTime; 
 
             for (int i = 0; i < images.Length; i++)
             {
-                // Calcula el nuevo alpha
+                // Calcula el nuevo alpha basado en el tiempo transcurrido
                 float newAlpha = Mathf.Clamp01(currentAlphas[i] + (alphaDifferences[i] * (elapsedTime / fadeDuration)));
 
                 // Aplica el nuevo alpha a la imagen

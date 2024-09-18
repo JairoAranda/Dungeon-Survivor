@@ -6,16 +6,17 @@ using UnityEngine.UI;
 
 public class StatUpgradeManager : MonoBehaviour
 {
-    public static event Action<GameObject> EventTriggerAccept, EventTriggerDeny;
+    public static event Action<GameObject> EventTriggerAccept, EventTriggerDeny; // Evento que se activa cuando la actualización es aceptada o denegada.
 
-    int upgradeMoney;
+    int upgradeMoney; // Cantidad de dinero necesaria para la actualización
 
-    int maxLevels;
+    int maxLevels; // Número máximo de niveles posibles
 
-    GameObject[] levels;
+    GameObject[] levels; // Arreglo de niveles
 
-    [SerializeField] PlayerPrefsEnum currentMoneyPrefs;
+    [SerializeField] PlayerPrefsEnum currentMoneyPrefs; // El tipo de preferencia que se usa para el dinero actual del jugador.
 
+    // Configura el arreglo de niveles basándose en el objeto de nivel proporcionado.
     public void LevelArray(GameObject levelGO)
     {
         Transform[] childTransforms = levelGO.GetComponentsInChildren<Transform>();
@@ -29,17 +30,20 @@ public class StatUpgradeManager : MonoBehaviour
         maxLevels = levels.Length;
     }
 
+    // Establece la cantidad de dinero necesaria para la actualización.
     public void BaseMoney(int money)
     {
        upgradeMoney = money;
     }
 
+    // Maneja el botón de actualización y verifica si el jugador tiene suficiente dinero para realizar la actualización.
     public void UpgradeButton(GameObject go)
     {
         PlayerPrefsEnum stat = go.GetComponent<CheckPlayerPref>().statPrefs;
 
         int level = PlayerPrefs.GetInt(stat.ToString(), 1);
 
+        // Calcula el costo de actualización basado en el nivel actual
         upgradeMoney *= level;
 
         if (MoneyManager.instance.money >= upgradeMoney && level <= maxLevels)

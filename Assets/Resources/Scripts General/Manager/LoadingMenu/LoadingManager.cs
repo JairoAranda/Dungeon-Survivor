@@ -8,10 +8,10 @@ public class LoadingManager : MonoBehaviour
     public static LoadingManager instance;
 
     [HideInInspector]
-    public float progress;
+    public float progress; // Progreso de carga de la escena.
 
     [HideInInspector]
-    public int sceneIndex;
+    public int sceneIndex; // Índice de la escena que se va a cargar.
 
     private void Awake()
     {
@@ -37,6 +37,7 @@ public class LoadingManager : MonoBehaviour
         SceneManager.sceneLoaded -= StartLoad;
     }
 
+    // Inicia la carga de la escena cuando se ha cargado una nueva escena.
     void StartLoad(Scene scene, LoadSceneMode mode)
     {
         if (scene.buildIndex == 2)
@@ -48,8 +49,10 @@ public class LoadingManager : MonoBehaviour
 
     }
 
+    // Carga una escena de manera asíncrona y controla el progreso de carga.
     public IEnumerator LoadSceneAsync()
     {
+
         yield return new WaitForEndOfFrame();
 
         // Comienza a cargar la escena de forma asíncrona, pero no cambia aún
@@ -73,7 +76,6 @@ public class LoadingManager : MonoBehaviour
                 operation.allowSceneActivation = true;
             }
 
-            // Espera el siguiente frame antes de continuar el bucle
             yield return null;
         }
     }

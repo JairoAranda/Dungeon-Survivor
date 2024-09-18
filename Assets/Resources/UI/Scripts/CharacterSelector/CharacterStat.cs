@@ -7,14 +7,16 @@ using UnityEngine;
 
 public class CharacterStat : MonoBehaviour
 {
-    [SerializeField] SOPlayerInfo sOPlayerInfo;
-    [SerializeField] TextMeshProUGUI[] stats;
+    [SerializeField] SOPlayerInfo sOPlayerInfo; // Referencia al ScriptableObject que contiene la información del jugador
+    [SerializeField] TextMeshProUGUI[] stats; // Array de componentes TextMeshProUGUI para mostrar las estadísticas
 
     void Start()
     {
+        // Obtiene todos los campos del ScriptableObject SOPlayerInfo
         FieldInfo[] fields = sOPlayerInfo.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
         int i = 0;
 
+        // Recorre cada campo para actualizar las estadísticas
         foreach (FieldInfo field in fields)
         {
             // Verifica si el campo es de tipo float
@@ -22,9 +24,12 @@ public class CharacterStat : MonoBehaviour
             {
                 if (i < stats.Length) // Asegúrate de no exceder el tamaño del array de stats
                 {
+                    // Capitaliza el nombre del campo para mostrarlo
                     string name = StringUtils.CapitalizeFirstLetter(field.Name);
+                    // Obtiene el valor del campo
                     float value = (float)field.GetValue(sOPlayerInfo);
 
+                    // Si el valor es distinto de cero, actualiza el texto del componente TextMeshProUGUI
                     if (value != 0f)
                     {
                         stats[i].text = "- " + name + " : " + value.ToString();
@@ -32,6 +37,7 @@ public class CharacterStat : MonoBehaviour
 
                     else
                     {
+                        // Si el valor es cero, destruye el objeto de texto
                         Destroy(stats[i].gameObject);
                     }
                     
@@ -40,6 +46,4 @@ public class CharacterStat : MonoBehaviour
             }
         }
     }
-
-
 }
