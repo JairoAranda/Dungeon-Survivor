@@ -482,8 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca31adf9072ff034896bb03d72956b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalAxis: Horizontal
-  verticalAxis: Vertical
+  inputActions: {fileID: -944628639613478452, guid: ddd41442b450754489b156df4d3ee890, type: 3}
 --- !u!114 &2192481462387961168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,6 +580,7 @@ MonoBehaviour:
   handMovement: {fileID: 8795806857085826211}
   swingAngle: 89
   duration: 0.5
+  inputActions: {fileID: -944628639613478452, guid: ddd41442b450754489b156df4d3ee890, type: 3}
   meleeDmg: {fileID: 0}
   candHit: 1
 --- !u!114 &8756019317094945089

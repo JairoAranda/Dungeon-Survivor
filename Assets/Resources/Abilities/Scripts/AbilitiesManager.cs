@@ -5,6 +5,7 @@ using UnityEditor.Playables;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class AbilitiesManager : MonoBehaviour
 {
@@ -13,9 +14,18 @@ public class AbilitiesManager : MonoBehaviour
     [HideInInspector]
     public IAbility qAbility, eAbility; // Referencias a las habilidades asociadas a las teclas Q y E
 
-    public Image qCdImg, eCdImg, qImg, eImg; // Imágenes en la UI para mostrar el tiempo de recarga de las habilidades Q y E
+    [Header("CD Image")] // Imágenes en la UI para mostrar el tiempo de recarga de las habilidades Q y E
+    public Image qCdImg;  
+    public Image eCdImg;
 
-    public TextMeshProUGUI qCdText, eCdText; // Textos en la UI para mostrar el tiempo de recarga en formato numérico
+    [Header("Ability Image")] // Imágenes en la UI para mostrar las habilidades Q y E
+    public Image qImg; 
+    public Image eImg;
+
+
+    [Header("CD Text")] // Textos en la UI para mostrar el tiempo de recarga en formato numérico
+    public TextMeshProUGUI qCdText; 
+    public TextMeshProUGUI eCdText;
 
     private void Awake()
     {
@@ -53,7 +63,7 @@ public class AbilitiesManager : MonoBehaviour
     void AbilityUse(IAbility ability)
     {
         // Verifica si la tecla asociada a la habilidad ha sido presionada
-        if (Input.GetKeyDown(ability.keycode))
+        if (ability.abilityAction.triggered)
         {
             // Solo permite usar la habilidad si el tiempo de recarga es 0
             if (ability.currentCD <= 0)

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(SOFinderPlayer))]
 public class MeleeHitController : MonoBehaviour
@@ -24,6 +25,10 @@ public class MeleeHitController : MonoBehaviour
     [Range(0.1f, 1f)]
     [SerializeField] float duration; // Duración del swing
 
+    [Header("Inputs")]
+    [SerializeField] InputActionAsset inputActions;
+    private InputAction shootAction;
+
     private float currentCD; // Tiempo de cooldown entre swings
 
     [HideInInspector]
@@ -36,6 +41,15 @@ public class MeleeHitController : MonoBehaviour
 
     [HideInInspector]
     public bool candHit = true; // Indica si se puede golpear
+
+    private void OnEnable()
+    {
+        var gameplayMap = inputActions.FindActionMap("Gameplay");
+
+        shootAction = gameplayMap.FindAction("Shoot");
+
+        shootAction.Enable();
+    }
 
     private void Awake()
     {
@@ -94,7 +108,7 @@ public class MeleeHitController : MonoBehaviour
     void ManualHit()
     {
         // Realiza un golpe manual si el cooldown ha terminado, se hace clic y se puede golpear
-        if (currentCD <= 0 && Input.GetMouseButton(0) && candHit)
+        if (currentCD <= 0 && shootAction.triggered && candHit)
         {
             Swing();
 

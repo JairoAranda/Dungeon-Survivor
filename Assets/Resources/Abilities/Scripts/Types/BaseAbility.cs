@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -46,13 +47,6 @@ public class BaseAbility : MonoBehaviour
         set => _sOPlayerInfo = value;
     }
 
-    private KeyCode _abilityKey; // Tecla asociada a la habilidad
-    public KeyCode keycode
-    {
-        get => _abilityKey;
-        set => _abilityKey = value;
-    }
-
     Image _abilityCDImg; // Imagen que muestra el tiempo de recarga en la UI
     public Image CDimg
     {
@@ -66,6 +60,15 @@ public class BaseAbility : MonoBehaviour
         get => _go;
         set => _go = value;
     }
+
+    private InputAction _abilityAction;
+
+    public InputAction abilityAction //Acción de usar abilidad
+    {
+        get => _abilityAction;
+        set => _abilityAction = value;
+    }
+
 
 
     protected virtual void Start()

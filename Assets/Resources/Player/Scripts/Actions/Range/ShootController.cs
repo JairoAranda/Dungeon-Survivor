@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(SOFinderPlayer))]
 public class ShootController : EnemyDetector
@@ -13,6 +14,23 @@ public class ShootController : EnemyDetector
     [ColorUsage(true, true)]
     [SerializeField] Color bulletColor; // Color de las balas
 
+    [Header("Inputs")]
+    [SerializeField] InputActionAsset inputActions;
+    private InputAction shootAction;
+
+    private void OnEnable()
+    {
+        var gameplayMap = inputActions.FindActionMap("Gameplay");
+
+        shootAction = gameplayMap.FindAction("Shoot");
+
+        shootAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        shootAction.Disable();
+    }
 
     void Update()
     {
@@ -23,7 +41,7 @@ public class ShootController : EnemyDetector
         {
             AutoShot();
         }
-        else if (Input.GetMouseButton(0))
+        else if (shootAction.triggered)
         {
             TargetShot();
         }

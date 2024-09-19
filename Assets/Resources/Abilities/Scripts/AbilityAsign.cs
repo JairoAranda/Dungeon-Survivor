@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -8,14 +9,27 @@ public class AbilityAsign : MonoBehaviour
 {
     IAbility ability; // Referencia a la interfaz de habilidad
 
+    [Header("Inputs")]
+    [SerializeField] InputActionAsset inputActions;
+    private InputAction qAbility, eAbility;
+
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        var gameplayMap = inputActions.FindActionMap("Gameplay"); // Encuentra el mapa de acción "Gameplay"
+        qAbility = gameplayMap.FindAction("QAbilities");
+        qAbility.Enable();
+        eAbility = gameplayMap.FindAction("EAbilities");
+        eAbility.Enable();
     }
 
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+
+        qAbility.Disable();
+        eAbility.Disable();
     }
 
     private void Start()
@@ -41,7 +55,7 @@ public class AbilityAsign : MonoBehaviour
         if (AbilitiesManager.instance.qAbility == null)
         {
             // Si no hay ninguna habilidad asignada a la tecla Q, asigna la habilidad actual
-            ability.keycode = KeyCode.Q;
+            ability.abilityAction = qAbility;
             ability.CDimg = AbilitiesManager.instance.qCdImg;
             AbilitiesManager.instance.qImg.sprite = ability.img;
             AbilitiesManager.instance.qAbility = ability;
@@ -49,7 +63,7 @@ public class AbilityAsign : MonoBehaviour
         else
         {
             // Si ya hay una habilidad asignada a la tecla Q, asigna la habilidad actual a la tecla E
-            ability.keycode = KeyCode.E;
+            ability.abilityAction = eAbility;
             ability.CDimg = AbilitiesManager.instance.eCdImg;
             AbilitiesManager.instance.eImg.sprite = ability.img;
             AbilitiesManager.instance.eAbility = ability;

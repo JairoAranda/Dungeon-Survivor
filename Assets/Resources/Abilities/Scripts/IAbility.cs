@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public interface IAbility
@@ -11,7 +12,7 @@ public interface IAbility
 
     float currentCD { get; set; }
 
-    KeyCode keycode { get; set; }
+    InputAction abilityAction { get; set; }
 
     Sprite img { get; set; }
 
