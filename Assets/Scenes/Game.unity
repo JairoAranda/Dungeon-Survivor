@@ -5539,6 +5539,7 @@ GameObject:
   m_Component:
   - component: {fileID: 317470436}
   - component: {fileID: 317470435}
+  - component: {fileID: 317470437}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -5626,6 +5627,35 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -125}
   m_SizeDelta: {x: 650, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &317470437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317470434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1790911493}
+          m_TargetAssemblyTypeName: RandomSound, Assembly-CSharp
+          m_MethodName: SelectSound
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &318762778
 GameObject:
   m_ObjectHideFlags: 0
@@ -14293,17 +14323,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771515836}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1104348967}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 60.9266, y: 137.0849}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &771515838
 MonoBehaviour:
@@ -14321,11 +14351,11 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6016d0e75d69bc142b1e1cc859bf5a36, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b0aa000b2f0d9c54d9031976392a78b4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -23525,7 +23555,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAuto: 0
   toggle: {fileID: 317470435}
-  sound: {fileID: 1790911493}
 --- !u!114 &1466469131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31235,8 +31264,8 @@ MonoBehaviour:
   abilityButton: {fileID: 585818368}
   moneyButton: {fileID: 1892921439}
   changeAbility: {fileID: 1521271745}
+  weapongImage: {fileID: 0}
   abilityImage: {fileID: 0}
-  test: {fileID: 0}
 --- !u!114 &1852574976
 MonoBehaviour:
   m_ObjectHideFlags: 0

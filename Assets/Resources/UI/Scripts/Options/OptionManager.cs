@@ -14,8 +14,6 @@ public class OptionManager : MonoBehaviour
     [Header("Aim Options")]
     [SerializeField] Toggle toggle;
 
-    [SerializeField] RandomSound sound;
-
     private void Awake()
     {
         if (instance == null)
@@ -64,8 +62,6 @@ public class OptionManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("Auto", 0);
         }
-
-        sound.SelectSound();
 
         isAuto = toggle.isOn;
     }

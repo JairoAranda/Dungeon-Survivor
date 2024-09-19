@@ -61,7 +61,7 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  _abilityImg: {fileID: 768071552, guid: 09d2338431e18f14aaf5ef40de79b381, type: 3}
+  _abilityImg: {fileID: 21300000, guid: 109ddee4b3726794c9a97761fcfb73c1, type: 3}
   moveDistance: 10
   rotationSpeed: 360
   duration: 2

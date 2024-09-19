@@ -28,10 +28,10 @@ public class ChestLootManager : MonoBehaviour
     private int abilities = 0; // Contador de habilidades obtenidas.
 
     [SerializeField]
-    Sprite abilityImage; // Imagen de la habilidad.
+    Sprite weapongImage;
 
-    [SerializeField] Image test; // Imagen de prueba para las habilidades.
-
+    [SerializeField]
+    Sprite abilityImage;
 
     private void Start()
     {
@@ -95,7 +95,14 @@ public class ChestLootManager : MonoBehaviour
         {
             string weaponName = StringUtils.CapitalizeFirstLetter(randomWeapon.name);
 
+            weapongImage = randomWeapon.GetComponent<SpriteRenderer>().sprite;
+
             weaponButton.GetComponentInChildren<TextMeshProUGUI>().text = weaponName;
+
+            Image weaponButtonImg = GetIcon(weaponButton.gameObject);
+
+            weaponButtonImg.sprite = weapongImage;
+
             weaponButton.onClick.AddListener(() => StartCoroutine(ActivateLoot(randomWeapon, false)));
         }
 
@@ -109,9 +116,9 @@ public class ChestLootManager : MonoBehaviour
 
             abilityButton.GetComponentInChildren<TextMeshProUGUI>().text = abilityName;
 
-            test = GetIcon(abilityButton.gameObject);
+            Image abilityButtonImg = GetIcon(abilityButton.gameObject);
 
-            test.sprite = abilityImage;
+            abilityButtonImg.sprite = abilityImage;
 
             abilityButton.onClick.AddListener(() => StartCoroutine(ActivateLoot(randomAbility, true)));
 
