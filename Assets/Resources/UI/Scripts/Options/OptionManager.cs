@@ -14,10 +14,10 @@ public class OptionManager : MonoBehaviour
     [Header("Aim Options")]
     [SerializeField] Toggle toggle;
 
+    [SerializeField] RandomSound sound;
+
     private void Awake()
     {
-        CheckToggle();
-
         if (instance == null)
         {
             instance = this;
@@ -27,11 +27,46 @@ public class OptionManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+    }
+
+    private void Start()
+    {
+        StartCoroutine(LaterStart());
+    }
+
+    IEnumerator LaterStart()
+    {
+        yield return new WaitForEndOfFrame();
+
+        //Comprobar PlayerPref de auto
+        if (PlayerPrefs.GetInt("Auto", 0) == 0)
+        {
+            toggle.isOn = false;
+        }
+
+        else
+        {
+            toggle.isOn = true;
+        }
+
+        isAuto = toggle.isOn;
     }
 
     // Actualiza el valor de isAuto basado en el estado del toggle.
     public void CheckToggle()
     {
+        if (toggle.isOn)
+        {
+            PlayerPrefs.SetInt("Auto", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Auto", 0);
+        }
+
+        sound.SelectSound();
+
         isAuto = toggle.isOn;
     }
 

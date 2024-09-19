@@ -1712,6 +1712,7 @@ GameObject:
   - component: {fileID: 99337718}
   - component: {fileID: 99337719}
   - component: {fileID: 99337720}
+  - component: {fileID: 99337721}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -1806,6 +1807,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: cdc34fd10fb486045a285680f7802f84, type: 2}
   exposedParameter: 6
+--- !u!114 &99337721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99337717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1790911493}
+          m_TargetAssemblyTypeName: RandomSound, Assembly-CSharp
+          m_MethodName: SelectSound
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &99926351
 GameObject:
   m_ObjectHideFlags: 0
@@ -2447,6 +2477,7 @@ GameObject:
   - component: {fileID: 129970895}
   - component: {fileID: 129970896}
   - component: {fileID: 129970897}
+  - component: {fileID: 129970898}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -2541,6 +2572,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: cdc34fd10fb486045a285680f7802f84, type: 2}
   exposedParameter: 5
+--- !u!114 &129970898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129970894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1790911493}
+          m_TargetAssemblyTypeName: RandomSound, Assembly-CSharp
+          m_MethodName: SelectSound
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &136923882
 GameObject:
   m_ObjectHideFlags: 0
@@ -4381,6 +4441,7 @@ GameObject:
   - component: {fileID: 240880544}
   - component: {fileID: 240880545}
   - component: {fileID: 240880546}
+  - component: {fileID: 240880547}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -4475,6 +4536,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: cdc34fd10fb486045a285680f7802f84, type: 2}
   exposedParameter: 0
+--- !u!114 &240880547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240880543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1790911493}
+          m_TargetAssemblyTypeName: RandomSound, Assembly-CSharp
+          m_MethodName: SelectSound
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &255802604
 GameObject:
   m_ObjectHideFlags: 0
@@ -13060,6 +13150,7 @@ GameObject:
   - component: {fileID: 731143965}
   - component: {fileID: 731143966}
   - component: {fileID: 731143967}
+  - component: {fileID: 731143968}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -13154,6 +13245,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: cdc34fd10fb486045a285680f7802f84, type: 2}
   exposedParameter: 7
+--- !u!114 &731143968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731143964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1790911493}
+          m_TargetAssemblyTypeName: RandomSound, Assembly-CSharp
+          m_MethodName: SelectSound
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &731989336
 GameObject:
   m_ObjectHideFlags: 0
@@ -17306,6 +17426,7 @@ GameObject:
   - component: {fileID: 1026450577}
   - component: {fileID: 1026450578}
   - component: {fileID: 1026450579}
+  - component: {fileID: 1026450580}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -17400,6 +17521,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: cdc34fd10fb486045a285680f7802f84, type: 2}
   exposedParameter: 2
+--- !u!114 &1026450580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026450576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1790911493}
+          m_TargetAssemblyTypeName: RandomSound, Assembly-CSharp
+          m_MethodName: SelectSound
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1031713337
 GameObject:
   m_ObjectHideFlags: 0
@@ -23375,6 +23525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAuto: 0
   toggle: {fileID: 317470435}
+  sound: {fileID: 1790911493}
 --- !u!114 &1466469131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23503,6 +23654,7 @@ GameObject:
   - component: {fileID: 1470070033}
   - component: {fileID: 1470070034}
   - component: {fileID: 1470070035}
+  - component: {fileID: 1470070036}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -23597,6 +23749,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: cdc34fd10fb486045a285680f7802f84, type: 2}
   exposedParameter: 4
+--- !u!114 &1470070036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470070032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1790911493}
+          m_TargetAssemblyTypeName: RandomSound, Assembly-CSharp
+          m_MethodName: SelectSound
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1470888093
 GameObject:
   m_ObjectHideFlags: 0
@@ -29399,6 +29580,7 @@ GameObject:
   - component: {fileID: 1774614880}
   - component: {fileID: 1774614881}
   - component: {fileID: 1774614882}
+  - component: {fileID: 1774614883}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -29493,6 +29675,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: cdc34fd10fb486045a285680f7802f84, type: 2}
   exposedParameter: 3
+--- !u!114 &1774614883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774614879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1790911493}
+          m_TargetAssemblyTypeName: RandomSound, Assembly-CSharp
+          m_MethodName: SelectSound
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1789519918
 GameObject:
   m_ObjectHideFlags: 0
@@ -35247,6 +35458,7 @@ GameObject:
   - component: {fileID: 2130480699}
   - component: {fileID: 2130480700}
   - component: {fileID: 2130480701}
+  - component: {fileID: 2130480702}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -35341,6 +35553,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: cdc34fd10fb486045a285680f7802f84, type: 2}
   exposedParameter: 1
+--- !u!114 &2130480702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130480698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1790911493}
+          m_TargetAssemblyTypeName: RandomSound, Assembly-CSharp
+          m_MethodName: SelectSound
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2132210601
 GameObject:
   m_ObjectHideFlags: 0
