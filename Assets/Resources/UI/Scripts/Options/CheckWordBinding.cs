@@ -31,7 +31,13 @@ public class CheckWordBinding : MonoBehaviour
         if (PlayerPrefs.HasKey(direction + "_Binding"))
         {
             string savedBinding = PlayerPrefs.GetString(direction + "_Binding");
-            textButton.text = savedBinding; // Asigna el binding guardado al texto
+
+            // Convertir la ruta guardada a un formato legible para el jugador
+            InputBinding binding = new InputBinding { path = savedBinding };
+            string displayString = binding.ToDisplayString();
+
+            // Asigna el binding legible al texto
+            textButton.text = displayString;
         }
     }
 }

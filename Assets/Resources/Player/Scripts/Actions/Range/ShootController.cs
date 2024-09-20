@@ -43,7 +43,7 @@ public class ShootController : EnemyDetector
         {
             AutoShot();
         }
-        else if (shootAction.triggered)
+        else if (shootAction.ReadValue<float>() > 0)
         {
             TargetShot();
         }

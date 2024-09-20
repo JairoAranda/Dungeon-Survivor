@@ -109,7 +109,7 @@ public class MeleeHitController : MonoBehaviour
     void ManualHit()
     {
         // Realiza un golpe manual si el cooldown ha terminado, se hace clic y se puede golpear
-        if (currentCD <= 0 && shootAction.triggered && candHit)
+        if (currentCD <= 0 && shootAction.ReadValue<float>() > 0 && candHit)
         {
             Swing();
 

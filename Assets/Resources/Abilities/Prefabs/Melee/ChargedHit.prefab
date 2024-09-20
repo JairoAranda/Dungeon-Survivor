@@ -64,7 +64,7 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  _abilityImg: {fileID: 21300000, guid: 109ddee4b3726794c9a97761fcfb73c1, type: 3}
+  _abilityImg: {fileID: 21300000, guid: b49c4312d6a485d438035debceade4e3, type: 3}
   swingAngle: 80
   duration: 0.5
   swordColor: {r: 8, g: 6.863782, b: 0, a: 1}
