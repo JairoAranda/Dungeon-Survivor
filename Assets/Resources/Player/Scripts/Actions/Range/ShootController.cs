@@ -16,13 +16,15 @@ public class ShootController : EnemyDetector
 
     [Header("Inputs")]
     [SerializeField] InputActionAsset inputActions;
+
+    [SerializeField] InputActionEnum action;
     private InputAction shootAction;
 
     private void OnEnable()
     {
         var gameplayMap = inputActions.FindActionMap("Gameplay");
 
-        shootAction = gameplayMap.FindAction("Shoot");
+        shootAction = gameplayMap.FindAction(action.ToString());
 
         shootAction.Enable();
     }

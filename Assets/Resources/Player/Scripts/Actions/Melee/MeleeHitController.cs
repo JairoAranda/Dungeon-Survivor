@@ -27,6 +27,7 @@ public class MeleeHitController : MonoBehaviour
 
     [Header("Inputs")]
     [SerializeField] InputActionAsset inputActions;
+    [SerializeField] InputActionEnum action;
     private InputAction shootAction;
 
     private float currentCD; // Tiempo de cooldown entre swings
@@ -46,7 +47,7 @@ public class MeleeHitController : MonoBehaviour
     {
         var gameplayMap = inputActions.FindActionMap("Gameplay");
 
-        shootAction = gameplayMap.FindAction("Shoot");
+        shootAction = gameplayMap.FindAction(action.ToString());
 
         shootAction.Enable();
     }

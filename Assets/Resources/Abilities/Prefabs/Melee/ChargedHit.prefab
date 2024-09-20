@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: ddd41442b450754489b156df4d3ee890, type: 3}
+  qabilityAction: 2
+  eabilityAction: 3
 --- !u!114 &3012376438466108438
 MonoBehaviour:
   m_ObjectHideFlags: 0

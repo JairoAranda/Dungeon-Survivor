@@ -483,6 +483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: ddd41442b450754489b156df4d3ee890, type: 3}
+  action: 0
 --- !u!114 &2192481462387961168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,6 +586,7 @@ MonoBehaviour:
   attackSpeedPrefs: 4
   bulletColor: {r: 0, g: 9.035295, b: 95.874504, a: 1}
   inputActions: {fileID: -944628639613478452, guid: ddd41442b450754489b156df4d3ee890, type: 3}
+  action: 1
 --- !u!114 &8756019317094945089
 MonoBehaviour:
   m_ObjectHideFlags: 0

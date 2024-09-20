@@ -10,12 +10,14 @@ public class InputHandler : MonoBehaviour
     [Tooltip("Horizontal and Vertical input axis names.")]
     [SerializeField] InputActionAsset inputActions;
 
+    [SerializeField] InputActionEnum action;
+
     private InputAction moveAction;
 
     private void OnEnable()
     {
         var gameplayMap = inputActions.FindActionMap("Gameplay");
-        moveAction = gameplayMap.FindAction("Move");
+        moveAction = gameplayMap.FindAction(action.ToString());
         moveAction.Enable();
     }
 

@@ -11,6 +11,7 @@ public class AbilityAsign : MonoBehaviour
 
     [Header("Inputs")]
     [SerializeField] InputActionAsset inputActions;
+    [SerializeField] InputActionEnum qabilityAction, eabilityAction;
     private InputAction qAbility, eAbility;
 
     private void OnEnable()
@@ -18,9 +19,9 @@ public class AbilityAsign : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         var gameplayMap = inputActions.FindActionMap("Gameplay"); // Encuentra el mapa de acción "Gameplay"
-        qAbility = gameplayMap.FindAction("QAbilities");
+        qAbility = gameplayMap.FindAction(qabilityAction.ToString());
         qAbility.Enable();
-        eAbility = gameplayMap.FindAction("EAbilities");
+        eAbility = gameplayMap.FindAction(eabilityAction.ToString());
         eAbility.Enable();
     }
 

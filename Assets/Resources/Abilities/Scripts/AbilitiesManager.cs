@@ -22,7 +22,6 @@ public class AbilitiesManager : MonoBehaviour
     public Image qImg; 
     public Image eImg;
 
-
     [Header("CD Text")] // Textos en la UI para mostrar el tiempo de recarga en formato numérico
     public TextMeshProUGUI qCdText; 
     public TextMeshProUGUI eCdText;
