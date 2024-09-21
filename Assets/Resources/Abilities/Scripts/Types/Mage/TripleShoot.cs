@@ -27,6 +27,8 @@ public class TripleShoot : BaseRangedAbility, IAbility
 
             // Aplica la fuerza al proyectil en el ángulo actual
             AddForce(i);
+
+            StartCD();
         }
         
     }

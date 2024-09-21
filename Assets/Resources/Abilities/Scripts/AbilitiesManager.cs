@@ -52,7 +52,18 @@ public class AbilitiesManager : MonoBehaviour
         if (ability != null)
         {
             // Actualiza el uso de la habilidad, la imagen de recarga y el texto de recarga
-            AbilityUse(ability);
+            if (qAbility != null && eAbility != null)
+            {
+                if (!qAbility.isUsing && !eAbility.isUsing)
+                {
+                    AbilityUse(ability);
+                }
+            }
+            else
+            {
+                AbilityUse(ability);
+            }
+                
             ImgCd(ability);
             CD(ability);
         }
@@ -65,10 +76,9 @@ public class AbilitiesManager : MonoBehaviour
         if (ability.abilityAction.triggered)
         {
             // Solo permite usar la habilidad si el tiempo de recarga es 0
-            if (ability.currentCD <= 0)
+            if (ability.currentCD <= 0 && !ability.isUsing)
             {
-                // Aplica la reducción de tiempo de recarga basada en las estadísticas del jugador
-                ability.currentCD = ability.cd * (1 - PlayerStats.instance.coolDownReduction / 100);
+                ability.isUsing = true;
 
                 ability.Ability(); // Llama al método Ability de la habilidad
             }

@@ -36,6 +36,8 @@ public class GigantShoot : BaseRangedAbility, IAbility
 
         // Aplica la fuerza para disparar el proyectil
         AddForce(0);
+
+        StartCD();
     }
 
 

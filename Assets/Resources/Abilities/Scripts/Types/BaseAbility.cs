@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -69,7 +70,13 @@ public class BaseAbility : MonoBehaviour
         set => _abilityAction = value;
     }
 
+    private bool _isUsing; //Bool para saber si esta en uso la habilidad
 
+    public bool isUsing
+    {
+        get => _isUsing;
+        set => _isUsing = value;
+    }
 
     protected virtual void Start()
     {
@@ -84,9 +91,15 @@ public class BaseAbility : MonoBehaviour
     protected virtual void Update()
     {
         // Actualiza el tiempo de recarga si es mayor a 0
-        if (currentCD > 0)
+        if (currentCD > 0 && !isUsing)
         {
             currentCD -= Time.deltaTime;
         }
+    }
+
+    public void StartCD() 
+    {
+        isUsing = false;
+        currentCD = cd * (1 - PlayerStats.instance.coolDownReduction / 100);
     }
 }

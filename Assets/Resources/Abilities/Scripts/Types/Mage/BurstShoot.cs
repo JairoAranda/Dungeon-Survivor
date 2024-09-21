@@ -35,5 +35,7 @@ public class BurstShoot : BaseRangedAbility, IAbility
             // Espera un tiempo antes de disparar el siguiente proyectil
             yield return new WaitForSeconds(delayShoot);
         }
+
+        StartCD();
     }
 }

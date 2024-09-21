@@ -20,5 +20,9 @@ public interface IAbility
 
     GameObject go { get; set; }
 
+    bool isUsing { set; get; }
+
     void Ability();
+
+    void StartCD();
 }

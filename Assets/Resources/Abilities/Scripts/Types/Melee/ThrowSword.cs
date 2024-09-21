@@ -78,5 +78,7 @@ public class ThrowSword : BaseMeleeAbility, IAbility
         // Habilita el movimiento de la mano
         handMovement.enabled = true;
 
+        StartCD();
+
     }
 }

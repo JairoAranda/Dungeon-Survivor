@@ -118,5 +118,7 @@ public class ChargedHit : BaseMeleeAbility, IAbility
 
         // Habilita la capacidad de golpear en MeleeHitController
         MeleeHitController.instance.candHit = true;
+
+        StartCD();
     }
 }

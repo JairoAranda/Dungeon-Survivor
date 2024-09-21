@@ -68,5 +68,6 @@ public class Spin : BaseMeleeAbility, IAbility
         // Habilita el movimiento de la mano
         handMovement.enabled = true;
 
+        StartCD();
     }
 }

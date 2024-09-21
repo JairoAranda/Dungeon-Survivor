@@ -20,5 +20,5 @@ MonoBehaviour:
   damage: 1.5
   attackSpeed: 1
   cooldown: 1
-  projectSpeed: 10
+  projectSpeed: 0
   range: 0

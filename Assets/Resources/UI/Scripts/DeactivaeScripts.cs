@@ -12,6 +12,8 @@ public class DeactivaeScripts : MonoBehaviour
 
     HandMovement handMovement; // Referencia al controlador de movimiento de la mano
 
+    bool canHitChanged, canAimChanged;
+
     private void Awake()
     {
         if (deactivePlayer)
@@ -40,15 +42,17 @@ public class DeactivaeScripts : MonoBehaviour
         }
 
         // Desactiva la capacidad de ataque del controlador de ataque cuerpo a cuerpo
-        if (meleeHitController != null)
+        if (meleeHitController != null && meleeHitController.candHit)
         {
             meleeHitController.candHit = false;
+            canHitChanged = true;
         }
 
         // Desactiva la capacidad de apuntar del controlador de movimiento de la mano
-        if (handMovement != null)
+        if (handMovement != null && handMovement.canAim)
         {
             handMovement.canAim = false;
+            canAimChanged = true;
         }
     }
 
@@ -64,14 +68,14 @@ public class DeactivaeScripts : MonoBehaviour
         }
 
         // Restaura la capacidad de ataque del controlador de ataque cuerpo a cuerpo
-        if (meleeHitController != null)
+        if (meleeHitController != null && canHitChanged)
         {
             meleeHitController.candHit = true;
 
         }
 
         // Restaura la capacidad de apuntar del controlador de movimiento de la mano
-        if (handMovement != null)
+        if (handMovement != null && canAimChanged)
         {
             handMovement.canAim = true;
         }

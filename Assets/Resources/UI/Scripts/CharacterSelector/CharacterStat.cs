@@ -27,12 +27,20 @@ public class CharacterStat : MonoBehaviour
                     // Capitaliza el nombre del campo para mostrarlo
                     string name = StringUtils.CapitalizeFirstLetter(field.Name);
                     // Obtiene el valor del campo
-                    float value = (float)field.GetValue(sOPlayerInfo);
+                    float value = (float)field.GetValue(sOPlayerInfo) * 10;
 
                     // Si el valor es distinto de cero, actualiza el texto del componente TextMeshProUGUI
                     if (value != 0f)
                     {
-                        stats[i].text = "- " + name + " : " + value.ToString();
+                        if (value % 1 == 0)
+                        {
+                            stats[i].text = "- " + name + " : " + value.ToString("F0");
+                        }
+                        else
+                        {
+                            stats[i].text = "- " + name + " : " + value.ToString("F1");
+                        }
+                        
                     }
 
                     else
