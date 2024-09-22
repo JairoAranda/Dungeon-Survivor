@@ -186,8 +186,6 @@ public class PlayerStats : MonoBehaviour, IStats
 
             EventTriggerDeathPlayer?.Invoke(gameObject); // Dispara el evento de muerte del jugador
 
-            SceneManager.LoadScene(0);  // Carga la escena principal
-
         }
         
     }

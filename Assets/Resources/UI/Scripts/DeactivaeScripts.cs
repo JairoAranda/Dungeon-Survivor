@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DeactivaeScripts : MonoBehaviour
 {
     [SerializeField] List <MonoBehaviour> scripts; // Lista de scripts a desactivar o activar
 
     [SerializeField] bool deactivePlayer; // Indica si se deben desactivar los componentes del jugador
+
+    [SerializeField] InputActionAsset inputActions;
+
+    private InputActionMap gameplayMap;
 
     MeleeHitController meleeHitController; // Referencia al controlador de ataque cuerpo a cuerpo
 
@@ -26,6 +31,8 @@ public class DeactivaeScripts : MonoBehaviour
             meleeHitController = player.GetComponent<MeleeHitController>();
             handMovement = player.GetComponentInChildren<HandMovement>();
             scripts.Add(player.GetComponent<PlayerAnimation>());
+
+            gameplayMap = inputActions.FindActionMap("Gameplay");
         }
 
     }
@@ -54,6 +61,11 @@ public class DeactivaeScripts : MonoBehaviour
             handMovement.canAim = false;
             canAimChanged = true;
         }
+
+        if (gameplayMap != null)
+        {
+            gameplayMap.Disable();
+        }
     }
 
     private void OnDisable()
@@ -78,6 +90,11 @@ public class DeactivaeScripts : MonoBehaviour
         if (handMovement != null && canAimChanged)
         {
             handMovement.canAim = true;
+        }
+
+        if (gameplayMap != null)
+        {
+            gameplayMap.Enable();
         }
     }
 }
