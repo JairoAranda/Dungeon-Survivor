@@ -9,5 +9,6 @@ public enum InputActionEnum
     Move,
     Shoot,
     QAbilities,
-    EAbilities
+    EAbilities,
+    Pause
 }

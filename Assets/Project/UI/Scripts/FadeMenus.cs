@@ -88,6 +88,12 @@ public class FadeMenus : MonoBehaviour
             finalColor.a = targetAlpha;
             texts[i].color = finalColor;
         }
+
+        Time.timeScale = 0f;
     }
 
+    private void OnDisable()
+    {
+        Time.timeScale = 1f;
+    }
 }

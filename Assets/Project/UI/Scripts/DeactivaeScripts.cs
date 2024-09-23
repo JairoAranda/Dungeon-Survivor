@@ -7,7 +7,7 @@ public class DeactivaeScripts : MonoBehaviour
 {
     [SerializeField] List <MonoBehaviour> scripts; // Lista de scripts a desactivar o activar
 
-    [SerializeField] bool deactivePlayer; // Indica si se deben desactivar los componentes del jugador
+    [SerializeField] bool deactivePlayer, deactiveInputs; // Indica si se deben desactivar los componentes del jugador
 
     [SerializeField] InputActionAsset inputActions;
 
@@ -31,7 +31,10 @@ public class DeactivaeScripts : MonoBehaviour
             meleeHitController = player.GetComponent<MeleeHitController>();
             handMovement = player.GetComponentInChildren<HandMovement>();
             scripts.Add(player.GetComponent<PlayerAnimation>());
+        }
 
+        if (deactiveInputs)
+        {
             gameplayMap = inputActions.FindActionMap("Gameplay");
         }
 

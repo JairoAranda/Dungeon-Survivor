@@ -1,14 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PauseMenuManager : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu; // El menú de pausa que se activa o desactiva.
 
+    [Header("Inputs")]
+    [SerializeField] InputActionAsset inputActions;
+    [SerializeField] InputActionEnum pauseInputAction;
+    private InputAction pauseAction;
+
+    private void OnEnable()
+    {
+        var gameplayMap = inputActions.FindActionMap("Gameplay"); // Encuentra el mapa de acción "Gameplay"
+        pauseAction = gameplayMap.FindAction(pauseInputAction.ToString());
+        pauseAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        pauseAction.Disable();
+    }
+
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if (pauseAction.triggered)
         {
             PauseMenu();
         }
