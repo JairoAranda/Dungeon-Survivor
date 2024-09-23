@@ -5330,6 +5330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scripts: []
   deactivePlayer: 1
+  deactiveInputs: 1
   inputActions: {fileID: -944628639613478452, guid: ddd41442b450754489b156df4d3ee890, type: 3}
 --- !u!114 &239792576
 MonoBehaviour:
@@ -10210,6 +10211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scripts: []
   deactivePlayer: 1
+  deactiveInputs: 0
   inputActions: {fileID: -944628639613478452, guid: ddd41442b450754489b156df4d3ee890, type: 3}
 --- !u!114 &454352236
 MonoBehaviour:
@@ -18994,6 +18996,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scripts: []
   deactivePlayer: 1
+  deactiveInputs: 1
   inputActions: {fileID: -944628639613478452, guid: ddd41442b450754489b156df4d3ee890, type: 3}
 --- !u!114 &790901044
 MonoBehaviour:
@@ -30475,6 +30478,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 454352230}
+  inputActions: {fileID: -944628639613478452, guid: ddd41442b450754489b156df4d3ee890, type: 3}
+  pauseInputAction: 4
 --- !u!114 &1466469132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39649,6 +39654,7 @@ MonoBehaviour:
   scripts:
   - {fileID: 1466469131}
   deactivePlayer: 1
+  deactiveInputs: 1
   inputActions: {fileID: -944628639613478452, guid: ddd41442b450754489b156df4d3ee890, type: 3}
 --- !u!1 &1851625191
 GameObject:
@@ -39933,6 +39939,7 @@ MonoBehaviour:
   scripts:
   - {fileID: 454352232}
   deactivePlayer: 1
+  deactiveInputs: 1
   inputActions: {fileID: -944628639613478452, guid: ddd41442b450754489b156df4d3ee890, type: 3}
 --- !u!1 &1856359346
 GameObject:
