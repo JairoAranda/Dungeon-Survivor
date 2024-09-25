@@ -14,6 +14,8 @@ public class RoundTimerManager : MonoBehaviour
 
     private EnemyPoolManager enemyPoolManager; // Referencia al gestor de la piscina de enemigos.
 
+    private ProjectilePool projectilePool; // Referencia al gestor de la piscina de proyectiles.
+
     private GameObject endMenu; // Referencia al menú de fin de ronda.
 
     public int floorTimeRemaining; // Tiempo restante del piso en segundos.
@@ -75,12 +77,19 @@ public class RoundTimerManager : MonoBehaviour
             floorTimeRemaining = time;
         }
 
-        // Desactiva todos los enemigos y muestra el menú de fin de ronda.
+        // Desactiva todos los enemigos/projectiles y muestra el menú de fin de ronda.
         enemyPoolManager = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<EnemyPoolManager>();
+
+        projectilePool = GameObject.FindGameObjectWithTag("ProjectilePool").GetComponent<ProjectilePool>();
 
         foreach (var enemy in enemyPoolManager.typesInstances)
         {
             enemy.gameObject.SetActive(false);
+        }
+
+        foreach (var projectile in projectilePool.typesInstances)
+        {
+            projectile.gameObject.SetActive(false);
         }
 
         endMenu = GameObject.FindGameObjectWithTag("EndMenu");

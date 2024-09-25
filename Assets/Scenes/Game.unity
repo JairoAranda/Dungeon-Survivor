@@ -10762,7 +10762,7 @@ GameObject:
   - component: {fileID: 480977734}
   m_Layer: 0
   m_Name: --------PROJECTILE POOL-----------
-  m_TagString: Untagged
+  m_TagString: ProjectilePool
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

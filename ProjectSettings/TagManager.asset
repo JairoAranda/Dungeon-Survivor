@@ -14,6 +14,7 @@ TagManager:
   - WeaponPosition
   - EndMenu
   - EnemyPool
+  - ProjectilePool
   layers:
   - Default
   - TransparentFX
